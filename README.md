@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://syncbase.tv">
+  <a href="http://syncbase.tv">
     <img src="logo.svg">
   </a>
 </p>

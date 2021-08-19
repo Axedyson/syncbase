@@ -25,6 +25,7 @@ const eslintrcConfig = {
     es2021: true,
     node: true,
   },
+  ignorePatterns: "dist/",
   rules: {
     "react/prop-types": "off",
     "prefer-template": "error",

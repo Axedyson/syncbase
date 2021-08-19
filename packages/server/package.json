@@ -3,6 +3,7 @@
   "packageManager": "yarn@3.0.1",
   "private": true,
   "scripts": {
+    "check-types:server": "tsc --noEmit",
     "dev:server": "tsnd --respawn --transpile-only src/index.ts",
     "build:server": "rimraf dist && tsc",
     "start:server": "node dist/index.js"

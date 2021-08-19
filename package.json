@@ -5,8 +5,11 @@
   "workspaces": [
     "packages/*"
   ],
+  "stylelint": {
+    "extends": "stylelint-config-standard"
+  },
   "scripts": {
-    "lint": "eslint && yarn stylelint \"**/*.css\""
+    "lint": "yarn check-types:server && yarn check-types:web && eslint . && stylelint **/*.css"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^11.1.0",

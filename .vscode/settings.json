@@ -7,5 +7,6 @@
   "css.validate": false,
   "less.validate": false,
   "scss.validate": false,
-  "stylelint.validate": ["css"]
+  "stylelint.validate": ["css"],
+  "eslint.probe": ["javascript", "typescript", "typescriptreact"]
 }

@@ -1,5 +1,5 @@
-import { FC } from "react";
 import Link from "next/link";
+import { FC } from "react";
 
 const AboutPage: FC = () => {
   return (

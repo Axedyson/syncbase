@@ -1,5 +1,3 @@
-const testFunc = (arg: string) => {
-  console.log(arg);
+export type User = {
+  name: string;
 };
-
-testFunc("test");

@@ -13,6 +13,8 @@ const eslintrcConfig = {
   parser: "@typescript-eslint/parser",
   extends: [
     "eslint:recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:react/jsx-runtime",
@@ -20,20 +22,65 @@ const eslintrcConfig = {
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
   ],
+  plugins: ["unused-imports"],
   env: {
     browser: true,
     es2021: true,
     node: true,
   },
-  ignorePatterns: "dist/",
+  ignorePatterns: ["!.*"],
   rules: {
+    "import/first": "error",
+    "import/order": [
+      "error",
+      {
+        groups: [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "unknown",
+          "object",
+          "type",
+        ],
+        "newlines-between": "never",
+        alphabetize: {
+          order: "asc",
+        },
+      },
+    ],
+    "sort-imports": [
+      "error",
+      {
+        ignoreDeclarationSort: true,
+      },
+    ],
+    "import/newline-after-import": [
+      "error",
+      {
+        count: 1,
+      },
+    ],
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "error",
+      {
+        vars: "all",
+        args: "all",
+        argsIgnorePattern: "^_",
+      },
+    ],
     "react/prop-types": "off",
     "prefer-template": "error",
-    "prettier/prettier": "error",
     "@next/next/no-html-link-for-pages": [
       2,
       path.join(__dirname, "packages/web/src/pages"),
     ],
+    "prettier/prettier": "error",
   },
   settings: {
     react: {

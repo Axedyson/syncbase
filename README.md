@@ -5,7 +5,8 @@
 </p>
 
 ### TODO:
-- https://commitlint.js.org/#/guides-ci-setup and test linting ci
+
+- setup source code linting in ci env
 - docker & docker-compose, for dev stuff
 - finally actually develop the site
 

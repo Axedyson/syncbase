@@ -1,0 +1,60 @@
+name: Lint
+on: [push, pull_request]
+
+jobs:
+  commitlint:
+    name: Commit message linter
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Lint commit messages
+        uses: wagoid/commitlint-github-action@v4
+
+  lintcode:
+    name: Source code linter
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Set up node 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          cache: "yarn"
+      - name: Install dependencies listed in package.json
+        run: yarn install
+      - name: Run linters
+        uses: wearerequired/lint-action@v1
+        with:
+          auto_fix: ${{ github.event_name == 'pull_request' }}
+          commit_message: "chore(style): fix code style issues with ${linter}"
+          stylelint: true
+          stylelint_extensions: css
+          prettier: true
+          prettier_extensions: json,md,yml
+          eslint: true
+          eslint_args: '--ignore-pattern "node_modules/.*" --max-warnings 0'
+          eslint_extensions: js,ts,tsx
+
+      - name: Figure out what has changed
+        uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            server:
+              - 'packages/server/src/**/*.ts?(x)'
+            web:
+              - 'packages/web/src/**/*.ts?(x)'
+
+      - name: Run typescript server check
+        if: steps.changes.outputs.server == 'true'
+        run: yarn workspace @syncbase/server tsc --noEmit
+
+      - name: Run typescript web check
+        if: steps.changes.outputs.web == 'true'
+        run: yarn workspace @syncbase/web tsc --noEmit

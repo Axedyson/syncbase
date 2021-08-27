@@ -8,6 +8,7 @@ const HomePage: FC = () => {
       <Link href="/about">about</Link>
       <p>Welcome to the index page!</p>
     </div>
-  ); };
+  );
+};
 
 export default HomePage;

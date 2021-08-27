@@ -31,8 +31,7 @@ jobs:
       - name: Run linters
         uses: wearerequired/lint-action@v1
         with:
-          auto_fix: true
-          commit_message: "chore(style): fix code style issues with ${linter}"
+          neutral_check_on_warning: true
           stylelint: true
           stylelint_extensions: css
           prettier: true

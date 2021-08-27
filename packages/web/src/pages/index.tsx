@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { FC } from "react";
 
-const HomePage = () => {
+const HomePage: FC = () => {
   return (
     <div>
       <h1>test</h1>

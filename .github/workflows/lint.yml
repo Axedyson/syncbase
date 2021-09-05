@@ -28,12 +28,12 @@ jobs:
           cache: "yarn"
       - name: Install dependencies listed in package.json
         run: yarn install
+      - name: Remove commit hooks
+        run: rm .git/hooks/pre-commit
       - name: Run linters
         uses: wearerequired/lint-action@v1
         with:
           auto_fix: true
-          - name: Remove commit hooks
-            run: rm .git/hooks/pre-commit
           commit_message: "chore(style): fix code style issues with ${linter}"
           neutral_check_on_warning: true
           stylelint: true

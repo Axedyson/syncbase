@@ -32,7 +32,7 @@ jobs:
         uses: wearerequired/lint-action@v1
         with:
           auto_fix: true
-          # git_no_verify: true
+          git_no_verify: true
           commit_message: "chore(style): fix code style issues with ${linter}"
           neutral_check_on_warning: true
           stylelint: true

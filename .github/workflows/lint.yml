@@ -29,7 +29,7 @@ jobs:
       - name: Install dependencies listed in package.json
         run: yarn install
       - name: Remove commit hooks
-        run: rm .git/hooks/pre-commit
+        run: rm -fr .husky
       - name: Run linters
         uses: wearerequired/lint-action@v1
         with:

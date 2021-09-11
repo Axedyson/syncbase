@@ -5,4 +5,5 @@ module.exports = {
       code: "revert",
       gitmoji: "rewind",
     },
-  ], };
+  ],
+};

@@ -31,7 +31,7 @@ jobs:
       - name: Install dependencies listed in package.json
         run: yarn install
       - name: Run linters
-        uses: wearerequired/lint-action@v1
+        uses: wearerequired/lint-action@master
         with:
           git_no_verify: true
           auto_fix: true

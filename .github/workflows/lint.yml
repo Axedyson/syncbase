@@ -33,7 +33,7 @@ jobs:
       - name: Run linters
         uses: wearerequired/lint-action@master
         with:
-          git_no_verify: true
+          #git_no_verify: true
           auto_fix: true
           commit_message: "chore(style): fix code style issues with ${linter}"
           neutral_check_on_warning: true

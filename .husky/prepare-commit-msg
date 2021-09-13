@@ -1,6 +1,8 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+# The if statement is to prevent this from running in Github Actions environment
+# as /dev/tty doesn't seem to work in that environment
 if [ -z "$GITHUB_ACTIONS" ]; then
   exec < /dev/tty && yarn cz --hook || true
 fi

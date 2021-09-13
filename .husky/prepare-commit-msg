@@ -1,8 +1,10 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-# The if statement is to prevent this from running in Github Actions environment
-# as /dev/tty doesn't seem to work in that environment
+# We don't want to run this in a Github Actions environment
+# as /dev/tty doesn't seem to work in such an environment
+# also it doesn't make sense to have a commit message wizard running
+# as the commit message has already been defined beforehand in lint.yml file
 if [ -z "$GITHUB_ACTIONS" ]; then
   exec < /dev/tty && yarn cz --hook || true
 fi

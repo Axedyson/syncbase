@@ -1,4 +1,9 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn lint-staged
+# We don't want to run lint-staged in Github Actions environment
+# as that can stop the whole workflow process if there are any syntax
+# errors which should be fixed and handled by the linters themselves
+if [ -z "$GITHUB_ACTIONS" ]; then
+  yarn lint-staged
+fi

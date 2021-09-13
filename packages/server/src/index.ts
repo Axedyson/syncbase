@@ -1,7 +1,4 @@
-import fs from "fs";
-
-let lol = "lol"
-
+const lol = "lol";
 
 export type User = {
   name: string;

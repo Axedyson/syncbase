@@ -23,6 +23,7 @@ I welcome any contribution!
 - Fork this repo and submit a pull request to the main branch of the original repo
 
 ### TODO
+
 - Actually develop the project
 - Deploy web on vercel and server and it's services on DO droplet and maybe some automatic deployment with gh actions
 - Add docker & docker-compose

@@ -37,8 +37,7 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           git_user_signingkey: true
           git_commit_gpgsign: true
-      - name: Set gpg global commit signing
-        run: git config --global commit.gpgsign true
+          git_config_global: true
       - name: Set up node 14
         uses: actions/setup-node@v2
         with:

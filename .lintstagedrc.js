@@ -7,5 +7,4 @@ module.exports = {
   [`packages/server/src/**/${tsGlob}`]: () =>
     "yarn workspace @syncbase/server tsc --noEmit",
   [`packages/web/src/**/${tsGlob}`]: () =>
-    "yarn workspace @syncbase/web tsc --noEmit",
-};
+    "yarn workspace @syncbase/web tsc --noEmit", };

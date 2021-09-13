@@ -30,13 +30,10 @@ jobs:
           cache: "yarn"
       - name: Install dependencies listed in package.json
         run: yarn install
-      - name: Remove commit hooks
-        run: |
-          rm .husky/pre-commit
-          rm .husky/prepare-commit-msg
       - name: Run linters
-        uses: wearerequired/lint-action@v1
+        uses: wearerequired/lint-action@master
         with:
+          git_no_verify: true
           auto_fix: true
           commit_message: "chore(style): fix code style issues with ${linter}"
           neutral_check_on_warning: true

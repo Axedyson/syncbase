@@ -31,8 +31,9 @@ jobs:
       - name: Install dependencies listed in package.json
         run: yarn install
       - name: Remove commit hooks
-        run: rm .husky/pre-commit
-        run: rm .husky/prepare-commit-msg
+        run: |
+          rm .husky/pre-commit
+          rm .husky/prepare-commit-msg
       - name: Run linters
         uses: wearerequired/lint-action@v1
         with:

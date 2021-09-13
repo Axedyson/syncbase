@@ -39,8 +39,8 @@ jobs:
           neutral_check_on_warning: true
           stylelint: true
           stylelint_extensions: css
-          prettier: true
-          prettier_extensions: json,md,yml
+          #prettier: true
+          #prettier_extensions: json,md,yml
           eslint: true
           eslint_args: '--ignore-pattern "node_modules/.*" --max-warnings 0'
           eslint_extensions: js,ts,tsx

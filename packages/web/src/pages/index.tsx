@@ -1,8 +1,6 @@
 import Link from "next/link";
 import { FC } from "react";
 
-console.log(FC);
-
 const HomePage: FC = () => {
   return (
     <div>

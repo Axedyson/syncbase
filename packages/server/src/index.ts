@@ -2,6 +2,6 @@ export type User = {
   name: string;
 };
 
-const lol = "lol" as User;
+const lol = "lol";
 
 console.log(lol);

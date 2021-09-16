@@ -1,6 +1,12 @@
 name: Lint
 
-on: [push, pull_request, pull_request_target]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   commitlint:
@@ -22,8 +28,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
-        #with:
-        # token: ${{ secrets.PAT }}
+        with:
+          token: ${{ secrets.PAT }}
       - name: Set up node 14
         uses: actions/setup-node@v2
         with:

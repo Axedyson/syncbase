@@ -24,13 +24,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           token: ${{ secrets.PAT }}
-      - name: Import GPG key
-        uses: crazy-max/ghaction-import-gpg@v4
-        with:
-          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
-          passphrase: ${{ secrets.PASSPHRASE }}
-          git_user_signingkey: true
-          git_commit_gpgsign: true
       - name: Set up node 14
         uses: actions/setup-node@v2
         with:
@@ -51,21 +44,7 @@ jobs:
           eslint: true
           eslint_args: '--ignore-pattern "node_modules/.*" --max-warnings 0'
           eslint_extensions: js,ts,tsx
-
-      - name: Figure out what has changed
-        uses: dorny/paths-filter@v2
-        id: changes
-        with:
-          filters: |
-            server:
-              - 'packages/server/src/**/*.ts?(x)'
-            web:
-              - 'packages/web/src/**/*.ts?(x)'
-
       - name: Run typescript server check
-        if: steps.changes.outputs.server == 'true'
         run: yarn workspace @syncbase/server tsc --noEmit
-
       - name: Run typescript web check
-        if: steps.changes.outputs.web == 'true'
         run: yarn workspace @syncbase/web tsc --noEmit

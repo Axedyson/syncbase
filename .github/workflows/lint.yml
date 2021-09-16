@@ -44,7 +44,6 @@ jobs:
           eslint: true
           eslint_args: '--ignore-pattern "node_modules/.*" --max-warnings 0'
           eslint_extensions: js,ts,tsx
-      - name: Run typescript server check
+      - name: Run typescript checks
         run: yarn workspace @syncbase/server tsc --noEmit
-      - name: Run typescript web check
         run: yarn workspace @syncbase/web tsc --noEmit

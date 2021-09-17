@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
   pull_request_target:
     branches:
       - main
@@ -33,13 +30,13 @@ jobs:
         if: ${{ github.event_name == 'push' }}
         uses: actions/checkout@v2
         with:
-          token: ${{ secrets.PAT }}
+          #token: ${{ secrets.PAT }}
       - name: Check out repository (pull_request_target)
         if: ${{ github.event_name == 'pull_request_target' }}
         uses: actions/checkout@v2
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-          token: ${{ secrets.PAT }}
+          #token: ${{ secrets.PAT }}
       - name: Set up node 14
         uses: actions/setup-node@v2
         with:

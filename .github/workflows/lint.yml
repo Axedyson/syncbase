@@ -29,13 +29,14 @@ jobs:
       - name: Check out repository (push)
         if: ${{ github.event_name == 'push' }}
         uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PAT }}
       - name: Check out repository (pull_request_target)
         if: ${{ github.event_name == 'pull_request_target' }}
         uses: actions/checkout@v2
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-        #with:
-        #token: ${{ secrets.PAT }}
+          token: ${{ secrets.PAT }}
       - name: Set up node 14
         uses: actions/setup-node@v2
         with:
@@ -46,8 +47,8 @@ jobs:
       - name: Run linters
         uses: wearerequired/lint-action@v1
         with:
-          #auto_fix: true
-          #commit_message: "chore(style): fix code style issues with ${linter}"
+          auto_fix: true
+          commit_message: "chore(style): fix code style issues with ${linter}"
           github_token: ${{ secrets.github_token }}
           neutral_check_on_warning: true
           stylelint: true

@@ -36,6 +36,6 @@ jobs:
       - name: Run eslint
         run: yarn eslint . --ext .js,.ts,.tsx --ignore-pattern 'node_modules/.*' --max-warnings 0
       - name: Run typescript server checks
-        run: yarn check-types:server
+        run: yarn workspace @syncbase/server check-types
       - name: Run typescript web checks
-        run: yarn check-types:web
+        run: yarn workspace @syncbase/web check-types

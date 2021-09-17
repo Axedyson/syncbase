@@ -2,4 +2,6 @@ export type User = {
   name: string;
 };
 
-console.log("lol");
+const lol = "lol";
+
+console.log(lol);

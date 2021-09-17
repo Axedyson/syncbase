@@ -26,8 +26,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out repository code
+      - name: Check out repository (push)
+        if: ${{ github.event_name == 'push' }}
         uses: actions/checkout@v2
+      - name: Check out repository (pull_request_target)
+        if: ${{ github.event_name == 'pull_request_target' }}
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
         #with:
         #token: ${{ secrets.PAT }}
       - name: Set up node 14
@@ -41,8 +47,8 @@ jobs:
         uses: wearerequired/lint-action@v1
         with:
           #auto_fix: true
+          #commit_message: "chore(style): fix code style issues with ${linter}"
           github_token: ${{ secrets.github_token }}
-          commit_message: "chore(style): fix code style issues with ${linter}"
           neutral_check_on_warning: true
           stylelint: true
           stylelint_extensions: css

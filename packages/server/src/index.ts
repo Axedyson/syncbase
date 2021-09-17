@@ -2,7 +2,6 @@ export type User = {
   name: string;
 };
 
-const fwefe = "lfwef";
-const lol = "lol";
+const lol = "lol" as number;
 
 console.log(lol);

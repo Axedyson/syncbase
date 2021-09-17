@@ -26,15 +26,15 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
-          cache: "yarn"
+          cache: 'yarn'
       - name: Install dependencies
         run: yarn install
       - name: Run stylelint
-        run: yarn stylelint "**/*.css"
+        run: yarn stylelint '**/*.css'
       - name: Run prettier
-        run: yarn prettier --check "**/*.{json,md,yml}"
+        run: yarn prettier --check '**/*.{json,md,yml}'
       - name: Run eslint
-        run: yarn eslint . --ext .js,.ts,.tsx --ignore-pattern "node_modules/.*" --max-warnings 0
+        run: yarn eslint . --ext .js,.ts,.tsx --ignore-pattern 'node_modules/.*' --max-warnings 0
       - name: Run typescript server checks
         run: yarn check-types:server
       - name: Run typescript web checks

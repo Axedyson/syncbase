@@ -2,6 +2,6 @@ export type User = {
   name: string;
 };
 
-const lol = "lol" as symbol;
+const lol = "lol";
 
 console.log(lol);

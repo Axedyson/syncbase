@@ -1,12 +1,6 @@
 name: Lint
 
-on:
-  push:
-    branches:
-      - main
-  pull_request_target:
-    branches:
-      - main
+on: [push, pull_request]
 
 jobs:
   commitlint:
@@ -26,38 +20,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out repository (push)
-        if: ${{ github.event_name == 'push' }}
+      - name: Check out repository code
         uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.PAT }}
-      - name: Check out repository (pull_request_target)
-        if: ${{ github.event_name == 'pull_request_target' }}
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-          token: ${{ secrets.PAT }}
       - name: Set up node 14
         uses: actions/setup-node@v2
         with:
           node-version: 14
           cache: "yarn"
-      - name: Install dependencies listed in package.json
+      - name: Install dependencies
         run: yarn install
-      - name: Run linters
-        uses: wearerequired/lint-action@v1
-        with:
-          auto_fix: true
-          commit_message: "chore(style): fix code style issues with ${linter}"
-          neutral_check_on_warning: true
-          stylelint: true
-          stylelint_extensions: css
-          prettier: true
-          prettier_extensions: json,md,yml
-          eslint: true
-          eslint_args: '--ignore-pattern "node_modules/.*" --max-warnings 0'
-          eslint_extensions: js,ts,tsx
-      - name: Run typescript checks
-        run: |
-          yarn workspace @syncbase/server tsc --noEmit
-          yarn workspace @syncbase/web tsc --noEmit
+      - name: Run stylelint
+        run: yarn stylelint "**/*.css"
+      - name: Run prettier
+        run: yarn prettier --check "**/*.{json,md,yml}"
+      - name: Run eslint
+        run: yarn eslint . --ext .js,.ts,.tsx --ignore-pattern "node_modules/.*" --max-warnings 0
+      - name: Run typescript server checks
+        run: yarn check-types:server
+      - name: Run typescript web checks
+        run: yarn check-types:web

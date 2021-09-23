@@ -3,7 +3,7 @@
   "packageManager": "yarn@3.0.2",
   "private": true,
   "scripts": {
-    "check-types": "yarn tsc --noEmit",
+    "check-types": "tsc --noEmit",
     "dev": "next dev",
     "build": "next build",
     "start": "next start"

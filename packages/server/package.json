@@ -3,7 +3,7 @@
   "packageManager": "yarn@3.0.2",
   "private": true,
   "scripts": {
-    "check-types": "yarn tsc --noEmit",
+    "check-types": "tsc --noEmit",
     "dev": "tsnd --respawn --transpile-only src/index.ts",
     "build": "rimraf dist && tsc",
     "start": "node dist/index.js"
@@ -13,5 +13,9 @@
     "rimraf": "^3.0.2",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.4.3"
+  },
+  "dependencies": {
+    "@mikro-orm/core": "^4.5.9",
+    "@mikro-orm/postgresql": "^4.5.9"
   }
 }

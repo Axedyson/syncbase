@@ -12,7 +12,7 @@ I welcome any contribution!
 
 #### Project setup
 
-- Have node installed, preferably node v14.17.5 (that's the version I'm using)
+- Have node installed, preferably node v14.17.6 (that's the version I'm using)
 - Have yarn installed
 - Clone this repo
 - cd into the root folder of the repo: `cd syncbase/`

@@ -1,5 +1,4 @@
 import { MikroORM } from "@mikro-orm/core";
-import { PROD } from "./constants";
 
 const main = async () => {
   const orm = await MikroORM.init({
@@ -9,7 +8,6 @@ const main = async () => {
   });
 
   console.log(orm.em);
-  console.log(PROD);
 };
 
 main();

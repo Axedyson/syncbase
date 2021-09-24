@@ -30,9 +30,13 @@ const eslintrcConfig = {
   },
   ignorePatterns: ["!.*"],
   rules: {
-    // yeah this sucks, vscode users just have to reload their window whenever they get the rule error:
-    // https://github.com/microsoft/vscode-eslint/issues/717
-    "import/no-unused-modules": ["error", { unusedExports: true }],
+    // vscode users have to reload their window/eslint server whenever they get the following rule error:
+    // Because the user dev experience would be quite bad, the rule is disabled in the workspace settings
+    // For reference: https://github.com/microsoft/vscode-eslint/issues/717
+    "import/no-unused-modules": [
+      "error",
+      { unusedExports: true, ignoreExports: ["packages/web/src/pages/*"] },
+    ],
     "import/first": "error",
     "import/order": [
       "error",

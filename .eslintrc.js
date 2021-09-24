@@ -35,7 +35,14 @@ const eslintrcConfig = {
     // For reference: https://github.com/microsoft/vscode-eslint/issues/717
     "import/no-unused-modules": [
       "error",
-      { unusedExports: true, ignoreExports: ["packages/web/src/pages/*"] },
+      {
+        unusedExports: true,
+        ignoreExports: [
+          "packages/web/src/pages/*",
+          "packages/server/src/entities/*",
+          "packages/server/src/config/orm.config.ts",
+        ],
+      },
     ],
     "import/first": "error",
     "import/order": [

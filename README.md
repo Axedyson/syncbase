@@ -25,7 +25,10 @@ I welcome any contribution!
 ### TODO
 
 - Actually develop the project
+  - `rimraf dist temp && ...`?
+  - Read up on mikro-orm docs
+  - DB Migrations
 - Deploy web on vercel and server and it's services on DO droplet and maybe some automatic deployment with gh actions
-- Add docker & docker-compose
+- Add docker & docker-compose for development maybe
 - Maybe add standard-version/semantic-release
 - Add tests e.g. jest for unit and integration tests and crypress for E2E tests

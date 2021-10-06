@@ -25,7 +25,6 @@ I welcome any contribution!
 ### TODO
 
 - Actually develop the project
-  - `rimraf dist temp && ...`?
   - Read up on mikro-orm docs
   - DB Migrations
 - Deploy web on vercel and server and it's services on DO droplet and maybe some automatic deployment with gh actions

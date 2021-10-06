@@ -4,13 +4,12 @@
   "private": true,
   "scripts": {
     "check-types": "tsc --noEmit",
-    "dev": "tsnd --respawn --transpile-only src/index.ts",
-    "build": "rimraf dist temp && tsc && mikro-orm cache:generate",
+    "dev": "mikro-orm cache:clear && tsnd --respawn --transpile-only src/index.ts",
+    "build": "tsc && mikro-orm cache:generate",
     "start": "node dist/index.js"
   },
   "devDependencies": {
-    "@types/node": "^16.9.6",
-    "rimraf": "^3.0.2",
+    "@types/node": "^16.10.3",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.4.3"
   },

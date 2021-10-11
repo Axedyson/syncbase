@@ -1,6 +1,6 @@
-import { MikroORM } from "@mikro-orm/core";
 import { TsMorphMetadataProvider } from "@mikro-orm/reflection";
 import { IS_PROD } from "./constants";
+import type { MikroORM } from "@mikro-orm/core";
 
 export default {
   dbName: "syncbase",

@@ -25,8 +25,10 @@ I welcome any contribution!
 ### TODO
 
 - Actually develop the project
-  - Read up on mikro-orm docs
-  - DB Migrations
+  - We should first get a handle on the data flow between the server and the web:
+    - Build the user api and user schema and db table
+    - Build the redis session management system
+    - Build register and signup page and connect them to the user api
 - Deploy web on vercel and server and it's services on DO droplet and maybe some automatic deployment with gh actions
 - Add docker & docker-compose for development maybe
 - Maybe add standard-version/semantic-release

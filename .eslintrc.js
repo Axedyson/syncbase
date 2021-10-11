@@ -40,7 +40,7 @@ const eslintrcConfig = {
         ignoreExports: [
           "packages/web/src/pages/*",
           "packages/server/src/entities/*",
-          "packages/server/src/config/orm.config.ts",
+          "packages/server/src/config/orm.ts",
         ],
       },
     ],
@@ -77,6 +77,7 @@ const eslintrcConfig = {
         count: 1,
       },
     ],
+    "@typescript-eslint/consistent-type-imports": "error",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "unused-imports/no-unused-imports": "error",

@@ -3,6 +3,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require("path");
 
+// Don't use eslint v8.0.0 or above since eslint-plugin-import among
+// other packages don't support that version yet.
+// look here for more info: https://github.com/eslint/eslint/issues/15148
+
 // Is eslint-config-next still needed as a dependency to make this work?
 // look here for more info: https://github.com/vercel/next.js/issues/27981
 

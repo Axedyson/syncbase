@@ -24,11 +24,12 @@ I welcome any contribution!
 
 ### TODO
 
-- Actually develop the project
-  - We should first get a handle on the data flow between the server and the web:
-    - Build the user api and user schema and db table
-    - Build the redis session management system
-    - Build register and signup page and connect them to the user api
+- Actually develop the project (We should first get a handle on the data flow between the server and the web)
+  - Build the user api and user schema and db table
+  - [Entity Repositories](https://mikro-orm.io/docs/entity-manager#entity-repositories)
+  - First letter of entity files should be capitalized
+  - Build the redis session management system
+  - Build register and signup page and connect them to the user api
 - Deploy web on vercel and server and it's services on DO droplet and maybe some automatic deployment with gh actions
 - Add docker & docker-compose for development maybe
 - Maybe add standard-version/semantic-release

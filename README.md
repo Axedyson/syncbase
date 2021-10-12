@@ -25,10 +25,10 @@ I welcome any contribution!
 ### TODO
 
 - Actually develop the project (We should first get a handle on the data flow between the server and the web)
-  - Build the user api and user schema and db table
-  - [Entity Repositories](https://mikro-orm.io/docs/entity-manager#entity-repositories)
-  - [Dependency injection](https://typegraphql.com/docs/dependency-injection.html)
-  - First letter of entity files should be capitalized
+  - First letter of entity files should be capitalized (PascalCase) since these files only export a single class just like react comp files
+  - Build the user api (user schema, user resolvers and db table. Read up on type-graphql docs)
+  - [Use Entity Repositories?](https://mikro-orm.io/docs/entity-manager#entity-repositories)
+  - [Use Dependency injection?](https://typegraphql.com/docs/dependency-injection.html)
   - Build the redis session management system
   - Build register and signup page and connect them to the user api
 - Deploy web on vercel and server and it's services on DO droplet and maybe some automatic deployment with gh actions

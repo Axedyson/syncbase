@@ -27,6 +27,7 @@ I welcome any contribution!
 - Actually develop the project (We should first get a handle on the data flow between the server and the web)
   - Build the user api and user schema and db table
   - [Entity Repositories](https://mikro-orm.io/docs/entity-manager#entity-repositories)
+  - [Dependency injection](https://typegraphql.com/docs/dependency-injection.html)
   - First letter of entity files should be capitalized
   - Build the redis session management system
   - Build register and signup page and connect them to the user api

@@ -25,7 +25,6 @@ I welcome any contribution!
 ### TODO
 
 - Actually develop the project (We should first get a handle on the data flow between the server and the web)
-  - First letter of entity files should be capitalized (PascalCase) since these files only export a single class just like react comp files
   - Build the user api (user schema, user resolvers and db table. Read up on type-graphql docs)
   - [Use Entity Repositories?](https://mikro-orm.io/docs/entity-manager#entity-repositories)
   - [Use Dependency injection?](https://typegraphql.com/docs/dependency-injection.html)

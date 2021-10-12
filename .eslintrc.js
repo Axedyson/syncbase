@@ -3,9 +3,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require("path");
 
-// Don't use eslint v8.0.0 or above since eslint-plugin-import among
-// other packages don't support that version yet.
-// look here for more info: https://github.com/eslint/eslint/issues/15148
+// Don't use eslint v8.0.0, @typescript-eslint/eslint-plugin v5.0.0 and @typescript-eslint/parser v5.0.0
+// since other packages don't support that version yet. look here for more info:
+// https://github.com/airbnb/javascript/issues/2478
+// https://github.com/sweepline/eslint-plugin-unused-imports/issues/38
 
 // Is eslint-config-next still needed as a dependency to make this work?
 // look here for more info: https://github.com/vercel/next.js/issues/27981
@@ -43,7 +44,6 @@ const eslintrcConfig = {
         unusedExports: true,
         ignoreExports: [
           "packages/web/src/pages/*",
-          "packages/server/src/entities/*",
           "packages/server/src/config/orm.ts",
         ],
       },

@@ -25,9 +25,7 @@ I welcome any contribution!
 ### TODO
 
 - Actually develop the project (We should first get a handle on the data flow between the server and the web)
-  - Read up on type-graphql docs)
-  - [Use Entity Repositories?](https://mikro-orm.io/docs/entity-manager#entity-repositories)
-  - [Use Dependency injection?](https://typegraphql.com/docs/dependency-injection.html)
+  - Use dataloder for relational data fetching
   - Build the redis session management system
   - Build register and signup page and connect them to the user api
 - Deploy web on vercel and server and it's services on DO droplet and maybe some automatic deployment with gh actions

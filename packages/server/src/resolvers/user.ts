@@ -13,7 +13,7 @@ import { User } from "../entities/User";
 import type { Context } from "../types";
 
 @InputType()
-class UserInput {
+class RegisterUserInput {
   @Field()
   @Length(3, 20)
   name!: string;
@@ -34,14 +34,14 @@ class UserInput {
 export class UserResolver {
   @Mutation(() => User)
   async registerUser(
-    @Arg("userInput") userInput: UserInput,
+    @Arg("input") input: RegisterUserInput,
     @Ctx() { em }: Context
   ) {
     const user = em.create(User, {
-      name: userInput.name,
-      email: userInput.email,
-      password: userInput.password,
-      image: userInput.image,
+      name: input.name,
+      email: input.email,
+      password: input.password,
+      image: input.image,
     });
     await em.persistAndFlush(user);
     return user;

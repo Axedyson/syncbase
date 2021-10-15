@@ -1,3 +1,4 @@
+import argon2 from "argon2";
 import { IsEmail, Length } from "class-validator";
 import {
   Arg,
@@ -37,10 +38,13 @@ export class UserResolver {
     @Arg("input") input: RegisterUserInput,
     @Ctx() { em }: Context
   ) {
+    const hashedPassword = await argon2.hash(input.password, {
+      type: argon2.argon2id,
+    });
     const user = em.create(User, {
       name: input.name,
       email: input.email,
-      password: input.password,
+      password: hashedPassword,
       image: input.image,
     });
     await em.persistAndFlush(user);

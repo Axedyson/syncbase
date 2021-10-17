@@ -35,7 +35,11 @@ const eslintrcConfig = {
   },
   ignorePatterns: ["!.*"],
   rules: {
-    // vscode users have to reload their window/eslint server whenever they get the following rule error:
+    "spaced-comment": ["error", "always", { markers: ["/"] }],
+    "multiline-comment-style": ["error", "separate-lines"],
+    // Whenever vscode users get the "import/no-unused-modules" rule error and they solve
+    // the error immediately, they have to reload their entire window/eslint server
+    // to make VS Code ESLint extension happy.
     // Because the user dev experience would be quite bad, the rule is disabled in the workspace settings
     // For reference: https://github.com/microsoft/vscode-eslint/issues/717
     "import/no-unused-modules": [

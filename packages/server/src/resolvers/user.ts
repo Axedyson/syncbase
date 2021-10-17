@@ -10,6 +10,7 @@ import {
   Query,
   Resolver,
 } from "type-graphql";
+import { SESSION_NAME } from "../config/constants";
 import { User } from "../entities/User";
 import type { Context } from "../types";
 
@@ -52,12 +53,33 @@ export class UserResolver {
   }
 
   @Query(() => User, { nullable: true })
-  user(@Arg("id", () => ID) id: number, @Ctx() { em }: Context) {
-    return em.findOne(User, { id });
+  async user(@Arg("id", () => ID) id: number, @Ctx() { em, req }: Context) {
+    const user = await em.findOne(User, { id });
+    if (user) req.session.userId = user.id;
+
+    return user;
+  }
+
+  @Query(() => Boolean, { nullable: true })
+  async logout(
+    @Arg("id", () => ID) id: number,
+    @Ctx() { em, req, res }: Context
+  ) {
+    const user = await em.findOne(User, { id });
+    if (user) {
+      req.session.destroy((err) => {
+        if (err) console.log(err);
+      });
+      res.clearCookie(SESSION_NAME);
+      return true;
+    }
+
+    return false;
   }
 
   @Query(() => [User])
   users(@Ctx() { em }: Context) {
+    console.log("users");
     return em.find(User, {});
   }
 }

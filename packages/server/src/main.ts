@@ -3,15 +3,16 @@ import http from "http";
 import { MikroORM } from "@mikro-orm/core";
 import {
   ApolloServerPluginDrainHttpServer,
+  ApolloServerPluginLandingPageDisabled,
   ApolloServerPluginLandingPageGraphQLPlayground,
 } from "apollo-server-core";
 import { ApolloServer } from "apollo-server-express";
 import connectRedis from "connect-redis";
 import express from "express";
 import session from "express-session";
-import Redis from "ioredis";
 import { buildSchema } from "type-graphql";
-import { IS_PROD, PORT } from "./config/constants";
+import { IS_PROD, PORT, SESSION_NAME } from "./config/constants";
+import redisClient from "./config/redis";
 import { UserResolver } from "./resolvers/user";
 import type { Context } from "./types";
 
@@ -19,22 +20,21 @@ import type { Context } from "./types";
   const orm = await MikroORM.init();
 
   const app = express();
+  app.disable("x-powered-by");
 
   const RedisStore = connectRedis(session);
-  const redisClient = new Redis();
 
   app.use(
     session({
       store: new RedisStore({ client: redisClient }),
-      name: "qid",
-      saveUninitialized: false,
-      secret: "keyboard cat",
-      resave: false,
+      secret: IS_PROD ? process.env.SESSION_SECRET : "dev_secret",
+      name: SESSION_NAME,
       cookie: {
-        httpOnly: true,
-        sameSite: "strict",
+        maxAge: 1000 * 60 * 60 * 24 * 365, // 1 year
         secure: IS_PROD,
       },
+      saveUninitialized: false,
+      resave: false,
     })
   );
 
@@ -44,8 +44,22 @@ import type { Context } from "./types";
       resolvers: [UserResolver],
     }),
     context: ({ req, res }): Context => ({ req, res, em: orm.em.fork() }),
+    // We are using the retired graphql playground to test our graphql endpoint for now.
+    // The reason is that apollo studio 3 (default tool) requires cookies to
+    // have the following settings: secure: true & sameSite: "none".
+    // But express-session currently doesn't allow setting secure cookies from a http site
+    // To fix this issue we could do what is stated here:
+    // https://github.com/apollographql/apollo-server/issues/5775
+    // and there are probably also some other workarounds (reverse proxy using https etc.)
+    // but we don't like nasty workarounds here!
+    // I think the best solution is probably to wait for the following issue to be solved:
+    // https://github.com/expressjs/session/issues/837
     plugins: [
-      ApolloServerPluginLandingPageGraphQLPlayground({}),
+      IS_PROD
+        ? ApolloServerPluginLandingPageDisabled()
+        : ApolloServerPluginLandingPageGraphQLPlayground({
+            settings: { "request.credentials": "include" },
+          }),
       ApolloServerPluginDrainHttpServer({ httpServer }),
     ],
   });

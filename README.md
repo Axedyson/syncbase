@@ -12,7 +12,7 @@ I welcome any contribution!
 
 #### Project setup
 
-- Have node installed, preferably node v14.17.6 (that's the version I'm using)
+- Have node installed, preferably node v14.18.1 (that's the version I'm using)
 - Have yarn installed
 - Clone this repo
 - cd into the root folder of the repo: `cd syncbase/`
@@ -26,6 +26,7 @@ I welcome any contribution!
 
 - Actually develop the project (We should first get a handle on the data flow between the server and the web)
   - Use dataloder for relational data fetching
+  - Think about CSRF protection
   - Build the redis session management system
   - Build register and signup page and connect them to the user api
 - Deploy web on vercel and server and it's services on DO droplet and maybe some automatic deployment with gh actions

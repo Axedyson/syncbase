@@ -1137,7 +1137,6 @@ __metadata:
     express-session: ^1.17.2
     graphql: ^15.6.1
     ioredis: ^4.28.0
-    mikro-orm-cache-adapter-redis: ^1.1.1
     reflect-metadata: ^0.1.13
     ts-node-dev: ^1.1.8
     type-graphql: ^1.1.1
@@ -1300,7 +1299,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ioredis@npm:*, @types/ioredis@npm:^4.19.1, @types/ioredis@npm:^4.27.7":
+"@types/ioredis@npm:*, @types/ioredis@npm:^4.27.7":
   version: 4.27.7
   resolution: "@types/ioredis@npm:4.27.7"
   dependencies:
@@ -6918,17 +6917,6 @@ __metadata:
     braces: ^3.0.1
     picomatch: ^2.2.3
   checksum: ef3d1c88e79e0a68b0e94a03137676f3324ac18a908c245a9e5936f838079fcc108ac7170a5fadc265a9c2596963462e402841406bda1a4bb7b68805601d631c
-  languageName: node
-  linkType: hard
-
-"mikro-orm-cache-adapter-redis@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "mikro-orm-cache-adapter-redis@npm:1.1.1"
-  dependencies:
-    "@types/ioredis": ^4.19.1
-  peerDependencies:
-    ioredis: ^4.22.0
-  checksum: 2e6286524b8a662965fe2478cba419e72075dc5e382273e53930f45442b3b3407d810f7d4d4c273e33a653f4632df582f028cf7bd0b3b10cfbc8c4f301fa1178
   languageName: node
   linkType: hard
 

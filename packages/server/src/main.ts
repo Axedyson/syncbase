@@ -10,9 +10,9 @@ import { ApolloServer } from "apollo-server-express";
 import connectRedis from "connect-redis";
 import express from "express";
 import session from "express-session";
+import Redis from "ioredis";
 import { buildSchema } from "type-graphql";
 import { IS_PROD, PORT, SESSION_NAME } from "./config/constants";
-import redisClient from "./config/redis";
 import { UserResolver } from "./resolvers/user";
 import type { Context } from "./types";
 
@@ -23,6 +23,7 @@ import type { Context } from "./types";
   app.disable("x-powered-by");
 
   const RedisStore = connectRedis(session);
+  const redisClient = new Redis();
 
   app.use(
     session({

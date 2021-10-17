@@ -79,7 +79,6 @@ export class UserResolver {
 
   @Query(() => [User])
   users(@Ctx() { em }: Context) {
-    console.log("users");
     return em.find(User, {});
   }
 }

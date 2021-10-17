@@ -31,7 +31,6 @@
     "express-session": "^1.17.2",
     "graphql": "^15.6.1",
     "ioredis": "^4.28.0",
-    "mikro-orm-cache-adapter-redis": "^1.1.1",
     "reflect-metadata": "^0.1.13",
     "type-graphql": "^1.1.1"
   },

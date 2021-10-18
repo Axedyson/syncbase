@@ -9,4 +9,3 @@ node_modules/
 .next/
 dist/
 temp/
-*.rdb

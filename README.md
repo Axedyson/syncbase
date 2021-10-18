@@ -25,11 +25,15 @@ I welcome any contribution!
 ### TODO
 
 - Actually develop the project (We should first get a handle on the data flow between the server and the web)
-  - Use dataloder for relational data fetching
-  - Think about CSRF protection
-  - Build the redis session management system
   - Build register and signup page and connect them to the user api
+  - How should we implement CSRF protection?
+  - How should session cookie expiration be handled?
 - Deploy web on vercel and server and it's services on DO droplet and maybe some automatic deployment with gh actions
 - Add docker & docker-compose for development maybe
 - Maybe add standard-version/semantic-release
 - Add tests e.g. jest for unit and integration tests and crypress for E2E tests
+
+### Notes
+
+- Use dataloder for relational data fetching
+- Maybe we don't need stylelint since we currently have zero css files

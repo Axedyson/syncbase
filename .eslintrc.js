@@ -1,5 +1,3 @@
-// @ts-check
-
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require("path");
 
@@ -14,7 +12,7 @@ const path = require("path");
 /**
  * @type {import('eslint').Linter.Config}
  */
-const eslintrcConfig = {
+module.exports = {
   parser: "@typescript-eslint/parser",
   extends: [
     "eslint:recommended",
@@ -111,5 +109,3 @@ const eslintrcConfig = {
     },
   },
 };
-
-module.exports = eslintrcConfig;

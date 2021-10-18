@@ -9,3 +9,4 @@ node_modules/
 .next/
 dist/
 temp/
+.DS_Store

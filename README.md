@@ -15,8 +15,7 @@ I welcome any contribution!
 - Have node installed, preferably node v14.18.1 (that's the version I'm using)
 - Have yarn installed
 - Clone this repo
-- cd into the root folder of the repo: `cd syncbase/`
-- and then simply run `yarn`
+- Run `yarn` inside of the root folder of the repo
 
 #### Contribution flow
 

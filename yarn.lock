@@ -648,6 +648,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hookform/resolvers@npm:^2.8.2":
+  version: 2.8.2
+  resolution: "@hookform/resolvers@npm:2.8.2"
+  peerDependencies:
+    react-hook-form: ^7.0.0
+  checksum: a58971b4b1610417fcb9674038cfbc77c39ec0c4a6473b8b2bff7d908e31531ca8df5df21dfafc351f21d32fa963c900f03893d482b2e6def2dc6916c243fa23
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.5.0":
   version: 0.5.0
   resolution: "@humanwhocodes/config-array@npm:0.5.0"
@@ -1126,7 +1135,7 @@ __metadata:
     "@types/connect-redis": ^0.0.17
     "@types/express": ^4.17.13
     "@types/express-session": ^1.17.4
-    "@types/ioredis": ^4.27.7
+    "@types/ioredis": ^4.27.8
     "@types/node": ^16.11.1
     apollo-server-core: ^3.4.0
     apollo-server-express: ^3.4.0
@@ -1148,6 +1157,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@syncbase/web@workspace:packages/web"
   dependencies:
+    "@hookform/resolvers": ^2.8.2
     "@types/node": ^16.11.1
     "@types/react": ^17.0.30
     "@types/react-dom": ^17.0.9
@@ -1157,8 +1167,10 @@ __metadata:
     postcss: ^8.3.9
     react: ^17.0.2
     react-dom: ^17.0.2
+    react-hook-form: ^7.17.4
     tailwindcss: ^2.2.17
     typescript: ^4.4.4
+    zod: ^3.10.3
   languageName: unknown
   linkType: soft
 
@@ -1303,12 +1315,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ioredis@npm:*, @types/ioredis@npm:^4.27.7":
+"@types/ioredis@npm:*":
   version: 4.27.7
   resolution: "@types/ioredis@npm:4.27.7"
   dependencies:
     "@types/node": "*"
   checksum: 8673e1f43ecfb65567a1f2570d4b6836acad79def3f308ea58c861748bf09226d642b5367860e7be2293301c8f6ca5f90a3a7dc067f4d1b5d549f1329a79bb4d
+  languageName: node
+  linkType: hard
+
+"@types/ioredis@npm:^4.27.8":
+  version: 4.27.8
+  resolution: "@types/ioredis@npm:4.27.8"
+  dependencies:
+    "@types/node": "*"
+  checksum: c718933d6e082e40598ab767fe95e837e2bff9c0e6e526091e777402d7dd482592f16aaf35bc6d8e5a276aab6fcb93c667512156416c35398a8b1cdfdf601482
   languageName: node
   linkType: hard
 
@@ -8851,6 +8872,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-hook-form@npm:^7.17.4":
+  version: 7.17.4
+  resolution: "react-hook-form@npm:7.17.4"
+  peerDependencies:
+    react: ^16.8.0 || ^17
+  checksum: 96a851633a380fb2e33dca0f6db40bc0bc1cf6fd89c0a9318a7c1f582b554025ba754cf8c298da728fc844e21cde8b71bc69b3ab078469661639b2f8fea344b0
+  languageName: node
+  linkType: hard
+
 "react-is@npm:17.0.2":
   version: 17.0.2
   resolution: "react-is@npm:17.0.2"
@@ -11387,6 +11417,13 @@ resolve@^2.0.0-next.3:
   version: 0.1.0
   resolution: "yocto-queue@npm:0.1.0"
   checksum: f77b3d8d00310def622123df93d4ee654fc6a0096182af8bd60679ddcdfb3474c56c6c7190817c84a2785648cdee9d721c0154eb45698c62176c322fb46fc700
+  languageName: node
+  linkType: hard
+
+"zod@npm:^3.10.3":
+  version: 3.10.3
+  resolution: "zod@npm:3.10.3"
+  checksum: 1ecab3385a6d6e6c74f946c05c5fd4739ab07b4c83cca19e139e2b046e970bf5e14c02f4ef44961f5e4cda441d4d91838507000f668cc0aae89496723dc38dd5
   languageName: node
   linkType: hard
 

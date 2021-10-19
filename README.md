@@ -25,7 +25,7 @@ I welcome any contribution!
 ### TODO
 
 - Actually develop the project (We should first get a handle on the data flow between the server and the web)
-  - Build register and signup page and connect them to the user api + urql setup!
+  - Build register and login page and connect them to the user api + urql setup!
   - How should we implement CSRF protection?
   - How should session cookie expiration be handled?
 - Deploy web on vercel and server and it's services on DO droplet and maybe some automatic deployment with gh actions
@@ -36,4 +36,4 @@ I welcome any contribution!
 ### Notes
 
 - Use dataloder for relational data fetching
-- Maybe we don't need stylelint since we currently have zero css files
+- Implement SEO optimizations later

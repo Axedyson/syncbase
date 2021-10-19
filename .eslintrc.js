@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require("path");
 
 // Don't use eslint v8.0.0, @typescript-eslint/eslint-plugin v5.0.0 and @typescript-eslint/parser v5.0.0
-// since other packages don't support that version yet. look here for more info:
+// since other packages don't support that version yet. Look here for more info:
 // https://github.com/airbnb/javascript/issues/2478
 // https://github.com/sweepline/eslint-plugin-unused-imports/issues/38
 
@@ -45,8 +44,8 @@ module.exports = {
       {
         unusedExports: true,
         ignoreExports: [
-          "packages/web/src/pages/*",
-          "packages/server/src/config/orm.ts",
+          path.join(__dirname, "packages/web/src/pages/*"),
+          path.join(__dirname, "packages/server/src/config/orm.ts"),
         ],
       },
     ],
@@ -85,6 +84,7 @@ module.exports = {
     ],
     "@typescript-eslint/consistent-type-imports": "error",
     "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "unused-imports/no-unused-imports": "error",
     "unused-imports/no-unused-vars": [
@@ -98,7 +98,7 @@ module.exports = {
     "react/prop-types": "off",
     "prefer-template": "error",
     "@next/next/no-html-link-for-pages": [
-      2,
+      "error",
       path.join(__dirname, "packages/web/src/pages"),
     ],
     "prettier/prettier": "error",

@@ -59,13 +59,16 @@ import type { Context } from "./types";
       IS_PROD
         ? ApolloServerPluginLandingPageDisabled()
         : ApolloServerPluginLandingPageGraphQLPlayground({
-            settings: { "request.credentials": "include" },
+            settings: { "request.credentials": "same-origin" },
           }),
       ApolloServerPluginDrainHttpServer({ httpServer }),
     ],
   });
   await apolloServer.start();
-  apolloServer.applyMiddleware({ app });
+  apolloServer.applyMiddleware({
+    app,
+    cors: { credentials: true, origin: "http://localhost:3000" },
+  });
 
   httpServer.listen(PORT, () => {
     console.log(

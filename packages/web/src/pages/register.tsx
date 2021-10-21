@@ -1,15 +1,10 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import { urqlClientWrapper } from "../graphql/client";
+import { useRegisterUserMutation } from "../graphql/hooks";
 import type { FC } from "react";
 import type { SubmitHandler } from "react-hook-form";
-
-interface RegisterInput {
-  name: string;
-  email: string;
-  password: string;
-  image: string;
-}
 
 const schema = z.object({
   name: z.string().nonempty({ message: "Required" }),
@@ -18,7 +13,10 @@ const schema = z.object({
   image: z.string().nonempty({ message: "Required" }),
 });
 
+type RegisterInput = z.infer<typeof schema>;
+
 const RegisterPage: FC = () => {
+  const [, submitInput] = useRegisterUserMutation();
   const {
     register,
     handleSubmit,
@@ -28,29 +26,48 @@ const RegisterPage: FC = () => {
   });
 
   const onSubmit: SubmitHandler<RegisterInput> = (data) => {
-    console.log(data);
+    submitInput({ userInput: data }).then((result) => {
+      console.log(result.data?.registerUser.id);
+    });
   };
 
   return (
     <form
-      className="mx-auto mt-2 w-3/12 flex flex-col rounded-md shadow focus:outline-none"
       onSubmit={handleSubmit(onSubmit)}
+      className="flex flex-col w-3/12 m-auto p-2 gap-y-2"
     >
-      <input {...register("name")} placeholder="name" />
-      <p>{errors.name?.message}</p>
+      <input
+        {...register("name")}
+        placeholder="Name"
+        className="p-2 rounded-md bg-gray-200 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-50"
+      />
+      {errors.name?.message && <p>{errors.name?.message}</p>}
 
-      <input {...register("email")} placeholder="email" />
-      <p>{errors.email?.message}</p>
+      <input
+        {...register("email")}
+        placeholder="Email"
+        className="p-2 rounded-md bg-gray-200 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-50"
+      />
+      {errors.name?.message && <p>{errors.name?.message}</p>}
 
-      <input {...register("password")} placeholder="password" />
-      <p>{errors.password?.message}</p>
+      <input
+        {...register("password")}
+        placeholder="Password"
+        type="password"
+        className="p-2 rounded-md bg-gray-200 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-50"
+      />
+      {errors.name?.message && <p>{errors.name?.message}</p>}
 
-      <input {...register("image")} placeholder="image" />
-      <p>{errors.image?.message}</p>
+      <input
+        {...register("image")}
+        placeholder="Image"
+        className="p-2 rounded-md bg-gray-200 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-50"
+      />
+      {errors.name?.message && <p>{errors.name?.message}</p>}
 
       <button
-        className="bg-black rounded-md text-base shadow m-3 py-1 px-4 text-white"
         type="submit"
+        className="p-2 mt-1 text-white rounded-md bg-yellow-400 focus:outline-none focus:ring-4 focus:ring-yellow-400 focus:ring-opacity-50"
       >
         Submit
       </button>
@@ -58,4 +75,4 @@ const RegisterPage: FC = () => {
   );
 };
 
-export default RegisterPage;
+export default urqlClientWrapper(RegisterPage);

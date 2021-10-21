@@ -30,7 +30,11 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  ignorePatterns: ["!.*"],
+  ignorePatterns: [
+    "!.*",
+    "**/node_modules/.*",
+    "packages/web/src/graphql/hooks.ts",
+  ],
   rules: {
     "spaced-comment": ["error", "always", { markers: ["/"] }],
     "multiline-comment-style": ["error", "separate-lines"],

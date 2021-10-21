@@ -6,17 +6,25 @@
     "check-types": "tsc --noEmit",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "gen": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.8.2",
+    "graphql": "^15.6.1",
     "next": "^11.1.2",
+    "next-urql": "^3.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-hook-form": "^7.17.4",
+    "react-hook-form": "^7.17.5",
+    "urql": "^2.0.5",
     "zod": "^3.10.3"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "2.2.1",
+    "@graphql-codegen/typescript": "2.2.4",
+    "@graphql-codegen/typescript-operations": "2.1.8",
+    "@graphql-codegen/typescript-urql": "^3.2.2",
     "@types/node": "^16.11.1",
     "@types/react": "^17.0.30",
     "@types/react-dom": "^17.0.9",

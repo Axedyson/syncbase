@@ -13,6 +13,9 @@
   "stylelint.validate": ["css"],
   "eslint.probe": ["javascript", "typescript", "typescriptreact"],
   "eslint.rules.customizations": [
-    { "rule": "import/no-unused-modules", "severity": "off" }
+    {
+      "rule": "import/no-unused-modules",
+      "severity": "off"
+    }
   ]
 }

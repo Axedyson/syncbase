@@ -34,7 +34,7 @@ I welcome any contribution, literally!
 
 - Urql setup & Build register and login page and connect them to the user server api
 - Implement predev and prestart scripts in package.json files!
-- Should you put `packages/web/src/graphql/hooks.ts` in .gitingore? (https://github.com/dotansimha/graphql-code-generator/discussions/4253), if you do make sure to reevaluate the .eslint.js file with the ignore pattern!
+- Should you put `packages/web/src/graphql/hooks.ts` in .gitingore? (https://github.com/dotansimha/graphql-code-generator/discussions/4253), if you do make sure to reevaluate the .eslintrc.js file with the ignore pattern!
 - Do I really need `react-is` for urql ssr?
 - Do I really need all the graphql-code-gen packages installed in package.json in web?
 - Read more up on graphql-code-gen & zod

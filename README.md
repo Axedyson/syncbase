@@ -19,6 +19,7 @@ I welcome any contribution, literally!
 - Have redis installed
 - Clone this repo
 - Run `yarn` inside of the root folder of the repo to install all necessary packages
+- Make sure that the postgres instance and the redis instance are up and running before starting the node.js backend
 - Two ways to run the node.js backend:
   - `yarn workspace @syncbase/server dev`
   - or `cd packages/server && yarn dev`

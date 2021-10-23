@@ -33,6 +33,8 @@ module.exports = {
   ignorePatterns: [
     "!.*",
     "**/node_modules/.*",
+    "packages/server/dist",
+    "packages/web/.next",
     "packages/web/src/graphql/hooks.ts",
   ],
   rules: {
@@ -109,7 +111,7 @@ module.exports = {
   },
   settings: {
     react: {
-      version: "detect",
+      version: "detect", // It will default to "detect" in the future
     },
   },
 };

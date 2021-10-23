@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Layout from "../components/Layout";
 import type { AppProps } from "next/app";
 import type { FC } from "react";
 import "../global.css";
@@ -35,7 +36,9 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
         <meta name="msapplication-TileColor" content="#ff9400" />
         <meta name="theme-color" content="#ff9400" />
       </Head>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
   );
 };

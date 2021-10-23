@@ -1,17 +1,11 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib",
   "editor.quickSuggestions": {
     "strings": true
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.stylelint": true
+    "source.fixAll": true
   },
   "css.validate": false,
-  "less.validate": false,
-  "scss.validate": false,
-  "stylelint.validate": ["css"],
-  "eslint.probe": ["javascript", "typescript", "typescriptreact"],
   "eslint.rules.customizations": [
     {
       "rule": "import/no-unused-modules",

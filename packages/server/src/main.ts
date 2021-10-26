@@ -43,6 +43,7 @@ import type { Context } from "./types";
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
       resolvers: [UserResolver],
+      emitSchemaFile: !IS_PROD && "schema.graphql",
     }),
     context: ({ req, res }): Context => ({ req, res, em: orm.em.fork() }),
     // We are using the retired graphql playground to test our graphql endpoint for now.
@@ -75,4 +76,4 @@ import type { Context } from "./types";
       `🚀 Server ready at http://localhost:${PORT}${apolloServer.graphqlPath}`
     );
   });
-})().catch(console.error);
+})();

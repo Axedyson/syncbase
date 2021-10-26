@@ -76,4 +76,4 @@ import type { Context } from "./types";
       `🚀 Server ready at http://localhost:${PORT}${apolloServer.graphqlPath}`
     );
   });
-})();
+})().catch(console.error);

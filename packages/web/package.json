@@ -3,10 +3,10 @@
   "packageManager": "yarn@3.0.2",
   "private": true,
   "scripts": {
-    "check-types": "yarn gen && tsc --noEmit",
     "dev": "concurrently -n \"next,graphql\" -c \"bgBlack,bgMagenta\" \"next dev\" \"yarn gen --watch\"",
     "build": "yarn gen && next build",
     "start": "next start",
+    "check-types": "yarn gen && tsc --noEmit",
     "gen": "graphql-codegen"
   },
   "dependencies": {

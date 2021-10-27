@@ -3,10 +3,11 @@
   "packageManager": "yarn@3.0.2",
   "private": true,
   "scripts": {
+    "dev": "yarn clean && tsnd --transpile-only src/main.ts",
+    "build": "yarn clean && tsc && mikro-orm cache:generate",
+    "start": "node dist/main.js",
     "check-types": "tsc --noEmit",
-    "dev": "mikro-orm cache:clear && tsnd --transpile-only src/main.ts",
-    "build": "tsc && mikro-orm cache:generate",
-    "start": "node dist/main.js"
+    "clean": "mikro-orm cache:clear && rm -fr dist"
   },
   "dependencies": {
     "@mikro-orm/cli": "^4.5.9",

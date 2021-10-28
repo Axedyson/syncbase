@@ -34,7 +34,9 @@ I welcome any contribution, literally!
 ### TODO
 
 - Urql setup & Build register and login page and connect them to the user server api
-- use npm-run-all and rimraf maybe?
+- Read up on [graphql-scalars](https://www.graphql-scalars.dev/)
+- Setup [graphql-eslint](https://the-guild.dev/blog/introducing-graphql-eslint)
+- Setup [graphql inspector](https://graphql-inspector.com/) in CI env and in lintstage if possible
 - Do I really need `react-is` for urql ssr?
 - Do I really need all the graphql-code-gen packages installed in package.json in web?
 - Read more up on graphql-code-gen & zod
@@ -44,8 +46,9 @@ I welcome any contribution, literally!
 - Storybook
 - Actually develop the project
 - Deploy web on vercel and server and it's services on DO droplet and maybe some automatic deployment with gh actions
-- Add docker & docker-compose for development?
 - Maybe add standard-version/semantic-release?
+- Add more .md files to properly document the contribution process and attract contributors
+- Add docker & docker-compose for development?
 - Add tests e.g. jest for unit and integration tests and crypress for E2E tests
 
 ### Notes

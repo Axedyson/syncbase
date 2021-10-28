@@ -3,11 +3,10 @@
   "packageManager": "yarn@3.0.2",
   "private": true,
   "scripts": {
-    "dev": "concurrently -n \"next,graphql\" -c \"bgBlack,bgMagenta\" \"next dev\" \"yarn gen --watch\"",
-    "build": "yarn gen && next build",
+    "dev": "concurrently -n \"next,graphql\" -c \"bgBlack,bgMagenta\" \"next dev\" \"graphql-codegen --watch\"",
+    "build": "next build",
     "start": "next start",
-    "check-types": "yarn gen && tsc --noEmit",
-    "gen": "graphql-codegen"
+    "check-types": "tsc --noEmit"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.8.2",

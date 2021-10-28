@@ -2,6 +2,11 @@ schema: "../server/schema.graphql"
 documents: "src/graphql/**/*.graphql"
 generates:
   src/graphql/hooks.ts:
+    config:
+      scalars:
+        DateTime: number
+        EmailAddress: string
+        URL: string
     plugins:
       - "typescript"
       - "typescript-operations"

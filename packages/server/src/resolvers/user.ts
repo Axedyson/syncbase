@@ -1,5 +1,6 @@
 import argon2 from "argon2";
-import { IsEmail, Length } from "class-validator";
+import { Length } from "class-validator";
+import { GraphQLEmailAddress, GraphQLURL } from "graphql-scalars";
 import {
   Arg,
   Ctx,
@@ -20,15 +21,14 @@ class RegisterUserInput {
   @Length(3, 20)
   name!: string;
 
-  @Field()
-  @IsEmail()
+  @Field(() => GraphQLEmailAddress)
   email!: string;
 
   @Field()
   @Length(7, 30)
   password!: string;
 
-  @Field()
+  @Field(() => GraphQLURL)
   image!: string;
 }
 

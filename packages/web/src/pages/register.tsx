@@ -27,7 +27,7 @@ const RegisterPage: FC = () => {
 
   const onSubmit: SubmitHandler<RegisterInput> = (data) => {
     submitInput({ userInput: data }).then((result) => {
-      console.log(result.data?.registerUser.id);
+      console.log(typeof result.data?.registerUser.createdAt);
     });
   };
 

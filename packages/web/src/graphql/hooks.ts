@@ -13,7 +13,11 @@ export type Scalars = {
   Int: number;
   Float: number;
   /** The javascript `Date` as string. Type represents date and time as the ISO Date string. */
-  DateTime: any;
+  DateTime: number;
+  /** A field whose value conforms to the standard internet email address format as specified in RFC822: https://www.w3.org/Protocols/rfc822/. */
+  EmailAddress: string;
+  /** A field whose value conforms to the standard URL format as specified in RFC3986: https://www.ietf.org/rfc/rfc3986.txt. */
+  URL: string;
 };
 
 export type Mutation = {
@@ -44,8 +48,8 @@ export type QueryUserArgs = {
 };
 
 export type RegisterUserInput = {
-  email: Scalars['String'];
-  image: Scalars['String'];
+  email: Scalars['EmailAddress'];
+  image: Scalars['URL'];
   name: Scalars['String'];
   password: Scalars['String'];
 };
@@ -53,9 +57,9 @@ export type RegisterUserInput = {
 export type User = {
   __typename?: 'User';
   createdAt: Scalars['DateTime'];
-  email: Scalars['String'];
+  email: Scalars['EmailAddress'];
   id: Scalars['ID'];
-  image: Scalars['String'];
+  image: Scalars['URL'];
   name: Scalars['String'];
   updatedAt: Scalars['DateTime'];
 };
@@ -65,7 +69,7 @@ export type RegisterUserMutationVariables = Exact<{
 }>;
 
 
-export type RegisterUserMutation = { __typename?: 'Mutation', registerUser: { __typename?: 'User', id: string, name: string, createdAt: any } };
+export type RegisterUserMutation = { __typename?: 'Mutation', registerUser: { __typename?: 'User', id: string, name: string, createdAt: number, email: string, image: string } };
 
 
 export const RegisterUserDocument = gql`
@@ -74,6 +78,8 @@ export const RegisterUserDocument = gql`
     id
     name
     createdAt
+    email
+    image
   }
 }
     `;

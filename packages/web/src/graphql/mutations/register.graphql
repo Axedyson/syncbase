@@ -3,5 +3,7 @@ mutation RegisterUser($userInput: RegisterUserInput!) {
     id
     name
     createdAt
+    email
+    image
   }
 }

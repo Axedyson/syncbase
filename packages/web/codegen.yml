@@ -3,10 +3,9 @@ documents: "src/graphql/**/*.graphql"
 generates:
   src/graphql/hooks.ts:
     config:
+      defaultScalarType: string
       scalars:
         DateTime: number
-        EmailAddress: string
-        URL: string
     plugins:
       - "typescript"
       - "typescript-operations"

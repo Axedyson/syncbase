@@ -34,7 +34,6 @@ I welcome any contribution, literally!
 ### TODO
 
 - Urql setup & Build register and login page and connect them to the user server api
-- Read up on [graphql-scalars](https://www.graphql-scalars.dev/)
 - Setup [graphql-eslint](https://the-guild.dev/blog/introducing-graphql-eslint)
 - Setup [graphql inspector](https://graphql-inspector.com/) in CI env and in lintstage if possible
 - Do I really need `react-is` for urql ssr?

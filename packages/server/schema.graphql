@@ -37,6 +37,7 @@ scalar URL
 
 type User {
   createdAt: DateTime!
+  description: String!
   email: EmailAddress!
   id: ID!
   image: URL!

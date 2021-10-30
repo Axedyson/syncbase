@@ -127,6 +127,10 @@ module.exports = {
         schema: "packages/server/schema.graphql",
       },
       rules: {
+        // Whenever vscode users get the "@graphql-eslint/fields-on-correct-type" rule error and they solve
+        // the error immediately, they have to reload their entire window/eslint server
+        // to make VS Code ESLint extension happy.
+        // Because the user dev experience would be quite bad, the rule is disabled in the workspace settings
         "prettier/prettier": "error",
       },
       overrides: [

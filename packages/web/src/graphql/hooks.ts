@@ -70,7 +70,7 @@ export type RegisterUserMutationVariables = Exact<{
 }>;
 
 
-export type RegisterUserMutation = { __typename?: 'Mutation', registerUser: { __typename?: 'User', id: string, name: string, createdAt: number, email: string, image: string } };
+export type RegisterUserMutation = { __typename?: 'Mutation', registerUser: { __typename?: 'User', id: string, name: string, createdAt: number, email: string, image: string, description: string } };
 
 
 export const RegisterUserDocument = gql`
@@ -81,6 +81,7 @@ export const RegisterUserDocument = gql`
     createdAt
     email
     image
+    description
   }
 }
     `;

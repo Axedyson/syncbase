@@ -21,8 +21,4 @@ export class User extends BaseEntity<User> {
   @Field(() => GraphQLURL)
   @Property()
   image!: string;
-
-  @Field()
-  @Property()
-  description!: string;
 }

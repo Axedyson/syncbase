@@ -118,6 +118,11 @@ module.exports = {
       },
     },
     {
+      // Whenever vscode users get the "@graphql-eslint/fields-on-correct-type" rule error and they solve
+      // the error immediately, they have to reload their entire window/eslint server
+      // to make VS Code ESLint extension happy.
+      // Because the user dev experience would be quite bad, the rule is disabled in the workspace settings
+      // For reference: https://github.com/dotansimha/graphql-eslint/issues/593
       files: ["*.graphql"],
       // Can't use the "all" config because of this:
       // https://github.com/dotansimha/graphql-eslint/issues/645
@@ -127,10 +132,6 @@ module.exports = {
         schema: "packages/server/schema.graphql",
       },
       rules: {
-        // Whenever vscode users get the "@graphql-eslint/fields-on-correct-type" rule error and they solve
-        // the error immediately, they have to reload their entire window/eslint server
-        // to make VS Code ESLint extension happy.
-        // Because the user dev experience would be quite bad, the rule is disabled in the workspace settings
         "prettier/prettier": "error",
       },
       overrides: [

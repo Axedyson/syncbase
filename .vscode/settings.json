@@ -8,10 +8,7 @@
   "css.validate": false,
   "eslint.validate": ["graphql"],
   "eslint.rules.customizations": [
-    {
-      "rule": "import/no-unused-modules",
-      "severity": "off"
-    },
+    { "rule": "import/no-unused-modules", "severity": "off" },
     { "rule": "@graphql-eslint/fields-on-correct-type", "severity": "off" }
   ]
 }

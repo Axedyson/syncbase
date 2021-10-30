@@ -57,7 +57,6 @@ export type RegisterUserInput = {
 export type User = {
   __typename?: 'User';
   createdAt: Scalars['DateTime'];
-  description: Scalars['String'];
   email: Scalars['EmailAddress'];
   id: Scalars['ID'];
   image: Scalars['URL'];
@@ -70,7 +69,7 @@ export type RegisterUserMutationVariables = Exact<{
 }>;
 
 
-export type RegisterUserMutation = { __typename?: 'Mutation', registerUser: { __typename?: 'User', id: string, name: string, createdAt: number, email: string, image: string, description: string } };
+export type RegisterUserMutation = { __typename?: 'Mutation', registerUser: { __typename?: 'User', id: string, name: string, createdAt: number, email: string, image: string } };
 
 
 export const RegisterUserDocument = gql`
@@ -81,7 +80,6 @@ export const RegisterUserDocument = gql`
     createdAt
     email
     image
-    description
   }
 }
     `;

@@ -18,7 +18,7 @@ import type { Context } from "../types";
 @InputType()
 class RegisterUserInput {
   @Field()
-  @Length(3, 20)
+  @Length(3, 15)
   name!: string;
 
   @Field(() => GraphQLEmailAddress)

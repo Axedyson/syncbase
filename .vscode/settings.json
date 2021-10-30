@@ -6,6 +6,7 @@
     "source.fixAll": true
   },
   "css.validate": false,
+  "eslint.validate": ["graphql"],
   "eslint.rules.customizations": [
     {
       "rule": "import/no-unused-modules",

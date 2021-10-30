@@ -34,15 +34,14 @@ I welcome any contribution, literally!
 ### TODO
 
 - Urql setup & Build register and login page and connect them to the user server api
-- Setup [graphql-eslint](https://the-guild.dev/blog/introducing-graphql-eslint)
 - Setup [graphql inspector](https://graphql-inspector.com/) in CI env and in lintstage if possible
 - Do I really need `react-is` for urql ssr?
 - Do I really need all the graphql-code-gen packages installed in package.json in web?
 - Read more up on graphql-code-gen & zod
-- Implement Urql graphcache
 - Properly implement CSRF protection
 - Properly implement session cookie expiration
 - Storybook
+- Implement Urql graphcache
 - Actually develop the project
 - Deploy web on vercel and server and it's services on DO droplet and maybe some automatic deployment with gh actions
 - Maybe add standard-version/semantic-release?

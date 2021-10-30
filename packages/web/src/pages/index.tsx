@@ -9,7 +9,7 @@ const IndexPage: FC = () => {
         By logging in you accept our Privacy Policy and Terms of Service.
       </p>
       <Link href="/register">
-        <a className="block text-purple-900 text-opacity-100">Register</a>
+        <a className="block text-purple-800 text-opacity-100">Register</a>
       </Link>
       <Image
         src="/android-chrome-512x512.png"

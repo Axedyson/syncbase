@@ -22,6 +22,10 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
+      - name: Run Graphql inspection
+        uses: kamilkisiela/graphql-inspector@master
+        with:
+          schema: "main:schema.graphql"
       - name: Set up node 14
         uses: actions/setup-node@v2
         with:

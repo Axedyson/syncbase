@@ -12,24 +12,6 @@ const path = require("path");
  * @type {import('eslint').Linter.Config}
  */
 module.exports = {
-  parser: "@typescript-eslint/parser",
-  extends: [
-    "eslint:recommended",
-    "plugin:import/recommended",
-    "plugin:import/typescript",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:react/jsx-runtime",
-    "plugin:@next/next/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
-  ],
-  plugins: ["unused-imports"],
-  env: {
-    browser: true,
-    es2021: true,
-    node: true,
-  },
   ignorePatterns: [
     "!.*",
     "**/node_modules/.*",
@@ -37,81 +19,125 @@ module.exports = {
     "packages/web/.next",
     "packages/web/src/graphql/hooks.ts",
   ],
-  rules: {
-    "spaced-comment": ["error", "always", { markers: ["/"] }],
-    "multiline-comment-style": ["error", "separate-lines"],
-    // Whenever vscode users get the "import/no-unused-modules" rule error and they solve
-    // the error immediately, they have to reload their entire window/eslint server
-    // to make VS Code ESLint extension happy.
-    // Because the user dev experience would be quite bad, the rule is disabled in the workspace settings
-    // For reference: https://github.com/microsoft/vscode-eslint/issues/717
-    "import/no-unused-modules": [
-      "error",
-      {
-        unusedExports: true,
-        ignoreExports: [
-          path.join(__dirname, "packages/web/src/pages/*"),
-          path.join(__dirname, "packages/server/src/config/orm.ts"),
+  overrides: [
+    {
+      files: ["*.js", "*.ts", "*.tsx"],
+      parser: "@typescript-eslint/parser",
+      extends: [
+        "eslint:recommended",
+        "plugin:import/recommended",
+        "plugin:import/typescript",
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
+        "plugin:react/jsx-runtime",
+        "plugin:@next/next/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended",
+      ],
+      plugins: ["unused-imports"],
+      env: {
+        browser: true,
+        es2021: true,
+        node: true,
+      },
+      rules: {
+        "spaced-comment": ["error", "always", { markers: ["/"] }],
+        "multiline-comment-style": ["error", "separate-lines"],
+        // Whenever vscode users get the "import/no-unused-modules" rule error and they solve
+        // the error immediately, they have to reload their entire window/eslint server
+        // to make VS Code ESLint extension happy.
+        // Because the user dev experience would be quite bad, the rule is disabled in the workspace settings
+        // For reference: https://github.com/microsoft/vscode-eslint/issues/717
+        "import/no-unused-modules": [
+          "error",
+          {
+            unusedExports: true,
+            ignoreExports: [
+              path.join(__dirname, "packages/web/src/pages/*"),
+              path.join(__dirname, "packages/server/src/config/orm.ts"),
+            ],
+          },
+        ],
+        "import/first": "error",
+        "import/order": [
+          "error",
+          {
+            groups: [
+              "builtin",
+              "external",
+              "internal",
+              "parent",
+              "sibling",
+              "index",
+              "unknown",
+              "object",
+              "type",
+            ],
+            "newlines-between": "never",
+            alphabetize: {
+              order: "asc",
+            },
+          },
+        ],
+        "sort-imports": [
+          "error",
+          {
+            ignoreDeclarationSort: true,
+          },
+        ],
+        "import/newline-after-import": [
+          "error",
+          {
+            count: 1,
+          },
+        ],
+        "@typescript-eslint/consistent-type-imports": "error",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "unused-imports/no-unused-imports": "error",
+        "unused-imports/no-unused-vars": [
+          "error",
+          {
+            vars: "all",
+            args: "all",
+            argsIgnorePattern: "^_",
+          },
+        ],
+        "react/prop-types": "off",
+        "prefer-template": "error",
+        "@next/next/no-html-link-for-pages": [
+          "error",
+          path.join(__dirname, "packages/web/src/pages"),
         ],
       },
-    ],
-    "import/first": "error",
-    "import/order": [
-      "error",
-      {
-        groups: [
-          "builtin",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index",
-          "unknown",
-          "object",
-          "type",
-        ],
-        "newlines-between": "never",
-        alphabetize: {
-          order: "asc",
+      settings: {
+        react: {
+          version: "detect", // It will default to "detect" in the future
         },
       },
-    ],
-    "sort-imports": [
-      "error",
-      {
-        ignoreDeclarationSort: true,
-      },
-    ],
-    "import/newline-after-import": [
-      "error",
-      {
-        count: 1,
-      },
-    ],
-    "@typescript-eslint/consistent-type-imports": "error",
-    "@typescript-eslint/explicit-module-boundary-types": "off",
-    "@typescript-eslint/no-var-requires": "off",
-    "@typescript-eslint/no-unused-vars": "off",
-    "unused-imports/no-unused-imports": "error",
-    "unused-imports/no-unused-vars": [
-      "error",
-      {
-        vars: "all",
-        args: "all",
-        argsIgnorePattern: "^_",
-      },
-    ],
-    "react/prop-types": "off",
-    "prefer-template": "error",
-    "@next/next/no-html-link-for-pages": [
-      "error",
-      path.join(__dirname, "packages/web/src/pages"),
-    ],
-    "prettier/prettier": "error",
-  },
-  settings: {
-    react: {
-      version: "detect", // It will default to "detect" in the future
     },
-  },
+    {
+      files: ["*.graphql"],
+      // Can't use the "all" config because of this:
+      // https://github.com/dotansimha/graphql-eslint/issues/645
+      extends: "plugin:@graphql-eslint/recommended",
+      parserOptions: {
+        operations: ["packages/web/src/graphql/**/*.graphql"],
+        schema: "packages/server/schema.graphql",
+      },
+      rules: {
+        "prettier/prettier": "error",
+      },
+      overrides: [
+        {
+          files: ["packages/server/schema.graphql"],
+          rules: {
+            "@graphql-eslint/strict-id-in-types": "off",
+            "@graphql-eslint/executable-definitions": "off",
+          },
+        },
+      ],
+    },
+  ],
 };

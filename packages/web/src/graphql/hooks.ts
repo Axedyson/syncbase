@@ -57,6 +57,7 @@ export type RegisterUserInput = {
 export type User = {
   __typename?: 'User';
   createdAt: Scalars['DateTime'];
+  description: Scalars['String'];
   email: Scalars['EmailAddress'];
   id: Scalars['ID'];
   image: Scalars['URL'];

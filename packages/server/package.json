@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "yarn clean && tsnd --respawn --transpile-only src/main.ts",
-    "build": "yarn clean && tsc && mikro-orm cache:generate",
+    "build": "yarn clean && rm -fr tsconfig.tsbuildinfo && tsc && mikro-orm cache:generate",
     "start": "node dist/main.js",
     "check-types": "tsc --noEmit",
     "clean": "mikro-orm cache:clear && rm -fr dist"

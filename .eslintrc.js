@@ -118,14 +118,7 @@ module.exports = {
       },
     },
     {
-      // Whenever vscode users get the "@graphql-eslint/fields-on-correct-type" rule error and they solve
-      // the error immediately, they have to reload their entire window/eslint server
-      // to make VS Code ESLint extension happy.
-      // Because the user dev experience would be quite bad, the rule is disabled in the workspace settings
-      // For reference: https://github.com/dotansimha/graphql-eslint/issues/593
       files: ["*.graphql"],
-      // Can't use the "all" config because of this:
-      // https://github.com/dotansimha/graphql-eslint/issues/645
       extends: "plugin:@graphql-eslint/recommended",
       parserOptions: {
         operations: ["packages/web/src/graphql/**/*.graphql"],
@@ -133,6 +126,26 @@ module.exports = {
       },
       rules: {
         "prettier/prettier": "error",
+        "@graphql-eslint/input-name": ["error", { checkInputType: true }],
+        "@graphql-eslint/alphabetize": [
+          "error",
+          {
+            selections: ["OperationDefinition", "FragmentDefinition"],
+            variables: ["OperationDefinition"],
+            arguments: ["Field", "Directive"],
+          },
+        ],
+        "@graphql-eslint/avoid-duplicate-fields": "error",
+        "@graphql-eslint/unique-operation-name": "error",
+        "@graphql-eslint/unique-fragment-name": "error",
+        // Whenever vscode users get the "@graphql-eslint/no-unused-fields" rule error and they solve
+        // the error immediately, they have to reload their entire window/eslint server
+        // to make VS Code ESLint extension happy.
+        // Because the user dev experience would be quite bad, the rule is disabled in the workspace settings
+        // Probably has something to do with: https://github.com/dotansimha/graphql-eslint/issues/593#issuecomment-956632777
+        // The same applies for these rules (there will probably be added more):
+        // "@graphql-eslint/fields-on-correct-type" and "@graphql-eslint/known-type-names"
+        "@graphql-eslint/no-unused-fields": "error",
       },
       overrides: [
         {

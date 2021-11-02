@@ -8,7 +8,9 @@
   "css.validate": false,
   "eslint.validate": ["graphql"],
   "eslint.rules.customizations": [
-    { "rule": "import/no-unused-modules", "severity": "off" },
-    { "rule": "@graphql-eslint/fields-on-correct-type", "severity": "off" }
+    { "rule": "@graphql-eslint/fields-on-correct-type", "severity": "off" },
+    { "rule": "@graphql-eslint/no-unused-fields", "severity": "off" },
+    { "rule": "@graphql-eslint/known-type-names", "severity": "off" },
+    { "rule": "import/no-unused-modules", "severity": "off" }
   ]
 }

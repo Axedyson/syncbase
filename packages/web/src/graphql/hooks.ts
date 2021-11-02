@@ -32,19 +32,7 @@ export type MutationRegisterUserArgs = {
 
 export type Query = {
   __typename?: 'Query';
-  logout?: Maybe<Scalars['Boolean']>;
-  user?: Maybe<User>;
   users: Array<User>;
-};
-
-
-export type QueryLogoutArgs = {
-  id: Scalars['ID'];
-};
-
-
-export type QueryUserArgs = {
-  id: Scalars['ID'];
 };
 
 export type RegisterUserInput = {
@@ -57,12 +45,10 @@ export type RegisterUserInput = {
 export type User = {
   __typename?: 'User';
   createdAt: Scalars['DateTime'];
-  description: Scalars['String'];
   email: Scalars['EmailAddress'];
   id: Scalars['ID'];
   image: Scalars['URL'];
   name: Scalars['String'];
-  updatedAt: Scalars['DateTime'];
 };
 
 export type RegisterUserMutationVariables = Exact<{

@@ -124,6 +124,7 @@ module.exports = {
         operations: ["packages/web/src/graphql/**/*.graphql"],
         schema: "packages/server/schema.graphql",
       },
+      plugins: ["no-autofix"],
       rules: {
         "prettier/prettier": "error",
         "@graphql-eslint/input-name": ["error", { checkInputType: true }],
@@ -138,6 +139,14 @@ module.exports = {
         "@graphql-eslint/avoid-duplicate-fields": "error",
         "@graphql-eslint/unique-operation-name": "error",
         "@graphql-eslint/unique-fragment-name": "error",
+        // Waiting on: https://github.com/aladdin-add/eslint-plugin/issues/77
+        // Disabling the default autofix feature for these rules. We don't want to fix them
+        // automatically since we need to change that in the actual typegraphql code!
+        "@graphql-eslint/no-case-insensitive-enum-values-duplicates": "error",
+        // "no-autofix/@graphql-eslint/no-case-insensitive-enum-values-duplicates":
+        //  "error",
+        "@graphql-eslint/no-operation-name-suffix": "error",
+        // "no-autofix/@graphql-eslint/no-operation-name-suffix": "error",
         // Whenever vscode users get the "@graphql-eslint/no-unused-fields" rule error and they solve
         // the error immediately, they have to reload their entire window/eslint server
         // to make VS Code ESLint extension happy.
@@ -145,7 +154,9 @@ module.exports = {
         // Probably has something to do with: https://github.com/dotansimha/graphql-eslint/issues/593#issuecomment-956632777
         // The same applies for these rules (there will probably be added more):
         // "@graphql-eslint/fields-on-correct-type" and "@graphql-eslint/known-type-names"
+        // We are also disabling the autofix feature here
         "@graphql-eslint/no-unused-fields": "error",
+        // "no-autofix/@graphql-eslint/no-unused-fields": "error",
       },
       overrides: [
         {

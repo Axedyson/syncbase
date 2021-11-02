@@ -4,6 +4,7 @@
   </a>
 </p>
 
+[![Lint](https://github.com/AndysonDK/syncbase/actions/workflows/lint.yml/badge.svg)](https://github.com/AndysonDK/syncbase/actions/workflows/lint.yml)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 I welcome any contribution, literally!
@@ -34,10 +35,6 @@ I welcome any contribution, literally!
 ### TODO
 
 - Urql setup & Build register and login page and connect them to the user server api
-- Setup [graphql inspector](https://graphql-inspector.com/) in CI env and in lintstage if possible
-- Do I really need `react-is` for urql ssr?
-- Do I really need all the graphql-code-gen packages installed in package.json in web?
-- Read more up on graphql-code-gen & zod
 - Properly implement CSRF protection
 - Properly implement session cookie expiration
 - Storybook

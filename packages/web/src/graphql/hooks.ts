@@ -74,10 +74,10 @@ export type RegisterUserMutation = { __typename?: 'Mutation', RegisterUser: { __
 
 export type UserFieldsFragment = { __typename?: 'User', id: string };
 
-export type LogoutQueryVariables = Exact<{ [key: string]: never; }>;
+export type UsersQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type LogoutQuery = { __typename?: 'Query', logout?: boolean | null | undefined };
+export type UsersQuery = { __typename?: 'Query', users: Array<{ __typename?: 'User', id: string, name: string }> };
 
 export const UserFieldsFragmentDoc = gql`
     fragment UserFields on User {
@@ -99,12 +99,15 @@ export const RegisterUserDocument = gql`
 export function useRegisterUserMutation() {
   return Urql.useMutation<RegisterUserMutation, RegisterUserMutationVariables>(RegisterUserDocument);
 };
-export const LogoutDocument = gql`
-    query Logout {
-  logout(id: 2)
+export const UsersDocument = gql`
+    query Users {
+  users {
+    id
+    name
+  }
 }
     `;
 
-export function useLogoutQuery(options: Omit<Urql.UseQueryArgs<LogoutQueryVariables>, 'query'> = {}) {
-  return Urql.useQuery<LogoutQuery>({ query: LogoutDocument, ...options });
+export function useUsersQuery(options: Omit<Urql.UseQueryArgs<UsersQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<UsersQuery>({ query: UsersDocument, ...options });
 };

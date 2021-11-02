@@ -39,10 +39,3 @@ jobs:
         run: yarn workspace @syncbase/server check-types
       - name: Run typescript web checks
         run: yarn workspace @syncbase/web check-types
-      - name: Run GraphQL Inspector
-        uses: kamilkisiela/graphql-inspector@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          schema: "main:packages/server/schema.graphql"
-          fail-on-breaking: true
-          annotations: true

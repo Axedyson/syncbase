@@ -41,10 +41,7 @@
     "generates": {
       "src/graphql/hooks.ts": {
         "config": {
-          "defaultScalarType": "string",
-          "scalars": {
-            "DateTime": "number"
-          }
+          "defaultScalarType": "string"
         },
         "plugins": [
           "typescript",

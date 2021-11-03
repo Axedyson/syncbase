@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod/dist/zod"; // https://githu
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { urqlClientWrapper } from "../graphql/client";
-import { useRegisterUserMutation, useUsersQuery } from "../graphql/hooks";
+import { useRegisterUserMutation } from "../graphql/hooks";
 import type { FC } from "react";
 import type { SubmitHandler } from "react-hook-form";
 
@@ -17,7 +17,6 @@ type RegisterInput = z.infer<typeof schema>;
 
 const RegisterPage: FC = () => {
   const [, submitInput] = useRegisterUserMutation();
-  const [{ data, fetching, error }] = useUsersQuery();
   const {
     register,
     handleSubmit,
@@ -28,21 +27,16 @@ const RegisterPage: FC = () => {
 
   const onSubmit: SubmitHandler<RegisterInput> = (data) => {
     submitInput({ userInput: data }).then((result) => {
-      console.log(result.data?.RegisterUser.email);
+      if (result.error) console.log(result.error.message);
+      else console.log(result.data?.RegisterUser.email);
     });
   };
-
-  if (fetching) return <p>Loading...</p>;
-  if (error) return <p>Oh no... {error.message}</p>;
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col w-3/12 m-auto p-2 gap-y-2"
     >
-      {data?.users.map((user) => (
-        <p key={user.id}>{user.name}</p>
-      ))}
       <input
         {...register("name")}
         placeholder="Name"

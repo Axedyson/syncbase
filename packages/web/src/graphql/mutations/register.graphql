@@ -1,13 +1,5 @@
 mutation RegisterUser($userInput: RegisterUserInput!) {
   RegisterUser(input: $userInput) {
-    ...UserFields
-    createdAt
     email
-    image
-    name
   }
-}
-
-fragment UserFields on User {
-  id
 }

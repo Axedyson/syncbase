@@ -32,7 +32,19 @@ export type MutationRegisterUserArgs = {
 
 export type Query = {
   __typename?: 'Query';
+  logout?: Maybe<Scalars['Boolean']>;
+  user?: Maybe<User>;
   users: Array<User>;
+};
+
+
+export type QueryLogoutArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type QueryUserArgs = {
+  id: Scalars['ID'];
 };
 
 export type RegisterUserInput = {
@@ -45,10 +57,12 @@ export type RegisterUserInput = {
 export type User = {
   __typename?: 'User';
   createdAt: Scalars['DateTime'];
+  description: Scalars['String'];
   email: Scalars['EmailAddress'];
   id: Scalars['ID'];
   image: Scalars['URL'];
   name: Scalars['String'];
+  updatedAt: Scalars['DateTime'];
 };
 
 export type RegisterUserMutationVariables = Exact<{
@@ -56,31 +70,21 @@ export type RegisterUserMutationVariables = Exact<{
 }>;
 
 
-export type RegisterUserMutation = { __typename?: 'Mutation', RegisterUser: { __typename?: 'User', createdAt: number, email: string, image: string, name: string, id: string } };
-
-export type UserFieldsFragment = { __typename?: 'User', id: string };
+export type RegisterUserMutation = { __typename?: 'Mutation', RegisterUser: { __typename?: 'User', email: string } };
 
 export type UsersQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type UsersQuery = { __typename?: 'Query', users: Array<{ __typename?: 'User', id: string, name: string }> };
 
-export const UserFieldsFragmentDoc = gql`
-    fragment UserFields on User {
-  id
-}
-    `;
+
 export const RegisterUserDocument = gql`
     mutation RegisterUser($userInput: RegisterUserInput!) {
   RegisterUser(input: $userInput) {
-    ...UserFields
-    createdAt
     email
-    image
-    name
   }
 }
-    ${UserFieldsFragmentDoc}`;
+    `;
 
 export function useRegisterUserMutation() {
   return Urql.useMutation<RegisterUserMutation, RegisterUserMutationVariables>(RegisterUserDocument);

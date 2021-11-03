@@ -2014,7 +2014,7 @@ __metadata:
     express: ^4.17.1
     express-session: ^1.17.2
     graphql: ^15.7.2
-    graphql-scalars: ^1.13.0
+    graphql-scalars: ^1.13.1
     ioredis: ^4.28.0
     reflect-metadata: ^0.1.13
     ts-node-dev: ^1.1.8
@@ -6830,14 +6830,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql-scalars@npm:^1.13.0":
-  version: 1.13.0
-  resolution: "graphql-scalars@npm:1.13.0"
+"graphql-scalars@npm:^1.13.1":
+  version: 1.13.1
+  resolution: "graphql-scalars@npm:1.13.1"
   dependencies:
     tslib: ~2.3.0
   peerDependencies:
     graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
-  checksum: cc67e40dff63ad4d2ffd1b204bc6b17498b25f88893468d0ef0a51da6cc3c8f94ffce75177c488843bcce35609995377e353308dc12d5c29de9d530d4791e4b3
+  checksum: 476e0fb997c04c2bc2348e2d11fae9f4ea5da062cae1f71fb647580576dd6010bedba9443856ca0b1620dc4adffb22994299933aa74ece1a5c8cd007ec5e41a6
   languageName: node
   linkType: hard
 

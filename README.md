@@ -35,6 +35,7 @@ I welcome any contribution, literally!
 ### TODO
 
 - Urql setup & Build register and login page and connect them to the user server api
+- Maybe implement CSRF protection later
 - Properly implement session cookie expiration
 - Storybook
 - Implement Urql graphcache

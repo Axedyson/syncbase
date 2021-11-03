@@ -1,5 +1,6 @@
 mutation RegisterUser($userInput: RegisterUserInput!) {
   RegisterUser(input: $userInput) {
     email
+    image
   }
 }

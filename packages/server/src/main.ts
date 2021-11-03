@@ -33,6 +33,7 @@ import type { Context } from "./types";
       cookie: {
         maxAge: 1000 * 60 * 60 * 24 * 365, // 1 year
         secure: IS_PROD,
+        sameSite: "lax",
       },
       saveUninitialized: false,
       resave: false,

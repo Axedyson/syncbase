@@ -34,10 +34,9 @@ I welcome any contribution, literally!
 
 ### TODO
 
+- Storybook, also maybe use chromatic in ci/cd?
 - Urql setup & Build register and login page and connect them to the user server api
-- Maybe implement CSRF protection later
 - Properly implement session cookie expiration
-- Storybook
 - Implement Urql graphcache
 - Actually develop the project
 - Deploy web on vercel and server and it's services on DO droplet and maybe some automatic deployment with gh actions

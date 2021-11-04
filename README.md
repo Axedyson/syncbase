@@ -7,7 +7,7 @@
 [![Lint](https://github.com/AndysonDK/syncbase/actions/workflows/lint.yml/badge.svg)](https://github.com/AndysonDK/syncbase/actions/workflows/lint.yml)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-I welcome any contribution, literally!
+I welcome any kind of contribution!
 
 ### How to contribute (will add a proper and more detailed guide later)
 

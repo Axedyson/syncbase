@@ -3,32 +3,36 @@
   "packageManager": "yarn@3.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently -n \"next,graphql\" -c \"bgBlack,bgMagenta\" \"next dev\" \"graphql-codegen --watch\"",
+    "dev": "concurrently -n \"next,graphql\" -c \"bgBlack,bgMagenta\" \"next dev\" \"graphql-codegen\"",
     "build": "next build",
     "start": "next start",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "storybook": "start-storybook -p 6006"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.8.3",
     "graphql": "^15.7.2",
-    "next": "^12.0.2",
+    "next": "^12.0.3",
     "next-urql": "^3.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-hook-form": "^7.18.1",
+    "react-hook-form": "^7.19.0",
     "sharp": "^0.29.2",
     "urql": "^2.0.5",
     "zod": "^3.11.6"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "2.2.2",
-    "@graphql-codegen/typescript": "2.3.0",
+    "@graphql-codegen/typescript": "2.3.1",
     "@graphql-codegen/typescript-operations": "2.2.0",
-    "@graphql-codegen/typescript-urql": "^3.3.0",
+    "@graphql-codegen/typescript-urql": "^3.4.0",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/react": "^6.3.12",
     "@types/node": "^16.11.6",
     "@types/react": "^17.0.34",
     "@types/react-dom": "^17.0.11",
-    "@types/tailwindcss": "^2.2.2",
+    "@types/tailwindcss": "^2.2.4",
     "autoprefixer": "^10.4.0",
     "concurrently": "^6.3.0",
     "postcss": "^8.3.11",
@@ -36,6 +40,7 @@
     "typescript": "^4.4.4"
   },
   "codegen": {
+    "watch": true,
     "schema": "../server/schema.graphql",
     "documents": "src/graphql/**/*.graphql",
     "generates": {

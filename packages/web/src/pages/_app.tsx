@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Layout from "../components/Layout";
+import Layout from "../components/ui/Layout";
 import type { AppProps } from "next/app";
 import type { FC } from "react";
 import "../global.css";

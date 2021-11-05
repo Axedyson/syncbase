@@ -43,6 +43,14 @@ module.exports = {
       rules: {
         "spaced-comment": ["error", "always", { markers: ["/"] }],
         "multiline-comment-style": ["error", "separate-lines"],
+        "import/no-useless-path-segments": [
+          "error",
+          {
+            noUselessIndex: true,
+            commonjs: true,
+          },
+        ],
+        "import/extensions": "error",
         // Whenever vscode users get the "import/no-unused-modules" rule error and they solve
         // the error immediately, they have to reload their entire window/eslint server
         // to make VS Code ESLint extension happy.
@@ -53,8 +61,10 @@ module.exports = {
           {
             unusedExports: true,
             ignoreExports: [
-              path.join(__dirname, "packages/web/src/pages/*"),
               path.join(__dirname, "packages/server/src/config/orm.ts"),
+              path.join(__dirname, "packages/web/src/pages/*"),
+              path.join(__dirname, "packages/web/.storybook/preview.js"),
+              "**/*.stories.tsx",
             ],
           },
         ],

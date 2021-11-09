@@ -5,8 +5,8 @@ module.exports = {
     {
       name: "@storybook/addon-postcss",
       options: {
+        // We need this since we are using a postcss version that is above 8
         postcssLoaderOptions: {
-          // When using postCSS 8
           implementation: require("postcss"),
         },
       },

@@ -11,7 +11,7 @@ import {
   Resolver,
 } from "type-graphql";
 import { User } from "../entities/User";
-import type { Context } from "../types";
+import { Context } from "../types";
 
 @InputType()
 class RegisterUserInput {

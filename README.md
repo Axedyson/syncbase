@@ -34,7 +34,7 @@ I welcome any kind of contribution!
 
 ### TODO
 
-- Storybook, also maybe use chromatic in ci/cd?
+- Just develop components/Storybook! Also maybe use chromatic in ci/cd?
 - Urql setup & Build register and login page and connect them to the user server api
 - Properly implement session cookie expiration
 - Implement Urql graphcache

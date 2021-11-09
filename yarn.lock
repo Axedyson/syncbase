@@ -2195,9 +2195,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-eslint/eslint-plugin@npm:^2.4.0":
-  version: 2.4.0
-  resolution: "@graphql-eslint/eslint-plugin@npm:2.4.0"
+"@graphql-eslint/eslint-plugin@npm:^2.4.1":
+  version: 2.4.1
+  resolution: "@graphql-eslint/eslint-plugin@npm:2.4.1"
   dependencies:
     "@graphql-tools/code-file-loader": ^7.0.2
     "@graphql-tools/graphql-tag-pluck": ^7.0.2
@@ -2207,8 +2207,8 @@ __metadata:
     graphql-depth-limit: 1.1.0
     lodash.lowercase: ^4.3.0
   peerDependencies:
-    graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
-  checksum: 8e434c2176db4fb2aec4b50565a5227a15d126b56791edd3adfcf4beebec1db7187a8ca48f16061d507a953285951e2e80d912a79834dac7e02753cfa4079ba9
+    graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+  checksum: 070759a7de72c410291dec2300651eeb2f3782302508f2f0521a4626ce102f6951d74ef8238273d506aed7ba7d3a791f218caaf5371b0b023dd759481d10cacf
   languageName: node
   linkType: hard
 
@@ -4283,7 +4283,7 @@ __metadata:
     "@types/express": ^4.17.13
     "@types/express-session": ^1.17.4
     "@types/ioredis": ^4.27.7
-    "@types/node": ^16.11.6
+    "@types/node": ^16.11.7
     apollo-server-core: ^3.5.0
     apollo-server-express: ^3.5.0
     argon2: ^0.28.2
@@ -4313,7 +4313,7 @@ __metadata:
     "@storybook/addon-essentials": ^6.3.12
     "@storybook/addon-postcss": ^2.0.0
     "@storybook/react": ^6.3.12
-    "@types/node": ^16.11.6
+    "@types/node": ^16.11.7
     "@types/react": ^17.0.34
     "@types/react-dom": ^17.0.11
     "@types/tailwindcss": ^2.2.4
@@ -4325,7 +4325,7 @@ __metadata:
     postcss: ^8.3.11
     react: ^17.0.2
     react-dom: ^17.0.2
-    react-hook-form: ^7.19.0
+    react-hook-form: ^7.19.1
     sharp: ^0.29.2
     tailwindcss: ^2.2.19
     typescript: ^4.4.4
@@ -4714,7 +4714,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^16.11.6":
+"@types/node@npm:*":
   version: 16.11.6
   resolution: "@types/node@npm:16.11.6"
   checksum: 6e19634766ff589d3d2f361c2196b671f8f133cdadc5ad347a621c360d8994b6c4fbccfb2ad9c60c588c593831a96497c9c6b77d2b7e91be723384b94f6368e7
@@ -4732,6 +4732,13 @@ __metadata:
   version: 14.17.32
   resolution: "@types/node@npm:14.17.32"
   checksum: c3ec45db5d8ca6ed80bcc2fe3cd9f15c1518d43cf048dd5444d1fcbe308d302a42721cb3f19548ac2e7b8b7db4f7f6cd4bf9ed58ab1d30a0bf61758350edd9d5
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^16.11.7":
+  version: 16.11.7
+  resolution: "@types/node@npm:16.11.7"
+  checksum: 2706403e6efc4aa40fdce8f0b5d9884d5600c3c8610aedc7fa5e7e298d30366f7e8b7296028d52898dca3edef4c3e827b03bf20952c4780f13fa4e79864f7a86
   languageName: node
   linkType: hard
 
@@ -5074,7 +5081,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/experimental-utils@npm:4.33.0":
+"@typescript-eslint/experimental-utils@npm:4.33.0, @typescript-eslint/experimental-utils@npm:^4.4.0":
   version: 4.33.0
   resolution: "@typescript-eslint/experimental-utils@npm:4.33.0"
   dependencies:
@@ -9563,6 +9570,18 @@ __metadata:
   peerDependencies:
     eslint: ^3 || ^4 || ^5 || ^6 || ^7
   checksum: 856eec868fe45de941f86f5e197a4da1421246bef2dcc88802e78ceedaa067edefd84352483bf595a56054022594f6c3ea93a5fb49aac6830b31d09754ab9237
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-type-graphql@npm:^0.3.2":
+  version: 0.3.2
+  resolution: "eslint-plugin-type-graphql@npm:0.3.2"
+  dependencies:
+    "@typescript-eslint/experimental-utils": ^4.4.0
+  peerDependencies:
+    "@typescript-eslint/parser": ^4.0.0
+    eslint: ^5.0.0 || ^6.0.0 || ^7.0.0
+  checksum: 9429f0ddf1df3a3fb18b28e1735866c5cae2618db61cfa18774b2b9332ca25cf9f7653a2f2046c92e9ad23462ddb6a0b7eb27667e234a9c208c7f5b0775135fb
   languageName: node
   linkType: hard
 
@@ -16877,12 +16896,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-hook-form@npm:^7.19.0":
-  version: 7.19.0
-  resolution: "react-hook-form@npm:7.19.0"
+"react-hook-form@npm:^7.19.1":
+  version: 7.19.1
+  resolution: "react-hook-form@npm:7.19.1"
   peerDependencies:
     react: ^16.8.0 || ^17
-  checksum: e9d36685991ce744215efc4f278da281b4b852dcb078d09183e7997c882f944c1aed8f3ac6c84a25e5957a03c260b41daf3d6e9c63a6152f61059d9e43037eae
+  checksum: a52420b7d7fbf0c2536b9901e48423d6de3ea4d240e18a91404f65da7ef81a124136284ee800df544993a5727957ea17c4167ded778dc9627cca341c355876ee
   languageName: node
   linkType: hard
 
@@ -19082,7 +19101,7 @@ __metadata:
   dependencies:
     "@commitlint/cli": ^14.1.0
     "@commitlint/config-conventional": ^14.1.0
-    "@graphql-eslint/eslint-plugin": ^2.4.0
+    "@graphql-eslint/eslint-plugin": ^2.4.1
     "@next/eslint-plugin-next": ^12.0.3
     "@types/eslint": ^7.28.2
     "@typescript-eslint/eslint-plugin": ^4.33.0
@@ -19098,6 +19117,7 @@ __metadata:
     eslint-plugin-prettier: ^4.0.0
     eslint-plugin-react: ^7.26.1
     eslint-plugin-react-hooks: ^4.2.0
+    eslint-plugin-type-graphql: ^0.3.2
     eslint-plugin-unused-imports: ^1.1.5
     husky: ^7.0.4
     lint-staged: ^11.2.6

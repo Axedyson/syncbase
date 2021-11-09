@@ -126,6 +126,36 @@ module.exports = {
           version: "detect", // It will default to "detect" in the future
         },
       },
+      // If in general eslint takes to long to run, then just remove the below overrides section
+      // and uninstall eslint-plugin-type-graphql from root package.json
+      overrides: [
+        {
+          files: [
+            "next-env.d.ts",
+            "packages/web/src/**/*.ts",
+            "packages/web/src/**/*.tsx",
+          ],
+          parserOptions: {
+            project: "packages/web/tsconfig.json",
+          },
+        },
+        {
+          files: ["packages/server/src/**/*.ts"],
+          parserOptions: {
+            project: "packages/server/tsconfig.json",
+          },
+          overrides: [
+            {
+              files: [
+                "packages/server/src/entities/**/*.ts",
+                "packages/server/src/resolvers/**/*.ts",
+              ],
+              extends: ["plugin:type-graphql/recommended"],
+              rules: { "type-graphql/wrong-decorator-signature": "off" }, // https://github.com/borremosch/eslint-plugin-type-graphql/issues/20
+            },
+          ],
+        },
+      ],
     },
     {
       files: ["*.graphql"],

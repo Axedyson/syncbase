@@ -4,9 +4,7 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 export default {
   title: "Button",
   component: Button,
-  argTypes: {
-    backgroundColor: { control: "color" },
-  },
+  argTypes: { onClick: { action: "clicked" } },
   args: {
     label: "Button",
   },
@@ -15,6 +13,3 @@ export default {
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
-Primary.args = {
-  label: "LOool",
-};

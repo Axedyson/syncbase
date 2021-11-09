@@ -66,7 +66,7 @@ const RegisterPage: FC = () => {
         className="p-2 bg-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-50"
       />
       {errors.name?.message && <p>{errors.name?.message}</p>}
-      <Button label="DogeHouse" type="submit" />
+      <Button label="Submit" type="submit" />
     </form>
   );
 };

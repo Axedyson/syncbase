@@ -1,9 +1,7 @@
 const path = require("path");
 
-// Don't use eslint v8.0.0, @typescript-eslint/eslint-plugin v5.0.0 and @typescript-eslint/parser v5.0.0
-// since other packages don't support that version yet. Look here for more info:
-// https://github.com/airbnb/javascript/issues/2478
-// https://github.com/sweepline/eslint-plugin-unused-imports/issues/38
+// Don't upgrade to eslint v8.0.0 since eslint-plugin-type-graphql doesn't support that version yet.
+// Look here for more info: https://github.com/borremosch/eslint-plugin-type-graphql/issues/21
 
 // Is eslint-config-next still needed as a dependency to make this work?
 // look here for more info: https://github.com/vercel/next.js/issues/27981
@@ -89,16 +87,16 @@ module.exports = {
             },
           },
         ],
-        "sort-imports": [
-          "error",
-          {
-            ignoreDeclarationSort: true,
-          },
-        ],
         "import/newline-after-import": [
           "error",
           {
             count: 1,
+          },
+        ],
+        "sort-imports": [
+          "error",
+          {
+            ignoreDeclarationSort: true,
           },
         ],
         "@typescript-eslint/consistent-type-imports": "error",
@@ -151,7 +149,9 @@ module.exports = {
                 "packages/server/src/resolvers/**/*.ts",
               ],
               extends: ["plugin:type-graphql/recommended"],
-              rules: { "type-graphql/wrong-decorator-signature": "off" }, // https://github.com/borremosch/eslint-plugin-type-graphql/issues/20
+              // The reason why this rule is off is because of this issue:
+              // https://github.com/borremosch/eslint-plugin-type-graphql/issues/20
+              rules: { "type-graphql/wrong-decorator-signature": "off" },
             },
           ],
         },

@@ -12,6 +12,9 @@ module.exports = {
       fontFamily: {
         sans: ["Inter", ...defaultTheme.fontFamily.sans],
       },
+      colors: {
+        primary: "#FF9400",
+      },
     },
   },
   variants: {

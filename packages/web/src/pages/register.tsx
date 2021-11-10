@@ -41,14 +41,14 @@ const RegisterPage: FC = () => {
       <input
         {...register("name")}
         placeholder="Name"
-        className="p-2 bg-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-50"
+        className="focus:ring-primary p-2 bg-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-opacity-50"
       />
       {errors.name?.message && <p>{errors.name?.message}</p>}
 
       <input
         {...register("email")}
         placeholder="Email"
-        className="p-2 bg-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-50"
+        className="focus:ring-primary p-2 bg-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-opacity-50"
       />
       {errors.name?.message && <p>{errors.name?.message}</p>}
 
@@ -56,14 +56,14 @@ const RegisterPage: FC = () => {
         {...register("password")}
         placeholder="Password"
         type="password"
-        className="p-2 bg-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-50"
+        className="focus:ring-primary p-2 bg-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-opacity-50"
       />
       {errors.name?.message && <p>{errors.name?.message}</p>}
 
       <input
         {...register("image")}
         placeholder="Image"
-        className="p-2 bg-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-50"
+        className="focus:ring-primary p-2 bg-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-opacity-50"
       />
       {errors.name?.message && <p>{errors.name?.message}</p>}
       <Button label="Submit" type="submit" />

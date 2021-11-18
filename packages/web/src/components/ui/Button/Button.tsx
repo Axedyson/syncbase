@@ -1,17 +1,46 @@
-import type { ComponentProps, FC } from "react";
+import ctl from "@netlify/classnames-template-literals";
+import { Spinner } from "../../icons/Spinner";
+import type { ComponentPropsWithoutRef, FC } from "react";
 
-interface ButtonProps extends ComponentProps<"button"> {
+interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
   label: string;
+  loading?: boolean;
 }
 
-export const Button: FC<ButtonProps> = ({ label, ...props }) => {
+const ButtonClasses = ctl(`
+  flex
+  justify-center
+  items-center
+  py-2
+  px-4
+  font-semibold
+  text-white
+  bg-primary
+  hover:bg-opacity-80
+  rounded-md
+  focus:ring-4
+  focus:ring-primary
+  focus:ring-opacity-40
+  disabled:opacity-60
+  transition
+  disabled:cursor-default
+  focus:outline-none
+`);
+
+export const Button: FC<ButtonProps> = ({ label, loading, ...props }) => {
   return (
     <button
       type="button"
-      className="bg-primary focus:ring-primary px-4 py-2 text-white font-semibold rounded-md focus:outline-none focus:ring-4 focus:ring-opacity-50"
+      className={ButtonClasses}
+      disabled={loading}
       {...props}
     >
-      {label}
+      <span className={loading ? "invisible" : undefined}>{label}</span>
+      {loading && (
+        <span className="absolute">
+          <Spinner />
+        </span>
+      )}
     </button>
   );
 };

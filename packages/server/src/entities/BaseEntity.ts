@@ -11,8 +11,8 @@ export abstract class BaseEntity<T extends BaseEntity<T>> extends Base<
   readonly id!: number;
 
   @Property()
-  readonly createdAt: Date = new Date();
+  readonly createdAt = new Date();
 
   @Property({ onUpdate: () => new Date() })
-  readonly updatedAt: Date = new Date();
+  readonly updatedAt = new Date();
 }

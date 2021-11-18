@@ -2,6 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod/dist/zod"; // https://githu
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Button } from "../components/ui/Button";
+import { InputField } from "../components/ui/form/InputField";
 import { urqlClientWrapper } from "../graphql/client";
 import { useRegisterUserMutation } from "../graphql/hooks";
 import type { FC } from "react";
@@ -21,7 +22,7 @@ const RegisterPage: FC = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<RegisterInput>({
     resolver: zodResolver(schema),
   });
@@ -36,39 +37,36 @@ const RegisterPage: FC = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col gap-y-2 m-auto p-2 w-3/12"
+      className="flex flex-col p-2 m-auto w-3/12"
     >
-      <input
-        {...register("name")}
-        placeholder="Name"
-        className="focus:ring-primary p-2 bg-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-opacity-50"
+      <InputField
+        register={register}
+        name="name"
+        label="Name"
+        errorMsg={errors.name?.message}
       />
-      {errors.name?.message && <p>{errors.name?.message}</p>}
-
-      <input
-        {...register("email")}
-        placeholder="Email"
-        className="focus:ring-primary p-2 bg-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-opacity-50"
+      <InputField
+        register={register}
+        name="email"
+        label="Email"
+        errorMsg={errors.email?.message}
       />
-      {errors.name?.message && <p>{errors.name?.message}</p>}
-
-      <input
-        {...register("password")}
-        placeholder="Password"
+      <InputField
+        register={register}
+        name="password"
+        label="Password"
         type="password"
-        className="focus:ring-primary p-2 bg-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-opacity-50"
+        errorMsg={errors.password?.message}
       />
-      {errors.name?.message && <p>{errors.name?.message}</p>}
-
-      <input
-        {...register("image")}
-        placeholder="Image"
-        className="focus:ring-primary p-2 bg-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-opacity-50"
+      <InputField
+        register={register}
+        name="image"
+        label="Image"
+        errorMsg={errors.image?.message}
       />
-      {errors.name?.message && <p>{errors.name?.message}</p>}
-      <Button label="Submit" type="submit" />
+      <Button label="Create Account" type="submit" loading={isSubmitting} />
     </form>
   );
 };
 
-export default urqlClientWrapper(RegisterPage, true);
+export default urqlClientWrapper(RegisterPage);

@@ -5,3 +5,11 @@ export const parameters = {
     default: "light",
   },
 };
+
+export const decorators = [
+  (Story) => (
+    <div className="font-medium">
+      <Story />
+    </div>
+  ),
+];

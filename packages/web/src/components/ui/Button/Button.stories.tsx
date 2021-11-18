@@ -13,3 +13,8 @@ export default {
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
+
+export const Loading = Template.bind({});
+Loading.args = {
+  loading: true,
+};

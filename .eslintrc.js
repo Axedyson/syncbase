@@ -29,6 +29,7 @@ module.exports = {
         "plugin:react-hooks/recommended",
         "plugin:react/jsx-runtime",
         "plugin:@next/next/recommended",
+        "plugin:tailwindcss/recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:prettier/recommended",
       ],
@@ -120,6 +121,9 @@ module.exports = {
         ],
       },
       settings: {
+        tailwindcss: {
+          config: path.join(__dirname, "packages/web/tailwind.config.js"),
+        },
         react: {
           version: "detect", // It will default to "detect" in the future
         },
@@ -134,13 +138,13 @@ module.exports = {
             "packages/web/src/**/*.tsx",
           ],
           parserOptions: {
-            project: "packages/web/tsconfig.json",
+            project: path.join(__dirname, "packages/web/tsconfig.json"),
           },
         },
         {
           files: ["packages/server/src/**/*.ts"],
           parserOptions: {
-            project: "packages/server/tsconfig.json",
+            project: path.join(__dirname, "packages/server/tsconfig.json"),
           },
           overrides: [
             {
@@ -149,9 +153,16 @@ module.exports = {
                 "packages/server/src/resolvers/**/*.ts",
               ],
               extends: ["plugin:type-graphql/recommended"],
-              // The reason why this rule is off is because of this issue:
-              // https://github.com/borremosch/eslint-plugin-type-graphql/issues/20
-              rules: { "type-graphql/wrong-decorator-signature": "off" },
+              rules: {
+                "type-graphql/wrong-decorator-signature": [
+                  "error",
+                  {
+                    customTypes: {
+                      string: ["GraphQLEmailAddress", "GraphQLURL"],
+                    },
+                  },
+                ],
+              },
             },
           ],
         },

@@ -34,7 +34,11 @@ I welcome any kind of contribution!
 
 ### TODO
 
-- Just develop components/Storybook! Also maybe use chromatic in ci/cd?
+- Maybe use chromatic in ci/cd?
+- Implement Accessibility testing
+- Add tests e.g. jest for unit and integration tests and crypress for E2E tests
+- Setup some code quality github apps maybe
+- If it's possible implement caching for dev tools: https://thoughtspile.github.io/2021/06/14/faster-pre-commit/
 - Urql setup & Build register and login page and connect them to the user server api
 - Properly implement session cookie expiration
 - Implement Urql graphcache
@@ -43,11 +47,10 @@ I welcome any kind of contribution!
 - Maybe add standard-version/semantic-release?
 - Add more .md files to properly document the contribution process and attract contributors
 - Add docker & docker-compose for development?
-- Add tests e.g. jest for unit and integration tests and crypress for E2E tests
 
 ### Notes
 
-- Use dataloder for relational data fetching
+- Implement Internationalization later
 - Implement SEO optimizations later
 - Implement OG meta tags later
 - Datadog?

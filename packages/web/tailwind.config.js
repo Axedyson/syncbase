@@ -8,6 +8,10 @@ module.exports = {
   purge: ["./src/**/*.{js,ts,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    fontWeight: {
+      medium: 500,
+      semibold: 600,
+    },
     extend: {
       fontFamily: {
         sans: ["Inter", ...defaultTheme.fontFamily.sans],

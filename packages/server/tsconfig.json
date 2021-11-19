@@ -14,11 +14,14 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true,
+    "incremental": true,
+    "tsBuildInfoFile": "./tsconfig.tsbuildinfo",
+    "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "baseUrl": ".",
-    "outDir": "./dist"
+    "outDir": "dist"
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]

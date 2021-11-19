@@ -1,14 +1,24 @@
+import Image from "next/image";
 import Link from "next/link";
-import { FC } from "react";
+import type { FC } from "react";
 
-const HomePage: FC = () => {
+const IndexPage: FC = () => {
   return (
     <div>
-      <h1>test</h1>
-      <Link href="/about">about</Link>
-      <p>Welcome to the index page!</p>
+      <p className="mt-4">
+        By logging in you accept our Privacy Policy and Terms of Service.
+      </p>
+      <Link href="/register">
+        <a className="block text-purple-800 text-opacity-100">Register</a>
+      </Link>
+      <Image
+        src="/android-chrome-512x512.png"
+        alt="some image"
+        width={100}
+        height={100}
+      />
     </div>
   );
 };
 
-export default HomePage;
+export default IndexPage;

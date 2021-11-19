@@ -1,12 +1,23 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.quickSuggestions": {
+    "strings": true
+  },
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.stylelint": true
+    "source.fixAll": true
   },
   "css.validate": false,
-  "less.validate": false,
-  "scss.validate": false,
-  "stylelint.validate": ["css"],
-  "eslint.probe": ["javascript", "typescript", "typescriptreact"]
+  "eslint.validate": ["graphql"],
+  "eslint.rules.customizations": [
+    {
+      "rule": "no-autofix/@graphql-eslint/no-unused-fields",
+      "severity": "off"
+    },
+    { "rule": "@graphql-eslint/fields-on-correct-type", "severity": "off" },
+    { "rule": "@graphql-eslint/known-type-names", "severity": "off" },
+    { "rule": "import/no-unused-modules", "severity": "off" }
+  ],
+  // Not sure how to make a regex that is able to match strings in template string interpolations.
+  // This is needed to make tailwindcss-intellisense able to work on string interpolations:
+  // https://github.com/tailwindlabs/tailwindcss-intellisense/issues/129
+  "tailwindCSS.experimental.classRegex": ["ctl\\(([^)]*)\\)"]
 }

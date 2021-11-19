@@ -1,17 +1,46 @@
 {
   "name": "@syncbase/server",
-  "packageManager": "yarn@3.0.2",
+  "packageManager": "yarn@3.1.0",
   "private": true,
   "scripts": {
-    "check-types": "yarn tsc --noEmit",
-    "dev": "tsnd --respawn --transpile-only src/index.ts",
-    "build": "rimraf dist && tsc",
-    "start": "node dist/index.js"
+    "dev": "yarn clean && tsnd --respawn --transpile-only src/main.ts",
+    "build": "yarn clean && rm -fr tsconfig.tsbuildinfo && tsc && mikro-orm cache:generate",
+    "start": "node dist/main.js",
+    "check-types": "tsc --noEmit",
+    "clean": "mikro-orm cache:clear && rm -fr dist"
+  },
+  "dependencies": {
+    "@mikro-orm/cli": "^4.5.9",
+    "@mikro-orm/core": "^4.5.9",
+    "@mikro-orm/postgresql": "^4.5.9",
+    "@mikro-orm/reflection": "^4.5.9",
+    "apollo-server-core": "^3.5.0",
+    "apollo-server-express": "^3.5.0",
+    "argon2": "^0.28.2",
+    "class-validator": "^0.13.1",
+    "connect-redis": "^6.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "graphql": "^15.7.2",
+    "graphql-scalars": "^1.13.6",
+    "ioredis": "^4.28.0",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "^1.1.1"
   },
   "devDependencies": {
-    "@types/node": "^16.9.2",
-    "rimraf": "^3.0.2",
+    "@types/connect-redis": "^0.0.17",
+    "@types/express": "^4.17.13",
+    "@types/express-session": "^1.17.4",
+    "@types/ioredis": "^4.27.7",
+    "@types/node": "^16.11.8",
     "ts-node-dev": "^1.1.8",
-    "typescript": "^4.4.3"
+    "typescript": "^4.5.2"
+  },
+  "mikro-orm": {
+    "useTsNode": true,
+    "configPaths": [
+      "./src/config/orm.ts",
+      "./dist/config/orm.js"
+    ]
   }
 }

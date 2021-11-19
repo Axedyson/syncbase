@@ -1,4 +1,4 @@
-import { zodResolver } from "@hookform/resolvers/zod/dist/zod"; // https://github.com/react-hook-form/resolvers/issues/271
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Button } from "../components/ui/Button";

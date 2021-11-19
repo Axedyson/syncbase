@@ -34,11 +34,9 @@ I welcome any kind of contribution!
 
 ### TODO
 
-- Maybe use chromatic in ci/cd?
-- Implement Accessibility testing
-- Add tests e.g. jest for unit and integration tests and crypress for E2E tests
 - Setup some code quality github apps maybe
-- If it's possible implement caching for dev tools: https://thoughtspile.github.io/2021/06/14/faster-pre-commit/
+- Maybe use chromatic in ci/cd?
+- Add accessibility, interaction, userflow, integration and unit tests e.g. by using storybook, crypress and jest
 - Urql setup & Build register and login page and connect them to the user server api
 - Properly implement session cookie expiration
 - Implement Urql graphcache

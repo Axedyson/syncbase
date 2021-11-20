@@ -40,16 +40,16 @@ module.exports = {
         node: true,
       },
       rules: {
-        "spaced-comment": ["error", "always", { markers: ["/"] }],
-        "multiline-comment-style": ["error", "separate-lines"],
+        "spaced-comment": ["warn", "always", { markers: ["/"] }],
+        "multiline-comment-style": ["warn", "separate-lines"],
         "import/no-useless-path-segments": [
-          "error",
+          "warn",
           {
             noUselessIndex: true,
             commonjs: true,
           },
         ],
-        "import/extensions": "error",
+        "import/extensions": "warn",
         // Whenever vscode users get the "import/no-unused-modules" rule error and they solve
         // the error immediately, they have to reload their entire window/eslint server
         // to make VS Code ESLint extension happy.
@@ -67,9 +67,9 @@ module.exports = {
             ],
           },
         ],
-        "import/first": "error",
+        "import/first": "warn",
         "import/order": [
-          "error",
+          "warn",
           {
             groups: [
               "builtin",
@@ -89,18 +89,18 @@ module.exports = {
           },
         ],
         "import/newline-after-import": [
-          "error",
+          "warn",
           {
             count: 1,
           },
         ],
         "sort-imports": [
-          "error",
+          "warn",
           {
             ignoreDeclarationSort: true,
           },
         ],
-        "@typescript-eslint/consistent-type-imports": "error",
+        "@typescript-eslint/consistent-type-imports": "warn",
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "@typescript-eslint/no-var-requires": "off",
         "@typescript-eslint/no-unused-vars": "off",
@@ -114,7 +114,7 @@ module.exports = {
           },
         ],
         "react/prop-types": "off",
-        "prefer-template": "error",
+        "prefer-template": "warn",
         "@next/next/no-html-link-for-pages": [
           "error",
           path.join(__dirname, "packages/web/src/pages"),
@@ -177,10 +177,10 @@ module.exports = {
       },
       plugins: ["no-autofix"],
       rules: {
-        "prettier/prettier": "error",
-        "@graphql-eslint/input-name": ["error", { checkInputType: true }],
+        "prettier/prettier": "warn",
+        "@graphql-eslint/input-name": ["warn", { checkInputType: true }],
         "@graphql-eslint/alphabetize": [
-          "error",
+          "warn",
           {
             selections: ["OperationDefinition", "FragmentDefinition"],
             variables: ["OperationDefinition"],
@@ -188,13 +188,13 @@ module.exports = {
           },
         ],
         "@graphql-eslint/avoid-duplicate-fields": "error",
-        "@graphql-eslint/unique-operation-name": "error",
+        "@graphql-eslint/unique-operation-name": "warn",
         "@graphql-eslint/unique-fragment-name": "error",
         // Disabling the default autofix feature for this rule. We don't want to fix it
         // automatically since we need to change that in the actual typegraphql code!
         "@graphql-eslint/no-case-insensitive-enum-values-duplicates": "off",
         "no-autofix/@graphql-eslint/no-case-insensitive-enum-values-duplicates":
-          "error",
+          "warn",
         // Whenever vscode users get the "no-autofix/@graphql-eslint/no-unused-fields" rule error and they solve
         // the error immediately, they have to reload their entire window/eslint server
         // to make VS Code ESLint extension happy.

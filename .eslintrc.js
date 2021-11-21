@@ -40,6 +40,7 @@ module.exports = {
         node: true,
       },
       rules: {
+        "prettier/prettier": "warn",
         "spaced-comment": ["warn", "always", { markers: ["/"] }],
         "multiline-comment-style": ["warn", "separate-lines"],
         "import/no-useless-path-segments": [

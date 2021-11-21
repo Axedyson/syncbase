@@ -7,9 +7,7 @@
     "build": "next build",
     "start": "next start",
     "check-types": "tsc --noEmit",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "chromatic": "chromatic --project-token=64e3a9911647"
+    "storybook": "start-storybook -p 6006"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.8.3",

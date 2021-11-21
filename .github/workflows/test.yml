@@ -7,7 +7,7 @@ on:
 
 jobs:
   testui:
-    name: Test UI
+    name: UI
     runs-on: ubuntu-latest
 
     steps:
@@ -27,3 +27,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: 64e3a9911647
+          workingDir: packages/web

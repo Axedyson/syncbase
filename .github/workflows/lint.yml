@@ -10,7 +10,7 @@ on:
 
 jobs:
   commitlint:
-    name: Lint commit message
+    name: commit
     runs-on: ubuntu-latest
 
     steps:
@@ -22,7 +22,7 @@ jobs:
         uses: wagoid/commitlint-github-action@v4
 
   lintcode:
-    name: Lint source code
+    name: source
     runs-on: ubuntu-latest
 
     steps:

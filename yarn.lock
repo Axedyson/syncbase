@@ -3338,6 +3338,38 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@storybook/addon-a11y@npm:^6.3.12":
+  version: 6.3.12
+  resolution: "@storybook/addon-a11y@npm:6.3.12"
+  dependencies:
+    "@storybook/addons": 6.3.12
+    "@storybook/api": 6.3.12
+    "@storybook/channels": 6.3.12
+    "@storybook/client-api": 6.3.12
+    "@storybook/client-logger": 6.3.12
+    "@storybook/components": 6.3.12
+    "@storybook/core-events": 6.3.12
+    "@storybook/theming": 6.3.12
+    axe-core: ^4.2.0
+    core-js: ^3.8.2
+    global: ^4.4.0
+    lodash: ^4.17.20
+    react-sizeme: ^3.0.1
+    regenerator-runtime: ^0.13.7
+    ts-dedent: ^2.0.0
+    util-deprecate: ^1.0.2
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: be39ed93f3b965ab4c4b52f2b64b84a2b728790712090846ec03081e36e5e6e7adc35388cb4ee49f2d33ebbd6587aa1bdb18dba2a499c08fd8d8c4cc84896978
+  languageName: node
+  linkType: hard
+
 "@storybook/addon-actions@npm:6.3.12":
   version: 6.3.12
   resolution: "@storybook/addon-actions@npm:6.3.12"
@@ -4374,6 +4406,7 @@ __metadata:
     "@graphql-codegen/typescript-urql": ^3.4.1
     "@hookform/resolvers": ^2.8.3
     "@netlify/classnames-template-literals": ^1.0.3
+    "@storybook/addon-a11y": ^6.3.12
     "@storybook/addon-essentials": ^6.3.12
     "@storybook/addon-postcss": ^2.0.0
     "@storybook/react": ^6.3.12
@@ -4382,6 +4415,7 @@ __metadata:
     "@types/react-dom": ^17.0.11
     "@types/tailwindcss": ^2.2.4
     autoprefixer: ^10.4.0
+    chromatic: ^6.0.6
     concurrently: ^6.4.0
     graphql: ^15.7.2
     next: ^12.0.4
@@ -6402,7 +6436,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axe-core@npm:^4.0.2":
+"axe-core@npm:^4.0.2, axe-core@npm:^4.2.0":
   version: 4.3.5
   resolution: "axe-core@npm:4.3.5"
   checksum: 973c6a80f0aaa663820b209d4202de7a0c240a2dea2f3cff168b09c0f221b27179b1f0988f00ad11ed63cbc50535920f8ca779de1c60dc82090ab2d275f71fdd
@@ -7492,6 +7526,17 @@ __metadata:
   version: 2.0.0
   resolution: "chownr@npm:2.0.0"
   checksum: c57cf9dd0791e2f18a5ee9c1a299ae6e801ff58fee96dc8bfd0dcb4738a6ce58dd252a3605b1c93c6418fe4f9d5093b28ffbf4d66648cb2a9c67eaef9679be2f
+  languageName: node
+  linkType: hard
+
+"chromatic@npm:^6.0.6":
+  version: 6.0.6
+  resolution: "chromatic@npm:6.0.6"
+  bin:
+    chroma: bin/main.cjs
+    chromatic: bin/main.cjs
+    chromatic-cli: bin/main.cjs
+  checksum: 21f80732d19e8d9795f2f924ab1a908b4b1d13607dce963fbd90ddd69b8d82c03db488a7a33b49d63f5c6ac7d41b61c39e6065d48509cd35b441054d94d6bc9e
   languageName: node
   linkType: hard
 

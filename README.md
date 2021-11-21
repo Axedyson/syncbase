@@ -1,18 +1,21 @@
 <p align="center">
   <a href="http://syncbase.tv">
-    <img src="logo.svg">
+    <img alt="Brand logo" src="logo.svg">
   </a>
   <a href="https://github.com/AndysonDK/syncbase/blob/main/LICENSE">
     <img alt="MIT Licensed" src="https://img.shields.io/github/license/AndysonDK/syncbase">
   </a>
   <a href="http://commitizen.github.io/cz-cli/">
-    <img alt="MIT Licensed" src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg">
+    <img alt="Commitizen friendly" src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg">
   </a>
   <a href="https://github.com/AndysonDK/syncbase/pulls">
     <img alt="Pull requests are welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
   </a>
   <a href="https://github.com/AndysonDK/syncbase/actions/workflows/lint.yml">
-    <img alt="GitHub Workflow Status" src="https://github.com/AndysonDK/syncbase/actions/workflows/lint.yml/badge.svg">
+    <img alt="Lint Workflow Status" src="https://github.com/AndysonDK/syncbase/actions/workflows/lint.yml/badge.svg">
+  </a>
+  <a href="https://github.com/AndysonDK/syncbase/actions/workflows/codeql.yml">
+    <img alt="CodeQl Workflow Status" src="https://github.com/AndysonDK/syncbase/actions/workflows/codeql.yml/badge.svg">
   </a>
 </p>
 

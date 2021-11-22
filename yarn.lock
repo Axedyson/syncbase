@@ -4415,7 +4415,6 @@ __metadata:
     "@types/react-dom": ^17.0.11
     "@types/tailwindcss": ^2.2.4
     autoprefixer: ^10.4.0
-    chromatic: ^6.0.6
     concurrently: ^6.4.0
     graphql: ^15.7.2
     next: ^12.0.4
@@ -7526,17 +7525,6 @@ __metadata:
   version: 2.0.0
   resolution: "chownr@npm:2.0.0"
   checksum: c57cf9dd0791e2f18a5ee9c1a299ae6e801ff58fee96dc8bfd0dcb4738a6ce58dd252a3605b1c93c6418fe4f9d5093b28ffbf4d66648cb2a9c67eaef9679be2f
-  languageName: node
-  linkType: hard
-
-"chromatic@npm:^6.0.6":
-  version: 6.0.6
-  resolution: "chromatic@npm:6.0.6"
-  bin:
-    chroma: bin/main.cjs
-    chromatic: bin/main.cjs
-    chromatic-cli: bin/main.cjs
-  checksum: 21f80732d19e8d9795f2f924ab1a908b4b1d13607dce963fbd90ddd69b8d82c03db488a7a33b49d63f5c6ac7d41b61c39e6065d48509cd35b441054d94d6bc9e
   languageName: node
   linkType: hard
 

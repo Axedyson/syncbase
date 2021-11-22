@@ -26,3 +26,5 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: 64e3a9911647
           workingDir: packages/web
+      - name: echo log
+        run: cat build-storybook.log

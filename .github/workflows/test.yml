@@ -9,22 +9,25 @@ jobs:
   testui:
     name: UI
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: packages/web
 
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - name: Set up node 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          cache: "yarn"
       - name: Install dependencies
         run: yarn install
+      - name: Build Storybook
+        run: yarn workspace @web/syncabse build-storybook
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: 64e3a9911647
           workingDir: packages/web
-      - name: echo log
-        run: cat build-storybook.log
+          storybookBuildDir: storybook-static

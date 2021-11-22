@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Build Storybook
-        run: yarn workspace @web/syncabse build-storybook
+        run: yarn workspace @syncbase/web build-storybook
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         with:

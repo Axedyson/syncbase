@@ -9,6 +9,9 @@ jobs:
   testui:
     name: UI
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/web
 
     steps:
       - name: Check out repository code

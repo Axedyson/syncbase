@@ -1,13 +1,15 @@
-name: Tests
+name: UI Tests
 
 on:
   push:
     branches:
       - main
+    paths:
+      - "packages/web/src/components/ui/**/*.tsx"
 
 jobs:
-  testui:
-    name: UI
+  chromatic:
+    name: Visual and composition
     runs-on: ubuntu-latest
 
     steps:
@@ -30,4 +32,3 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: 64e3a9911647
           workingDir: packages/web
-          storybookBuildDir: storybook-static

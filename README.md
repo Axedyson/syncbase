@@ -11,11 +11,8 @@
   <a href="https://github.com/AndysonDK/syncbase/pulls">
     <img alt="Pull requests are welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
   </a>
-  <a href="https://github.com/AndysonDK/syncbase/actions/workflows/lint.yml">
-    <img alt="Lint Workflow Status" src="https://github.com/AndysonDK/syncbase/actions/workflows/lint.yml/badge.svg">
-  </a>
-  <a href="https://github.com/AndysonDK/syncbase/actions/workflows/codeql.yml">
-    <img alt="CodeQl Workflow Status" src="https://github.com/AndysonDK/syncbase/actions/workflows/codeql.yml/badge.svg">
+  <a href="https://github.com/AndysonDK/syncbase/actions">
+    <img alt="Checks status" src="https://img.shields.io/github/checks-status/AndysonDK/syncbase/main">
   </a>
 </p>
 
@@ -46,10 +43,6 @@ I welcome any kind of contribution!
 
 ### TODO
 
-- Maybe use chromatic in ci/cd?
-- Add accessibility, interaction, userflow, integration and unit tests e.g. by using storybook, crypress and jest
-  - Remember to build the packages as part of the testing workflow
-  - Also run as many tests as possible without them taking too much time as part of the precommit process!
 - Urql setup & Build register and login page and connect them to the user server api
 - Properly implement session cookie expiration
 - Implement Urql graphcache
@@ -57,6 +50,8 @@ I welcome any kind of contribution!
 - Deploy web on vercel and server and it's services on DO droplet and maybe some automatic deployment with gh actions
 - Maybe add standard-version/semantic-release/changeset?
 - Add more .md files to properly document the contribution process and attract contributors
+- Add accessibility, interaction, userflow, integration and unit tests e.g. by using storybook, crypress and jest
+  - Also implement eslint plugins when necessary!
 - Add docker & docker-compose for development?
 
 ### Notes

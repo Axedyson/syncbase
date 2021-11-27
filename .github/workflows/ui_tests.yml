@@ -8,8 +8,9 @@ on:
       - "packages/web/src/components/ui/**/*.tsx"
 
 jobs:
+  # TODO: Add accessibility, interaction and maybe userflow testing (maybe it should be in tests.yml)
   chromatic:
-    name: Visual and composition
+    name: Visual
     runs-on: ubuntu-latest
 
     steps:

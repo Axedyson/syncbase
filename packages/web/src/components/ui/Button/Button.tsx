@@ -1,5 +1,5 @@
 import ctl from "@netlify/classnames-template-literals";
-import { Spinner } from "../../icons/Spinner";
+import { Spinner } from "../icons/Spinner";
 import type { ComponentPropsWithoutRef, FC } from "react";
 
 interface ButtonProps extends ComponentPropsWithoutRef<"button"> {

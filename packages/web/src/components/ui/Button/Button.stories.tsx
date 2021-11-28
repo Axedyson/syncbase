@@ -1,10 +1,12 @@
+import { expect } from "@storybook/jest";
+import { userEvent, within } from "@storybook/testing-library";
 import { Button } from "./Button";
 import type { ComponentMeta, ComponentStory } from "@storybook/react";
 
 export default {
   title: "Button",
   component: Button,
-  argTypes: { onClick: { action: "clicked" } },
+  argTypes: { onClick: { action: true } },
   args: {
     label: "Button",
   },
@@ -17,4 +19,17 @@ export const Primary = Template.bind({});
 export const Loading = Template.bind({});
 Loading.args = {
   loading: true,
+};
+
+interface playFuncProps {
+  args: { onClick: React.MouseEventHandler<HTMLButtonElement> };
+  canvasElement: HTMLCanvasElement;
+}
+
+export const Tests = {
+  play: async ({ args, canvasElement }: playFuncProps) => {
+    const canvas = within(canvasElement);
+    await userEvent.click(canvas.getByRole("button"));
+    await expect(args.onClick).toHaveBeenCalled();
+  },
 };

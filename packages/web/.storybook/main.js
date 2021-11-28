@@ -12,6 +12,7 @@ module.exports = {
       },
     },
     "@storybook/addon-a11y",
+    "@storybook/addon-interactions",
   ],
   reactOptions: {
     fastRefresh: true,

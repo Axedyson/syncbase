@@ -30,6 +30,7 @@ module.exports = {
         "plugin:react/jsx-runtime",
         "plugin:@next/next/recommended",
         "plugin:tailwindcss/recommended",
+        "plugin:storybook/recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:prettier/recommended",
       ],

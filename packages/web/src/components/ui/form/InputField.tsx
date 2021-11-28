@@ -21,7 +21,7 @@ const InputFieldClasses = (error: boolean) =>
   focus:ring-primary
   transition
   focus:outline-none
-  ${error ? "border-red-400" : "border-gray-300"}
+  ${error ? "border-red-300" : "border-gray-300"}
 `);
 
 export const InputField = <T,>({

@@ -6,6 +6,9 @@ on:
       - main
     paths:
       - "packages/web/src/components/ui/**/*.tsx"
+      - "packages/web/.storybook/*"
+      - "packages/web/src/global.css"
+      - "packages/web/tailwind.config.js"
 
 jobs:
   # TODO: Add accessibility, interaction and maybe userflow testing (maybe it should be in tests.yml)

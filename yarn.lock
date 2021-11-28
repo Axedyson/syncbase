@@ -3326,6 +3326,38 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@storybook/addon-a11y@npm:^6.4.0":
+  version: 6.4.0
+  resolution: "@storybook/addon-a11y@npm:6.4.0"
+  dependencies:
+    "@storybook/addons": 6.4.0
+    "@storybook/api": 6.4.0
+    "@storybook/channels": 6.4.0
+    "@storybook/client-logger": 6.4.0
+    "@storybook/components": 6.4.0
+    "@storybook/core-events": 6.4.0
+    "@storybook/csf": 0.0.2--canary.87bc651.0
+    "@storybook/theming": 6.4.0
+    axe-core: ^4.2.0
+    core-js: ^3.8.2
+    global: ^4.4.0
+    lodash: ^4.17.20
+    react-sizeme: ^3.0.1
+    regenerator-runtime: ^0.13.7
+    ts-dedent: ^2.0.0
+    util-deprecate: ^1.0.2
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: b707064a84feb839587526acc88346478f6062893bf87186e0bdff718640501973bfd8dd0ef1a7ce200dfde2318c8d215cae86b6bd79051e37a87479a3e42997
+  languageName: node
+  linkType: hard
+
 "@storybook/addon-actions@npm:6.4.0":
   version: 6.4.0
   resolution: "@storybook/addon-actions@npm:6.4.0"
@@ -4502,6 +4534,7 @@ __metadata:
     "@graphql-codegen/typescript-urql": ^3.4.1
     "@hookform/resolvers": ^2.8.3
     "@netlify/classnames-template-literals": ^1.0.3
+    "@storybook/addon-a11y": ^6.4.0
     "@storybook/addon-essentials": ^6.4.0
     "@storybook/addon-postcss": ^2.0.0
     "@storybook/react": ^6.4.0
@@ -4517,7 +4550,7 @@ __metadata:
     postcss: ^8.4.4
     react: ^17.0.2
     react-dom: ^17.0.2
-    react-hook-form: ^7.20.4
+    react-hook-form: 7.20.1
     sharp: ^0.29.3
     tailwindcss: ^2.2.19
     typescript: ^4.5.2
@@ -6480,7 +6513,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axe-core@npm:^4.0.2":
+"axe-core@npm:^4.0.2, axe-core@npm:^4.2.0":
   version: 4.3.5
   resolution: "axe-core@npm:4.3.5"
   checksum: 973c6a80f0aaa663820b209d4202de7a0c240a2dea2f3cff168b09c0f221b27179b1f0988f00ad11ed63cbc50535920f8ca779de1c60dc82090ab2d275f71fdd
@@ -15119,11 +15152,11 @@ __metadata:
   linkType: hard
 
 "node-abi@npm:^3.3.0":
-  version: 3.3.0
-  resolution: "node-abi@npm:3.3.0"
+  version: 3.5.0
+  resolution: "node-abi@npm:3.5.0"
   dependencies:
     semver: ^7.3.5
-  checksum: 77052d97799a4fa9324e745e7aff75d87cb5e94deee6f447f91382ec099587487d243f3bb5a454e4650e5d16c30733c06e6cbfdaaa2e8b92e4493fe0b5bc2155
+  checksum: e7fa2363cea366e788e460ead39cf900cc3c49b5978fa56790fda87df54b6937424c72ea00cbfb72fe1513eedcbb48a0ac50a56e7961cc6bd425ef09efbe1916
   languageName: node
   linkType: hard
 
@@ -17138,12 +17171,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-hook-form@npm:^7.20.4":
-  version: 7.20.4
-  resolution: "react-hook-form@npm:7.20.4"
+"react-hook-form@npm:7.20.1":
+  version: 7.20.1
+  resolution: "react-hook-form@npm:7.20.1"
   peerDependencies:
     react: ^16.8.0 || ^17
-  checksum: e2b77eb89d7c6253d5a27a219ffb4d46b2d31466ab73baab4bc937cd3f1f7863ec0b6eac31d59e3b817450c21f8636f7754a7b9e3604a7c1fa27b5d15a6cca30
+  checksum: cd3ffd9fcf868e94c7f4b77f6f0a8225f359ef16ce6923769c0b29f11c2c248e99abd4c75937f764e571e425db65dbc6c2dd82c9b501a18bd4ff5c3ac5b64620
   languageName: node
   linkType: hard
 

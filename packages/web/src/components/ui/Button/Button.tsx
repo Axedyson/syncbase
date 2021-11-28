@@ -11,7 +11,7 @@ const ButtonClasses = ctl(`
   flex
   justify-center
   items-center
-  py-2
+  py-3
   px-4
   font-semibold
   text-white

@@ -2,8 +2,6 @@ name: UI Tests
 
 on:
   push:
-    branches:
-      - main
     paths:
       - "packages/web/src/components/ui/**/*.tsx"
       - "packages/web/.storybook/*"

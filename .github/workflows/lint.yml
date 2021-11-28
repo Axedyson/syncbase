@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  Commitlint:
+  commitlint:
     name: Commit message
     runs-on: ubuntu-latest
 

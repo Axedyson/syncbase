@@ -2,18 +2,6 @@
   <a href="http://syncbase.tv">
     <img alt="Brand logo" src="logo.svg">
   </a>
-  <a href="https://github.com/AndysonDK/syncbase/blob/main/LICENSE">
-    <img alt="MIT Licensed" src="https://img.shields.io/github/license/AndysonDK/syncbase">
-  </a>
-  <a href="http://commitizen.github.io/cz-cli/">
-    <img alt="Commitizen friendly" src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg">
-  </a>
-  <a href="https://github.com/AndysonDK/syncbase/pulls">
-    <img alt="Pull requests are welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
-  </a>
-  <a href="https://github.com/AndysonDK/syncbase/actions">
-    <img alt="Checks status" src="https://img.shields.io/github/checks-status/AndysonDK/syncbase/main">
-  </a>
 </p>
 
 I welcome any kind of contribution!
@@ -61,3 +49,24 @@ I welcome any kind of contribution!
 - Implement OG meta tags later
 - Datadog?
 - Sentry?
+
+<p align="center">
+  <a href="http://commitizen.github.io/cz-cli/">
+    <img alt="Commitizen friendly" src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg">
+  </a>
+  <a href="https://github.com/AndysonDK/syncbase/pulls">
+    <img alt="Pull requests are welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
+  </a>
+  <a href="https://github.com/AndysonDK/syncbase/actions/workflows/lint.yml">
+    <img alt="Lint workflow" src="https://img.shields.io/github/workflow/status/AndysonDK/syncbase/Lint?label=Lint">
+  </a>
+  <a href="https://github.com/AndysonDK/syncbase/actions/workflows/codeql.yml">
+    <img alt="CodeQL workflow" src="https://img.shields.io/github/workflow/status/AndysonDK/syncbase/CodeQL?label=CodeQL">
+  </a>
+  <a href="https://github.com/AndysonDK/syncbase/actions/workflows/tests.yml">
+    <img alt="Tests workflow" src="https://img.shields.io/github/workflow/status/AndysonDK/syncbase/Tests?label=Tests">
+  </a>
+  <a href="https://github.com/AndysonDK/syncbase/actions/workflows/ui_tests.yml">
+    <img alt="UI Tests workflow" src="https://img.shields.io/github/workflow/status/AndysonDK/syncbase/UI%20Tests?label=UI%20Tests">
+  </a>
+<p>

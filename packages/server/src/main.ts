@@ -40,6 +40,7 @@ import type { Context } from "./types";
     })
   );
 
+  console.log("lol");
   const httpServer = http.createServer(app);
   const apolloServer = new ApolloServer({
     schema: await buildSchema({

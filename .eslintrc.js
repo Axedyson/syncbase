@@ -40,6 +40,7 @@ module.exports = {
         node: true,
       },
       rules: {
+        "prettier/prettier": "warn",
         "spaced-comment": ["warn", "always", { markers: ["/"] }],
         "multiline-comment-style": ["warn", "separate-lines"],
         "import/no-useless-path-segments": [
@@ -63,7 +64,10 @@ module.exports = {
               path.join(__dirname, "packages/server/src/config/orm.ts"),
               path.join(__dirname, "packages/web/src/pages/*"),
               path.join(__dirname, "packages/web/.storybook/preview.js"),
-              "**/*.stories.tsx",
+              path.join(
+                __dirname,
+                "packages/web/src/components/ui/**/*.stories.tsx"
+              ),
             ],
           },
         ],

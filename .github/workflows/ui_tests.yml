@@ -1,0 +1,39 @@
+name: UI Tests
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "packages/web/src/components/ui/**/*.tsx"
+      - "packages/web/.storybook/*"
+      - "packages/web/src/global.css"
+      - "packages/web/tailwind.config.js"
+
+jobs:
+  # TODO: Add accessibility, interaction and maybe userflow testing (maybe it should be in tests.yml)
+  chromatic:
+    name: Visual
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Set up node 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          cache: "yarn"
+      - name: Install dependencies
+        run: yarn install
+      - name: Build Storybook
+        run: yarn workspace @syncbase/web build-storybook
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: 64e3a9911647
+          workingDir: packages/web
+          storybookBuildDir: storybook-static

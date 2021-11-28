@@ -1,11 +1,20 @@
 <p align="center">
   <a href="http://syncbase.tv">
-    <img src="logo.svg">
+    <img alt="Brand logo" src="logo.svg">
+  </a>
+  <a href="https://github.com/AndysonDK/syncbase/blob/main/LICENSE">
+    <img alt="MIT Licensed" src="https://img.shields.io/github/license/AndysonDK/syncbase">
+  </a>
+  <a href="http://commitizen.github.io/cz-cli/">
+    <img alt="Commitizen friendly" src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg">
+  </a>
+  <a href="https://github.com/AndysonDK/syncbase/pulls">
+    <img alt="Pull requests are welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
+  </a>
+  <a href="https://github.com/AndysonDK/syncbase/actions">
+    <img alt="Checks status" src="https://img.shields.io/github/checks-status/AndysonDK/syncbase/main">
   </a>
 </p>
-
-[![Lint](https://github.com/AndysonDK/syncbase/actions/workflows/lint.yml/badge.svg)](https://github.com/AndysonDK/syncbase/actions/workflows/lint.yml)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 I welcome any kind of contribution!
 
@@ -34,16 +43,15 @@ I welcome any kind of contribution!
 
 ### TODO
 
-- Setup some code quality github apps maybe
-- Maybe use chromatic in ci/cd?
-- Add accessibility, interaction, userflow, integration and unit tests e.g. by using storybook, crypress and jest
 - Urql setup & Build register and login page and connect them to the user server api
 - Properly implement session cookie expiration
 - Implement Urql graphcache
 - Actually develop the project
 - Deploy web on vercel and server and it's services on DO droplet and maybe some automatic deployment with gh actions
-- Maybe add standard-version/semantic-release?
+- Maybe add standard-version/semantic-release/changeset?
 - Add more .md files to properly document the contribution process and attract contributors
+- Add accessibility, interaction, userflow, integration and unit tests e.g. by using storybook, crypress and jest
+  - Also implement eslint plugins when necessary!
 - Add docker & docker-compose for development?
 
 ### Notes

@@ -16,8 +16,6 @@ import { IS_PROD, PORT, SESSION_NAME } from "./config/constants";
 import { UserResolver } from "./resolvers/user";
 import type { Context } from "./types";
 
-console.log("lool");
-
 (async () => {
   const orm = await MikroORM.init();
 

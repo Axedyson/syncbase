@@ -16,16 +16,17 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      #- name: Check specific changed UI files
-      #  uses: dorny/paths-filter@v2
-      #  id: changes
-      #  with:
-      #    filters: |
-      #      ui:
-      #        - 'packages/web/src/components/ui/**/*.tsx'
-      #        - 'packages/web/.storybook/*'
-      #        - 'packages/web/src/global.css'
-      #        - 'packages/web/tailwind.config.js'
+      - name: Check for changed UI files
+        uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            ui:
+              - 'packages/web/src/components/ui/**/*.tsx'
+              - 'packages/web/.storybook/*'
+              - 'packages/web/src/global.css'
+              - 'packages/web/tailwind.config.js'
+              - 'packages/web/package.json'
       - name: Set up node 14
         uses: actions/setup-node@v2
         with:
@@ -38,8 +39,7 @@ jobs:
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         with:
-          #skip: ${{ steps.changes.outputs.ui == 'false' }}
-          onlyChanged: true
+          skip: ${{ steps.changes.outputs.ui == 'false' }}
           projectToken: 64e3a9911647
           workingDir: packages/web
           storybookBuildDir: storybook-static

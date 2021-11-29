@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "check-types": "tsc --noEmit",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook --webpack-stats-json storybook-static"
+    "storybook": "start-storybook -p 6006"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.8.3",

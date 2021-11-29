@@ -42,4 +42,4 @@ jobs:
           onlyChanged: true
           projectToken: 64e3a9911647
           workingDir: packages/web
-          #storybookBuildDir: storybook-static
+          storybookBuildDir: storybook-static

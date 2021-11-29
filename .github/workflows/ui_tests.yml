@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  # TODO: Add accessibility, interaction and maybe userflow testing (maybe it should be in tests.yml)
+  # TODO: Add accessibility, interaction and maybe userflow testing (maybe these should be in tests.yml)
   chromatic:
     name: Visual
     runs-on: ubuntu-latest
@@ -27,6 +27,7 @@ jobs:
               - 'packages/web/src/global.css'
               - 'packages/web/tailwind.config.js'
               - 'packages/web/package.json'
+              - '.github/workflows/ui_tests.yml'
       - name: Set up node 14
         uses: actions/setup-node@v2
         with:

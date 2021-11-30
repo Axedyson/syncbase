@@ -14,6 +14,9 @@
     },
     { "rule": "@graphql-eslint/fields-on-correct-type", "severity": "off" },
     { "rule": "@graphql-eslint/known-type-names", "severity": "off" },
+    { "rule": "@graphql-eslint/unique-operation-name", "severity": "off" },
+    { "rule": "@graphql-eslint/unique-fragment-name", "severity": "off" },
+    { "rule": "@graphql-eslint/require-id-when-available", "severity": "off" },
     { "rule": "import/no-unused-modules", "severity": "off" }
   ],
   // Not sure how to make a regex that is able to match strings in template string interpolations.

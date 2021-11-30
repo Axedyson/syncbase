@@ -9,6 +9,10 @@
   "eslint.validate": ["graphql"],
   "eslint.rules.customizations": [
     {
+      "rule": "no-autofix/@graphql-eslint/no-unreachable-types",
+      "severity": "off"
+    },
+    {
       "rule": "no-autofix/@graphql-eslint/no-unused-fields",
       "severity": "off"
     },

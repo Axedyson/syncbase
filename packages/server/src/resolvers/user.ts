@@ -1,6 +1,6 @@
 import argon2 from "argon2";
 import { IsEmail, Length } from "class-validator";
-import { GraphQLEmailAddress, GraphQLURL } from "graphql-scalars";
+import { GraphQLEmailAddress } from "graphql-scalars";
 import {
   Arg,
   Ctx,
@@ -26,9 +26,6 @@ class RegisterUserInput {
   @Field()
   @Length(7, 30)
   password!: string;
-
-  @Field(() => GraphQLURL)
-  image!: string;
 }
 
 @Resolver()
@@ -45,9 +42,14 @@ export class UserResolver {
       name: input.name,
       email: input.email,
       password: hashedPassword,
-      image: input.image,
     });
-    await em.persistAndFlush(user);
+    await new Promise((resolve) => setTimeout(resolve, 5000));
+    // TODO: This needs to be a lot better!
+    try {
+      await em.persistAndFlush(user);
+    } catch {
+      throw new Error("the email has been taken!!!");
+    }
     return user;
   }
 

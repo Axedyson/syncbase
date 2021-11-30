@@ -18,19 +18,11 @@ type Query {
 
 input RegisterUserInput {
   email: EmailAddress!
-  image: URL!
   name: String!
   password: String!
 }
 
-"""
-A field whose value conforms to the standard URL format as specified in RFC3986: https://www.ietf.org/rfc/rfc3986.txt.
-"""
-scalar URL
-
 type User {
   email: EmailAddress!
-  id: ID!
-  image: URL!
   name: String!
 }

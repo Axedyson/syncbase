@@ -1,12 +1,15 @@
 mutation RegisterUser($userInput: RegisterUserInput!) {
   RegisterUser(input: $userInput) {
-    ...UserFields
+    email
+    name
   }
 }
 
-fragment UserFields on User {
-  email
-  id
-  image
-  name
+# TODO: Delete this when you are done
+
+query Users {
+  users {
+    email
+    name
+  }
 }

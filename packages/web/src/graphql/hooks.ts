@@ -15,8 +15,6 @@ export type Scalars = {
   Float: number;
   /** A field whose value conforms to the standard internet email address format as specified in RFC822: https://www.w3.org/Protocols/rfc822/. */
   EmailAddress: string;
-  /** A field whose value conforms to the standard URL format as specified in RFC3986: https://www.ietf.org/rfc/rfc3986.txt. */
-  URL: string;
 };
 
 export type Mutation = {
@@ -36,7 +34,6 @@ export type Query = {
 
 export type RegisterUserInput = {
   email: Scalars['EmailAddress'];
-  image: Scalars['URL'];
   name: Scalars['String'];
   password: Scalars['String'];
 };
@@ -44,8 +41,6 @@ export type RegisterUserInput = {
 export type User = {
   __typename?: 'User';
   email: Scalars['EmailAddress'];
-  id: Scalars['ID'];
-  image: Scalars['URL'];
   name: Scalars['String'];
 };
 
@@ -54,35 +49,18 @@ export type RegisterUserMutationVariables = Exact<{
 }>;
 
 
-export type RegisterUserMutation = { __typename?: 'Mutation', RegisterUser: { __typename?: 'User', email: string, image: string } };
-
-export type UsersQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type UsersQuery = { __typename?: 'Query', users: Array<{ __typename?: 'User', id: string, name: string }> };
+export type RegisterUserMutation = { __typename?: 'Mutation', RegisterUser: { __typename?: 'User', email: string, name: string } };
 
 
 export const RegisterUserDocument = gql`
     mutation RegisterUser($userInput: RegisterUserInput!) {
   RegisterUser(input: $userInput) {
     email
-    image
+    name
   }
 }
     `;
 
 export function useRegisterUserMutation() {
   return Urql.useMutation<RegisterUserMutation, RegisterUserMutationVariables>(RegisterUserDocument);
-};
-export const UsersDocument = gql`
-    query Users {
-  users {
-    id
-    name
-  }
-}
-    `;
-
-export function useUsersQuery(options: Omit<Urql.UseQueryArgs<UsersQueryVariables>, 'query'> = {}) {
-  return Urql.useQuery<UsersQuery>({ query: UsersDocument, ...options });
 };

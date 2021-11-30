@@ -32,7 +32,7 @@ export const InputField = <T,>({
   ...props
 }: InputFieldProps<T>): ReturnType<FC> => {
   return (
-    <>
+    <div>
       <label htmlFor={name} className="block mb-1 text-sm text-gray-700">
         {label}
       </label>
@@ -45,6 +45,6 @@ export const InputField = <T,>({
       {errorMsg && (
         <span className="block mt-1 text-sm text-red-600">{errorMsg}</span>
       )}
-    </>
+    </div>
   );
 };

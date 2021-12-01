@@ -18,12 +18,8 @@ I welcome any kind of contribution!
 - Clone this repo
 - Run `yarn` inside of the root folder of the repo to install all necessary packages
 - Make sure that the postgres instance and the redis instance are up and running before starting the node.js backend
-- Two ways to run the node.js backend:
-  - `yarn workspace @syncbase/server dev`
-  - or `cd packages/server && yarn dev`
-- Two ways to run the next.js frontend:
-  - `yarn workspace @syncbase/web dev`
-  - or `cd packages/web && yarn dev`
+- How to run the node.js backend server: `yarn workspace @syncbase/server dev`
+- How to run the next.js frontend server: `yarn workspace @syncbase/web dev`
 
 #### Contribution flow
 

@@ -45,7 +45,7 @@ const IndexPage: FC = () => {
       ))}
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col gap-y-3 p-2"
+        className="flex flex-col gap-y-3 px-2"
       >
         <h2 className="mb-3">Welcome please Register!</h2>
         <InputField

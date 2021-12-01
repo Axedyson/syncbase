@@ -31,7 +31,7 @@ class RegisterUserInput {
 @Resolver()
 export class UserResolver {
   @Mutation(() => User)
-  async RegisterUser(
+  async registerUser(
     @Arg("input") input: RegisterUserInput,
     @Ctx() { em }: Context
   ) {

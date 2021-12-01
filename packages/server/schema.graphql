@@ -9,7 +9,7 @@ A field whose value conforms to the standard internet email address format as sp
 scalar EmailAddress @specifiedBy(url: "https://www.w3.org/Protocols/rfc822/")
 
 type Mutation {
-  RegisterUser(input: RegisterUserInput!): User!
+  registerUser(input: RegisterUserInput!): User!
 }
 
 type Query {

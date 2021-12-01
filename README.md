@@ -11,7 +11,7 @@ I welcome any kind of contribution!
 #### Project setup
 
 - I highly recommend to use vscode, but it's also fine to use a different code editor!
-- Have node installed, preferably a version that is minimum 14 (I'm using v14.18.1 LTS)
+- Have node installed, preferably a version that is minimum 16 (I'm using v16.13.0 LTS)
 - Have yarn installed
 - Have postgresql installed, also the user postgres needs to have the password postgres
 - Have redis installed

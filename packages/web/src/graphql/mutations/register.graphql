@@ -1,11 +1,9 @@
 mutation RegisterUser($userInput: RegisterUserInput!) {
-  RegisterUser(input: $userInput) {
+  registerUser(input: $userInput) {
     email
     name
   }
 }
-
-# TODO: Delete this when you are done
 
 query Users {
   users {

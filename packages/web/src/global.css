@@ -4,7 +4,8 @@
 
 @layer base {
   h1,
-  h2 {
+  h2,
+  h3 {
     @apply font-bold;
   }
 
@@ -14,5 +15,9 @@
 
   h2 {
     @apply text-xl;
+  }
+
+  h3 {
+    @apply text-lg;
   }
 }

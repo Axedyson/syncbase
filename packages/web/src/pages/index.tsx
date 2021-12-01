@@ -4,7 +4,7 @@ import * as z from "zod";
 import { Button } from "../components/ui/Button";
 import { InputField } from "../components/ui/form/InputField";
 import { urqlClientWrapper } from "../graphql/client";
-import { useRegisterUserMutation } from "../graphql/hooks";
+import { useRegisterUserMutation, useUsersQuery } from "../graphql/hooks";
 import type { FC } from "react";
 import type { SubmitHandler } from "react-hook-form";
 
@@ -22,6 +22,7 @@ type RegisterInput = z.infer<typeof schema>;
 
 const IndexPage: FC = () => {
   const [, submitInput] = useRegisterUserMutation();
+  const [result] = useUsersQuery();
   const {
     register,
     handleSubmit,
@@ -33,11 +34,15 @@ const IndexPage: FC = () => {
   const onSubmit: SubmitHandler<RegisterInput> = async (data) => {
     const result = await submitInput({ userInput: data });
     if (result.error) console.log(result.error.message);
-    else console.log(result.data?.RegisterUser.email);
+    else console.log(result.data?.registerUser.email);
   };
 
   return (
     <div className="m-auto w-3/12">
+      <h3>Here we have some usernames:</h3>
+      {result.data?.users.map((user) => (
+        <p key={user.email}>{user.name}</p>
+      ))}
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col gap-y-3 p-2"

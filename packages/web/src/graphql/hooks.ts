@@ -19,7 +19,7 @@ export type Scalars = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  RegisterUser: User;
+  registerUser: User;
 };
 
 
@@ -49,12 +49,17 @@ export type RegisterUserMutationVariables = Exact<{
 }>;
 
 
-export type RegisterUserMutation = { __typename?: 'Mutation', RegisterUser: { __typename?: 'User', email: string, name: string } };
+export type RegisterUserMutation = { __typename?: 'Mutation', registerUser: { __typename?: 'User', email: string, name: string } };
+
+export type UsersQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type UsersQuery = { __typename?: 'Query', users: Array<{ __typename?: 'User', email: string, name: string }> };
 
 
 export const RegisterUserDocument = gql`
     mutation RegisterUser($userInput: RegisterUserInput!) {
-  RegisterUser(input: $userInput) {
+  registerUser(input: $userInput) {
     email
     name
   }
@@ -63,4 +68,16 @@ export const RegisterUserDocument = gql`
 
 export function useRegisterUserMutation() {
   return Urql.useMutation<RegisterUserMutation, RegisterUserMutationVariables>(RegisterUserDocument);
+};
+export const UsersDocument = gql`
+    query Users {
+  users {
+    email
+    name
+  }
+}
+    `;
+
+export function useUsersQuery(options: Omit<Urql.UseQueryArgs<UsersQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<UsersQuery>({ query: UsersDocument, ...options });
 };

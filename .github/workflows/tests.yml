@@ -16,10 +16,10 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
-      - name: Set up node 14
+      - name: Set up node 16
         uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 16
           cache: "yarn"
       - name: Install dependencies
         run: yarn install

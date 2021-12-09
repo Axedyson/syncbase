@@ -3,9 +3,6 @@ const path = require("path");
 // Don't upgrade to eslint v8.0.0 since eslint-plugin-type-graphql doesn't support that version yet.
 // Look here for more info: https://github.com/borremosch/eslint-plugin-type-graphql/issues/21
 
-// Is eslint-config-next still needed as a dependency to make this work?
-// look here for more info: https://github.com/vercel/next.js/issues/27981
-
 /**
  * @type {import('eslint').Linter.Config}
  */
@@ -179,7 +176,6 @@ module.exports = {
         operations: ["packages/web/src/graphql/**/*.graphql"],
         schema: "packages/server/schema.graphql",
       },
-      plugins: ["no-autofix"],
       rules: {
         "prettier/prettier": "warn",
         "@graphql-eslint/alphabetize": [
@@ -210,20 +206,15 @@ module.exports = {
               "warn",
               { checkInputType: true, caseSensitiveInputType: false },
             ],
-            // Whenever vscode users get the "no-autofix/@graphql-eslint/no-unused-fields" rule error and they solve
+            // Whenever vscode users get the "@graphql-eslint/no-unused-fields" rule error and they solve
             // the error immediately, they have to reload their entire window/eslint server
             // to make VS Code ESLint extension happy.
             // Because the user dev experience would be quite bad, the rule is disabled in the workspace settings
-            // Probably has something to do with: https://github.com/dotansimha/graphql-eslint/issues/593#issuecomment-982066342
+            // For reference: https://github.com/dotansimha/graphql-eslint/issues/593#issuecomment-982066342
             // The same applies for these rules (there will probably be added more):
             // "@graphql-eslint/fields-on-correct-type", "@graphql-eslint/known-type-names", "@graphql-eslint/unique-operation-name",
-            // "@graphql-eslint/unique-fragment-name", "@graphql-eslint/require-id-when-available" and "no-autofix/@graphql-eslint/no-unreachable-types".
-            // We are also disabling the autofix feature on the rule as we want to fix this error manually
-            // in the typegraphql typescript code!
-            "no-autofix/@graphql-eslint/no-unused-fields": "error",
-            // We are also disabling the autofix feature on this rule for the same reason!
-            "@graphql-eslint/no-unreachable-types": "off",
-            "no-autofix/@graphql-eslint/no-unreachable-types": "error",
+            // "@graphql-eslint/unique-fragment-name", "@graphql-eslint/require-id-when-available" and "@graphql-eslint/no-unreachable-types".
+            "@graphql-eslint/no-unused-fields": "error",
           },
         },
       ],

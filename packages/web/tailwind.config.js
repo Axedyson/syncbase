@@ -4,9 +4,7 @@ const defaultTheme = require("tailwindcss/defaultTheme");
  * @type {import("@types/tailwindcss/tailwind-config").TailwindConfig }
  */
 module.exports = {
-  mode: "jit",
-  purge: ["./src/**/*.{js,ts,tsx}"],
-  darkMode: false, // or 'media' or 'class'
+  content: ["./src/components/**/*.tsx", "./src/pages/**/*.tsx"],
   theme: {
     fontWeight: {
       medium: 500,
@@ -21,9 +19,6 @@ module.exports = {
         primary: "#FF9400",
       },
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [],
 };

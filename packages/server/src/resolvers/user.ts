@@ -1,3 +1,4 @@
+import { UserInputError } from "apollo-server-express";
 import argon2 from "argon2";
 import { IsEmail, Length } from "class-validator";
 import { GraphQLEmailAddress } from "graphql-scalars";
@@ -48,7 +49,7 @@ export class UserResolver {
     try {
       await em.persistAndFlush(user);
     } catch {
-      throw new Error("the email has been taken!!!");
+      throw new UserInputError("the email has been taken!!!");
     }
     return user;
   }

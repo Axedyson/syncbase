@@ -16,15 +16,14 @@ const ButtonClasses = ctl(`
   font-semibold
   text-white
   bg-primary
-  hover:bg-opacity-80
   rounded-md
+  focus:outline-none
   focus:ring-4
-  focus:ring-primary
-  focus:ring-opacity-40
+  focus:ring-primary/40
+  hover:opacity-80
   disabled:opacity-60
   transition
   disabled:cursor-default
-  focus:outline-none
 `);
 
 export const Button: FC<ButtonProps> = ({ label, loading, ...props }) => {

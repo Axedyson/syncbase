@@ -17,10 +17,10 @@ const InputFieldClasses = (error: boolean) =>
   rounded-md
   border
   focus:border-primary
+  focus:outline-none
   focus:ring-1
   focus:ring-primary
   transition
-  focus:outline-none
   ${error ? "border-red-300" : "border-gray-300"}
 `);
 

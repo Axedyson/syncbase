@@ -121,6 +121,7 @@ module.exports = {
           "error",
           path.join(__dirname, "packages/web/src/pages"),
         ],
+        "tailwindcss/no-arbitrary-value": "warn",
       },
       settings: {
         tailwindcss: {

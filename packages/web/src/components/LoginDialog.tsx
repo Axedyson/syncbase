@@ -63,11 +63,6 @@ export const LoginDialog: FC = () => {
         />
         <Button label="Create Account" type="submit" loading={isSubmitting} />
       </form>
-      {/*       <div
-        className="hidden overflow-y-auto fixed inset-0 w-full h-full bg-gray-600 bg-opacity-50"
-        id="my-modal"
-      >
-      </div> */}
     </>
   );
 };

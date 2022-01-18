@@ -1,19 +1,30 @@
+import { useState } from "react";
 import { LoginDialog } from "../components/LoginDialog";
+import { Button } from "../components/ui/Button";
+import { Dialog } from "../components/ui/Dialog";
 import { urqlClientWrapper } from "../graphql/client";
-import { useUsersQuery } from "../graphql/hooks";
 import type { FC } from "react";
 
 const IndexPage: FC = () => {
-  const [result] = useUsersQuery();
+  const [open, setOpen] = useState(false);
+
+  const openModal = () => {
+    setOpen(true);
+  };
+
+  const closeModal = () => {
+    setOpen(false);
+  };
 
   return (
-    <div className="m-auto w-3/12">
-      <h3>Here we have some usernames:</h3>
-      {result.data?.users.map((user) => (
-        <p key={user.email}>{user.name}</p>
-      ))}
+    <>
+      <div className="flex gap-2 p-2 m-auto rounded-md border-2 border-slate-400">
+        <Button onClick={openModal} label="Log In" />
+        <Button onClick={openModal} label="Create Account" />
+      </div>
+      <Dialog isOpen={open} closeModal={closeModal} />
       <LoginDialog />
-    </div>
+    </>
   );
 };
 

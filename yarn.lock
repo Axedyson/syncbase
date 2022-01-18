@@ -2591,6 +2591,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hookstate/core@npm:^3.0.13":
+  version: 3.0.13
+  resolution: "@hookstate/core@npm:3.0.13"
+  peerDependencies:
+    react: ^16.8.6 || ^17.0.0
+  checksum: 8fe0b8feaf157becb6525059f80df31ebfe32dc83e524a724c5e37898ad823e18440dd4bb7562c5fb2ac624be6b3a74816f47c53f3179924ef409c46f4e6d10b
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.9.2":
   version: 0.9.2
   resolution: "@humanwhocodes/config-array@npm:0.9.2"
@@ -4683,6 +4692,7 @@ __metadata:
     "@graphql-codegen/typescript-urql": ^3.4.2
     "@headlessui/react": ^1.4.3
     "@hookform/resolvers": ^2.8.7
+    "@hookstate/core": ^3.0.13
     "@netlify/classnames-template-literals": ^1.0.3
     "@storybook/addon-a11y": ^6.4.13
     "@storybook/addon-essentials": ^6.4.13

@@ -12,6 +12,7 @@
   "dependencies": {
     "@headlessui/react": "^1.4.3",
     "@hookform/resolvers": "^2.8.7",
+    "@hookstate/core": "^3.0.13",
     "@netlify/classnames-template-literals": "^1.0.3",
     "graphql": "^15.8.0",
     "next": "^12.0.8",

@@ -1,34 +1,33 @@
 import { Dialog as HeadlessDialog } from "@headlessui/react";
-import { useLoginDialog } from "../../../stores/useLoginDialog";
 import { Button } from "../Button";
 import type { FC } from "react";
 
-export const Dialog: FC = () => {
-  const dialogStore = useLoginDialog();
+interface DialogProps {
+  title: string;
+  description: string;
+  isOpen: boolean;
+  close: () => void;
+}
 
+export const Dialog: FC<DialogProps> = ({
+  title,
+  description,
+  isOpen,
+  close,
+  children,
+}) => {
   return (
     <>
-      <div className="flex gap-2 p-2 m-auto rounded-md border-2 border-slate-400">
-        <Button onClick={() => dialogStore.open()} label="Log In" />
-        <Button onClick={() => dialogStore.open()} label="Create Account" />
-      </div>
       <HeadlessDialog
-        open={dialogStore.isOpen}
-        onClose={() => dialogStore.close()}
+        open={isOpen}
+        onClose={close}
+        className="overflow-y-auto fixed inset-0 z-10"
       >
-        <HeadlessDialog.Overlay />
-
-        <HeadlessDialog.Title>Deactivate account</HeadlessDialog.Title>
-        <HeadlessDialog.Description>
-          This will permanently deactivate your account
-        </HeadlessDialog.Description>
-
-        <p>
-          Are you sure you want to deactivate your account? All of your data
-          will be permanently removed. This action cannot be undone.
-        </p>
-
-        <Button onClick={() => dialogStore.close()} label="Cancel" />
+        <HeadlessDialog.Overlay className="fixed inset-0 bg-black opacity-30" />
+        <HeadlessDialog.Title>{title}</HeadlessDialog.Title>
+        <HeadlessDialog.Description>{description}</HeadlessDialog.Description>
+        {children}
+        <Button onClick={close} label="Cancel" />
       </HeadlessDialog>
     </>
   );

@@ -1,9 +1,9 @@
 import { createState, useHookstate } from "@hookstate/core";
 
-const openDialogStore = createState(false);
+const dialogStore = createState(false);
 
 export const useLoginDialog = () => {
-  const store = useHookstate(openDialogStore);
+  const store = useHookstate(dialogStore);
 
   return {
     get isOpen() {

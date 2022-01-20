@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useRegisterUserMutation } from "../graphql/hooks";
-import { useLoginDialog } from "../stores/useLoginDialog";
+import { useLoginDialog } from "../hooks/useLoginDialog";
 import { Button } from "./ui/Button";
 import { Dialog } from "./ui/Dialog";
 import { InputField } from "./ui/InputField";

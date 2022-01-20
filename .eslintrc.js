@@ -1,8 +1,5 @@
 const path = require("path");
 
-// Don't upgrade to eslint v8.0.0 since eslint-plugin-type-graphql doesn't support that version yet.
-// Look here for more info: https://github.com/borremosch/eslint-plugin-type-graphql/issues/21
-
 /**
  * @type {import('eslint').Linter.Config}
  */

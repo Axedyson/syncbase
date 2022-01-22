@@ -1,5 +1,4 @@
 import { Dialog as HeadlessDialog } from "@headlessui/react";
-import { Button } from "../Button";
 import type { FC } from "react";
 
 interface DialogProps {
@@ -23,11 +22,17 @@ export const Dialog: FC<DialogProps> = ({
         onClose={close}
         className="overflow-y-auto fixed inset-0 z-10"
       >
-        <HeadlessDialog.Overlay className="fixed inset-0 bg-black opacity-30" />
-        <HeadlessDialog.Title>{title}</HeadlessDialog.Title>
-        <HeadlessDialog.Description>{description}</HeadlessDialog.Description>
-        {children}
-        <Button onClick={close} label="Cancel" />
+        <div className="flex justify-center items-center min-h-screen">
+          <HeadlessDialog.Overlay className="fixed inset-0 bg-black opacity-30" />
+
+          <div className="relative py-3 px-2 bg-white rounded-lg">
+            <HeadlessDialog.Title>{title}</HeadlessDialog.Title>
+            <HeadlessDialog.Description>
+              {description}
+            </HeadlessDialog.Description>
+            {children}
+          </div>
+        </div>
       </HeadlessDialog>
     </>
   );

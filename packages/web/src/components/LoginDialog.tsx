@@ -49,7 +49,6 @@ export const LoginDialog: FC = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col gap-y-3 px-2"
       >
-        <h2 className="mb-3">Welcome please Register!</h2>
         <InputField
           label="Username"
           name="name"
@@ -70,6 +69,7 @@ export const LoginDialog: FC = () => {
           register={register}
         />
         <Button label="Create Account" type="submit" loading={isSubmitting} />
+        <Button onClick={dialog.close} label="Cancel" />
       </form>
     </Dialog>
   );

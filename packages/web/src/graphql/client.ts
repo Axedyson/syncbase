@@ -5,7 +5,7 @@ import type { FC } from "react";
 export const urqlClientWrapper = (page: FC, ssr?: boolean) =>
   withUrqlClient(
     (ssrExchange) => ({
-      url: "http://localhost:5000/graphql",
+      url: "http://localhost:8080/graphql",
       fetchOptions: { credentials: "include" },
       exchanges: [dedupExchange, cacheExchange, ssrExchange, fetchExchange],
     }),

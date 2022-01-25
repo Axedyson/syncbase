@@ -1,4 +1,4 @@
-import { LoginDialog } from "../components/LoginDialog";
+import { LoginDialog } from "../components/login/LoginDialog";
 import { Button } from "../components/ui/Button";
 import { urqlClientWrapper } from "../graphql/client";
 import { useLoginDialog } from "../hooks/useLoginDialog";

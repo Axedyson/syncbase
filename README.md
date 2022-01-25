@@ -41,7 +41,7 @@ I welcome any kind of contribution!
 - Deploy web on vercel and server and it's services on DO droplet and maybe some automatic deployment with gh actions
 - Maybe add standard-version/semantic-release/changeset?
 - Add more .md files to properly document the contribution process and attract contributors
-- Add accessibility, interaction, userflow, integration and unit tests e.g. by using storybook, crypress and jest
+- Add accessibility, interaction, userflow, integration and unit tests e.g. by using storybook, cypress/playwright and jest
   - Also implement eslint plugins when necessary!
 - Add docker & docker-compose for development?
 

@@ -3,19 +3,11 @@ import { Fragment } from "react";
 import type { FC } from "react";
 
 interface DialogProps {
-  title: string;
-  description: string;
   isOpen: boolean;
   close: () => void;
 }
 
-export const Dialog: FC<DialogProps> = ({
-  title,
-  description,
-  isOpen,
-  close,
-  children,
-}) => {
+export const Dialog: FC<DialogProps> = ({ isOpen, close, children }) => {
   return (
     <Transition show={isOpen} as={Fragment}>
       <HeadlessDialog
@@ -43,11 +35,7 @@ export const Dialog: FC<DialogProps> = ({
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <div className="relative py-3 px-2 bg-white rounded-lg shadow-xl">
-              <HeadlessDialog.Title>{title}</HeadlessDialog.Title>
-              <HeadlessDialog.Description>
-                {description}
-              </HeadlessDialog.Description>
+            <div className="relative p-3 m-2 w-full bg-white rounded-lg shadow-lg sm:w-96">
               {children}
             </div>
           </Transition.Child>

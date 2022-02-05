@@ -1,5 +1,5 @@
 import { Dialog as HeadlessDialog, Transition } from "@headlessui/react";
-import { Fragment } from "react";
+import { Fragment, useRef } from "react";
 import type { FC } from "react";
 
 interface DialogProps {
@@ -8,13 +8,22 @@ interface DialogProps {
 }
 
 export const Dialog: FC<DialogProps> = ({ isOpen, close, children }) => {
+  // We are using this ref here for the purpose of removing an annoying warning
+  // in the console when the children prop is <TabGroup/> component
+  // https://github.com/tailwindlabs/headlessui/issues/265#issuecomment-880055784
+  const innerDivEl = useRef(null);
+
   return (
     <Transition show={isOpen} as={Fragment}>
       <HeadlessDialog
-        onClose={close}
+        initialFocus={innerDivEl}
         className="overflow-y-auto fixed inset-0 z-10"
+        onClose={close}
       >
-        <div className="flex justify-center items-center min-h-screen">
+        <div
+          className="flex justify-center items-center min-h-screen"
+          ref={innerDivEl}
+        >
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"

@@ -9,7 +9,7 @@ interface InputFieldProps<T> extends ComponentPropsWithoutRef<"input"> {
   register: UseFormRegister<T>;
 }
 
-const InputFieldClasses = (error: boolean) =>
+const inputFieldClasses = (error: boolean) =>
   ctl(`
   py-2
   px-3
@@ -40,7 +40,7 @@ export const InputField = <T,>({
         id={name}
         {...register(name)}
         {...props}
-        className={InputFieldClasses(!!errorMsg)}
+        className={inputFieldClasses(!!errorMsg)}
       />
       {errorMsg && (
         <span className="block mt-1 text-sm text-red-600">{errorMsg}</span>

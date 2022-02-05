@@ -7,7 +7,7 @@ interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
   loading?: boolean;
 }
 
-const ButtonClasses = ctl(`
+const buttonClasses = ctl(`
   flex
   justify-center
   items-center
@@ -30,7 +30,7 @@ export const Button: FC<ButtonProps> = ({ label, loading, ...props }) => {
   return (
     <button
       type="button"
-      className={ButtonClasses}
+      className={buttonClasses}
       disabled={loading}
       {...props}
     >

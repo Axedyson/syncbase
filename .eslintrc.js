@@ -107,7 +107,6 @@ module.exports = {
         "unused-imports/no-unused-vars": [
           "error",
           {
-            vars: "all",
             args: "all",
             argsIgnorePattern: "^_",
           },

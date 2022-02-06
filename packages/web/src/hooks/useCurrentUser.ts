@@ -10,8 +10,8 @@ export const useCurrentUser = (
   const { replace } = useRouter();
 
   useEffect(() => {
-    if (redirect && !data?.me) replace("/");
-  }, [data?.me, redirect, replace]);
+    if (redirect && !fetching && !data?.me) replace("/");
+  }, [data?.me, redirect, replace, fetching]);
 
   return [fetching, data?.me];
 };

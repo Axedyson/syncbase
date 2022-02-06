@@ -31,8 +31,7 @@ export const LoginForm: FC = () => {
   });
 
   const onSubmit: SubmitHandler<LoginInput> = async (data) => {
-    const result = await submitInput({ userInput: data });
-    if (result.error) console.log(result.error.message);
+    await submitInput({ userInput: data });
   };
 
   return (

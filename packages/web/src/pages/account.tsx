@@ -12,7 +12,7 @@ const AccountPage: FC = () => {
   if (fetching) {
     return (
       <div className="flex gap-2 p-2 m-auto rounded-md border-2 border-slate-400">
-        <p>Loading state indicator</p>;
+        <p>Loading state indicator</p>
       </div>
     );
   }

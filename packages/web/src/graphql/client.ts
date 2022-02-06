@@ -1,8 +1,9 @@
 import { cacheExchange } from "@urql/exchange-graphcache";
 import { withUrqlClient } from "next-urql";
-import { dedupExchange, fetchExchange } from "urql";
+import { dedupExchange, errorExchange, fetchExchange } from "urql";
 import { MeDocument } from "./hooks";
 import type { FC } from "react";
+import type { CombinedError } from "urql";
 
 export const urqlClientWrapper = (page: FC, ssr?: boolean) =>
   withUrqlClient(
@@ -13,6 +14,11 @@ export const urqlClientWrapper = (page: FC, ssr?: boolean) =>
         headers: { cookie: ctx?.req?.headers?.cookie ?? "" },
       },
       exchanges: [
+        errorExchange({
+          onError: (error: CombinedError) => {
+            console.log("An error!", error.graphQLErrors[0].message);
+          },
+        }),
         dedupExchange,
         cacheExchange({
           updates: {

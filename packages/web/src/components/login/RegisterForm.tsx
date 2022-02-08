@@ -26,13 +26,20 @@ export const RegisterForm: FC = () => {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors, isSubmitting },
   } = useForm<RegisterInput>({
     resolver: zodResolver(schema),
   });
 
   const onSubmit: SubmitHandler<RegisterInput> = async (data) => {
-    await submitInput({ userInput: data });
+    const result = await submitInput({ userInput: data });
+
+    // TODO: Look at this for more info:
+    // https://react-hook-form.com/api/useform/seterror
+    result.error?.graphQLErrors.forEach((error) => {
+      setError(error.extensions.field, { message: error.message });
+    });
   };
 
   return (

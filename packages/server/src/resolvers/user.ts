@@ -56,13 +56,11 @@ export class UserResolver {
       email: input.email,
       password: hashedPassword,
     });
-    await new Promise((resolve) => setTimeout(resolve, 5000));
 
-    // TODO: This needs to be a lot better!
     try {
       await em.persistAndFlush(user);
     } catch {
-      throw new UserInputError("the email has been taken!!!");
+      throw new UserInputError("The email has been taken!", { field: "email" });
     }
 
     req.session.userId = user.id;

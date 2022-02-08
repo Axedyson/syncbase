@@ -16,7 +16,14 @@ export const urqlClientWrapper = (page: FC, ssr?: boolean) =>
       exchanges: [
         errorExchange({
           onError: (error: CombinedError) => {
-            console.log("An error!", error.graphQLErrors[0].message);
+            error.graphQLErrors.forEach((error) => {
+              if (error.extensions.code !== "BAD_USER_INPUT") {
+                console.log(
+                  "the following error should be in a toast component: ",
+                  error.message
+                );
+              }
+            });
           },
         }),
         dedupExchange,

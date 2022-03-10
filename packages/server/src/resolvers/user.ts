@@ -1,3 +1,4 @@
+import { OptionalProps } from "@mikro-orm/core";
 import { UserInputError } from "apollo-server-express";
 import argon2 from "argon2";
 import { IsEmail, Length } from "class-validator";
@@ -57,6 +58,10 @@ export class UserResolver {
       password: hashedPassword,
     });
 
+    // TODO: Delete this when you're done!
+    const lol = user[OptionalProps];
+    console.log(lol);
+
     try {
       await em.persistAndFlush(user);
     } catch {
@@ -72,7 +77,7 @@ export class UserResolver {
   async loginUser(
     @Arg("input") input: LoginUserInput,
     @Ctx() { em, req }: Context
-  ) {
+  ): Promise<User> {
     const notFoundMsg = "Coudn't find a user with that email or password";
     const user = await em.findOne(User, { email: input.email.toLowerCase() });
 
@@ -101,7 +106,7 @@ export class UserResolver {
   }
 
   @Query(() => User, { nullable: true })
-  async me(@Ctx() { em, req }: Context) {
+  async me(@Ctx() { em, req }: Context): Promise<User | null> {
     const userId = req.session.userId;
 
     if (!userId) return null;

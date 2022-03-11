@@ -1,7 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useMutation } from "urql";
 import { z } from "zod";
-import { useRegisterUserMutation } from "../../graphql/hooks";
+import { RegisterUserDocument } from "../../graphql/hooks";
 import { useLoginDialog } from "../../hooks/useLoginDialog";
 import { Button } from "../ui/Button";
 import { InputField } from "../ui/InputField";
@@ -22,7 +23,7 @@ type RegisterInput = z.infer<typeof schema>;
 
 export const RegisterForm: FC = () => {
   const dialog = useLoginDialog();
-  const [, submitInput] = useRegisterUserMutation();
+  const [, submitInput] = useMutation(RegisterUserDocument);
   const {
     register,
     handleSubmit,

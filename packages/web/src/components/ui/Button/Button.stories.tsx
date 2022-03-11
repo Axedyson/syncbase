@@ -1,11 +1,7 @@
 import { expect } from "@storybook/jest";
 import { userEvent, within } from "@storybook/testing-library";
 import { Button } from "./Button";
-import type {
-  ComponentMeta,
-  ComponentStory,
-  ComponentStoryObj,
-} from "@storybook/react";
+import type { ComponentMeta, ComponentStory } from "@storybook/react";
 
 export default {
   title: "Button",
@@ -25,10 +21,8 @@ Loading.args = {
   loading: true,
 };
 
-export const Tests: ComponentStoryObj<typeof Button> = {
-  play: async ({ args, canvasElement }) => {
-    const canvas = within(canvasElement);
-    await userEvent.click(canvas.getByRole("button"));
-    await expect(args.onClick).toHaveBeenCalled();
-  },
+Primary.play = async ({ args, canvasElement }) => {
+  const canvas = within(canvasElement);
+  await userEvent.click(canvas.getByRole("button"));
+  await expect(args.onClick).toHaveBeenCalled();
 };

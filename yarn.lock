@@ -2076,6 +2076,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@graphql-codegen/typed-document-node@npm:^2.2.7":
+  version: 2.2.7
+  resolution: "@graphql-codegen/typed-document-node@npm:2.2.7"
+  dependencies:
+    "@graphql-codegen/plugin-helpers": ^2.4.0
+    "@graphql-codegen/visitor-plugin-common": 2.7.3
+    auto-bind: ~4.0.0
+    change-case-all: 1.0.14
+    tslib: ~2.3.0
+  peerDependencies:
+    graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+  checksum: b89541912aecdbde86fc582bec6cb624f76dea0532e537d91ff63ac7459df09baa9c5b44699b91ebee4695d5214a24f8276e637a39fa595a28fddaf07506344d
+  languageName: node
+  linkType: hard
+
 "@graphql-codegen/typescript-operations@npm:2.3.4":
   version: 2.3.4
   resolution: "@graphql-codegen/typescript-operations@npm:2.3.4"
@@ -2091,18 +2106,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-codegen/typescript-urql@npm:^3.5.5":
-  version: 3.5.5
-  resolution: "@graphql-codegen/typescript-urql@npm:3.5.5"
+"@graphql-codegen/typescript-urql-graphcache@npm:^2.2.8":
+  version: 2.2.8
+  resolution: "@graphql-codegen/typescript-urql-graphcache@npm:2.2.8"
   dependencies:
     "@graphql-codegen/plugin-helpers": ^2.4.0
     "@graphql-codegen/visitor-plugin-common": 2.7.3
     auto-bind: ~4.0.0
+    change-case-all: 1.0.14
     tslib: ~2.3.0
   peerDependencies:
+    "@urql/exchange-graphcache": ^4.1.1
     graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
     graphql-tag: ^2.0.0
-  checksum: 11fe23c0da4a078a669737358d77bbe53e0cc8a0d5e4d6082ca0d48bac3cfbb78c05b642c6cd5fbbf9175aa8f0d9b65bee839d94858d5b4fcfe2d6816885ab83
+  checksum: 56dc362e588e1052e4ed9b58c9fedec768379695dacb66ba738710c0ca914613f3da9c4b56e412b6afd40726881c55f60726cc93130ef47c046d685087ef3058
   languageName: node
   linkType: hard
 
@@ -4618,9 +4635,10 @@ __metadata:
   resolution: "@syncbase/web@workspace:packages/web"
   dependencies:
     "@graphql-codegen/cli": 2.6.2
+    "@graphql-codegen/typed-document-node": ^2.2.7
     "@graphql-codegen/typescript": 2.4.7
     "@graphql-codegen/typescript-operations": 2.3.4
-    "@graphql-codegen/typescript-urql": ^3.5.5
+    "@graphql-codegen/typescript-urql-graphcache": ^2.2.8
     "@headlessui/react": ^1.5.0
     "@hookform/resolvers": ^2.8.8
     "@hookstate/core": ^3.0.13

@@ -1,15 +1,16 @@
 import Link from "next/link";
+import { useMutation } from "urql";
 import { LoginDialog } from "../components/login/LoginDialog";
 import { Button } from "../components/ui/Button";
 import { urqlClientWrapper } from "../graphql/client";
-import { useLogoutUserMutation } from "../graphql/hooks";
+import { LogoutUserDocument } from "../graphql/hooks";
 import { useCurrentUser } from "../hooks/useCurrentUser";
 import { useLoginDialog } from "../hooks/useLoginDialog";
 import type { FC } from "react";
 
 const IndexPage: FC = () => {
   const dialog = useLoginDialog();
-  const [, logoutUser] = useLogoutUserMutation();
+  const [, logoutUser] = useMutation(LogoutUserDocument);
   const [fetching, user] = useCurrentUser();
 
   if (fetching) {

@@ -2,6 +2,7 @@ import { cacheExchange } from "@urql/exchange-graphcache";
 import { withUrqlClient } from "next-urql";
 import { dedupExchange, errorExchange, fetchExchange } from "urql";
 import { MeDocument } from "./hooks";
+import type { GraphCacheConfig } from "./hooks";
 import type { FC } from "react";
 import type { CombinedError } from "urql";
 
@@ -27,7 +28,7 @@ export const urqlClientWrapper = (page: FC, ssr?: boolean) =>
           },
         }),
         dedupExchange,
-        cacheExchange({
+        cacheExchange<GraphCacheConfig>({
           updates: {
             Mutation: {
               loginUser: (result, _args, cache) => {

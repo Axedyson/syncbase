@@ -2,7 +2,7 @@ import { cacheExchange } from "@urql/exchange-graphcache";
 import { withUrqlClient } from "next-urql";
 import { dedupExchange, errorExchange, fetchExchange } from "urql";
 import { MeDocument } from "./hooks";
-import type { GraphCacheConfig } from "./hooks";
+import type { GraphCacheConfig, MeQuery } from "./hooks";
 import type { FC } from "react";
 import type { CombinedError } from "urql";
 
@@ -33,7 +33,7 @@ export const urqlClientWrapper = (page: FC, ssr?: boolean) =>
             Mutation: {
               loginUser: (result, _args, cache) => {
                 cache.updateQuery({ query: MeDocument }, () => ({
-                  me: result.loginUser,
+                  me: result.loginUser as MeQuery["me"],
                 }));
               },
               logoutUser: (_result, _args, cache) => {

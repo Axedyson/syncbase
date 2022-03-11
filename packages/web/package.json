@@ -59,9 +59,9 @@
         },
         "plugins": [
           "typescript",
-          "typescript-urql-graphcache",
           "typescript-operations",
-          "typed-document-node"
+          "typed-document-node",
+          "typescript-urql-graphcache"
         ]
       }
     }

@@ -1,7 +1,6 @@
 import { TsMorphMetadataProvider } from "@mikro-orm/reflection";
 import { IS_PROD } from "./constants";
 import type { MikroORM } from "@mikro-orm/core";
-// import type { PostgreSqlDriver } from "@mikro-orm/postgresql";
 
 export default {
   dbName: "syncbase",

@@ -1,4 +1,3 @@
-import { OptionalProps } from "@mikro-orm/core";
 import { UserInputError } from "apollo-server-express";
 import argon2 from "argon2";
 import { IsEmail, Length } from "class-validator";
@@ -57,10 +56,6 @@ export class UserResolver {
       email: input.email,
       password: hashedPassword,
     });
-
-    // TODO: Delete this when you're done!
-    const lol = user[OptionalProps];
-    console.log(lol);
 
     try {
       await em.persistAndFlush(user);

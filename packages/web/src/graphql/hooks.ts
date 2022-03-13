@@ -1,11 +1,11 @@
-import gql from 'graphql-tag';
-import * as Urql from 'urql';
+import { Resolver as GraphCacheResolver, UpdateResolver as GraphCacheUpdateResolver, OptimisticMutationResolver as GraphCacheOptimisticMutationResolver, StorageAdapter as GraphCacheStorageAdapter } from '@urql/exchange-graphcache';
+import { IntrospectionData } from '@urql/exchange-graphcache/dist/types/ast';
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -83,52 +83,48 @@ export type MeQuery = { __typename?: 'Query', me?: { __typename?: 'User', email:
 
 export type RegularUserFragment = { __typename?: 'User', email: string, id: string, name: string };
 
-export const RegularUserFragmentDoc = gql`
-    fragment RegularUser on User {
-  email
-  id
-  name
+export const RegularUserFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"RegularUser"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"User"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]} as unknown as DocumentNode<RegularUserFragment, unknown>;
+export const RegisterUserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"RegisterUser"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"userInput"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"RegisterUserInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"registerUser"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"userInput"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"RegularUser"}}]}}]}},...RegularUserFragmentDoc.definitions]} as unknown as DocumentNode<RegisterUserMutation, RegisterUserMutationVariables>;
+export const LoginUserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"LoginUser"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"userInput"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"LoginUserInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"loginUser"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"userInput"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"RegularUser"}}]}}]}},...RegularUserFragmentDoc.definitions]} as unknown as DocumentNode<LoginUserMutation, LoginUserMutationVariables>;
+export const LogoutUserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"LogoutUser"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"logoutUser"}}]}}]} as unknown as DocumentNode<LogoutUserMutation, LogoutUserMutationVariables>;
+export const MeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Me"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"me"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"RegularUser"}}]}}]}},...RegularUserFragmentDoc.definitions]} as unknown as DocumentNode<MeQuery, MeQueryVariables>;
+export type WithTypename<T extends { __typename?: any }> = { [K in Exclude<keyof T, '__typename'>]?: T[K] } & { __typename: NonNullable<T['__typename']> };
+
+export type GraphCacheKeysConfig = {
+  User?: (data: WithTypename<User>) => null | string
 }
-    `;
-export const RegisterUserDocument = gql`
-    mutation RegisterUser($userInput: RegisterUserInput!) {
-  registerUser(input: $userInput) {
-    ...RegularUser
+
+export type GraphCacheResolvers = {
+  Query?: {
+    me?: GraphCacheResolver<WithTypename<Query>, Record<string, never>, WithTypename<User> | string>
+  },
+  User?: {
+    email?: GraphCacheResolver<WithTypename<User>, Record<string, never>, Scalars['EmailAddress'] | string>,
+    id?: GraphCacheResolver<WithTypename<User>, Record<string, never>, Scalars['ID'] | string>,
+    name?: GraphCacheResolver<WithTypename<User>, Record<string, never>, Scalars['String'] | string>
   }
-}
-    ${RegularUserFragmentDoc}`;
-
-export function useRegisterUserMutation() {
-  return Urql.useMutation<RegisterUserMutation, RegisterUserMutationVariables>(RegisterUserDocument);
 };
-export const LoginUserDocument = gql`
-    mutation LoginUser($userInput: LoginUserInput!) {
-  loginUser(input: $userInput) {
-    ...RegularUser
-  }
-}
-    ${RegularUserFragmentDoc}`;
 
-export function useLoginUserMutation() {
-  return Urql.useMutation<LoginUserMutation, LoginUserMutationVariables>(LoginUserDocument);
+export type GraphCacheOptimisticUpdaters = {
+  loginUser?: GraphCacheOptimisticMutationResolver<MutationLoginUserArgs, WithTypename<User>>,
+  logoutUser?: GraphCacheOptimisticMutationResolver<Record<string, never>, Scalars['Boolean']>,
+  registerUser?: GraphCacheOptimisticMutationResolver<MutationRegisterUserArgs, WithTypename<User>>
 };
-export const LogoutUserDocument = gql`
-    mutation LogoutUser {
-  logoutUser
-}
-    `;
 
-export function useLogoutUserMutation() {
-  return Urql.useMutation<LogoutUserMutation, LogoutUserMutationVariables>(LogoutUserDocument);
+export type GraphCacheUpdaters = {
+  Mutation?: {
+    loginUser?: GraphCacheUpdateResolver<{ loginUser: WithTypename<User> }, MutationLoginUserArgs>,
+    logoutUser?: GraphCacheUpdateResolver<{ logoutUser: Scalars['Boolean'] }, Record<string, never>>,
+    registerUser?: GraphCacheUpdateResolver<{ registerUser: WithTypename<User> }, MutationRegisterUserArgs>
+  },
+  Subscription?: {},
 };
-export const MeDocument = gql`
-    query Me {
-  me {
-    ...RegularUser
-  }
-}
-    ${RegularUserFragmentDoc}`;
 
-export function useMeQuery(options?: Omit<Urql.UseQueryArgs<MeQueryVariables>, 'query'>) {
-  return Urql.useQuery<MeQuery>({ query: MeDocument, ...options });
+export type GraphCacheConfig = {
+  schema?: IntrospectionData,
+  updates?: GraphCacheUpdaters,
+  keys?: GraphCacheKeysConfig,
+  optimistic?: GraphCacheOptimisticUpdaters,
+  resolvers?: GraphCacheResolvers,
+  storage?: GraphCacheStorageAdapter
 };

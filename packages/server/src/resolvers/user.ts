@@ -72,7 +72,7 @@ export class UserResolver {
   async loginUser(
     @Arg("input") input: LoginUserInput,
     @Ctx() { em, req }: Context
-  ) {
+  ): Promise<User> {
     const notFoundMsg = "Coudn't find a user with that email or password";
     const user = await em.findOne(User, { email: input.email.toLowerCase() });
 
@@ -101,7 +101,7 @@ export class UserResolver {
   }
 
   @Query(() => User, { nullable: true })
-  async me(@Ctx() { em, req }: Context) {
+  async me(@Ctx() { em, req }: Context): Promise<User | null> {
     const userId = req.session.userId;
 
     if (!userId) return null;

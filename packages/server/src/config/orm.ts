@@ -6,8 +6,8 @@ export default {
   dbName: "syncbase",
   password: "postgres",
   type: "postgresql",
-  entitiesTs: ["./src/entities/**/*.ts"],
   entities: ["./dist/entities/**/*.js"],
+  entitiesTs: ["./src/entities/**/*.ts"],
   metadataProvider: TsMorphMetadataProvider,
   debug: !IS_PROD,
 } as Parameters<typeof MikroORM.init>[0];

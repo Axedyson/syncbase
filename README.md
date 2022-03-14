@@ -11,19 +11,15 @@ I welcome any kind of contribution!
 #### Project setup
 
 - I highly recommend to use vscode, but it's also fine to use a different code editor!
-- Have node installed, preferably a version that is minimum 14 (I'm using v14.18.1 LTS)
+- Have node installed, preferably a version that is minimum 16 (I'm using v16.13.0 LTS)
 - Have yarn installed
 - Have postgresql installed, also the user postgres needs to have the password postgres
 - Have redis installed
 - Clone this repo
 - Run `yarn` inside of the root folder of the repo to install all necessary packages
 - Make sure that the postgres instance and the redis instance are up and running before starting the node.js backend
-- Two ways to run the node.js backend:
-  - `yarn workspace @syncbase/server dev`
-  - or `cd packages/server && yarn dev`
-- Two ways to run the next.js frontend:
-  - `yarn workspace @syncbase/web dev`
-  - or `cd packages/web && yarn dev`
+- How to run the node.js backend server: `yarn workspace @syncbase/server dev`
+- How to run the next.js frontend server: `yarn workspace @syncbase/web dev`
 
 #### Contribution flow
 
@@ -45,7 +41,7 @@ I welcome any kind of contribution!
 - Deploy web on vercel and server and it's services on DO droplet and maybe some automatic deployment with gh actions
 - Maybe add standard-version/semantic-release/changeset?
 - Add more .md files to properly document the contribution process and attract contributors
-- Add accessibility, interaction, userflow, integration and unit tests e.g. by using storybook, crypress and jest
+- Add accessibility, interaction, userflow, integration and unit tests e.g. by using storybook, cypress/playwright and jest
   - Also implement eslint plugins when necessary!
 - Add docker & docker-compose for development?
 

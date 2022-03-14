@@ -21,15 +21,8 @@ Loading.args = {
   loading: true,
 };
 
-interface playFuncProps {
-  args: { onClick: React.MouseEventHandler<HTMLButtonElement> };
-  canvasElement: HTMLCanvasElement;
-}
-
-export const Tests = {
-  play: async ({ args, canvasElement }: playFuncProps) => {
-    const canvas = within(canvasElement);
-    await userEvent.click(canvas.getByRole("button"));
-    await expect(args.onClick).toHaveBeenCalled();
-  },
+Primary.play = async ({ args, canvasElement }) => {
+  const canvas = within(canvasElement);
+  await userEvent.click(canvas.getByRole("button"));
+  await expect(args.onClick).toHaveBeenCalled();
 };

@@ -1,5 +1,5 @@
 import { Entity, Property, Unique } from "@mikro-orm/core";
-import { GraphQLEmailAddress, GraphQLURL } from "graphql-scalars";
+import { GraphQLEmailAddress } from "graphql-scalars";
 import { Field, ObjectType } from "type-graphql";
 import { BaseEntity } from "./BaseEntity";
 
@@ -17,8 +17,4 @@ export class User extends BaseEntity<User> {
 
   @Property()
   password!: string;
-
-  @Field(() => GraphQLURL)
-  @Property()
-  image!: string;
 }

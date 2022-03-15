@@ -7,7 +7,6 @@ interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
   loading?: boolean;
 }
 
-// bg-primary
 const buttonClasses = ctl(`
   flex
   justify-center
@@ -16,7 +15,7 @@ const buttonClasses = ctl(`
   px-4
   font-semibold
   text-white
-  bg-slate-600
+  bg-primary
   rounded-md
   focus:outline-none
   focus:ring-4

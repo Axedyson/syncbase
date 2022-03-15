@@ -15,7 +15,7 @@ const buttonClasses = ctl(`
   px-4
   font-semibold
   text-white
-  bg-primary
+bg-slate-600
   rounded-md
   focus:outline-none
   focus:ring-4

@@ -17,6 +17,7 @@ import { UserResolver } from "./resolvers/user";
 import type { Context } from "./types";
 
 (async () => {
+  console.log("olool");
   const orm = await MikroORM.init();
 
   const app = express();

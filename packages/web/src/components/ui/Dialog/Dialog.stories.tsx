@@ -6,6 +6,9 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 export default {
   title: "Dialog",
   component: Dialog,
+  parameters: {
+    chromatic: { delay: 300 },
+  },
 } as ComponentMeta<typeof Dialog>;
 
 const Template: ComponentStory<typeof Dialog> = (args) => {

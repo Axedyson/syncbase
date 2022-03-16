@@ -1,3 +1,4 @@
+import { userEvent, within } from "@storybook/testing-library";
 import { useState } from "react";
 import { Button } from "../Button";
 import { Dialog } from "./Dialog";
@@ -6,9 +7,6 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 export default {
   title: "Dialog",
   component: Dialog,
-  parameters: {
-    chromatic: { delay: 300 },
-  },
 } as ComponentMeta<typeof Dialog>;
 
 const Template: ComponentStory<typeof Dialog> = (args) => {
@@ -26,3 +24,8 @@ const Template: ComponentStory<typeof Dialog> = (args) => {
 };
 
 export const Basic = Template.bind({});
+
+Basic.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await userEvent.click(canvas.getByRole("button"));
+};

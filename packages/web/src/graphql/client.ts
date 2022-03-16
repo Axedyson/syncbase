@@ -1,5 +1,6 @@
 import { cacheExchange } from "@urql/exchange-graphcache";
 import { withUrqlClient } from "next-urql";
+import { toast } from "react-hot-toast";
 import { dedupExchange, errorExchange, fetchExchange } from "urql";
 import { MeDocument } from "./hooks";
 import type { GraphCacheConfig, MeQuery } from "./hooks";
@@ -19,10 +20,7 @@ export const urqlClientWrapper = (page: FC, ssr?: boolean) =>
           onError: (error: CombinedError) => {
             error.graphQLErrors.forEach((error) => {
               if (error.extensions.code !== "BAD_USER_INPUT") {
-                console.log(
-                  "the following error should be in a toast component: ",
-                  error.message
-                );
+                toast.error(error.message);
               }
             });
           },

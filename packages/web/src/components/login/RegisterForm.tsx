@@ -36,10 +36,10 @@ export const RegisterForm: FC = () => {
   const onSubmit: SubmitHandler<RegisterInput> = async (data) => {
     const result = await submitInput({ userInput: data });
 
-    // TODO: Look at this for more info:
-    // https://react-hook-form.com/api/useform/seterror
     result.error?.graphQLErrors.forEach((error) => {
-      setError(error.extensions.field, { message: error.message });
+      if (error.extensions.code === "BAD_USER_INPUT") {
+        setError(error.extensions.field, { message: error.message });
+      }
     });
   };
 

@@ -15,13 +15,13 @@ export default {
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
-
+export const Clicked = Template.bind({});
 export const Loading = Template.bind({});
 Loading.args = {
   loading: true,
 };
 
-Primary.play = async ({ args, canvasElement }) => {
+Clicked.play = async ({ args, canvasElement }) => {
   const canvas = within(canvasElement);
   await userEvent.click(canvas.getByRole("button"));
   await expect(args.onClick).toHaveBeenCalled();

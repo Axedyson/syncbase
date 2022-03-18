@@ -6,23 +6,46 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 export default {
   title: "Toast",
   component: Toast,
+  parameters: {
+    chromatic: { delay: 300 },
+  },
   args: {
     label: "Toast",
   },
 } as ComponentMeta<typeof Toast>;
 
-const Template: ComponentStory<typeof Toast> = (args) => {
+export const Basic: ComponentStory<typeof Toast> = (args) => {
   useEffect(() => {
-    toast.success("Basic test");
+    toast.remove();
+    toast("Basic toast");
   }, []);
 
   return <Toast {...args} />;
 };
 
-export const Basic = Template.bind({});
+export const LongText: ComponentStory<typeof Toast> = (args) => {
+  useEffect(() => {
+    toast.remove();
+    toast("This is some very long text lorem ipsum bla bla");
+  }, []);
 
-// Primary.play = async ({ args, canvasElement }) => {
-//  const canvas = within(canvasElement);
-//  await userEvent.click(canvas.getByRole("button"));
-//  await expect(args.onClick).toHaveBeenCalled();
-// };
+  return <Toast {...args} />;
+};
+
+export const Success: ComponentStory<typeof Toast> = (args) => {
+  useEffect(() => {
+    toast.remove();
+    toast.success("Success toast");
+  }, []);
+
+  return <Toast {...args} />;
+};
+
+export const Error: ComponentStory<typeof Toast> = (args) => {
+  useEffect(() => {
+    toast.remove();
+    toast.error("Error toast");
+  }, []);
+
+  return <Toast {...args} />;
+};

@@ -1,43 +1,52 @@
-import Image from "next/image";
-import { Toaster, toast } from "react-hot-toast";
+import ctl from "@netlify/classnames-template-literals";
+import { ToastBar, Toaster, toast } from "react-hot-toast";
+import { X } from "../icons/X";
 import type { FC } from "react";
+
+const xIconContainerClasses = ctl(`
+  inline-flex
+  shrink-0
+  justify-center
+  items-center
+  w-8
+  h-8
+  bg-red-100
+  rounded-lg
+`);
 
 export const Toast: FC = () => {
   return (
-    <Toaster>
-      {(t) => (
-        <div
-          className={`${
-            t.visible ? "animate-enter" : "animate-leave"
-          } max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
-        >
-          <div className="flex-1 p-4 w-0">
-            <div className="flex items-start">
-              <div className="shrink-0 pt-0.5">
-                <Image
-                  className="w-10 h-10 rounded-full"
-                  src="/mstile-150x150.png"
-                  width={10}
-                  height={10}
-                />
-              </div>
-              <div className="flex-1 ml-3">
-                <p className="text-sm font-medium text-gray-900">
-                  Emilia Gates
-                </p>
-                <p className="mt-1 text-sm text-gray-500">{t.message}</p>
-              </div>
+    <Toaster
+      toastOptions={{
+        position: "bottom-center",
+        error: {
+          duration: Infinity,
+          icon: (
+            <div className={xIconContainerClasses}>
+              <X error />
             </div>
-          </div>
-          <div className="flex border-l border-gray-200">
-            <button
-              onClick={() => toast.dismiss(t.id)}
-              className="flex justify-center items-center p-4 w-full text-sm font-medium text-indigo-600 hover:text-indigo-500 rounded-none rounded-r-lg border border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            >
-              Close
-            </button>
-          </div>
-        </div>
+          ),
+        },
+      }}
+    >
+      {(t) => (
+        <ToastBar toast={t}>
+          {({ icon, message }) => (
+            <>
+              {icon}
+              <div className="ml-1 text-sm font-medium">{message}</div>
+              <button
+                type="button"
+                aria-label="Close"
+                className="inline-flex p-1.5 -m-1.5 ml-auto w-8 h-8 text-gray-400 hover:text-gray-900 bg-white hover:bg-gray-100 rounded-lg focus:ring-2 focus:ring-gray-300"
+                onClick={() => toast.dismiss(t.id)}
+              >
+                <span className="sr-only">Close</span>
+                <X />
+              </button>
+            </>
+          )}
+        </ToastBar>
       )}
     </Toaster>
   );

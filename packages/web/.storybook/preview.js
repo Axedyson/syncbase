@@ -7,9 +7,5 @@ export const parameters = {
 };
 
 export const decorators = [
-  (Story) => (
-    <div className="font-medium">
-      <Story />
-    </div>
-  ),
+  (Story) => <div className="font-medium">{Story()}</div>,
 ];

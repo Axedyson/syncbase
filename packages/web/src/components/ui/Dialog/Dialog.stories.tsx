@@ -7,16 +7,16 @@ export default {
   title: "Dialog",
   component: Dialog,
   parameters: {
-    chromatic: { delay: 400 },
+    chromatic: { delay: 300 },
   },
   decorators: [
-    (storyFn) => (
-      <div style={{ width: "500px", height: "500px" }}>{storyFn()}</div>
+    (Story) => (
+      <div style={{ width: "1920px", height: "1080px" }}>{Story()}</div>
     ),
   ],
 } as ComponentMeta<typeof Dialog>;
 
-const Template: ComponentStory<typeof Dialog> = (args) => {
+export const Basic: ComponentStory<typeof Dialog> = (args) => {
   const [isOpen, setOpen] = useState(true);
 
   return (
@@ -29,5 +29,3 @@ const Template: ComponentStory<typeof Dialog> = (args) => {
     </>
   );
 };
-
-export const Basic = Template.bind({});

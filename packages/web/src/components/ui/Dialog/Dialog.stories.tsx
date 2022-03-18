@@ -6,14 +6,14 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 export default {
   title: "Dialog",
   component: Dialog,
-  // parameters: {
-  //  chromatic: { delay: 400 },
-  // },
-  // decorators: [
-  //  (storyFn) => (
-  //    <div style={{ width: "500px", height: "500px" }}>{storyFn()}</div>
-  //  ),
-  // ],
+  parameters: {
+    chromatic: { delay: 400 },
+  },
+  decorators: [
+    (storyFn) => (
+      <div style={{ width: "500px", height: "500px" }}>{storyFn()}</div>
+    ),
+  ],
 } as ComponentMeta<typeof Dialog>;
 
 const Template: ComponentStory<typeof Dialog> = (args) => {

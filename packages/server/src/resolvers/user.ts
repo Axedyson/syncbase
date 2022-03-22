@@ -76,12 +76,12 @@ export class UserResolver {
     const notFoundMsg = "Coudn't find a user with that email or password";
     const user = await em.findOne(User, { email: input.email.toLowerCase() });
 
-    if (!user) throw new UserInputError(notFoundMsg);
+    if (!user) throw new UserInputError(notFoundMsg, { field: "email" });
 
     const match = await argon2.verify(user.password, input.password, {
       type: argon2.argon2id,
     });
-    if (!match) throw new UserInputError(notFoundMsg);
+    if (!match) throw new UserInputError(notFoundMsg, { field: "email" });
 
     req.session.userId = user.id;
 

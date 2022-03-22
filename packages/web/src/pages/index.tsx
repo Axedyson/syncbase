@@ -6,9 +6,9 @@ import { urqlClientWrapper } from "../graphql/client";
 import { LogoutUserDocument } from "../graphql/hooks";
 import { useCurrentUser } from "../hooks/useCurrentUser";
 import { useLoginDialog } from "../hooks/useLoginDialog";
-import type { FC } from "react";
+import type { NextPage } from "next";
 
-const IndexPage: FC = () => {
+const IndexPage: NextPage = () => {
   const dialog = useLoginDialog();
   const [, logoutUser] = useMutation(LogoutUserDocument);
   const [fetching, user] = useCurrentUser();

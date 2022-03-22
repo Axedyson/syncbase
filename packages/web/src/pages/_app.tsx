@@ -1,10 +1,10 @@
 import Head from "next/head";
-import Layout from "../components/ui/Layout";
+import { Layout } from "../components/ui/Layout";
+import type { NextPage } from "next";
 import type { AppProps } from "next/app";
-import type { FC } from "react";
 import "../global.css";
 
-const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
+const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <Head>

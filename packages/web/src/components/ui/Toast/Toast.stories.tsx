@@ -6,12 +6,6 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 export default {
   title: "Toast",
   component: Toast,
-  parameters: {
-    chromatic: { delay: 1000 },
-  },
-  args: {
-    label: "Toast",
-  },
 } as ComponentMeta<typeof Toast>;
 
 export const Basic: ComponentStory<typeof Toast> = (args) => {

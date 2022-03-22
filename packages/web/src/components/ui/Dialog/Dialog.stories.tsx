@@ -11,10 +11,13 @@ export default {
       <div style={{ width: "1920px", height: "1080px" }}>{Story()}</div>
     ),
   ],
+  args: {
+    isOpen: true,
+  },
 } as ComponentMeta<typeof Dialog>;
 
 export const Basic: ComponentStory<typeof Dialog> = (args) => {
-  const [isOpen, setOpen] = useState(true);
+  const [isOpen, setOpen] = useState(args.isOpen);
 
   return (
     <>

@@ -5,9 +5,12 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 export default {
   title: "TabGroup",
   component: TabGroup,
+  args: {
+    "A Button": <Button label="Here is a button" />,
+  },
 } as ComponentMeta<typeof TabGroup>;
 
-const Template: ComponentStory<typeof TabGroup> = (args) => (
+export const Basic: ComponentStory<typeof TabGroup> = (args) => (
   <TabGroup {...args}>
     <>
       <p>
@@ -25,8 +28,3 @@ const Template: ComponentStory<typeof TabGroup> = (args) => (
     </>
   </TabGroup>
 );
-
-export const Basic = Template.bind({});
-Basic.args = {
-  "A Button": <Button label="Here is a button" />,
-};

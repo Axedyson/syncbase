@@ -26,13 +26,20 @@ export const LoginForm: FC = () => {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors, isSubmitting },
   } = useForm<LoginInput>({
     resolver: zodResolver(schema),
   });
 
   const onSubmit: SubmitHandler<LoginInput> = async (data) => {
-    await submitInput({ userInput: data });
+    const result = await submitInput({ userInput: data });
+
+    result.error?.graphQLErrors.forEach((error) => {
+      if (error.extensions.code === "BAD_USER_INPUT") {
+        setError(error.extensions.field, { message: error.message });
+      }
+    });
   };
 
   return (

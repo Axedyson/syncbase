@@ -4,9 +4,9 @@ import { Button } from "../components/ui/Button";
 import { urqlClientWrapper } from "../graphql/client";
 import { LogoutUserDocument } from "../graphql/hooks";
 import { useCurrentUser } from "../hooks/useCurrentUser";
-import type { FC } from "react";
+import type { NextPage } from "next";
 
-const AccountPage: FC = () => {
+const AccountPage: NextPage = () => {
   const [, logoutUser] = useMutation(LogoutUserDocument);
   const [fetching, user] = useCurrentUser(true);
 

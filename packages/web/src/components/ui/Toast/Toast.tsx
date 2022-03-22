@@ -1,17 +1,26 @@
 import ctl from "@netlify/classnames-template-literals";
 import { ToastBar, Toaster, toast } from "react-hot-toast";
-import { X } from "../icons/X";
+import { Cross } from "../icons/Cross";
 import type { FC } from "react";
 
-const xIconContainerClasses = ctl(`
-  inline-flex
-  shrink-0
-  justify-center
-  items-center
+const crossContainerClasses = (error: boolean) =>
+  ctl(`
+  p-1.5
   w-8
   h-8
-  bg-red-100
   rounded-lg
+  ${error && "bg-red-100"}
+`);
+
+const closeButtonClasses = ctl(`
+ ${crossContainerClasses(false)}
+  -mx-1.5
+  text-gray-400
+  hover:text-gray-900
+  hover:bg-gray-100
+  focus:outline-none
+  focus:ring-2
+  focus:ring-gray-300
 `);
 
 export const Toast: FC = () => {
@@ -22,8 +31,8 @@ export const Toast: FC = () => {
         error: {
           duration: Infinity,
           icon: (
-            <div className={xIconContainerClasses}>
-              <X error />
+            <div className={crossContainerClasses(true)}>
+              <Cross error />
             </div>
           ),
         },
@@ -34,15 +43,17 @@ export const Toast: FC = () => {
           {({ icon, message }) => (
             <>
               {icon}
-              <div className="ml-1 text-sm font-medium">{message}</div>
+              <div className="ml-1 text-sm font-medium text-slate-500">
+                {message}
+              </div>
               <button
                 type="button"
+                className={closeButtonClasses}
                 aria-label="Close"
-                className="inline-flex p-1.5 -m-1.5 ml-auto w-8 h-8 text-gray-400 hover:text-gray-900 bg-white hover:bg-gray-100 rounded-lg focus:ring-2 focus:ring-gray-300"
                 onClick={() => toast.dismiss(t.id)}
               >
                 <span className="sr-only">Close</span>
-                <X />
+                <Cross />
               </button>
             </>
           )}

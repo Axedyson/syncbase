@@ -6,9 +6,6 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 export default {
   title: "Dialog",
   component: Dialog,
-  parameters: {
-    chromatic: { delay: 300 },
-  },
   decorators: [
     (Story) => (
       <div style={{ width: "1920px", height: "1080px" }}>{Story()}</div>

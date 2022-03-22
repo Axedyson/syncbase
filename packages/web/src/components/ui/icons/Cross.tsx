@@ -1,21 +1,21 @@
 import ctl from "@netlify/classnames-template-literals";
 import type { ComponentPropsWithoutRef, FC } from "react";
 
-interface XProps extends ComponentPropsWithoutRef<"svg"> {
+interface CrossProps extends ComponentPropsWithoutRef<"svg"> {
   error?: boolean;
 }
 
-const xClasses = (error?: boolean) =>
+const crossClasses = (error: boolean) =>
   ctl(`
   w-5
   h-5
   ${error && "text-red-500"}
 `);
 
-export const X: FC<XProps> = ({ error }) => {
+export const Cross: FC<CrossProps> = ({ error }) => {
   return (
     <svg
-      className={xClasses(error)}
+      className={crossClasses(!!error)}
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
       viewBox="0 0 20 20"

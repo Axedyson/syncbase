@@ -7,7 +7,7 @@ export default {
   title: "Toast",
   component: Toast,
   parameters: {
-    chromatic: { delay: 300 },
+    chromatic: { delay: 1000 },
   },
   args: {
     label: "Toast",

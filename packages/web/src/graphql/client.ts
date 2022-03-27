@@ -31,7 +31,6 @@ export const urqlClientWrapper = (page: NextPage, ssr?: boolean) =>
           },
         }),
         ssrExchange,
-        fetchExchange,
         errorExchange({
           onError: (error) => {
             error.graphQLErrors.forEach((error) => {
@@ -43,6 +42,7 @@ export const urqlClientWrapper = (page: NextPage, ssr?: boolean) =>
             });
           },
         }),
+        fetchExchange,
       ],
     }),
     { ssr }

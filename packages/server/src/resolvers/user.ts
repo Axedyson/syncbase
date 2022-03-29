@@ -4,6 +4,7 @@ import { IsEmail, Length } from "class-validator";
 import { GraphQLEmailAddress } from "graphql-scalars";
 import {
   Arg,
+  Authorized,
   Ctx,
   Field,
   InputType,
@@ -100,6 +101,7 @@ export class UserResolver {
     return success;
   }
 
+  @Authorized()
   @Query(() => User, { nullable: true })
   async me(@Ctx() { em, req }: Context): Promise<User | null> {
     const userId = req.session.userId;

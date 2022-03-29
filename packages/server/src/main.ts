@@ -7,12 +7,11 @@ import {
   ApolloServerPluginLandingPageGraphQLPlayground,
 } from "apollo-server-core";
 import { ApolloServer } from "apollo-server-express";
-import connectRedis from "connect-redis";
 import express from "express";
-import session from "express-session";
-import Redis from "ioredis";
 import { buildSchema } from "type-graphql";
-import { IS_PROD, PORT, SESSION_NAME } from "./config/constants";
+import { IS_PROD, PORT } from "./config/constants";
+import { authChecker } from "./middleware/authChecker";
+import { sessionMiddleware } from "./middleware/session";
 import { UserResolver } from "./resolvers/user";
 import type { Context } from "./types";
 
@@ -22,29 +21,14 @@ import type { Context } from "./types";
   const app = express();
   app.disable("x-powered-by");
 
-  const RedisStore = connectRedis(session);
-  const redisClient = new Redis();
-
-  app.use(
-    session({
-      store: new RedisStore({ client: redisClient }),
-      secret: IS_PROD ? process.env.SESSION_SECRET : "dev_secret",
-      name: SESSION_NAME,
-      cookie: {
-        maxAge: 1000 * 60 * 60 * 24 * 365, // 1 year
-        secure: IS_PROD,
-        sameSite: "lax",
-      },
-      saveUninitialized: false,
-      resave: false,
-    })
-  );
+  app.use(sessionMiddleware);
 
   const httpServer = http.createServer(app);
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
       resolvers: [UserResolver],
       emitSchemaFile: !IS_PROD && "schema.graphql",
+      authChecker,
     }),
     context: ({ req, res }): Context => ({ req, res, em: orm.em.fork() }),
     // We are using the retired graphql playground to test our graphql endpoint for now.

@@ -191,6 +191,15 @@ module.exports = {
           rules: {
             "@graphql-eslint/unique-operation-name": "warn",
             "@graphql-eslint/unique-fragment-name": "warn",
+            "@graphql-eslint/match-document-filename": [
+              "warn",
+              {
+                query: "matchDocumentStyle",
+                mutation: "matchDocumentStyle",
+                subscription: "matchDocumentStyle",
+                fragment: "matchDocumentStyle",
+              },
+            ],
           },
         },
         {

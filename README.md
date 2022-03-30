@@ -34,9 +34,8 @@ I welcome any kind of contribution!
 
 ### TODO
 
-- Urql setup & Build register and login page and connect them to the user server api
 - Properly implement session cookie expiration
-- Implement Urql graphcache
+- Implement dataloader stuff
 - Actually develop the project
 - Deploy web on vercel and server and it's services on DO droplet and maybe some automatic deployment with gh actions
 - Maybe add standard-version/semantic-release/changeset?

@@ -31,7 +31,7 @@
     "@graphql-codegen/typed-document-node": "^2.2.8",
     "@graphql-codegen/typescript": "2.4.8",
     "@graphql-codegen/typescript-operations": "2.3.5",
-    "@graphql-codegen/typescript-urql-graphcache": "^2.2.9",
+    "@graphql-codegen/typescript-urql-graphcache": "^2.2.10",
     "@storybook/addon-a11y": "^6.4.19",
     "@storybook/addon-essentials": "^6.4.19",
     "@storybook/addon-interactions": "^6.4.19",

@@ -14,6 +14,7 @@ import {
 } from "type-graphql";
 import { SESSION_NAME } from "../config/constants";
 import { User } from "../entities/User";
+import { LoginUserInput, loginUser } from "../services/user/loginUser";
 import { Context } from "../types";
 
 @InputType()
@@ -22,17 +23,6 @@ class RegisterUserInput {
   @Length(3, 15)
   name!: string;
 
-  @Field(() => GraphQLEmailAddress)
-  @IsEmail()
-  email!: string;
-
-  @Field()
-  @Length(7, 30)
-  password!: string;
-}
-
-@InputType()
-class LoginUserInput {
   @Field(() => GraphQLEmailAddress)
   @IsEmail()
   email!: string;
@@ -72,21 +62,9 @@ export class UserResolver {
   @Mutation(() => User)
   async loginUser(
     @Arg("input") input: LoginUserInput,
-    @Ctx() { em, req }: Context
+    @Ctx() ctx: Context
   ): Promise<User> {
-    const notFoundMsg = "Coudn't find a user with that email or password";
-    const user = await em.findOne(User, { email: input.email.toLowerCase() });
-
-    if (!user) throw new UserInputError(notFoundMsg, { field: "email" });
-
-    const match = await argon2.verify(user.password, input.password, {
-      type: argon2.argon2id,
-    });
-    if (!match) throw new UserInputError(notFoundMsg, { field: "email" });
-
-    req.session.userId = user.id;
-
-    return user;
+    return loginUser(ctx, input);
   }
 
   @Mutation(() => Boolean)

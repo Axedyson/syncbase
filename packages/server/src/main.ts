@@ -8,11 +8,9 @@ import {
 } from "apollo-server-core";
 import { ApolloServer } from "apollo-server-express";
 import express from "express";
-import { buildSchema } from "type-graphql";
 import { IS_PROD, PORT } from "./config/constants";
-import { authChecker } from "./middleware/authChecker";
+import { schemaConfig } from "./config/typegraphql";
 import { sessionMiddleware } from "./middleware/session";
-import { UserResolver } from "./resolvers/user";
 import type { Context } from "./types";
 
 (async () => {
@@ -25,12 +23,12 @@ import type { Context } from "./types";
 
   const httpServer = http.createServer(app);
   const apolloServer = new ApolloServer({
-    schema: await buildSchema({
-      resolvers: [UserResolver],
-      emitSchemaFile: !IS_PROD && "schema.graphql",
-      authChecker,
+    schema: await schemaConfig,
+    context: ({ req, res }): Context => ({
+      req,
+      res,
+      em: orm.em.fork(),
     }),
-    context: ({ req, res }): Context => ({ req, res, em: orm.em.fork() }),
     // We are using the retired graphql playground to test our graphql endpoint for now.
     // The reason is that apollo studio 3 (default tool) requires cookies to
     // have the following settings: secure: true & sameSite: "none".

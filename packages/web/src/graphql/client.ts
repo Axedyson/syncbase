@@ -3,7 +3,7 @@ import { withUrqlClient } from "next-urql";
 import { toast } from "react-hot-toast";
 import { dedupExchange, errorExchange, fetchExchange } from "urql";
 import { MeDocument } from "./hooks";
-import type { GraphCacheConfig, MeQuery } from "./hooks";
+import type { GraphCacheConfig } from "./hooks";
 import type { NextPage } from "next";
 
 export const urqlClientWrapper = (page: NextPage, ssr?: boolean) =>
@@ -21,7 +21,7 @@ export const urqlClientWrapper = (page: NextPage, ssr?: boolean) =>
             Mutation: {
               loginUser: (result, _args, cache) => {
                 cache.updateQuery({ query: MeDocument }, () => ({
-                  me: result.loginUser as MeQuery["me"],
+                  me: result.loginUser,
                 }));
               },
               logoutUser: (_result, _args, cache) => {

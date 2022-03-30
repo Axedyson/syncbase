@@ -52,6 +52,7 @@ I welcome any kind of contribution!
 - Implement OG meta tags later
 - Datadog?
 - Sentry?
+- In the future we want to [organize by feature](https://softwareengineering.stackexchange.com/questions/338597/folder-by-type-or-folder-by-feature) rather than by type
 
 <p align="center">
   <a href="http://commitizen.github.io/cz-cli/">

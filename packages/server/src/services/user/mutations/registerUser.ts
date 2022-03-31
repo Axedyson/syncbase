@@ -3,11 +3,15 @@ import argon2 from "argon2";
 import { Length } from "class-validator";
 import { GraphQLEmailAddress } from "graphql-scalars";
 import { Field, InputType } from "type-graphql";
-import { User } from "../../entities/User";
+import { User } from "../../../entities/User";
 import type { Context } from "src/types";
 
 @InputType()
-export class LoginUserInput {
+export class RegisterUserInput {
+  @Field()
+  @Length(3, 15)
+  name!: string;
+
   @Field(() => GraphQLEmailAddress)
   email!: string;
 
@@ -16,19 +20,24 @@ export class LoginUserInput {
   password!: string;
 }
 
-export const loginUser = async (
+export const registerUser = async (
   { em, req }: Context,
-  input: LoginUserInput
+  input: RegisterUserInput
 ) => {
-  const notFoundMsg = "Coudn't find a user with that email or password";
-  const user = await em.findOne(User, { email: input.email.toLowerCase() });
-
-  if (!user) throw new UserInputError(notFoundMsg, { field: "email" });
-
-  const match = await argon2.verify(user.password, input.password, {
+  const hashedPassword = await argon2.hash(input.password, {
     type: argon2.argon2id,
   });
-  if (!match) throw new UserInputError(notFoundMsg, { field: "email" });
+  const user = em.create(User, {
+    name: input.name,
+    email: input.email,
+    password: hashedPassword,
+  });
+
+  try {
+    await em.persistAndFlush(user);
+  } catch {
+    throw new UserInputError("The email has been taken!", { field: "email" });
+  }
 
   req.session.userId = user.id;
 

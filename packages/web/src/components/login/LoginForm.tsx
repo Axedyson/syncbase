@@ -6,6 +6,7 @@ import { LoginUserDocument } from "../../graphql/hooks";
 import { useLoginDialog } from "../../hooks/useLoginDialog";
 import { Button } from "../ui/Button";
 import { InputField } from "../ui/InputField";
+import { showResultErrors } from "../utils/showResultErrors";
 import type { FC } from "react";
 import type { SubmitHandler } from "react-hook-form";
 
@@ -34,12 +35,7 @@ export const LoginForm: FC = () => {
 
   const onSubmit: SubmitHandler<LoginInput> = async (data) => {
     const result = await submitInput({ userInput: data });
-
-    result.error?.graphQLErrors.forEach((error) => {
-      if (error.extensions.code === "BAD_USER_INPUT") {
-        setError(error.extensions.field, { message: error.message });
-      }
-    });
+    showResultErrors(result, setError);
   };
 
   return (

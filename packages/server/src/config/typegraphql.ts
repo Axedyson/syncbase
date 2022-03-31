@@ -7,4 +7,5 @@ export const schemaConfig = buildSchema({
   resolvers: [UserResolver],
   emitSchemaFile: !IS_PROD && "schema.graphql",
   authChecker,
+  authMode: "null",
 });

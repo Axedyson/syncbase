@@ -28,6 +28,7 @@ import type { Context } from "./types";
       req,
       res,
       em: orm.em.fork(),
+      userId: req.session.userId,
     }),
     // We are using the retired graphql playground to test our graphql endpoint for now.
     // The reason is that apollo studio 3 (default tool) requires cookies to

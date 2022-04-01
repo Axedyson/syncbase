@@ -17,5 +17,5 @@
     { "rule": "@graphql-eslint/require-id-when-available", "severity": "off" },
     { "rule": "import/no-unused-modules", "severity": "off" }
   ],
-  "tailwindCSS.experimental.classRegex": [["ctl\\(`([^)]*)`\\)", "([^\"]*)"]]
+  "tailwindCSS.experimental.classRegex": [["ctl\\(`([^`]*)`\\);", "([^\"]+)"]]
 }

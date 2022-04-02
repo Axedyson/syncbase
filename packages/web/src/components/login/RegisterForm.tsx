@@ -12,7 +12,10 @@ import type { SubmitHandler } from "react-hook-form";
 
 const schema = z.object({
   name: z.string().nonempty({ message: "Required" }),
-  email: z.string().nonempty({ message: "Required" }).email(),
+  email: z
+    .string()
+    .nonempty({ message: "Required" })
+    .email({ message: "Not a valid email" }),
   password: z
     .string()
     .nonempty({ message: "Required" })

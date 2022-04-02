@@ -6,7 +6,7 @@ export const showResultErrors = <T extends FieldValues>(
   setError: UseFormSetError<T>
 ) => {
   result.error?.graphQLErrors.forEach((error) => {
-    if (error.extensions.code === "BAD_USER_INPUT") {
+    if (error.extensions.field) {
       setError(error.extensions.field, { message: error.message });
     }
   });

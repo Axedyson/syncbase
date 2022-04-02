@@ -1,5 +1,6 @@
 import { Arg, Authorized, Ctx, Mutation, Query, Resolver } from "type-graphql";
 import { User } from "../entities/User";
+import { FindUserByEmail } from "../middleware/FindUserByEmail";
 import {
   LoginUserInput,
   loginUser,
@@ -23,9 +24,10 @@ export class UserResolver {
   @Mutation(() => User)
   async loginUser(
     @Arg("input") input: LoginUserInput,
-    @Ctx() ctx: Context
+    @Ctx() ctx: Context,
+    @FindUserByEmail() currentUser: User
   ): Promise<User> {
-    return loginUser(ctx, input);
+    return loginUser(ctx, input, currentUser);
   }
 
   @Mutation(() => User)

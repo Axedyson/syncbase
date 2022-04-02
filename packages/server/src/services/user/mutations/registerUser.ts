@@ -1,6 +1,6 @@
 import { UserInputError } from "apollo-server-express";
 import argon2 from "argon2";
-import { Length } from "class-validator";
+import { IsEmail, Length } from "class-validator";
 import { GraphQLEmailAddress } from "graphql-scalars";
 import { Field, InputType } from "type-graphql";
 import { User } from "../../../entities/User";
@@ -13,6 +13,7 @@ export class RegisterUserInput {
   name!: string;
 
   @Field(() => GraphQLEmailAddress)
+  @IsEmail()
   email!: string;
 
   @Field()

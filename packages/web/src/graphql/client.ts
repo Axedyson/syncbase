@@ -34,11 +34,8 @@ export const urqlClientWrapper = (page: NextPage, ssr?: boolean) =>
         errorExchange({
           onError: (error) => {
             error.graphQLErrors.forEach((error) => {
-              // Don't display user input errors here, do that at the location of the form
-              // e.g. by displaying user input errors close to the respective input fields
-              if (error.extensions.code !== "BAD_USER_INPUT") {
-                toast.error(error.message);
-              }
+              // Don't display errors in a toast if it's meant to be displayed at some input field
+              if (!error.extensions.field) toast.error(error.message);
             });
           },
         }),

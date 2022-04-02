@@ -145,25 +145,17 @@ module.exports = {
           parserOptions: {
             project: path.join(__dirname, "packages/server/tsconfig.json"),
           },
-          overrides: [
-            {
-              files: [
-                "packages/server/src/entities/**/*.ts",
-                "packages/server/src/resolvers/**/*.ts",
-              ],
-              extends: ["plugin:type-graphql/recommended"],
-              rules: {
-                "type-graphql/wrong-decorator-signature": [
-                  "error",
-                  {
-                    customTypes: {
-                      string: ["GraphQLEmailAddress", "GraphQLURL"],
-                    },
-                  },
-                ],
+          extends: ["plugin:type-graphql/recommended"],
+          rules: {
+            "type-graphql/wrong-decorator-signature": [
+              "error",
+              {
+                customTypes: {
+                  string: ["GraphQLEmailAddress", "GraphQLURL"],
+                },
               },
-            },
-          ],
+            ],
+          },
         },
       ],
     },

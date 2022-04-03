@@ -11,7 +11,7 @@ export const FindUserByEmail = () => {
 
     if (!user)
       throw new UserInputError(
-        "Coudn't find a user with that email or password lool",
+        "Couldn't find a user with that email or password lool",
         { field: "email" }
       );
 

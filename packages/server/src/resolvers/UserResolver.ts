@@ -25,9 +25,9 @@ export class UserResolver {
   async loginUser(
     @Arg("input") input: LoginUserInput,
     @Ctx() ctx: Context,
-    @FindUserByEmail() currentUser: User
+    @FindUserByEmail() user: User
   ): Promise<User> {
-    return loginUser(ctx, input, currentUser);
+    return loginUser(ctx, input, user);
   }
 
   @Mutation(() => User)

@@ -22,18 +22,16 @@ export const loginUser = async (
   input: LoginUserInput,
   user: User
 ) => {
-  if (user) {
-    const match = await argon2.verify(user.password, input.password, {
-      type: argon2.argon2id,
-    });
-    if (!match)
-      throw new UserInputError(
-        "Coudn't find a user with that email or password",
-        { field: "email" }
-      );
+  const match = await argon2.verify(user.password, input.password, {
+    type: argon2.argon2id,
+  });
+  if (!match)
+    throw new UserInputError(
+      "Couldn't find a user with that email or password",
+      { field: "email" }
+    );
 
-    req.session.userId = user.id;
-  }
+  req.session.userId = user.id;
 
   return user;
 };

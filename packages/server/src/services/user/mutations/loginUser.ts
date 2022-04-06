@@ -1,4 +1,4 @@
-import { UserInputError } from "apollo-server-express";
+import { UserInputError } from "apollo-server-errors";
 import argon2 from "argon2";
 import { IsEmail, Length } from "class-validator";
 import { GraphQLEmailAddress } from "graphql-scalars";
@@ -25,11 +25,11 @@ export const loginUser = async (
   const match = await argon2.verify(user.password, input.password, {
     type: argon2.argon2id,
   });
-  if (!match)
-    throw new UserInputError(
-      "Couldn't find a user with that email or password",
-      { field: "email" }
-    );
+  if (!match) {
+    throw new UserInputError("Email or password is incorrect", {
+      field: "email",
+    });
+  }
 
   req.session.userId = user.id;
 

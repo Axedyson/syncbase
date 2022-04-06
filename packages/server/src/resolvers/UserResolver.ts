@@ -17,12 +17,12 @@ import { Context } from "../types";
 export class UserResolver {
   @Authorized()
   @Query(() => User, { nullable: true })
-  async me(@Ctx() ctx: Context): Promise<User | null> {
+  me(@Ctx() ctx: Context): Promise<User | null> {
     return me(ctx);
   }
 
   @Mutation(() => User)
-  async loginUser(
+  loginUser(
     @Arg("input") input: LoginUserInput,
     @Ctx() ctx: Context,
     @FindUserByEmail() user: User
@@ -31,15 +31,12 @@ export class UserResolver {
   }
 
   @Mutation(() => User)
-  async registerUser(
-    @Arg("input") input: RegisterUserInput,
-    @Ctx() ctx: Context
-  ) {
+  registerUser(@Arg("input") input: RegisterUserInput, @Ctx() ctx: Context) {
     return registerUser(ctx, input);
   }
 
   @Mutation(() => Boolean)
-  async logoutUser(@Ctx() ctx: Context) {
+  logoutUser(@Ctx() ctx: Context) {
     return logoutUser(ctx);
   }
 }

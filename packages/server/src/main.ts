@@ -6,6 +6,7 @@ import {
   ApolloServerPluginLandingPageDisabled,
   ApolloServerPluginLandingPageGraphQLPlayground,
 } from "apollo-server-core";
+import { ApolloError } from "apollo-server-errors";
 import { ApolloServer } from "apollo-server-express";
 import express from "express";
 import { IS_PROD, PORT } from "./config/constants";
@@ -30,6 +31,13 @@ import type { Context } from "./types";
       em: orm.em.fork(),
       userId: req.session.userId,
     }),
+    formatError: (err) => {
+      // If the error is an apollo error, it means its something we have thrown deliberately
+      if (err.originalError instanceof ApolloError) return err;
+      // Otherwise we can't know what kind of error it is, it may be a db error leaking
+      // sensitive information. To mitigiate that, we will just return a generic error message
+      return new Error("Unknown error occurred");
+    },
     // We are using the retired graphql playground to test our graphql endpoint for now.
     // The reason is that apollo studio 3 (default tool) requires cookies to
     // have the following settings: secure: true & sameSite: "none".

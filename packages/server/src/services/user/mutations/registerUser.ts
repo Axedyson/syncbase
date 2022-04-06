@@ -1,4 +1,4 @@
-import { UserInputError } from "apollo-server-express";
+import { UserInputError } from "apollo-server-errors";
 import argon2 from "argon2";
 import { IsEmail, Length } from "class-validator";
 import { GraphQLEmailAddress } from "graphql-scalars";
@@ -25,22 +25,26 @@ export const registerUser = async (
   { em, req }: Context,
   input: RegisterUserInput
 ) => {
+  const user = await em.findOne(User, {
+    email: input.email,
+  });
+
+  if (user) {
+    throw new UserInputError("The email has been taken!", { field: "email" });
+  }
+
   const hashedPassword = await argon2.hash(input.password, {
     type: argon2.argon2id,
   });
-  const user = em.create(User, {
+  const newUser = em.create(User, {
     name: input.name,
     email: input.email,
     password: hashedPassword,
   });
 
-  try {
-    await em.persistAndFlush(user);
-  } catch {
-    throw new UserInputError("The email has been taken!", { field: "email" });
-  }
+  await em.persistAndFlush(newUser);
 
-  req.session.userId = user.id;
+  req.session.userId = newUser.id;
 
-  return user;
+  return newUser;
 };

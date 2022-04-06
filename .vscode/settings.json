@@ -15,6 +15,11 @@
     { "rule": "@graphql-eslint/unique-operation-name", "severity": "off" },
     { "rule": "@graphql-eslint/unique-fragment-name", "severity": "off" },
     { "rule": "@graphql-eslint/require-id-when-available", "severity": "off" },
+    {
+      "rule": "@graphql-eslint/provided-required-arguments",
+      "severity": "off"
+    },
+    { "rule": "@graphql-eslint/known-argument-names", "severity": "off" },
     { "rule": "import/no-unused-modules", "severity": "off" }
   ],
   "tailwindCSS.experimental.classRegex": [["ctl\\(`([^`]+)`\\)", "([^\"]+)"]]

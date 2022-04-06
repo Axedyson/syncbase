@@ -23,10 +23,6 @@ const IndexPage: NextPage = () => {
 
   return (
     <div className="flex flex-col gap-y-2 p-2 m-auto rounded-md border-2 border-slate-400">
-      <Link href="/account">
-        <a className="text-blue-600 underline">Account page</a>
-      </Link>
-
       {!user ? (
         <>
           <Button onClick={dialog.open} label="Log In" />
@@ -35,6 +31,9 @@ const IndexPage: NextPage = () => {
         </>
       ) : (
         <>
+          <Link href="/account">
+            <a className="text-blue-600 underline">Account page</a>
+          </Link>
           <h2>This is the index page and you`re logged in </h2>
           <Button
             onClick={async () => {

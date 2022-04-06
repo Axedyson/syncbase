@@ -211,7 +211,8 @@ module.exports = {
             // For reference: https://github.com/dotansimha/graphql-eslint/issues/593#issuecomment-982066342
             // The same applies for these rules (there will probably be added more):
             // "@graphql-eslint/fields-on-correct-type", "@graphql-eslint/known-type-names", "@graphql-eslint/unique-operation-name",
-            // "@graphql-eslint/unique-fragment-name", "@graphql-eslint/require-id-when-available" and "@graphql-eslint/no-unreachable-types".
+            // "@graphql-eslint/unique-fragment-name", "@graphql-eslint/require-id-when-available", "@graphql-eslint/no-unreachable-types",
+            // "@graphql-eslint/provided-required-arguments" and "@graphql-eslint/known-argument-names".
             "@graphql-eslint/no-unused-fields": "error",
           },
         },

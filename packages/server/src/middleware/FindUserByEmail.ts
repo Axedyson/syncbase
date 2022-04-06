@@ -1,4 +1,4 @@
-import { UserInputError } from "apollo-server-express";
+import { UserInputError } from "apollo-server-errors";
 import { createParamDecorator } from "type-graphql";
 import { User } from "../entities/User";
 import type { Context } from "../types";
@@ -10,10 +10,9 @@ export const FindUserByEmail = () => {
     });
 
     if (!user)
-      throw new UserInputError(
-        "Couldn't find a user with that email or password lool",
-        { field: "email" }
-      );
+      throw new UserInputError("Email or password is incorrect", {
+        field: "email",
+      });
 
     return user;
   });

@@ -1,11 +1,11 @@
 import { buildSchema } from "type-graphql";
-import { authChecker } from "../middleware/authChecker";
+import { authMiddleware } from "../middleware/authMiddleware";
 import { UserResolver } from "../resolvers/UserResolver";
 import { IS_PROD } from "./constants";
 
 export const schemaConfig = buildSchema({
   resolvers: [UserResolver],
   emitSchemaFile: !IS_PROD && "schema.graphql",
-  authChecker,
+  authChecker: authMiddleware,
   authMode: "null",
 });

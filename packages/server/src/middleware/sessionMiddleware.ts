@@ -7,11 +7,11 @@ const RedisStore = connectRedis(session);
 const redisClient = new Redis();
 
 export const sessionMiddleware = session({
-  store: new RedisStore({ client: redisClient }),
+  store: new RedisStore({ client: redisClient, disableTouch: true }),
   secret: IS_PROD ? process.env.SESSION_SECRET : "dev_secret",
   name: SESSION_NAME,
   cookie: {
-    maxAge: 1000 * 60 * 60 * 24 * 365, // 1 year
+    maxAge: 1000 * 60 * 60 * 24 * 365 * 10, // 10 years
     secure: IS_PROD,
     sameSite: "lax",
   },

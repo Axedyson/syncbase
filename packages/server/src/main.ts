@@ -29,7 +29,6 @@ import type { Context } from "./types";
       req,
       res,
       em: orm.em.fork(),
-      userId: req.session.userId,
     }),
     formatError: errorMiddleware,
     // We are using the retired graphql playground to test our graphql endpoint for now.

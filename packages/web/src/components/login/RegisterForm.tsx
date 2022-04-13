@@ -6,7 +6,7 @@ import { RegisterUserDocument } from "../../graphql/hooks";
 import { useLoginDialog } from "../../hooks/useLoginDialog";
 import { Button } from "../ui/Button";
 import { InputField } from "../ui/InputField";
-import { showResultErrors } from "../utils/showResultErrors";
+import { showResultErrors } from "./utils/showResultErrors";
 import type { FC } from "react";
 import type { SubmitHandler } from "react-hook-form";
 
@@ -39,7 +39,7 @@ export const RegisterForm: FC = () => {
 
   const onSubmit: SubmitHandler<RegisterInput> = async (data) => {
     const result = await submitInput({ userInput: data });
-    showResultErrors(result, setError);
+    if (!showResultErrors(result, setError)) dialog.close();
   };
 
   return (

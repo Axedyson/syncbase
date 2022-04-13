@@ -9,7 +9,6 @@ export interface Context {
   em: EntityManager<IDatabaseDriver<Connection>>;
   req: Request;
   res: Response;
-  userId: Request["session"]["userId"];
 }
 
 declare module "express-session" {

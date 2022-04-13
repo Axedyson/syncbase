@@ -42,4 +42,4 @@ jobs:
           workingDir: packages/web
           storybookBuildDir: storybook-static
       - name: Interaction tests
-        run: yarn test-storybook --url https://619aa417876c17003a24f46a-zfodntuhwo.chromatic.com
+        run: yarn workspace @syncbase/web test-storybook --url https://main--619aa417876c17003a24f46a.chromatic.com

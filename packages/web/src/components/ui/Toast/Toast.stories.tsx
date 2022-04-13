@@ -8,6 +8,7 @@ export default {
   component: Toast,
   parameters: {
     chromatic: { delay: 1000 },
+    controls: { hideNoControlsWarning: true },
   },
 } as ComponentMeta<typeof Toast>;
 

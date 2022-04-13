@@ -41,3 +41,5 @@ jobs:
           projectToken: 64e3a9911647
           workingDir: packages/web
           storybookBuildDir: storybook-static
+      - name: Interaction tests
+        run: yarn test-storybook --url https://619aa417876c17003a24f46a-zfodntuhwo.chromatic.com

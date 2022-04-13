@@ -34,24 +34,25 @@ I welcome any kind of contribution!
 
 ### TODO
 
-- Properly implement session cookie expiration
-- Implement dataloader stuff
+- Add accessibility, interaction, integration and unit tests
+  - Also implement eslint plugins when necessary!
+- Implement internationalization
+- Implement dataloader
+- Deploy web on vercel and server and it's services on DO droplet, automatic deployment should be done with github actions
 - Actually develop the project
-- Deploy web on vercel and server and it's services on DO droplet and maybe some automatic deployment with gh actions
+- Add userflow testing probably with cypress/playwright
+  - Also implement eslint plugins when necessary!
 - Maybe add standard-version/semantic-release/changeset?
 - Add more .md files to properly document the contribution process and attract contributors
-- Add accessibility, interaction, userflow, integration and unit tests e.g. by using storybook, cypress/playwright and jest
-  - Also implement eslint plugins when necessary!
-- Add docker & docker-compose for development?
 
 ### Notes
 
-- Implement Internationalization later
 - Implement SEO optimizations later
 - Implement OG meta tags later
-- Datadog?
-- Sentry?
 - In the future we want to [organize by feature](https://softwareengineering.stackexchange.com/questions/338597/folder-by-type-or-folder-by-feature) rather than by type
+- Docker & docker-compose?
+- Sentry?
+- Datadog?
 
 <p align="center">
   <a href="http://commitizen.github.io/cz-cli/">

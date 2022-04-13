@@ -24,6 +24,11 @@ export const urqlClientWrapper = (page: NextPage, ssr?: boolean) =>
                   me: result.loginUser,
                 }));
               },
+              registerUser: (result, _args, cache) => {
+                cache.updateQuery({ query: MeDocument }, () => ({
+                  me: result.registerUser,
+                }));
+              },
               logoutUser: (_result, _args, cache) => {
                 cache.updateQuery({ query: MeDocument }, () => ({ me: null }));
               },

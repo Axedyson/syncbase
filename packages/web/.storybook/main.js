@@ -14,6 +14,9 @@ module.exports = {
     "@storybook/addon-a11y",
     "@storybook/addon-interactions",
   ],
+  features: {
+    interactionsDebugger: true,
+  },
   reactOptions: {
     fastRefresh: true,
   },

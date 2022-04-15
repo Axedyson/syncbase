@@ -3,7 +3,6 @@ name: UI Tests
 on: push
 
 jobs:
-  # TODO: Add accessibility, interaction and maybe userflow testing (maybe these should be in tests.yml)
   chromatic:
     name: Visual
     runs-on: ubuntu-latest

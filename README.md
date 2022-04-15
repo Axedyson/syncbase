@@ -34,13 +34,13 @@ I welcome any kind of contribution!
 
 ### TODO
 
-- Add accessibility, interaction, integration and unit tests
+- Add integration and unit tests
   - Also implement eslint plugins when necessary!
 - Implement internationalization
 - Implement dataloader
 - Deploy web on vercel and server and it's services on DO droplet, automatic deployment should be done with github actions
 - Actually develop the project
-- Add userflow testing probably with cypress/playwright
+- Add userflow/e2e (cypress/playwright) and accessibility testing
   - Also implement eslint plugins when necessary!
 - Maybe add standard-version/semantic-release/changeset?
 - Add more .md files to properly document the contribution process and attract contributors

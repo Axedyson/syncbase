@@ -8,6 +8,7 @@ import {
 } from "apollo-server-core";
 import { ApolloServer } from "apollo-server-express";
 import express from "express";
+import { buildSchema } from "type-graphql";
 import { IS_PROD, PORT } from "./config/constants";
 import { schemaConfig } from "./config/typegraphql";
 import { errorMiddleware } from "./middleware/errorMiddleware";
@@ -24,7 +25,7 @@ import type { Context } from "./types";
 
   const httpServer = http.createServer(app);
   const apolloServer = new ApolloServer({
-    schema: await schemaConfig,
+    schema: await buildSchema(schemaConfig),
     context: ({ req, res }): Context => ({
       req,
       res,

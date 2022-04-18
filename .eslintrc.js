@@ -127,19 +127,11 @@ module.exports = {
           version: "detect", // It will default to "detect" in the future
         },
       },
-      // If in general eslint takes to long to run, then just remove the below overrides section
-      // and uninstall eslint-plugin-type-graphql from root package.json
+      // If eslint takes to long to run, we could remove the below overrides section and uninstall
+      // eslint-plugin-type-graphql from root package.json or we could specify more specific paths to
+      // files containing typegraphql code or we could simply restrict lint-staged to only run eslint on
+      // changed files to speed things up
       overrides: [
-        {
-          files: [
-            "next-env.d.ts",
-            "packages/web/src/**/*.ts",
-            "packages/web/src/**/*.tsx",
-          ],
-          parserOptions: {
-            project: path.join(__dirname, "packages/web/tsconfig.json"),
-          },
-        },
         {
           files: ["packages/server/src/**/*.ts"],
           parserOptions: {

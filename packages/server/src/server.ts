@@ -9,13 +9,13 @@ import {
 import { ApolloServer } from "apollo-server-express";
 import express from "express";
 import { buildSchema } from "type-graphql";
-import { IS_PROD, PORT } from "./config/constants";
+import { IS_PROD } from "./config/constants";
 import { schemaConfig } from "./config/typegraphql";
 import { errorMiddleware } from "./middleware/errorMiddleware";
 import { sessionMiddleware } from "./middleware/sessionMiddleware";
 import type { Context } from "./types";
 
-(async () => {
+export const startServer = async (port?: number) => {
   const orm = await MikroORM.init();
 
   const app = express();
@@ -32,7 +32,7 @@ import type { Context } from "./types";
       em: orm.em.fork(),
     }),
     formatError: errorMiddleware,
-    // We are using the retired graphql playground to test our graphql endpoint for now.
+    // We are using the retired graphql playground to test our graphql resolvers for now.
     // The reason is that apollo studio 3 (default tool) requires cookies to
     // have the following settings: secure: true & sameSite: "none".
     // But express-session currently doesn't allow setting secure cookies from a http site
@@ -57,9 +57,10 @@ import type { Context } from "./types";
     cors: { credentials: true, origin: "http://localhost:3000" },
   });
 
-  httpServer.listen(PORT, () => {
-    console.log(
-      `🚀 Server ready at http://localhost:${PORT}${apolloServer.graphqlPath}`
-    );
-  });
-})().catch(console.error);
+  await new Promise<void>((resolve) => httpServer.listen(port, resolve));
+  console.log(
+    `🚀 Server ready at http://localhost:${port}${apolloServer.graphqlPath}`
+  );
+
+  return { server: httpServer, orm };
+};

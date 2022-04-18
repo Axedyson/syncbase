@@ -41,6 +41,7 @@ export type MutationRegisterUserArgs = {
 
 export type Query = {
   __typename?: 'Query';
+  lol: Scalars['String'];
   me?: Maybe<User>;
 };
 
@@ -96,6 +97,7 @@ export type GraphCacheKeysConfig = {
 
 export type GraphCacheResolvers = {
   Query?: {
+    lol?: GraphCacheResolver<WithTypename<Query>, Record<string, never>, Scalars['String'] | string>,
     me?: GraphCacheResolver<WithTypename<Query>, Record<string, never>, WithTypename<User> | string>
   },
   User?: {

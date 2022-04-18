@@ -30,6 +30,11 @@ export class UserResolver {
     return loginUser(ctx, input, user);
   }
 
+  @Query(() => String)
+  lol() {
+    return "lol";
+  }
+
   @Mutation(() => User)
   registerUser(@Arg("input") input: RegisterUserInput, @Ctx() ctx: Context) {
     return registerUser(ctx, input);

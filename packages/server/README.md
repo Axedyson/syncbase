@@ -1,3 +1,3 @@
 # Server
 
-Will add more helpful documentation for contributores related to the server here later!
+Will add more helpful documentation for contributors related to the server here later!

@@ -9,13 +9,13 @@ import {
 import { ApolloServer } from "apollo-server-express";
 import express from "express";
 import { buildSchema } from "type-graphql";
-import { IS_PROD } from "./config/constants";
+import { IS_PROD, IS_TEST } from "./config/constants";
 import { schemaConfig } from "./config/typegraphql";
 import { errorMiddleware } from "./middleware/errorMiddleware";
 import { sessionMiddleware } from "./middleware/sessionMiddleware";
 import type { Context } from "./types";
 
-export const startServer = async (port?: number) => {
+export const startServer = async () => {
   const orm = await MikroORM.init();
 
   const app = express();
@@ -57,9 +57,11 @@ export const startServer = async (port?: number) => {
     cors: { credentials: true, origin: "http://localhost:3000" },
   });
 
-  await new Promise<void>((resolve) => httpServer.listen(port, resolve));
+  const PORT = IS_TEST ? 0 : process.env.PORT ?? 8080;
+
+  await new Promise<void>((resolve) => httpServer.listen(PORT, resolve));
   console.log(
-    `🚀 Server ready at http://localhost:${port}${apolloServer.graphqlPath}`
+    `🚀 Server ready at http://localhost:${PORT}${apolloServer.graphqlPath}`
   );
 
   return { server: httpServer, orm };

@@ -10,22 +10,22 @@ on:
 
 jobs:
   # TODO: Add integration and unit testing
-  integration:
-    name: Integration
-    runs-on: ubuntu-latest
+  #integration:
+  #  name: Integration
+  #  runs-on: ubuntu-latest
 
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v3
-      - name: Set up node 16
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: "yarn"
-      - name: Install dependencies
-        run: yarn install
-      - name: Run server tests
-        run: yarn workspace @syncbase/server jest --ci
+  #  steps:
+  #    - name: Check out repository code
+  #      uses: actions/checkout@v3
+  #    - name: Set up node 16
+  #      uses: actions/setup-node@v3
+  #      with:
+  #        node-version: 16
+  #        cache: "yarn"
+  #    - name: Install dependencies
+  #      run: yarn install
+  #    - name: Run server tests
+  #      run: yarn workspace @syncbase/server jest --ci
 
   build:
     name: Build

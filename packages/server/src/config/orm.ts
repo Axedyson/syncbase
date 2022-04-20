@@ -1,9 +1,9 @@
 import { TsMorphMetadataProvider } from "@mikro-orm/reflection";
-import { IS_PROD } from "./constants";
+import { IS_PROD, IS_TEST } from "./constants";
 import type { MikroORM } from "@mikro-orm/core";
 
 export default {
-  dbName: "syncbase",
+  dbName: IS_TEST ? "syncbase_test" : "syncbase",
   password: "postgres",
   type: "postgresql",
   entities: ["./dist/entities/**/*.js"],

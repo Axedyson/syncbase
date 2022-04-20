@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "yarn clean && tsnd --respawn --transpile-only src/index.ts",
     "build": "yarn clean && rm -fr tsconfig.tsbuildinfo && tsc && mikro-orm cache:generate",
-    "start": "node dist/main.js",
+    "start": "node dist/index.js",
     "check-types": "tsc --noEmit",
     "clean": "mikro-orm cache:clear && rm -fr dist"
   },
@@ -48,7 +48,6 @@
     ]
   },
   "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "node"
+    "preset": "ts-jest"
   }
 }

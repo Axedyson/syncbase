@@ -16,8 +16,8 @@ jobs:
     services:
       postgres:
         image: postgres
-        #env:
-        #  POSTGRES_PASSWORD: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -46,10 +46,10 @@ jobs:
           cache: "yarn"
       - name: Install dependencies
         run: yarn install
-      # - name: Run tests accessing database serially
-      # run: yarn workspace @syncbase/server jest --ci --runInBand
       - name: Run tests
-        run: yarn workspace @syncbase/server jest --ci --colors
+        run: yarn workspace @syncbase/server test --ci --colors
+      - name: Run tests accessing test database serially
+        run: yarn workspace @syncbase/server test:with-db-requirement --ci --colors
 
   build-packages:
     name: Build

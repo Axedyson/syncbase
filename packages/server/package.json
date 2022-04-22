@@ -7,7 +7,9 @@
     "build": "yarn clean && rm -fr tsconfig.tsbuildinfo && tsc && mikro-orm cache:generate",
     "start": "node dist/index.js",
     "check-types": "tsc --noEmit",
-    "clean": "mikro-orm cache:clear && rm -fr dist"
+    "clean": "mikro-orm cache:clear && rm -fr dist",
+    "test": "jest '/tests/.+\\.test\\.ts$'",
+    "test:with-db-requirement": "jest '/integration/.+\\.test\\.ts$' --runInBand"
   },
   "dependencies": {
     "@mikro-orm/cli": "^5.1.2",

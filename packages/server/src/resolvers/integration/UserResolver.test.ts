@@ -19,7 +19,8 @@ describe("User resolvers", () => {
       request(server)
         .post("/graphql")
         .send({ query, variables })
-        .set("Accept", "application/json");
+        .set("Accept", "application/json")
+        .expect("Content-Type", /json/);
   });
 
   afterAll(async () => {
@@ -28,7 +29,7 @@ describe("User resolvers", () => {
     await orm.close();
   });
 
-  test("creating a user", async () => {
+  test("creating a user", () => {
     const queryData = /* GraphQL */ `
       mutation RegisterUser($userInput: RegisterUserInput!) {
         registerUser(input: $userInput) {
@@ -45,7 +46,7 @@ describe("User resolvers", () => {
       },
     };
 
-    await graphql(queryData, variables)
+    return graphql(queryData, variables)
       .expect(200)
       .then((res) => {
         expect(res.body.data.registerUser.name).toBe("Bob");

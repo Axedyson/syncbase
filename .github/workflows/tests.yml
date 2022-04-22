@@ -18,14 +18,14 @@ jobs:
         image: postgres
         env:
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: syncbase_test
+          #POSTGRES_DB: syncbase_test
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-        ports:
-          - 5432:5432
+        #ports:
+        #  - 5432:5432
 
       redis:
         image: redis
@@ -34,8 +34,8 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-        ports:
-          - 6379:6379
+        #ports:
+        #  - 6379:6379
 
     steps:
       - name: Check out repository code
@@ -50,7 +50,7 @@ jobs:
       # - name: Run tests accessing database serially
       # run: yarn workspace @syncbase/server jest --ci --runInBand
       - name: Run tests
-        run: yarn workspace @syncbase/server jest --ci
+        run: yarn workspace @syncbase/server jest --ci --colors
 
   build-packages:
     name: Build

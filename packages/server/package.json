@@ -10,10 +10,10 @@
     "clean": "mikro-orm cache:clear && rm -fr dist"
   },
   "dependencies": {
-    "@mikro-orm/cli": "^5.1.1",
-    "@mikro-orm/core": "^5.1.1",
-    "@mikro-orm/postgresql": "^5.1.1",
-    "@mikro-orm/reflection": "^5.1.1",
+    "@mikro-orm/cli": "^5.1.2",
+    "@mikro-orm/core": "^5.1.2",
+    "@mikro-orm/postgresql": "^5.1.2",
+    "@mikro-orm/reflection": "^5.1.2",
     "apollo-server-core": "^3.6.7",
     "apollo-server-express": "^3.6.7",
     "argon2": "^0.28.5",
@@ -49,16 +49,17 @@
   },
   "jest": {
     "preset": "ts-jest",
+    "testRegex": "/(tests|integration)/.+\\.test\\.ts$",
     "collectCoverage": true,
     "collectCoverageFrom": [
       "src/**/*.ts"
     ],
     "coverageThreshold": {
       "global": {
-        "statements": 100,
-        "branches": 100,
-        "functions": 100,
-        "lines": 100
+        "statements": 50,
+        "branches": 50,
+        "functions": 50,
+        "lines": 50
       }
     }
   }

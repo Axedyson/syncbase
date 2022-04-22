@@ -14,7 +14,7 @@ I welcome any kind of contribution!
 - Have node installed, preferably a version that is minimum 16 (I'm using v16.13.0 LTS)
 - Have yarn installed
 - Have postgresql installed, also the user postgres needs to have the password postgres
-- You need to make two databases: `syncbase` and `syncbase_test`
+- You need to make a database by the name of: `syncbase`
 - Have redis installed
 - Clone this repo
 - Run `yarn` inside of the root folder of the repo to install all necessary packages

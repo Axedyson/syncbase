@@ -4,7 +4,7 @@ on: push
 
 jobs:
   chromatic:
-    name: Visual
+    name: Visual and interaction
     runs-on: ubuntu-latest
 
     steps:

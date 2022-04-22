@@ -6,8 +6,8 @@
     "dev": "concurrently -n \"next,graphql\" -c \"bgBlack,bgMagenta\" \"next dev\" \"graphql-codegen\"",
     "build": "next build",
     "start": "next start",
-    "check-types": "tsc --noEmit",
-    "storybook": "start-storybook -p 6006"
+    "storybook": "start-storybook -p 6006",
+    "check-types": "tsc --noEmit"
   },
   "dependencies": {
     "@headlessui/react": "^1.5.0",

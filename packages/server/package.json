@@ -6,10 +6,9 @@
     "dev": "yarn clean && tsnd --respawn --transpile-only src/index.ts",
     "build": "yarn clean && rm -fr tsconfig.tsbuildinfo && tsc && mikro-orm cache:generate",
     "start": "node dist/index.js",
+    "test": "jest --runInBand --colors",
     "check-types": "tsc --noEmit",
-    "clean": "mikro-orm cache:clear && rm -fr dist",
-    "test": "jest '/tests/.+\\.test\\.ts$'",
-    "test:with-db-requirement": "jest '/integration/.+\\.test\\.ts$' --runInBand"
+    "clean": "mikro-orm cache:clear && rm -fr dist"
   },
   "dependencies": {
     "@mikro-orm/cli": "^5.1.2",
@@ -51,17 +50,17 @@
   },
   "jest": {
     "preset": "ts-jest",
-    "testRegex": "/(tests|integration)/.+\\.test\\.ts$",
+    "testRegex": "/tests/.+\\.test\\.ts$",
     "collectCoverage": true,
     "collectCoverageFrom": [
       "src/**/*.ts"
     ],
     "coverageThreshold": {
       "global": {
-        "statements": 50,
-        "branches": 50,
-        "functions": 50,
-        "lines": 50
+        "statements": 90,
+        "branches": 55,
+        "functions": 90,
+        "lines": 90
       }
     }
   }

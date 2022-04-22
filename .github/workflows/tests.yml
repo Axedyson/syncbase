@@ -47,9 +47,7 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Run tests
-        run: yarn workspace @syncbase/server test --ci --colors
-      - name: Run tests accessing test database serially
-        run: yarn workspace @syncbase/server test:with-db-requirement --ci --colors
+        run: yarn workspace @syncbase/server test --ci
 
   build-packages:
     name: Build

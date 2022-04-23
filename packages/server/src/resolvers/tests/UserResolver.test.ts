@@ -1,37 +1,8 @@
-import request from "supertest";
-import { redisClient } from "../../redis";
-import { startServer } from "../../server";
-import type { Connection, IDatabaseDriver, MikroORM } from "@mikro-orm/core";
-import type { Server } from "net";
+import { connect, disconnect, graphql } from "./testSetup";
 
 describe("User resolvers", () => {
-  let server: Server;
-  let orm: MikroORM<IDatabaseDriver<Connection>>;
-  let agent: request.SuperAgentTest;
-  let graphql: (
-    agent: request.SuperAgentTest,
-    query: string,
-    variables?: Record<string, unknown>
-  ) => request.Test;
-
-  beforeAll(async () => {
-    ({ server, orm } = await startServer());
-    await orm.getSchemaGenerator().refreshDatabase();
-
-    agent = request.agent(server);
-    graphql = (agent, query, variables) =>
-      agent
-        .post("/graphql")
-        .expect("Content-Type", /json/)
-        .set("Accept", "application/json")
-        .send({ query, variables });
-  });
-
-  afterAll(async () => {
-    server.close();
-    await redisClient.quit();
-    await orm.close();
-  });
+  beforeAll(connect);
+  afterAll(disconnect);
 
   test("creating a user", () => {
     const query = /* GraphQL */ `
@@ -50,7 +21,7 @@ describe("User resolvers", () => {
       },
     };
 
-    return graphql(agent, query, variables)
+    return graphql({ query, variables })
       .expect(200)
       .expect(
         "set-cookie",
@@ -70,7 +41,7 @@ describe("User resolvers", () => {
       }
     `;
 
-    return graphql(agent, query)
+    return graphql({ query })
       .expect(200)
       .then((res) => {
         expect(res.body.data.me.email).toBe("anders@ewfwe.com");
@@ -93,7 +64,7 @@ describe("User resolvers", () => {
       },
     };
 
-    return graphql(agent, query, variables)
+    return graphql({ query, variables })
       .expect(200)
       .then((res) => {
         expect(res.body.data.loginUser.email).toBe("anders@ewfwe.com");
@@ -107,7 +78,7 @@ describe("User resolvers", () => {
       }
     `;
 
-    return graphql(agent, query)
+    return graphql({ query })
       .expect(200)
       .then((res) => {
         expect(res.body.data.logoutUser).toBe(true);
@@ -131,7 +102,7 @@ describe("User resolvers", () => {
       },
     };
 
-    return graphql(agent, query, variables)
+    return graphql({ query, variables })
       .expect(200)
       .then((res) => {
         expect(res.body.errors[0].message).toBe("The email has been taken!");

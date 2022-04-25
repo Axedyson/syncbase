@@ -87,12 +87,7 @@ module.exports = {
             },
           },
         ],
-        "import/newline-after-import": [
-          "warn",
-          {
-            count: 1,
-          },
-        ],
+        "import/newline-after-import": ["warn", { count: 1 }],
         "sort-imports": [
           "warn",
           {

@@ -5,11 +5,10 @@ import type { FC } from "react";
 interface DialogProps {
   isOpen: boolean;
   close: () => void;
+  children: React.ReactNode;
 }
 
 export const Dialog: FC<DialogProps> = ({ isOpen, close, children }) => {
-  // We are using this ref here for the purpose of removing an annoying warning
-  // in the console when the children prop is <TabGroup/> component
   // https://github.com/tailwindlabs/headlessui/issues/265#issuecomment-880055784
   const innerDivEl = useRef(null);
 
@@ -33,7 +32,7 @@ export const Dialog: FC<DialogProps> = ({ isOpen, close, children }) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <HeadlessDialog.Overlay className="fixed inset-0 bg-black/30" />
+            <HeadlessDialog.Backdrop className="fixed inset-0 bg-black/30" />
           </Transition.Child>
           <Transition.Child
             as={Fragment}
@@ -44,9 +43,11 @@ export const Dialog: FC<DialogProps> = ({ isOpen, close, children }) => {
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <div className="relative p-3 m-2 w-full bg-white rounded-lg shadow-lg sm:w-96">
-              {children}
-            </div>
+            <HeadlessDialog.Panel>
+              <div className="relative p-3 m-2 w-full bg-white rounded-lg shadow-lg sm:w-96">
+                {children}
+              </div>
+            </HeadlessDialog.Panel>
           </Transition.Child>
         </div>
       </HeadlessDialog>

@@ -3,6 +3,6 @@
  */
 module.exports = {
   // https://github.com/tailwindlabs/headlessui/issues/681
-  reactStrictMode: false,
+  reactStrictMode: true,
   poweredByHeader: false,
 };

@@ -32,7 +32,7 @@ export const Dialog: FC<DialogProps> = ({ isOpen, close, children }) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <HeadlessDialog.Backdrop className="fixed inset-0 bg-black/30" />
+            <HeadlessDialog.Overlay className="fixed inset-0 bg-black/30" />
           </Transition.Child>
           <Transition.Child
             as={Fragment}
@@ -43,11 +43,9 @@ export const Dialog: FC<DialogProps> = ({ isOpen, close, children }) => {
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <HeadlessDialog.Panel>
-              <div className="relative p-3 m-2 w-full bg-white rounded-lg shadow-lg sm:w-96">
-                {children}
-              </div>
-            </HeadlessDialog.Panel>
+            <div className="relative p-3 m-2 w-full bg-white rounded-lg shadow-lg sm:w-96">
+              {children}
+            </div>
           </Transition.Child>
         </div>
       </HeadlessDialog>

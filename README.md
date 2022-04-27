@@ -35,12 +35,12 @@ I welcome any kind of contribution!
 
 ### TODO
 
-- Add unit tests, integration tests and userflow/e2e tests
+- Add userflow/e2e (playwright!) tests
   - Also implement eslint plugins when necessary!
 - Implement internationalization
 - Implement dataloader
 - Deploy web on vercel and server and it's services on DO droplet, automatic deployment should be done with github actions
-- Maybe add standard-version/semantic-release/changeset?
+- Maybe add standard-version/semantic-release/changeset/keepachangelog?
 - Actually develop the project
 - Add more .md files to properly document the contribution process and attract contributors
 

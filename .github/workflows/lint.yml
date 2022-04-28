@@ -42,6 +42,6 @@ jobs:
       - name: Run eslint
         run: yarn eslint . --max-warnings 0
       - name: Run typescript server checks
-        run: yarn workspace @syncbase/server check-types
+        run: yarn workspace @syncbase/server typecheck
       - name: Run typescript web checks
-        run: yarn workspace @syncbase/web check-types
+        run: yarn workspace @syncbase/web typecheck

@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "storybook": "start-storybook -p 6006",
-    "check-types": "tsc --noEmit"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@headlessui/react": "^1.6.0",
@@ -32,6 +32,7 @@
     "@graphql-codegen/typescript": "2.4.8",
     "@graphql-codegen/typescript-operations": "2.3.5",
     "@graphql-codegen/typescript-urql-graphcache": "^2.2.10",
+    "@playwright/test": "^1.21.1",
     "@storybook/addon-a11y": "^6.4.22",
     "@storybook/addon-essentials": "^6.4.22",
     "@storybook/addon-interactions": "^6.4.22",

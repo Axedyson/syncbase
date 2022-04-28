@@ -28,6 +28,7 @@ export const connect = async () => {
       .post("/graphql")
       .set("Accept", "application/json")
       .send(data)
+      .expect(200)
       .expect("Content-Type", /json/);
 };
 

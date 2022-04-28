@@ -22,7 +22,6 @@ describe("User resolvers", () => {
     };
 
     return graphql({ query, variables })
-      .expect(200)
       .expect(
         "set-cookie",
         /^ko=.+; Path=\/; Expires=.+; HttpOnly; SameSite=Lax$/
@@ -41,11 +40,9 @@ describe("User resolvers", () => {
       }
     `;
 
-    return graphql({ query })
-      .expect(200)
-      .then((res) => {
-        expect(res.body.data.me.email).toBe("anders@ewfwe.com");
-      });
+    return graphql({ query }).then((res) => {
+      expect(res.body.data.me.email).toBe("anders@ewfwe.com");
+    });
   });
 
   test("logging in a user", () => {
@@ -64,11 +61,9 @@ describe("User resolvers", () => {
       },
     };
 
-    return graphql({ query, variables })
-      .expect(200)
-      .then((res) => {
-        expect(res.body.data.loginUser.email).toBe("anders@ewfwe.com");
-      });
+    return graphql({ query, variables }).then((res) => {
+      expect(res.body.data.loginUser.email).toBe("anders@ewfwe.com");
+    });
   });
 
   test("logging user out", () => {
@@ -78,11 +73,9 @@ describe("User resolvers", () => {
       }
     `;
 
-    return graphql({ query })
-      .expect(200)
-      .then((res) => {
-        expect(res.body.data.logoutUser).toBe(true);
-      });
+    return graphql({ query }).then((res) => {
+      expect(res.body.data.logoutUser).toBe(true);
+    });
   });
 
   test("email already taken on sign up", () => {
@@ -102,10 +95,8 @@ describe("User resolvers", () => {
       },
     };
 
-    return graphql({ query, variables })
-      .expect(200)
-      .then((res) => {
-        expect(res.body.errors[0].message).toBe("The email has been taken!");
-      });
+    return graphql({ query, variables }).then((res) => {
+      expect(res.body.errors[0].message).toBe("The email has been taken!");
+    });
   });
 });

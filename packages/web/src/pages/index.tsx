@@ -23,6 +23,7 @@ const IndexPage: NextPage = () => {
 
   return (
     <div className="flex flex-col gap-y-2 p-2 m-auto rounded-md border-2 border-slate-400">
+      <p data-id="lol">Lol</p>
       <LoginDialog />
       {!user ? (
         <>

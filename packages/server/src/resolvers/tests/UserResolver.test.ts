@@ -1,9 +1,6 @@
-import { connect, disconnect, graphql } from "./testSetup";
+import { graphql } from "./testSetup";
 
 describe("User resolvers", () => {
-  beforeAll(connect);
-  afterAll(disconnect);
-
   test("creating a user", () => {
     const query = /* GraphQL */ `
       mutation RegisterUser($userInput: RegisterUserInput!) {

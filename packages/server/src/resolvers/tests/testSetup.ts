@@ -17,7 +17,7 @@ let orm: MikroORM<IDatabaseDriver<Connection>>;
 
 export let graphql: graphqlTestFunc;
 
-export const connect = async () => {
+beforeAll(async () => {
   ({ server, orm } = await startServer());
   await orm.getSchemaGenerator().refreshDatabase();
 
@@ -30,10 +30,10 @@ export const connect = async () => {
       .send(data)
       .expect(200)
       .expect("Content-Type", /json/);
-};
+});
 
-export const disconnect = async () => {
+afterAll(async () => {
   server.close();
   await redisClient.quit();
   await orm.close();
-};
+});

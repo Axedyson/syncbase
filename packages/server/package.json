@@ -49,25 +49,11 @@
     ]
   },
   "jest": {
+    "preset": "ts-jest",
+    "testRegex": "/tests/.+\\.test\\.ts$",
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "src/**/*.ts",
-      "!**/*/tests/*.ts"
-    ],
-    "projects": [
-      {
-        "displayName": "unit/integration-tests",
-        "testRegex": "^((?!resolvers).)*/tests/.+\\.test\\.ts$",
-        "preset": "ts-jest"
-      },
-      {
-        "displayName": "server-e2e-tests",
-        "testRegex": "/resolvers/tests/.+\\.test\\.ts$",
-        "preset": "ts-jest",
-        "setupFilesAfterEnv": [
-          "./src/resolvers/tests/testSetup.ts"
-        ]
-      }
+      "src/**/*.ts"
     ],
     "coverageThreshold": {
       "global": {

@@ -58,6 +58,7 @@ module.exports = {
             ignoreExports: [
               path.join(__dirname, "packages/server/src/config/orm.ts"),
               path.join(__dirname, "packages/web/src/pages/*"),
+              path.join(__dirname, "packages/web/tests/playwright.config.ts"),
               path.join(__dirname, "packages/web/.storybook/preview.js"),
               path.join(
                 __dirname,

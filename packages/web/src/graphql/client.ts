@@ -9,7 +9,7 @@ import type { NextPage } from "next";
 export const urqlClientWrapper = (page: NextPage, ssr?: boolean) =>
   withUrqlClient(
     (ssrExchange, ctx) => ({
-      url: "http://localhost:8080/graphql",
+      url: `http://localhost:${process.env.SERVER_PORT || 8080}/graphql`,
       fetchOptions: {
         credentials: "include",
         headers: { cookie: ctx?.req?.headers?.cookie ?? "" },

@@ -54,7 +54,10 @@ export const startServer = async () => {
   await apolloServer.start();
   apolloServer.applyMiddleware({
     app,
-    cors: { credentials: true, origin: "http://localhost:3000" },
+    cors: {
+      credentials: true,
+      origin: `http://localhost:${process.env.WEB_PORT || 3000}`,
+    },
   });
 
   const PORT = IS_TEST ? 0 : process.env.PORT ?? 8080;

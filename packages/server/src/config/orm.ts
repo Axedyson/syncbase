@@ -3,7 +3,11 @@ import { IS_PROD, IS_TEST } from "./constants";
 import type { MikroORM } from "@mikro-orm/core";
 
 export default {
-  dbName: IS_TEST ? "syncbase_test" : "syncbase",
+  dbName: process.env.playwright
+    ? "syncbase_playwright"
+    : IS_TEST
+    ? "syncbase_jest"
+    : "syncbase",
   password: "postgres",
   type: "postgresql",
   entities: ["./dist/entities/**/*.js"],

@@ -14,7 +14,8 @@ I welcome any kind of contribution!
 - Have node installed, preferably a version that is minimum 16 (I'm using v16.13.0 LTS)
 - Have yarn installed
 - Have postgresql installed, also the user postgres needs to have the password postgres
-- You need to make a database by the name of: `syncbase`
+- You need to make a database by the name of: `syncbase` and another one by the name of: `syncbase_playwright`
+- After that you can run `yarn workspace @syncbase/server seed` to seed the `syncbase` development database
 - Have redis installed
 - Clone this repo
 - Run `yarn` inside of the root folder of the repo to install all necessary packages
@@ -43,6 +44,8 @@ I welcome any kind of contribution!
 - Maybe add standard-version/semantic-release/changeset/keepachangelog?
 - Actually develop the project
 - Add more .md files to properly document the contribution process and attract contributors
+- Should we be more granular when it comes to [exclusion](https://bobbyhadz.com/blog/typescript-exclude-test-files-from-compilation) of certain files from typescript build compilation
+  output?
 
 ### Notes
 

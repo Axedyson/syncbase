@@ -60,7 +60,7 @@ export const startServer = async () => {
     },
   });
 
-  const PORT = IS_TEST ? 0 : process.env.PORT ?? 8080;
+  const PORT = IS_TEST ? 0 : process.env.PORT || 8080;
 
   await new Promise<void>((resolve) => httpServer.listen(PORT, resolve));
   console.log(

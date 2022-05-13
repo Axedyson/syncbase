@@ -16,37 +16,39 @@ export const Dialog: FC<DialogProps> = ({ isOpen, close, children }) => {
     <Transition show={isOpen} as={Fragment}>
       <HeadlessDialog
         initialFocus={innerDivEl}
-        className="overflow-y-auto fixed inset-0 z-10"
+        className="relative z-10"
         onClose={close}
       >
-        <div
-          className="flex justify-center items-center min-h-screen"
-          ref={innerDivEl}
+        <Transition.Child
+          as={Fragment}
+          enter="ease-out duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
         >
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
+          <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+        </Transition.Child>
+        <div className="overflow-y-auto fixed inset-0">
+          <div
+            ref={innerDivEl}
+            className="flex justify-center items-center min-h-full"
           >
-            <HeadlessDialog.Overlay className="fixed inset-0 bg-black/30" />
-          </Transition.Child>
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0 scale-95"
-            enterTo="opacity-100 scale-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100 scale-100"
-            leaveTo="opacity-0 scale-95"
-          >
-            <div className="relative p-3 m-2 w-full bg-white rounded-lg shadow-lg sm:w-96">
-              {children}
-            </div>
-          </Transition.Child>
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+              <HeadlessDialog.Panel className="relative p-3 m-2 w-full bg-white rounded-lg shadow-lg sm:w-96">
+                {children}
+              </HeadlessDialog.Panel>
+            </Transition.Child>
+          </div>
         </div>
       </HeadlessDialog>
     </Transition>

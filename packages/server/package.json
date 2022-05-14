@@ -7,7 +7,6 @@
     "dev:e2e": "WEB_PORT=3002 PORT=8082 usePlaywrightDB=1 yarn dev",
     "build": "yarn clean && rm -fr tsconfig.tsbuildinfo && tsc && mikro-orm cache:generate",
     "start": "node dist/index.js",
-    "start:e2e": "WEB_PORT=3002 PORT=8082 usePlaywrightDB=1 yarn start",
     "seed": "mikro-orm seeder:run",
     "test": "jest --colors",
     "test:ci": "yarn test --ci",

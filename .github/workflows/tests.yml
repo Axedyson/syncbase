@@ -99,10 +99,10 @@ jobs:
         run: yarn workspace @syncbase/web build
         # -- Update this properly when the next playwright update arrives! --
       - name: Run tests
-        run: yarn workspace @syncbase/server start-server-and-test 'yarn start:e2e' http://localhost:8082/.well-known/apollo/server-health 'yarn workspace @syncbase/web test'
+        run: yarn workspace @syncbase/server start-server-and-test 'usePlaywrightDB=1 yarn start' http://localhost:8082/.well-known/apollo/server-health 'yarn workspace @syncbase/web test'
         # -----------------------------------------------------------------------
-      # Do I need this (it has something to do with playwright traces funny enough)?:
-      # Also how should I handle caching of the browsers if needed?
+        # Do I need this (it has something to do with playwright traces funny enough)?:
+        # Also how should I handle caching of the browsers if needed?
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v3

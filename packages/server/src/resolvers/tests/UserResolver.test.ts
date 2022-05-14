@@ -1,5 +1,13 @@
 import { graphql } from "./testSetup";
 
+const variables = {
+  userInput: {
+    name: "Bob",
+    email: "anders@ewfwe.com",
+    password: "1234567",
+  },
+};
+
 describe("User resolvers", () => {
   test("creating a user", () => {
     const query = /* GraphQL */ `
@@ -9,14 +17,6 @@ describe("User resolvers", () => {
         }
       }
     `;
-
-    const variables = {
-      userInput: {
-        name: "Bob",
-        email: "anders@ewfwe.com",
-        password: "1234567",
-      },
-    };
 
     return graphql({ query, variables })
       .expect(
@@ -53,7 +53,7 @@ describe("User resolvers", () => {
 
     const variables = {
       userInput: {
-        email: "anders@ewfwe.com",
+        email: "pnders@ewfwe.com",
         password: "1234567",
       },
     };
@@ -83,14 +83,6 @@ describe("User resolvers", () => {
         }
       }
     `;
-
-    const variables = {
-      userInput: {
-        name: "Bob",
-        email: "pnders@ewfwe.com",
-        password: "1234567",
-      },
-    };
 
     return graphql({ query, variables }).then((res) => {
       expect(res.body.errors[0].message).toBe("The email has been taken!");

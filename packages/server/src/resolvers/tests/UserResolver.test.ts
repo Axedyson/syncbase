@@ -87,7 +87,7 @@ describe("User resolvers", () => {
     const variables = {
       userInput: {
         name: "Bob",
-        email: "anders@ewfwe.com",
+        email: "pnders@ewfwe.com",
         password: "1234567",
       },
     };

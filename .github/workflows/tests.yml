@@ -47,11 +47,35 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Run tests
-        run: yarn workspace @syncbase/server test --ci
+        run: yarn workspace @syncbase/server test:ci
 
-  build-packages:
-    name: Build
+  e2e-tests:
+    name: E2E
     runs-on: ubuntu-latest
+
+    services:
+      # TODO: Probably need syncbase_playwright DB to be configured here!
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+      redis:
+        image: redis
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379
 
     steps:
       - name: Check out repository code
@@ -63,7 +87,25 @@ jobs:
           cache: "yarn"
       - name: Install dependencies
         run: yarn install
+      - name: Install Playwright
+        run: yarn workspace @syncbase/web playwright install --with-deps
+        # -- Delete this install step when the next playwright update arrives! --
+      - name: Install start-server-and-test npm package
+        run: yarn workspace @syncbase/server add --dev start-server-and-test
+        # -----------------------------------------------------------------------
       - name: Build server
         run: yarn workspace @syncbase/server build
       - name: Build web
         run: yarn workspace @syncbase/web build
+        # -- Update this properly when the next playwright update arrives! --
+      - name: Run tests
+        run: yarn workspace @syncbase/server start-server-and-test 'yarn start:e2e' http://localhost:8082 'yarn workspace @syncbase/web test'
+        # -----------------------------------------------------------------------
+      # Do I need this (it has something to do with playwright traces funny enough)?:
+      # Also how should I handle caching of the browsers if needed?
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-report
+          path: playwright-report

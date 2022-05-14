@@ -4,14 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "yarn clean && tsnd --respawn --transpile-only src/index.ts",
-    "dev-e2e": "WEB_PORT=3002 PORT=8082 usePlaywrightDB=1 yarn dev",
+    "dev:e2e": "WEB_PORT=3002 PORT=8082 usePlaywrightDB=1 yarn dev",
     "build": "yarn clean && rm -fr tsconfig.tsbuildinfo && tsc && mikro-orm cache:generate",
     "start": "node dist/index.js",
-    "start-e2e": "WEB_PORT=3002 PORT=8082 usePlaywrightDB=1 yarn start",
+    "start:e2e": "WEB_PORT=3002 PORT=8082 usePlaywrightDB=1 yarn start",
+    "seed": "mikro-orm seeder:run",
     "test": "jest --colors",
+    "test:ci": "yarn test --ci",
     "typecheck": "tsc --noEmit",
-    "clean": "mikro-orm cache:clear && rm -fr dist",
-    "seed": "mikro-orm seeder:run"
+    "clean": "mikro-orm cache:clear && rm -fr dist"
   },
   "dependencies": {
     "@mikro-orm/cli": "^5.1.3",

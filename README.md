@@ -25,7 +25,7 @@ I welcome any kind of contribution!
 
 #### Contribution flow
 
-- Fork this repo and submit a pull request pointing to the main branch of the original repo
+- Fork this repo and submit a pull request pointing to the main branch on this repo
 
 | Storybook                                                                                         |
 | ------------------------------------------------------------------------------------------------- |
@@ -36,8 +36,9 @@ I welcome any kind of contribution!
 
 ### TODO
 
-- Add userflow/e2e (playwright!) tests
-  - Also implement eslint plugins when necessary!
+- Add a test to check if `hooks.ts` and `schema.graphql` is correct in CI!
+- Should I remove conventional commits (short answer: yes)?
+- [Restore next.js build](https://nextjs.org/docs/messages/no-cache) there is also this: https://github.com/actions/setup-node/issues/244
 - Implement internationalization
 - Implement dataloader
 - Deploy web on vercel and server and it's services on DO droplet, automatic deployment should be done with github actions

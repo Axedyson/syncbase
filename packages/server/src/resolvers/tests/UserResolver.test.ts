@@ -53,7 +53,7 @@ describe("User resolvers", () => {
 
     const variables = {
       userInput: {
-        email: "pnders@ewfwe.com",
+        email: "anders@ewfwe.com",
         password: "1234567",
       },
     };

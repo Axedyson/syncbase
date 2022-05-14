@@ -54,10 +54,10 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
-      # TODO: Probably need syncbase_playwright DB to be configured here!
       postgres:
         image: postgres
         env:
+          POSTGRES_DB: syncbase_playwright
           POSTGRES_PASSWORD: postgres
         options: >-
           --health-cmd pg_isready

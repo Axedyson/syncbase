@@ -19,7 +19,7 @@ test.describe.serial("User login features", () => {
 
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
-    await expect(page).toHaveTitle(/syncbase/);
+    await expect(page).toHaveTitle(/Syncbase/);
   });
 
   test("create account", async ({ page }) => {

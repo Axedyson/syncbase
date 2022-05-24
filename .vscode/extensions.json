@@ -4,6 +4,6 @@
     "editorconfig.editorconfig",
     "stylelint.vscode-stylelint",
     "bradlc.vscode-tailwindcss",
-    "graphql.vscode-graphql"
+    "GraphQL.vscode-graphql"
   ]
 }

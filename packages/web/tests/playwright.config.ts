@@ -5,7 +5,7 @@ import type { PlaywrightTestConfig } from "@playwright/test";
 const webPort = "3002";
 const url = `http://localhost:${process.env.CI ? "3000" : webPort}`;
 
-// Remember to run "yarn workspace @syncbase/server dev:e2e " in another tab to start
+// Remember to run "yarn workspace @syncbase/server dev:e2e" in another terminal tab to start
 // the server in playwright mode before running "yarn workspace @syncbase/web test". When the next
 // playwright update arrives we will be able to run multiple servers using the config options below
 // which will provide much better DX! And when that finally happens you can remove the "dev:e2e"

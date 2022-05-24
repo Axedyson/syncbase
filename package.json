@@ -23,7 +23,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.5.0",
     "eslint-plugin-storybook": "^0.5.12",
     "eslint-plugin-tailwindcss": "^3.5.0",
@@ -34,7 +34,7 @@
     "prettier": "^2.6.2",
     "stylelint": "^14.8.2",
     "stylelint-config-standard": "^25.0.0",
-    "typescript": "^4.6.4"
+    "typescript": "^4.7.2"
   },
   "stylelint": {
     "extends": "stylelint-config-standard",

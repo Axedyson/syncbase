@@ -9,13 +9,13 @@
     "postinstall": "husky install"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.0.0",
+    "@commitlint/cli": "^17.0.1",
     "@commitlint/config-conventional": "^17.0.0",
     "@graphql-eslint/eslint-plugin": "^3.10.3",
     "@next/eslint-plugin-next": "^12.1.6",
     "@types/eslint": "^8.4.2",
-    "@typescript-eslint/eslint-plugin": "^5.24.0",
-    "@typescript-eslint/parser": "^5.24.0",
+    "@typescript-eslint/eslint-plugin": "^5.26.0",
+    "@typescript-eslint/parser": "^5.26.0",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "3.3.0",
     "devmoji": "^2.3.0",

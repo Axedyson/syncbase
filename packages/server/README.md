@@ -4,4 +4,4 @@ Will add more helpful documentation for contributors related to the server here 
 
 ### Notes
 
-- We're running jest with the `--no-cache` option in CI because jest will stop working after 7 days of no CI runs because GitHub will [delete](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows#usage-limits-and-eviction-policy) all caching by then.
+- Since GitHub [deletes](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows#usage-limits-and-eviction-policy) all caching after 7 days, Jest will fail because it can't handle no available cache when running in CI apparently. The only fix as of now, is simply rerunning the failed jest job.

@@ -9,7 +9,7 @@
     "start": "node dist/index.js",
     "seed": "mikro-orm seeder:run",
     "test": "jest --colors",
-    "test:ci": "yarn test --ci --no-cache --detectOpenHandles",
+    "test:ci": "yarn test --ci",
     "typecheck": "tsc --noEmit",
     "clean": "mikro-orm cache:clear && rm -fr dist"
   },

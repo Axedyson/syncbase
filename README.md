@@ -36,7 +36,6 @@ I welcome any kind of contribution!
 
 ### TODO
 
-- Add a test to check if `hooks.ts` and `schema.graphql` is correct in CI!
 - Should I remove conventional commits (short answer: yes)?
 - [Restore next.js build](https://nextjs.org/docs/messages/no-cache) there is also this: https://github.com/actions/setup-node/issues/244
 - Implement internationalization

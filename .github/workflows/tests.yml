@@ -48,7 +48,7 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Run tests
-        run: yarn workspace @syncbase/server test:ci --no-cache
+        run: yarn workspace @syncbase/server test:ci
 
   e2e-tests:
     name: E2E
@@ -96,6 +96,15 @@ jobs:
         # -----------------------------------------------------------------------
       - name: Build server
         run: yarn workspace @syncbase/server build
+
+      - name: Cache .next folder
+        uses: actions/cache@v3
+        with:
+          path: ${{ github.workspace }}/packages/web/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-
+
       - name: Build web
         run: yarn workspace @syncbase/web build
         # -- Update this properly when the next playwright update arrives! --

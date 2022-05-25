@@ -26,7 +26,7 @@ export const loginUser = async (
     type: argon2.argon2id,
   });
   if (!match) {
-    throw new UserInputError("Email or password is incorrect dude", {
+    throw new UserInputError("Email or password is incorrect", {
       field: "email",
     });
   }

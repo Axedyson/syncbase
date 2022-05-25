@@ -31,7 +31,7 @@ module.exports = {
       plugins: ["unused-imports"],
       env: {
         browser: true,
-        es2021: true,
+        es2022: true,
         node: true,
       },
       rules: {

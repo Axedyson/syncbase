@@ -20,7 +20,7 @@
     "@mikro-orm/reflection": "^5.1.4",
     "@mikro-orm/seeder": "^5.1.4",
     "apollo-server-core": "^3.8.1",
-    "apollo-server-express": "^3.8.1",
+    "apollo-server-express": "^3.8.0",
     "argon2": "^0.28.5",
     "class-validator": "^0.13.2",
     "connect-redis": "^6.1.3",

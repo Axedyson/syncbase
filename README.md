@@ -36,7 +36,6 @@ I welcome any kind of contribution!
 
 ### TODO
 
-- Should I remove conventional commits (short answer: yes)?
 - [Restore next.js build](https://nextjs.org/docs/messages/no-cache) there is also this: https://github.com/actions/setup-node/issues/244
 - Implement internationalization
 - Implement dataloader
@@ -57,9 +56,6 @@ I welcome any kind of contribution!
 - Datadog?
 
 <p align="center">
-  <a href="http://commitizen.github.io/cz-cli/">
-    <img alt="Commitizen friendly" src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg">
-  </a>
   <a href="https://github.com/AndysonDK/syncbase/pulls">
     <img alt="Pull requests are welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
   </a>

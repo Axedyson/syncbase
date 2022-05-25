@@ -48,7 +48,7 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Run tests
-        run: yarn workspace @syncbase/server test:ci --no-cache
+        run: yarn workspace @syncbase/server test:ci --clearCache && yarn workspace @syncbase/server test:ci --no-cache
 
   e2e-tests:
     name: E2E

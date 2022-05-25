@@ -47,7 +47,7 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Run tests
-        run: yarn workspace @syncbase/server test:ci --detectOpenHandles
+        run: yarn workspace @syncbase/server test:ci
 
   e2e-tests:
     name: E2E

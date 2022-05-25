@@ -17,6 +17,7 @@ jobs:
       postgres:
         image: postgres
         env:
+          POSTGRES_DB: syncbase_jest
           POSTGRES_PASSWORD: postgres
         options: >-
           --health-cmd pg_isready

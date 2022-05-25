@@ -9,7 +9,7 @@ const variables = {
 };
 
 describe("User resolvers", () => {
-  test("creating a user", () => {
+  test("creating a user lol", () => {
     const query = /* GraphQL */ `
       mutation RegisterUser($userInput: RegisterUserInput!) {
         registerUser(input: $userInput) {

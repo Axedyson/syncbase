@@ -26,7 +26,7 @@ const IndexPage: NextPage = () => {
       <LoginDialog />
       {!user ? (
         <>
-          <p>You`re not logged in....</p>
+          <p>You`re not logged in...</p>
           <Button onClick={dialog.open} label="Log In" />
           <Button onClick={dialog.open} label="Create Account" />
         </>

@@ -36,7 +36,6 @@ I welcome any kind of contribution!
 
 ### TODO
 
-- [Restore next.js build](https://nextjs.org/docs/messages/no-cache) there is also this: https://github.com/actions/setup-node/issues/244
 - Implement internationalization
 - Implement dataloader
 - Deploy web on vercel and server and it's services on DO droplet, automatic deployment should be done with github actions

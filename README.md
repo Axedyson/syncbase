@@ -25,7 +25,7 @@ I welcome any kind of contribution!
 
 #### Contribution flow
 
-- Fork this repo and submit a pull request pointing to the main branch on this repo
+- Fork this repo and submit a pull request pointing to the main branch on this repo. There is no specific commit name convention to follow, just make the pull request name nice and descriptive!
 
 | Storybook                                                                                         |
 | ------------------------------------------------------------------------------------------------- |

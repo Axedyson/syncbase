@@ -71,3 +71,5 @@ I welcome any kind of contribution!
     <img alt="UI Tests workflow" src="https://img.shields.io/github/workflow/status/AndysonDK/syncbase/UI%20Tests?label=UI%20Tests">
   </a>
 <p>
+
+![Visualization of the codebase](./diagram.svg)

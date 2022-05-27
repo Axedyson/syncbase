@@ -48,4 +48,4 @@ const IndexPage: NextPage = () => {
   );
 };
 
-export default urqlClientWrapper(IndexPage);
+export default urqlClientWrapper(IndexPage, true);

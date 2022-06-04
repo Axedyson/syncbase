@@ -1,3 +1,5 @@
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Link from "next/link";
 import { useMutation } from "urql";
 import { LoginDialog } from "../components/login/LoginDialog";
@@ -6,17 +8,19 @@ import { urqlClientWrapper } from "../graphql/client";
 import { LogoutUserDocument } from "../graphql/hooks";
 import { useCurrentUser } from "../hooks/useCurrentUser";
 import { useLoginDialog } from "../hooks/useLoginDialog";
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
+import type { SSRConfig } from "next-i18next";
 
 const IndexPage: NextPage = () => {
   const dialog = useLoginDialog();
   const [, logoutUser] = useMutation(LogoutUserDocument);
   const [fetching, user] = useCurrentUser();
+  const { t } = useTranslation();
 
   if (fetching) {
     return (
       <div className="flex gap-2 p-2 m-auto rounded-md border-2 border-slate-400">
-        <p>Loading state indicator</p>
+        <p>{t("notLoggedIn")}</p>
       </div>
     );
   }
@@ -26,7 +30,7 @@ const IndexPage: NextPage = () => {
       <LoginDialog />
       {!user ? (
         <>
-          <p>You`re not logged in...</p>
+          <p>{t("notLoggedIn")}</p>
           <Button onClick={dialog.open} label="Log In" />
           <Button onClick={dialog.open} label="Create Account" />
         </>
@@ -48,4 +52,8 @@ const IndexPage: NextPage = () => {
   );
 };
 
-export default urqlClientWrapper(IndexPage, true);
+export const getStaticProps: GetStaticProps<SSRConfig> = async (ctx) => ({
+  props: await serverSideTranslations(ctx.locale!, ["common"]),
+});
+
+export default urqlClientWrapper(IndexPage);

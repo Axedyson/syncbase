@@ -4,9 +4,9 @@ Will add more helpful documentation for contributors related to the frontend her
 
 ### Data Fetching
 
-All authenticated content should be fetched client side since this won't be indexed by SEO. Everything else should be fetched server side for better SEO performance. We will be using next-urql for this.
+All authenticated content should be fetched client side since it doesn't matter that authenticated content doesn't get indexed by search engines. Everything else should be fetched server side for better SEO performance. We will be using next-urql for this.
 
-Will will also be using next-i18next for internationalization server side including next.js builtin internationalization routing feature!
+We will also be using next-i18next for internationalization server side including next.js' builtin internationalization routing feature!
 
 ### Notes
 

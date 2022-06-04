@@ -21,6 +21,12 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "src/**/*.tsx", "src/**/*.ts", "tests/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.ts",
+    "tests/*.ts",
+    "react-i18next.d.ts"
+  ],
   "exclude": ["node_modules"]
 }

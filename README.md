@@ -25,7 +25,7 @@ I welcome any kind of contribution!
 
 #### Contribution flow
 
-- Fork this repo and submit a pull request pointing to the main branch on this repo. There is no specific commit name convention to follow, just make the pull request name nice and descriptive!
+- Fork this repo and submit a pull request pointing to the `main` branch on this repo. There is no specific commit naming convention to follow, just make the pull request name nice and descriptive! Also we will be using a very simple git branching strategy: Only one development branch called `main`, and short-lived feature branches when necessary. And whenever we want to ship to production, I'll create a new release/tag which triggers a github workflow that automatically deploys the current code from the `main` branch to the production environment.
 
 | Storybook                                                                                         |
 | ------------------------------------------------------------------------------------------------- |

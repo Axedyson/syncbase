@@ -1,3 +1,4 @@
+import { appWithTranslation } from "next-i18next";
 import Head from "next/head";
 import { Layout } from "../components/ui/Layout";
 import type { NextPage } from "next";
@@ -43,4 +44,4 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
   );
 };
 
-export default MyApp;
+export default appWithTranslation(MyApp);

@@ -6,9 +6,10 @@
 !.yarn/sdks
 !.yarn/versions
 node_modules/
-coverage/
-.next/
 dist/
 temp/
-.DS_Store
+coverage/
+.next/
+test-results/
 tsconfig.tsbuildinfo
+.DS_Store

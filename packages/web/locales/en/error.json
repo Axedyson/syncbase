@@ -1,0 +1,6 @@
+{
+  "unknownError": "An unkown error has occurred",
+  "login": {
+    "invalidLogin": "Email or password is incorrect"
+  }
+}

@@ -13,16 +13,16 @@ import type { SubmitHandler } from "react-hook-form";
 const schema = z.object({
   name: z
     .string()
-    .nonempty({ message: "Required" })
+    .min(1, { message: "Required" })
     .min(3, "Must be equal to or more than 3 characters")
     .max(15, "Must be less than or equal to 15 characters"),
   email: z
     .string()
-    .nonempty({ message: "Required" })
+    .min(1, { message: "Required" })
     .email({ message: "Not a valid email" }),
   password: z
     .string()
-    .nonempty({ message: "Required" })
+    .min(1, { message: "Required" })
     .min(7, "Must be equal to or more than 7 characters")
     .max(30, "Must be less than or equal to 30 characters"),
 });

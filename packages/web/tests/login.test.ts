@@ -54,7 +54,7 @@ test.describe.serial("User login features", () => {
     // Click button:has-text("Logout")
     await page.locator('button:has-text("Logout")').click();
     // Click text=You`re not logged in...
-    await expect(page.locator("text=You`re not logged in...")).toBeVisible();
+    await expect(page.locator("text=You're not logged in...")).toBeVisible();
   });
 
   test("login & logout", async ({ page }) => {

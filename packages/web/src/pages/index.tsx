@@ -1,55 +1,42 @@
-// import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { initUrqlClient } from "next-urql";
 import Link from "next/link";
-import { ssrExchange, useMutation, useQuery } from "urql";
+import { useMutation } from "urql";
 import { LoginDialog } from "../components/login/LoginDialog";
 import { Button } from "../components/ui/Button";
-import { exchanges, urqlClientWrapper } from "../graphql/client";
-import {
-  LogoutUserDocument,
-  MeDocument,
-  UsersDocument,
-} from "../graphql/hooks";
+import { withUrqlClient } from "../graphql/client";
+import { LogoutUserDocument } from "../graphql/generated";
 import { useCurrentUser } from "../hooks/useCurrentUser";
 import { useLoginDialog } from "../hooks/useLoginDialog";
 import type { GetStaticProps, NextPage } from "next";
-import type { SSRConfig } from "next-i18next";
 
-// TODO: Clean/refactor this garbage code up!
 const IndexPage: NextPage = () => {
-  const [{ data }] = useQuery({ query: UsersDocument });
-  const [{ data: data1 }] = useQuery({ query: MeDocument });
-  const dialog = useLoginDialog();
-  const [, logoutUser] = useMutation(LogoutUserDocument);
   const [, user] = useCurrentUser();
-  const { t } = useTranslation();
+  const [, logoutUser] = useMutation(LogoutUserDocument);
+
+  const dialog = useLoginDialog();
+  const { t } = useTranslation(["auth", "user"]);
 
   return (
     <div className="flex flex-col gap-y-2 p-2 m-auto rounded-md border-2 border-slate-400">
       <LoginDialog />
-      <p>{data1?.me?.name}</p>
-      {data?.users?.map((user) => (
-        <p key={user.id}>{user.name}</p>
-      ))}
       {!user ? (
         <>
-          <p>{t("notLoggedIn")}</p>
-          <Button onClick={dialog.open} label="Log In" />
-          <Button onClick={dialog.open} label="Create Account" />
+          <h2>{t("auth:notLoggedIn")}</h2>
+          <Button onClick={dialog.open} label={t("auth:logIn")} />
+          <Button onClick={dialog.open} label={t("auth:createAccount")} />
         </>
       ) : (
         <>
           <Link href="/account">
-            <a className="text-blue-600 underline">Account page</a>
+            <a className="text-blue-600 underline">{t("user:viewAccount")}</a>
           </Link>
-          <h2>This is the index page and you`re logged in </h2>
+          <h2>{t("auth:loggedIn")}</h2>
           <Button
             onClick={async () => {
               await logoutUser();
             }}
-            label="Logout"
+            label={t("auth:logOut")}
           />
         </>
       )}
@@ -57,29 +44,8 @@ const IndexPage: NextPage = () => {
   );
 };
 
-export const getStaticProps: GetStaticProps<SSRConfig> = async (ctx) => {
-  const ssrCache = ssrExchange({ isClient: false });
-  const client = initUrqlClient(
-    {
-      url: `http://localhost:${
-        process.env.NEXT_PUBLIC_SERVER_PORT || 8080
-      }/graphql`,
-      fetchOptions: {
-        credentials: "include",
-      },
-      exchanges: exchanges(ssrCache),
-    },
-    true
-  );
+export const getStaticProps: GetStaticProps = async ({ locale }) => ({
+  props: await serverSideTranslations(locale!, ["common", "auth", "user"]),
+});
 
-  await client!.query(UsersDocument).toPromise();
-
-  return {
-    props: {
-      ...(await serverSideTranslations(ctx.locale!, ["common", "error"])),
-      urqlState: ssrCache.extractData(),
-    },
-  };
-};
-
-export default urqlClientWrapper(IndexPage);
+export default withUrqlClient(IndexPage);

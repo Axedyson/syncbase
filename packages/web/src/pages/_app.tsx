@@ -1,4 +1,4 @@
-import { appWithTranslation } from "next-i18next";
+import { appWithTranslation, useTranslation } from "next-i18next";
 import Head from "next/head";
 import { Layout } from "../components/ui/Layout";
 import type { NextPage } from "next";
@@ -6,15 +6,14 @@ import type { AppProps } from "next/app";
 import "../global.css";
 
 const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
+  const { t } = useTranslation();
+
   return (
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Syncbase</title>
-        <meta
-          name="description"
-          content="Synchronization between creators and fans enabling unprecedented community harmony."
-        />
+        <meta name="description" content={t("metaDescription")} />
         <link
           rel="apple-touch-icon"
           sizes="180x180"

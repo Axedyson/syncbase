@@ -85,7 +85,7 @@ describe("User resolvers", () => {
     `;
 
     return graphql({ query, variables }).then((res) => {
-      expect(res.body.errors[0].message).toBe("The email has been taken!");
+      expect(res.body.errors[0].message).toBe("auth:emailTaken");
     });
   });
 });

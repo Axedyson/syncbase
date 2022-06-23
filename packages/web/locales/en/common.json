@@ -1,3 +1,8 @@
 {
-  "notLoggedIn": "You're not logged in..."
+  "cancel": "Cancel",
+  "unknownError": "An unkown error has occurred",
+  "metaDescription": "Synchronization between creators and fans enabling unprecedented community harmony.",
+  "feed": "Feed",
+  "500InternalServerError": "500 Internal Server Error",
+  "404NotFound": "404 Not Found"
 }

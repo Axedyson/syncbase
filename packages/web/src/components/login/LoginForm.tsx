@@ -1,25 +1,24 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
 import { useMutation } from "urql";
 import { z } from "zod";
-import { LoginUserDocument } from "../../graphql/hooks";
+import { LoginUserDocument } from "../../graphql/generated";
 import { useLoginDialog } from "../../hooks/useLoginDialog";
 import { Button } from "../ui/Button";
 import { InputField } from "../ui/InputField";
+import { extractErrorMsg } from "./utils/extractErrorMsg";
 import { showResultErrors } from "./utils/showResultErrors";
 import type { FC } from "react";
 import type { SubmitHandler } from "react-hook-form";
 
 const schema = z.object({
-  email: z
-    .string()
-    .min(1, { message: "An email is required" })
-    .email({ message: "Not a valid email" }),
+  email: z.string().min(1, "auth:emailRequired").email("auth:invalidEmail"),
   password: z
     .string()
-    .min(1, { message: "A password is required" })
-    .min(7, "Must be equal to or more than 7 characters")
-    .max(30, "Must be less than or equal to 30 characters"),
+    .min(1, "auth:passwordRequired")
+    .min(7, "auth:passwordMinLengthError")
+    .max(30, "auth:passwordMaxLengthError"),
 });
 
 type LoginInput = z.infer<typeof schema>;
@@ -35,6 +34,7 @@ export const LoginForm: FC = () => {
   } = useForm<LoginInput>({
     resolver: zodResolver(schema),
   });
+  const { t } = useTranslation(["auth", "common"]);
 
   const onSubmit: SubmitHandler<LoginInput> = async (data) => {
     const result = await submitInput({ userInput: data });
@@ -44,20 +44,20 @@ export const LoginForm: FC = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-y-3">
       <InputField
-        label="Email"
+        label={t("auth:email")}
         name="email"
-        errorMsg={errors.email?.message}
+        errorMsg={extractErrorMsg(errors, "email")}
         register={register}
       />
       <InputField
-        label="Password"
+        label={t("auth:password")}
         name="password"
         type="password"
-        errorMsg={errors.password?.message}
+        errorMsg={extractErrorMsg(errors, "password")}
         register={register}
       />
-      <Button label="Login" type="submit" loading={isSubmitting} />
-      <Button onClick={dialog.close} label="Cancel" />
+      <Button label={t("auth:logIn")} type="submit" loading={isSubmitting} />
+      <Button onClick={dialog.close} label={t("common:cancel")} />
     </form>
   );
 };

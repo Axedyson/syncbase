@@ -30,7 +30,7 @@ export const registerUser = async (
   });
 
   if (user) {
-    throw new UserInputError("The email has been taken!", { field: "email" });
+    throw new UserInputError("auth:emailTaken", { field: "email" });
   }
 
   const hashedPassword = await argon2.hash(input.password, {

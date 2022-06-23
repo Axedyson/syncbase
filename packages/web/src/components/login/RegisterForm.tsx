@@ -1,11 +1,13 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
 import { useMutation } from "urql";
 import { z } from "zod";
-import { RegisterUserDocument } from "../../graphql/hooks";
+import { RegisterUserDocument } from "../../graphql/generated";
 import { useLoginDialog } from "../../hooks/useLoginDialog";
 import { Button } from "../ui/Button";
 import { InputField } from "../ui/InputField";
+import { extractErrorMsg } from "./utils/extractErrorMsg";
 import { showResultErrors } from "./utils/showResultErrors";
 import type { FC } from "react";
 import type { SubmitHandler } from "react-hook-form";
@@ -13,18 +15,15 @@ import type { SubmitHandler } from "react-hook-form";
 const schema = z.object({
   name: z
     .string()
-    .min(1, { message: "Required" })
-    .min(3, "Must be equal to or more than 3 characters")
-    .max(15, "Must be less than or equal to 15 characters"),
-  email: z
-    .string()
-    .min(1, { message: "Required" })
-    .email({ message: "Not a valid email" }),
+    .min(1, "auth:nameRequired")
+    .min(3, "auth:nameMinLengthError")
+    .max(15, "auth:nameMaxLengthError"),
+  email: z.string().min(1, "auth:emailRequired").email("auth:invalidEmail"),
   password: z
     .string()
-    .min(1, { message: "Required" })
-    .min(7, "Must be equal to or more than 7 characters")
-    .max(30, "Must be less than or equal to 30 characters"),
+    .min(1, "auth:passwordRequired")
+    .min(7, "auth:passwordMinLengthError")
+    .max(30, "auth:passwordMaxLengthError"),
 });
 
 type RegisterInput = z.infer<typeof schema>;
@@ -40,6 +39,7 @@ export const RegisterForm: FC = () => {
   } = useForm<RegisterInput>({
     resolver: zodResolver(schema),
   });
+  const { t } = useTranslation(["auth", "common"]);
 
   const onSubmit: SubmitHandler<RegisterInput> = async (data) => {
     const result = await submitInput({ userInput: data });
@@ -49,26 +49,30 @@ export const RegisterForm: FC = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-y-3">
       <InputField
-        label="Username"
+        label={t("auth:username")}
         name="name"
-        errorMsg={errors.name?.message}
+        errorMsg={extractErrorMsg(errors, "name")}
         register={register}
       />
       <InputField
-        label="Email"
+        label={t("auth:email")}
         name="email"
-        errorMsg={errors.email?.message}
+        errorMsg={extractErrorMsg(errors, "email")}
         register={register}
       />
       <InputField
-        label="Password"
+        label={t("auth:password")}
         name="password"
         type="password"
-        errorMsg={errors.password?.message}
+        errorMsg={extractErrorMsg(errors, "password")}
         register={register}
       />
-      <Button label="Create Account" type="submit" loading={isSubmitting} />
-      <Button onClick={dialog.close} label="Cancel" />
+      <Button
+        label={t("auth:createAccount")}
+        type="submit"
+        loading={isSubmitting}
+      />
+      <Button onClick={dialog.close} label={t("common:cancel")} />
     </form>
   );
 };

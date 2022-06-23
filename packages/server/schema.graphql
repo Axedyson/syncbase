@@ -21,7 +21,6 @@ type Mutation {
 
 type Query {
   me: User
-  users: [User!]
 }
 
 input RegisterUserInput {

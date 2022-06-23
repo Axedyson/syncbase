@@ -9,7 +9,7 @@ module.exports = {
     "**/node_modules/.*",
     "packages/server/dist",
     "packages/web/.next",
-    "packages/web/src/graphql/hooks.ts",
+    "packages/web/src/graphql/generated.ts",
   ],
   overrides: [
     {

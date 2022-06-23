@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useQuery } from "urql";
-import { MeDocument } from "../graphql/hooks";
-import type { MeQuery } from "../graphql/hooks";
+import { MeDocument } from "../graphql/generated";
+import type { MeQuery } from "../graphql/generated";
 
 export const useCurrentUser = (
   redirect?: boolean

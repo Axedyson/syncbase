@@ -1,39 +1,35 @@
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Link from "next/link";
 import { useMutation } from "urql";
 import { Button } from "../components/ui/Button";
-import { urqlClientWrapper } from "../graphql/client";
-import { LogoutUserDocument } from "../graphql/hooks";
+import { withUrqlClient } from "../graphql/client";
+import { LogoutUserDocument } from "../graphql/generated";
 import { useCurrentUser } from "../hooks/useCurrentUser";
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 
 const AccountPage: NextPage = () => {
   const [, logoutUser] = useMutation(LogoutUserDocument);
-  const [fetching, user] = useCurrentUser(true);
+  const [, user] = useCurrentUser(true);
 
-  if (fetching) {
-    return (
-      <div className="flex gap-2 p-2 m-auto rounded-md border-2 border-slate-400">
-        <p>Loading state indicator</p>
-      </div>
-    );
-  }
+  const { t } = useTranslation(["common", "auth"]);
 
   return (
     <div className="flex flex-col gap-y-2 p-2 m-auto rounded-md border-2 border-slate-400">
       <Link href="/">
-        <a className="text-blue-600 underline">Index page</a>
+        <a className="text-blue-600 underline">{t("common:feed")}</a>
       </Link>
       {user && (
         <>
-          <h2>This is the account page and you`re logged in</h2>
-          <p>id: {user.id}</p>
-          <p>username: {user.name}</p>
-          <p>email: {user.email}</p>
+          <h2>{t("auth:loggedIn")}</h2>
+          <p>{`id: ${user.id}`}</p>
+          <p>{`${t("auth:username")}: ${user.name}`}</p>
+          <p>{`${t("auth:email")}: ${user.email}`}</p>
           <Button
             onClick={async () => {
               await logoutUser();
             }}
-            label="Logout"
+            label={t("auth:logOut")}
           />
         </>
       )}
@@ -41,4 +37,8 @@ const AccountPage: NextPage = () => {
   );
 };
 
-export default urqlClientWrapper(AccountPage);
+export const getStaticProps: GetStaticProps = async ({ locale }) => ({
+  props: await serverSideTranslations(locale!, ["common", "auth"]),
+});
+
+export default withUrqlClient(AccountPage);

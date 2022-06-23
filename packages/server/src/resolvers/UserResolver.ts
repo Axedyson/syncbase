@@ -11,7 +11,6 @@ import {
   registerUser,
 } from "../services/user/mutations/registerUser";
 import { me } from "../services/user/queries/me";
-import { users } from "../services/user/queries/users";
 import { Context } from "../types";
 
 @Resolver()
@@ -39,10 +38,5 @@ export class UserResolver {
   @Mutation(() => Boolean)
   logoutUser(@Ctx() ctx: Context) {
     return logoutUser(ctx);
-  }
-
-  @Query(() => [User], { nullable: true })
-  users(@Ctx() ctx: Context): Promise<User[] | null> {
-    return users(ctx);
   }
 }

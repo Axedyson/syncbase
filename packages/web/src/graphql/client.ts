@@ -1,57 +1,87 @@
 import { cacheExchange } from "@urql/exchange-graphcache";
 import { i18n } from "next-i18next";
-import { withUrqlClient } from "next-urql";
+import {
+  /* initUrqlClient,*/
+  withUrqlClient as withNextUrqlClient,
+} from "next-urql";
 import { toast } from "react-hot-toast";
-import { dedupExchange, errorExchange, fetchExchange } from "urql";
-import { MeDocument } from "./hooks";
-import type { GraphCacheConfig } from "./hooks";
-import type { NextPage } from "next";
-import type { SSRExchange } from "next-urql";
-
-// TODO: Maybe clean this code up a bit
-export const urqlClientWrapper = (page: NextPage) =>
-  withUrqlClient((ssrExchange, ctx) => ({
-    url: `http://localhost:${
-      process.env.NEXT_PUBLIC_SERVER_PORT || 8080
-    }/graphql`,
-    fetchOptions: {
-      credentials: "include",
-      headers: { cookie: ctx?.req?.headers?.cookie || "" },
-    },
-    exchanges: exchanges(ssrExchange),
-  }))(page);
-
-export const exchanges = (ssrExchange: SSRExchange) => [
+import {
   dedupExchange,
-  cacheExchange<GraphCacheConfig>({
-    updates: {
-      Mutation: {
-        loginUser: (result, _args, cache) => {
-          cache.updateQuery({ query: MeDocument }, () => ({
-            me: result.loginUser,
-          }));
-        },
-        registerUser: (result, _args, cache) => {
-          cache.updateQuery({ query: MeDocument }, () => ({
-            me: result.registerUser,
-          }));
-        },
-        logoutUser: (_result, _args, cache) => {
-          cache.updateQuery({ query: MeDocument }, () => ({ me: null }));
+  errorExchange,
+  fetchExchange /* ssrExchange*/,
+} from "urql";
+import { MeDocument } from "./generated";
+import type { GraphCacheConfig } from "./generated";
+// import type { DocumentNode } from "graphql";
+import type { NextPage, NextPageContext } from "next";
+import type { SSRExchange } from "next-urql";
+import type { ClientOptions } from "urql";
+
+const buildUrqlConfig = (
+  ssrExchange: SSRExchange,
+  ctx?: NextPageContext
+): ClientOptions => ({
+  url: `http://localhost:${
+    process.env.NEXT_PUBLIC_SERVER_PORT || 8080
+  }/graphql`,
+  fetchOptions: {
+    credentials: "include",
+    headers: { cookie: ctx?.req?.headers?.cookie || "" },
+  },
+  exchanges: [
+    dedupExchange,
+    cacheExchange<GraphCacheConfig>({
+      updates: {
+        Mutation: {
+          loginUser: (result, _args, cache) => {
+            cache.updateQuery({ query: MeDocument }, () => ({
+              me: result.loginUser,
+            }));
+          },
+          registerUser: (result, _args, cache) => {
+            cache.updateQuery({ query: MeDocument }, () => ({
+              me: result.registerUser,
+            }));
+          },
+          logoutUser: (_result, _args, cache) => {
+            cache.updateQuery({ query: MeDocument }, () => ({ me: null }));
+          },
         },
       },
-    },
-  }),
-  ssrExchange,
-  errorExchange({
-    onError: (error) => {
-      error.graphQLErrors.forEach((error) => {
-        // Don't display errors in a toast if it's meant to be displayed at some input field
-        if (!error.extensions.field) {
-          toast.error(i18n!.t(`error:${error.message}`));
-        }
-      });
-    },
-  }),
-  fetchExchange,
-];
+    }),
+    ssrExchange,
+    errorExchange({
+      onError: (error) => {
+        error.graphQLErrors.forEach((error) => {
+          //  Don't display errors in a toast if it's meant to be displayed at some input field
+          if (!error.extensions.field && typeof window !== "undefined") {
+            toast.error(i18n!.t(error.message));
+          }
+        });
+      },
+    }),
+    fetchExchange,
+  ],
+});
+
+// export const urqlSSRClient = async (queries: DocumentNode[]) => {
+//  const ssrCache = ssrExchange({ isClient: false });
+//  const urqlConfig = buildUrqlConfig(ssrCache);
+//  const client = initUrqlClient(urqlConfig, false);
+//
+//  for (const query of queries) await client!.query(query).toPromise();
+//
+//  return { urqlState: ssrCache.extractData() };
+// };
+//
+// The way urqlSSRClient should be used is as follows:
+//
+// export const getStaticProps: GetStaticProps = async ({ locale }) => ({
+//  props: {
+//    ...(await serverSideTranslations(locale!, ["common", "auth", "user"])),
+//    ...(await urqlSSRClient([UsersDocument])),
+//  },
+// });
+
+export const withUrqlClient = (page: NextPage) =>
+  withNextUrqlClient(buildUrqlConfig)(page);

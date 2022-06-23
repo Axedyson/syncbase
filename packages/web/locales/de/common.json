@@ -1,3 +1,8 @@
 {
-  "notLoggedIn": "Du bist nicht eingeloggt"
+  "cancel": "Abbrechen",
+  "unknownError": "Ein unbekannter Fehler ist aufgetreten",
+  "metaDescription": "Synchronisierung zwischen Erstellern und Fans ermöglicht eine beispiellose Gemeinschaftsharmonie.",
+  "feed": "Feed",
+  "500InternalServerError": "500 Interner Serverfehler",
+  "404NotFound": "404 Nicht gefunden"
 }

@@ -9,5 +9,6 @@ module.exports = {
     defaultLocale: "en",
     locales: ["en", "de"],
     localePath: path.resolve("./locales"),
+    fallbackLng: false,
   },
 };

@@ -36,23 +36,30 @@ I welcome any kind of contribution!
 
 ### TODO
 
-- Implement internationalization
 - Implement dataloader
 - Deploy web on vercel and server and it's services on DO droplet, automatic deployment should be done with github actions
 - Maybe add standard-version/semantic-release/changeset/keepachangelog?
 - Actually develop the project
 - Add more .md files to properly document the contribution process and attract contributors
 - Should we be more granular when it comes to [exclusion](https://bobbyhadz.com/blog/typescript-exclude-test-files-from-compilation) of certain files from typescript build compilation
-  output?
+  output e.g. the `seeder` file in the `server` package?
 
 ### Notes
 
 - Implement SEO optimizations later
 - Implement OG meta tags later
+- Implement a page that showcases all of the open source libraries used in the project just like how [discord does it](https://discord.com/acknowledgements)
 - In the future we want to [organize by feature](https://softwareengineering.stackexchange.com/questions/338597/folder-by-type-or-folder-by-feature) rather than by type
 - Docker & docker-compose?
 - Sentry?
 - Datadog?
+
+### Contact
+
+You can contact me the main maintainer of this project at:
+
+- andersalting@gmail.com
+- Andyson#6431 (We will first need to be friends on discord before we can chat, will probably make a dedicated discord server in the future)
 
 <p align="center">
   <a href="https://github.com/AndysonDK/syncbase/pulls">

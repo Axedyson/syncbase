@@ -26,7 +26,7 @@ export const loginUser = async (
     type: argon2.argon2id,
   });
   if (!match) {
-    throw new UserInputError("login.loginError", {
+    throw new UserInputError("auth:invalidLogin", {
       field: "email",
     });
   }

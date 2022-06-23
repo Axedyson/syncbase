@@ -47,14 +47,12 @@ test.describe.serial("User login features", () => {
       .locator("#headlessui-portal-root")
       .waitFor({ state: "detached" });
 
-    // Click text=This is the index page and you`re logged in
-    await expect(
-      page.locator("text=This is the index page and you`re logged in")
-    ).toBeVisible();
-    // Click button:has-text("Logout")
-    await page.locator('button:has-text("Logout")').click();
-    // Click text=You`re not logged in...
-    await expect(page.locator("text=You're not logged in...")).toBeVisible();
+    // Click text=You're logged in
+    await expect(page.locator("text=You're logged in")).toBeVisible();
+    // Click button:has-text("Log Out")
+    await page.locator('button:has-text("Log Out")').click();
+    // Click text=You're not logged in
+    await expect(page.locator("text=You're not logged in")).toBeVisible();
   });
 
   test("login & logout", async ({ page }) => {
@@ -70,8 +68,10 @@ test.describe.serial("User login features", () => {
     await page.locator('input[name="email"]').press("Tab");
     // Fill input[name="password"]
     await page.locator('input[name="password"]').fill(accountData.password);
-    // Click div[role="tabpanel"] button:has-text("Login")
-    await page.locator('div[role="tabpanel"] button:has-text("Login")').click();
+    // Click div[role="tabpanel"] button:has-text("Log In")
+    await page
+      .locator('div[role="tabpanel"] button:has-text("Log In")')
+      .click();
 
     // Wait for login dialog to be detached (removed from the DOM) before doing anything else
     await page
@@ -80,24 +80,26 @@ test.describe.serial("User login features", () => {
 
     await Promise.all([
       page.waitForNavigation({ url: "/account" }),
-      page.locator("text=Account page").click(),
+      page.locator("text=Account").click(),
     ]);
-    // Click text=username: Bob
-    await page.locator(`text=username: ${accountData.name}`).click();
-    // Click text=email: Bob@mail.com
-    await page.locator(`text=email: ${accountData.email}`).click();
-    // Click text=This is the account page and you`re logged in
-    await page
-      .locator("text=This is the account page and you`re logged in")
-      .click();
-    // Click text=Index page
-    await page.locator("text=Index page").click();
-    await expect(page).toHaveURL("/");
-    // Click text=This is the index page and you`re logged in
+
+    // check if text=username: Bob is visible
     await expect(
-      page.locator("text=This is the index page and you`re logged in")
+      page.locator(`text=Username: ${accountData.name}`)
     ).toBeVisible();
-    // Click button:has-text("Logout")
-    await page.locator('button:has-text("Logout")').click();
+    // check if text=email: Bob@mail.com is visible
+    await expect(
+      page.locator(`text=Email: ${accountData.email}`)
+    ).toBeVisible();
+
+    // Click text=You're logged in
+    await expect(page.locator("text=You're logged in")).toBeVisible();
+    // Click text=Feed
+    await page.locator("text=Feed").click();
+    await expect(page).toHaveURL("/");
+    // Click text=You're logged in
+    await expect(page.locator("text=You're logged in")).toBeVisible();
+    // Click button:has-text("Log Out")
+    await page.locator('button:has-text("Log Out")').click();
   });
 });

@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@headlessui/react": "^1.6.4",
+    "@headlessui/react": "^1.6.5",
     "@hookform/resolvers": "^2.9.0",
     "@hookstate/core": "^3.0.13",
     "@netlify/classnames-template-literals": "^1.0.3",
@@ -24,6 +24,7 @@
     "react-dom": "^18.1.0",
     "react-hook-form": "^7.31.3",
     "react-hot-toast": "^2.2.0",
+    "react-is": "^18.2.0",
     "sharp": "^0.30.6",
     "urql": "^2.2.1",
     "zod": "^3.17.3"

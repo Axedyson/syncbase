@@ -4,13 +4,13 @@
   </a>
 </p>
 
-I welcome any kind of contribution!
+Any kind of contribution is welcome!
 
 ### How to contribute (will add a proper and more detailed guide later)
 
 #### Project setup
 
-- I highly recommend to use vscode, but it's also fine to use a different code editor!
+- Vscode is highly recommended, but it's also fine to use a different code editor!
 - Have node installed, preferably a version that is minimum 16 (I'm using v16.13.0 LTS)
 - Have yarn installed
 - Have postgresql installed, also the user postgres needs to have the password postgres
@@ -36,8 +36,8 @@ I welcome any kind of contribution!
 
 ### TODO
 
-- Implement dataloader
 - Deploy web on vercel and server and it's services on DO droplet, automatic deployment should be done with github actions
+- Implement dataloader
 - Maybe add standard-version/semantic-release/changeset/keepachangelog?
 - Actually develop the project
 - Add more .md files to properly document the contribution process and attract contributors
@@ -59,7 +59,7 @@ I welcome any kind of contribution!
 You can contact me the main maintainer of this project at:
 
 - andersalting@gmail.com
-- Andyson#6431 (We will first need to be friends on discord before we can chat, will probably make a dedicated discord server in the future)
+- `Andyson#6431` (We will first need to be friends on discord before we can chat, will probably make a dedicated discord server in the future)
 
 <p align="center">
   <a href="https://github.com/AndysonDK/syncbase/pulls">

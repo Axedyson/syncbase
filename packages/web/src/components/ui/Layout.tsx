@@ -14,7 +14,7 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
   const router = useRouter();
   const { pathname, asPath, query, locale } = router;
 
-  // This code needs to be cleaned up big time!
+  // TODO: This code needs to be cleaned up big time!
   return (
     <div className="flex min-h-screen font-medium">
       <div className="flex fixed inset-x-0 top-0 justify-center justify-items-center border-2 border-gray-600">

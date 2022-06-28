@@ -7,5 +7,5 @@ export const extractErrorMsg = <T extends FieldValues>(
 ): string | undefined => {
   const msg = errors[field]?.message;
 
-  return msg && i18n!.t(msg);
+  return typeof msg === "string" ? i18n!.t(msg) : undefined;
 };

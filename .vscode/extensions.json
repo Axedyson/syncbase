@@ -4,6 +4,7 @@
     "dbaeumer.vscode-eslint",
     "graphql.vscode-graphql",
     "stylelint.vscode-stylelint",
-    "bradlc.vscode-tailwindcss"
+    "bradlc.vscode-tailwindcss",
+    "hashicorp.terraform"
   ]
 }

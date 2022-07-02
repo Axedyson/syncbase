@@ -36,7 +36,7 @@ Any kind of contribution is welcome!
 
 ### TODO
 
-- Deploy web on vercel and server and it's services on DO droplet, automatic deployment should be done with github actions
+- Deploy web on vercel and server and it's services on DO droplet, automatic deployment should be done with a github workflow
 - Implement dataloader
 - Maybe add standard-version/semantic-release/changeset/keepachangelog?
 - Actually develop the project

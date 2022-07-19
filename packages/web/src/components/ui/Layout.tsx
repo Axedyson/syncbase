@@ -17,7 +17,7 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
   // TODO: This code needs to be cleaned up big time!
   return (
     <div className="flex min-h-screen font-medium">
-      <div className="flex fixed inset-x-0 top-0 justify-center justify-items-center border-2 border-gray-600">
+      <div className="fixed inset-x-0 top-0 flex justify-center justify-items-center border-2 border-gray-600">
         <p className="mr-2">Locale Switcher Button:</p>
         <Listbox
           value={locale}
@@ -29,7 +29,7 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
           }}
         >
           <div className="relative mt-1">
-            <Listbox.Button className="relative py-2 pr-10 pl-3 w-full text-left bg-white rounded-lg focus-visible:border-indigo-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 shadow-md cursor-default sm:text-sm">
+            <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pr-10 pl-3 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
               <span className="block">{locale}</span>
             </Listbox.Button>
             <Transition
@@ -38,7 +38,7 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Listbox.Options className="overflow-auto absolute py-1 mt-1 w-full max-h-60 text-base bg-white rounded-md focus:outline-none ring-1 ring-black/5 shadow-lg sm:text-sm">
+              <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
                 {i18n.locales.map((locale) => (
                   <Listbox.Option
                     key={locale}
@@ -59,7 +59,7 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
                           {locale}
                         </span>
                         {selected ? (
-                          <span className="flex absolute inset-y-0 left-0 items-center pl-3 text-amber-600">
+                          <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600">
                             <Spinner />
                           </span>
                         ) : null}

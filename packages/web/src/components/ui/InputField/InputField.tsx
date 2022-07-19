@@ -11,16 +11,16 @@ interface InputFieldProps<T> extends ComponentPropsWithoutRef<"input"> {
 
 const inputFieldClasses = (error: boolean) =>
   ctl(`
-  py-2
-  px-3
   w-full
   rounded-md
   border
+  py-2
+  px-3
+  transition
   focus:border-primary
   focus:outline-none
   focus:ring-1
   focus:ring-primary
-  transition
   ${error ? "border-red-300" : "border-gray-300"}
 `);
 
@@ -33,7 +33,7 @@ export const InputField = <T,>({
 }: InputFieldProps<T>): ReturnType<FC> => {
   return (
     <div>
-      <label htmlFor={name} className="block mb-1 text-sm text-gray-700">
+      <label htmlFor={name} className="mb-1 block text-sm text-gray-700">
         {label}
       </label>
       <input
@@ -43,7 +43,7 @@ export const InputField = <T,>({
         className={inputFieldClasses(!!errorMsg)}
       />
       {errorMsg && (
-        <span className="block mt-1 text-sm text-red-600">{errorMsg}</span>
+        <span className="mt-1 block text-sm text-red-600">{errorMsg}</span>
       )}
     </div>
   );

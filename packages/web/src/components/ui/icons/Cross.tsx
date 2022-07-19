@@ -7,8 +7,8 @@ interface CrossProps extends ComponentPropsWithoutRef<"svg"> {
 
 const crossClasses = (error: boolean) =>
   ctl(`
-  w-5
   h-5
+  w-5
   ${error && "text-red-500"}
 `);
 

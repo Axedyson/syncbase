@@ -8,20 +8,20 @@ interface TabGroupProps {
 
 const tabButtonClasses = ({ selected }: { selected: boolean }) =>
   ctl(`
-  py-2
   w-full
-  font-semibold
   border-b-2
-  focus:outline-none
-  hover:opacity-80
+  py-2
+  font-semibold
   transition
-  ${selected ? "text-primary border-primary" : "text-gray-400 border-gray-400"}
+  hover:opacity-80
+  focus:outline-none
+  ${selected ? "border-primary text-primary" : "border-gray-400 text-gray-400"}
   `);
 
 export const TabGroup: FC<TabGroupProps> = (props) => {
   return (
     <Tab.Group>
-      <Tab.List className="flex mb-3">
+      <Tab.List className="mb-3 flex">
         {Object.keys(props).map((title, idx) => (
           <Tab key={idx} className={tabButtonClasses}>
             {title}

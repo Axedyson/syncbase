@@ -18,7 +18,7 @@ const IndexPage: NextPage = () => {
   const { t } = useTranslation(["auth", "user"]);
 
   return (
-    <div className="flex flex-col gap-y-2 p-2 m-auto rounded-md border-2 border-slate-400">
+    <div className="m-auto flex flex-col gap-y-2 rounded-md border-2 border-slate-400 p-2">
       <LoginDialog />
       {!user ? (
         <>

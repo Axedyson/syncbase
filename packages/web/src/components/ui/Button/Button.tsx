@@ -9,21 +9,21 @@ interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
 
 const buttonClasses = ctl(`
   flex
-  justify-center
   items-center
+  justify-center
+  rounded-md
+  bg-primary
   py-2
   px-4
   font-semibold
   text-white
-  bg-primary
-  rounded-md
+  transition
+  hover:opacity-80
   focus:outline-none
   focus:ring-4
   focus:ring-primary/40
-  hover:opacity-80
-  disabled:opacity-60
-  transition
   disabled:cursor-default
+  disabled:opacity-60
 `);
 
 export const Button: FC<ButtonProps> = ({ label, loading, ...props }) => {

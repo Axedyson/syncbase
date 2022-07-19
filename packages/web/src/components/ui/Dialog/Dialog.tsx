@@ -22,8 +22,8 @@ export const Dialog: FC<DialogProps> = ({ isOpen, close, children }) => (
       >
         <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
       </Transition.Child>
-      <div className="overflow-y-auto fixed inset-0">
-        <div className="flex justify-center items-center min-h-full">
+      <div className="fixed inset-0 overflow-y-auto">
+        <div className="flex min-h-full items-center justify-center">
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -33,7 +33,7 @@ export const Dialog: FC<DialogProps> = ({ isOpen, close, children }) => (
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <HeadlessDialog.Panel className="relative p-3 m-2 w-full bg-white rounded-lg shadow-lg sm:w-96">
+            <HeadlessDialog.Panel className="relative m-2 w-full rounded-lg bg-white p-3 shadow-lg sm:w-96">
               {children}
             </HeadlessDialog.Panel>
           </Transition.Child>

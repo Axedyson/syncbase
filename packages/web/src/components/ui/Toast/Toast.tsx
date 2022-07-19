@@ -5,10 +5,10 @@ import type { FC } from "react";
 
 const crossContainerClasses = (error: boolean) =>
   ctl(`
-  p-1.5
-  w-8
   h-8
+  w-8
   rounded-lg
+  p-1.5
   ${error && "bg-red-100"}
 `);
 
@@ -16,8 +16,8 @@ const closeButtonClasses = ctl(`
  ${crossContainerClasses(false)}
   -mx-1.5
   text-gray-400
-  hover:text-gray-900
   hover:bg-gray-100
+  hover:text-gray-900
   focus:outline-none
   focus:ring-2
   focus:ring-gray-300

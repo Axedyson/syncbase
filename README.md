@@ -50,7 +50,7 @@ Any kind of contribution is welcome!
 - Implement OG meta tags later
 - Implement a page that showcases all of the open source libraries used in the project just like how [discord does it](https://discord.com/acknowledgements)
 - In the future we want to [organize by feature](https://softwareengineering.stackexchange.com/questions/338597/folder-by-type-or-folder-by-feature) rather than by type
-- Docker & docker-compose?
+- Docker & docker-compose, this may help/simplify the E2E testing github workflow file, and keep the same configurations of redis and postgresql in both github workflow and dev environments?
 - Sentry?
 - Datadog?
 

@@ -33,3 +33,5 @@ jobs:
         run: yarn workspace @syncbase/server typecheck
       - name: Run typescript web checks
         run: yarn workspace @syncbase/web typecheck
+      - name: Run editorconfig checks
+        uses: greut/eclint-action@v0

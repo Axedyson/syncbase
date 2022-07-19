@@ -4828,7 +4828,7 @@ __metadata:
     "@types/react-dom": ^18.0.6
     "@urql/exchange-graphcache": ^4.4.3
     autoprefixer: ^10.4.7
-    concurrently: ^7.2.2
+    concurrently: ^7.3.0
     graphql: ^15.8.0
     next: ^12.2.2
     next-i18next: ^11.2.2
@@ -8461,7 +8461,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"concurrently@npm:^7.2.2":
+"concurrently@npm:^7.3.0":
   version: 7.3.0
   resolution: "concurrently@npm:7.3.0"
   dependencies:

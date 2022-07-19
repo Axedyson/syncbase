@@ -13,7 +13,7 @@ const crossContainerClasses = (error: boolean) =>
 `);
 
 const closeButtonClasses = ctl(`
- ${crossContainerClasses(false)}
+  ${crossContainerClasses(false)}
   -mx-1.5
   text-gray-400
   hover:bg-gray-100

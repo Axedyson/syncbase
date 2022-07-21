@@ -10,7 +10,7 @@ export const FindUserByEmail = () => {
     });
 
     if (!user)
-      throw new UserInputError("auth:loginError", {
+      throw new UserInputError("auth:invalidLogin", {
         field: "email",
       });
 

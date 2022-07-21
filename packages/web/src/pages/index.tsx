@@ -20,13 +20,7 @@ const IndexPage: NextPage = () => {
   return (
     <div className="m-auto flex flex-col gap-y-2 rounded-md border-2 border-slate-400 p-2">
       <LoginDialog />
-      {!user ? (
-        <>
-          <h2>{t("auth:notLoggedIn")}</h2>
-          <Button onClick={dialog.open} label={t("auth:logIn")} />
-          <Button onClick={dialog.open} label={t("auth:createAccount")} />
-        </>
-      ) : (
+      {user ? (
         <>
           <Link href="/account">
             <a className="text-blue-600 underline">{t("user:viewAccount")}</a>
@@ -38,6 +32,12 @@ const IndexPage: NextPage = () => {
             }}
             label={t("auth:logOut")}
           />
+        </>
+      ) : (
+        <>
+          <h2>{t("auth:notLoggedIn")}</h2>
+          <Button onClick={dialog.open} label={t("auth:logIn")} />
+          <Button onClick={dialog.open} label={t("auth:createAccount")} />
         </>
       )}
     </div>

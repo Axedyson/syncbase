@@ -15,7 +15,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres
+        image: postgres:14.4-alpine3.16
         env:
           POSTGRES_DB: syncbase_jest
           POSTGRES_PASSWORD: postgres
@@ -28,7 +28,7 @@ jobs:
           - 5432:5432
 
       redis:
-        image: redis
+        image: redis:7.0.4-alpine3.16
         options: >-
           --health-cmd "redis-cli ping"
           --health-interval 10s

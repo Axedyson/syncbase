@@ -13,7 +13,7 @@ const accountData = {
 test.describe.serial("User login features", () => {
   test.beforeAll(() => {
     return exec(
-      "usePlaywrightDB=1 yarn workspace @syncbase/server mikro-orm schema:fresh --seed --run"
+      "usePlaywrightDB=1 yarn workspace @syncbase/server db:seed:reset"
     );
   });
 

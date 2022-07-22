@@ -1,8 +1,7 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-# The reason we're exporting this variable is because of this issue:
-# https://github.com/typicode/husky/issues/968
-export FORCE_COLOR=1
+# https://github.com/typicode/husky/issues/968#issuecomment-1176848345
+exec >/dev/tty 2>&1
 
 yarn lint-staged

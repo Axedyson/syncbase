@@ -1,21 +1,17 @@
 import { TsMorphMetadataProvider } from "@mikro-orm/reflection";
 import { IS_PROD, IS_TEST } from "./constants";
 import type { MikroORM } from "@mikro-orm/core";
+import type { PostgreSqlDriver } from "@mikro-orm/postgresql";
 
 export default {
-  dbName: process.env.usePlaywrightDB
-    ? "syncbase_playwright"
-    : IS_TEST
-    ? "syncbase_jest"
-    : "syncbase",
+  dbName: IS_TEST ? "syncbase_test" : "syncbase",
   password: "postgres",
   type: "postgresql",
   entities: ["./dist/entities/**/*.js"],
   entitiesTs: ["./src/entities/**/*.ts"],
   seeder: {
-    path: "./dist/seeders",
     pathTs: "./src/seeders",
   },
   metadataProvider: TsMorphMetadataProvider,
   debug: !IS_PROD,
-} as Parameters<typeof MikroORM.init>[0];
+} as Parameters<typeof MikroORM.init<PostgreSqlDriver>>[0];

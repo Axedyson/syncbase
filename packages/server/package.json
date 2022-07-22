@@ -4,21 +4,18 @@
   "private": true,
   "scripts": {
     "dev": "yarn clean && tsnd --respawn --transpile-only src/index.ts",
-    "dev:e2e": "WEB_PORT=3002 PORT=8082 usePlaywrightDB=1 yarn dev",
     "build": "yarn clean && rm -fr tsconfig.tsbuildinfo && tsc && mikro-orm cache:generate",
     "start": "node dist/index.js",
     "db:seed:reset": "mikro-orm schema:fresh --seed --run",
     "test": "jest --colors",
-    "test:ci": "yarn test --ci --detectOpenHandles",
+    "test:ci": "yarn test --ci",
     "typecheck": "tsc --noEmit",
     "clean": "mikro-orm cache:clear && rm -fr dist"
   },
   "dependencies": {
-    "@mikro-orm/cli": "^5.2.3",
     "@mikro-orm/core": "^5.2.3",
     "@mikro-orm/postgresql": "^5.2.3",
     "@mikro-orm/reflection": "^5.2.3",
-    "@mikro-orm/seeder": "^5.2.3",
     "apollo-server-core": "^3.10.0",
     "apollo-server-express": "^3.10.0",
     "argon2": "^0.28.7",
@@ -33,6 +30,8 @@
     "type-graphql": "^1.1.1"
   },
   "devDependencies": {
+    "@mikro-orm/cli": "^5.2.3",
+    "@mikro-orm/seeder": "^5.2.3",
     "@types/connect-redis": "^0.0.18",
     "@types/express": "^4.17.13",
     "@types/express-session": "^1.17.5",

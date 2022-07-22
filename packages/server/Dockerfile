@@ -16,16 +16,15 @@ RUN yarn build
 FROM node:16.15.1-alpine3.16 AS app
 
 WORKDIR app
-ENV NODE_ENV=production
 
 COPY ["packages/server/package.json", "yarn.lock", "./"]
 
-RUN yarn install
+RUN yarn install --production
 
 COPY --from=builder app/dist ./dist
 COPY --from=builder app/temp ./temp
 
-RUN rm -fr yarn.lock
+RUN rm yarn.lock
 
 FROM node:16.15.1-alpine3.16
 

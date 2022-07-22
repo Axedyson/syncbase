@@ -56,11 +56,11 @@ export const startServer = async () => {
     app,
     cors: {
       credentials: true,
-      origin: `http://localhost:${process.env.WEB_PORT || 3000}`,
+      origin: `http://localhost:${IS_TEST ? 3002 : 3000}`,
     },
   });
 
-  const PORT = IS_TEST ? 0 : process.env.PORT || 8080;
+  const PORT = IS_TEST ? 8082 : 8080;
 
   await new Promise<void>((resolve) => httpServer.listen(PORT, resolve));
   console.log(

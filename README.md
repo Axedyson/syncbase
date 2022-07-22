@@ -12,15 +12,12 @@
 - Have node installed, preferably a version that is minimum 16 (I'm using v16.13.0 LTS)
 - Have yarn installed
 - Clone this repo
-- ### Installation of postgres and redis
-  There two ways to do this; either install them manually/natively or use the provided `docker-compose.yml` file to spin up a postgresql and redis container. To use `Docker Compose` run the following command in the root directory of the project:
-  ```bash
-  docker compose up
-  ```
-- For the postgresql database there needs to be a user with the name of `postgres` and with the password `postgres`
-- There also needs to be a database with the name of `syncbase` and if you're planning on running E2E tests locally, a database with the name of `syncbase_playwright` also needs to be created
-- After that you can run `yarn workspace @syncbase/server db:seed:reset` to create the necessary database relations and seed the development database `syncbase`
 - Run `yarn` inside of the root folder of the repo to install all the necessary packages
+- ### Installation of postgres and redis
+  There two ways to do this; either install them manually/natively or use the provided `docker-compose.yml` file to spin up a postgresql and redis container. To use `Docker Compose` run the following command in the root directory of the project: `docker compose up`
+- For the postgresql database there needs to be a user with the name of `postgres` and with the password `postgres`
+- There needs to be two databases: `syncbase` (used in development) and `syncbase_test` (used in tests)
+- After that you can run `yarn workspace @syncbase/server db:seed:reset` to create the necessary database relations and seed the development database `syncbase`
 - Make sure that the postgres instance and the redis instance are up and running before starting the node.js backend
 - Here is how to run the node.js backend server: `yarn workspace @syncbase/server dev`
 - And here is how to run the next.js frontend server: `yarn workspace @syncbase/web dev`

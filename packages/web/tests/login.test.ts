@@ -12,9 +12,7 @@ const accountData = {
 
 test.describe.serial("User login features", () => {
   test.beforeAll(() => {
-    return exec(
-      "usePlaywrightDB=1 yarn workspace @syncbase/server db:seed:reset"
-    );
+    return exec("NODE_ENV=test yarn workspace @syncbase/server db:seed:reset");
   });
 
   test.beforeEach(async ({ page }) => {

@@ -7,15 +7,14 @@ import { Button } from "../components/ui/Button";
 import { withUrqlClient } from "../graphql/client";
 import { LogoutUserDocument } from "../graphql/generated";
 import { useCurrentUser } from "../hooks/useCurrentUser";
-// import { useLoginDialog } from "../hooks/useLoginDialog";
+import { useLoginDialog } from "../hooks/useLoginDialog";
 import type { GetStaticProps, NextPage } from "next";
 
-// Testing playwright artifact failure report in GitHub CI
 const IndexPage: NextPage = () => {
   const [, user] = useCurrentUser();
   const [, logoutUser] = useMutation(LogoutUserDocument);
 
-  // const dialog = useLoginDialog();
+  const dialog = useLoginDialog();
   const { t } = useTranslation(["auth", "user"]);
 
   return (
@@ -37,8 +36,8 @@ const IndexPage: NextPage = () => {
       ) : (
         <>
           <h2>{t("auth:notLoggedIn")}</h2>
-          {/*           <Button onClick={dialog.open} label={t("auth:logIn")} />
-          <Button onClick={dialog.open} label={t("auth:createAccount")} /> */}
+          <Button onClick={dialog.open} label={t("auth:logIn")} />
+          <Button onClick={dialog.open} label={t("auth:createAccount")} />
         </>
       )}
     </div>

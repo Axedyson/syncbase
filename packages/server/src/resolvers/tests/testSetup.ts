@@ -35,7 +35,7 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  server.close();
   await redisClient.quit();
   await orm.close();
+  await new Promise((resolve) => server.close(resolve));
 });

@@ -20,8 +20,8 @@
 - Running `yarn workspace @syncbase/server test` should create the `syncbase_test` database automatically
 - After that you can run `yarn workspace @syncbase/server db:seed:reset` to create the necessary database relations and seed the development database `syncbase`
 - Make sure that the postgres instance and the redis instance are up and running before starting the node.js backend
-- Here is how to run the node.js backend server: `yarn workspace @syncbase/server dev`
-- And here is how to run the next.js frontend server: `yarn workspace @syncbase/web dev`
+- Here is how to run the [node.js backend server](https://github.com/AndysonDK/syncbase/tree/main/packages/server): `yarn workspace @syncbase/server dev`
+- And here is how to run the [next.js frontend server](https://github.com/AndysonDK/syncbase/tree/main/packages/web): `yarn workspace @syncbase/web dev`
 
 ### Contribution flow
 

@@ -1,6 +1,6 @@
 {
   "name": "@syncbase/server",
-  "packageManager": "yarn@3.2.1",
+  "packageManager": "yarn@3.2.2",
   "private": true,
   "scripts": {
     "dev": "yarn clean && tsnd --respawn --transpile-only src/index.ts",
@@ -25,7 +25,7 @@
     "express-session": "^1.17.3",
     "graphql": "^15.8.0",
     "graphql-scalars": "^1.17.0",
-    "ioredis": "^5.2.1",
+    "ioredis": "^5.2.2",
     "reflect-metadata": "^0.1.13",
     "type-graphql": "^1.1.1"
   },

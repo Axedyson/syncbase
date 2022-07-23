@@ -1,30 +1,31 @@
 import { devices } from "@playwright/test";
+// https://github.com/microsoft/playwright/issues/15898
 // import type { PlaywrightTestConfig } from "@playwright/test";
 
 const launchScript = process.env.CI ? "start" : "dev";
+const testWebPort = 3000;
 
-const config = {
+export default {
   testMatch: /\/tests\/.+\.test\.ts$/,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
+  outputDir: "./test-results",
   reporter: process.env.CI ? "github" : "list",
   webServer: [
     {
       command: `yarn workspace @syncbase/web next ${launchScript}`,
-      port: 3002,
-      timeout: 120 * 1000,
-      env: { NEXT_PUBLIC_IS_TEST: "1", PORT: "3002" },
+      env: { NEXT_PUBLIC_IS_TEST: "1", PORT: testWebPort },
+      port: testWebPort,
     },
     {
       command: `yarn workspace @syncbase/server ${launchScript}`,
-      port: 8082,
-      timeout: 120 * 1000,
       env: { NODE_ENV: "test" },
+      port: 8082,
     },
   ],
   use: {
-    baseURL: "http://localhost:3002",
-    trace: "on-first-retry",
+    baseURL: `http://localhost:${testWebPort}`,
+    trace: process.env.CI ? "on-first-retry" : "retain-on-failure",
   },
   workers: 1,
   projects: [
@@ -42,5 +43,4 @@ const config = {
     },
   ],
 };
-
-export default config;
+// } as PlaywrightTestConfig;

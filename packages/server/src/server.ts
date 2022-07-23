@@ -56,7 +56,7 @@ export const startServer = async () => {
     app,
     cors: {
       credentials: true,
-      origin: `http://localhost:${IS_TEST ? 3002 : 3000}`,
+      origin: "http://localhost:3000",
     },
   });
 

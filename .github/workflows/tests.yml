@@ -97,21 +97,16 @@ jobs:
         run: yarn install
       - name: Install Playwright
         run: yarn workspace @syncbase/web playwright install --with-deps
-        # -- Delete this install step when the next playwright update arrives! --
-      - name: Install start-server-and-test npm package
-        run: yarn workspace @syncbase/server add --dev start-server-and-test
-        # -----------------------------------------------------------------------
       - name: Build server
         run: yarn workspace @syncbase/server build
       - name: Build web
         run: yarn workspace @syncbase/web build
-        # -- Update this properly when the next playwright update arrives! --
       - name: Run tests
-        run: yarn workspace @syncbase/server start-server-and-test 'usePlaywrightDB=1 yarn start' http://localhost:8080/.well-known/apollo/server-health 'yarn workspace @syncbase/web test'
-        # -----------------------------------------------------------------------
+        run: yarn workspace @syncbase/web test
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v3
         with:
           name: playwright-report
-          path: packages/web/test-results
+          path: packages/web/tests/test-results
+          if-no-files-found: ignore

@@ -13,10 +13,11 @@
 - Have yarn installed
 - Clone this repo
 - Run `yarn` inside of the root folder of the repo to install all the necessary packages
-- ### Installation of postgres and redis
-  There two ways to do this; either install them manually/natively or use the provided `docker-compose.yml` file to spin up a postgresql and redis container. To use `Docker Compose` run the following command in the root directory of the project: `docker compose up`
-- For the postgresql database there needs to be a user with the name of `postgres` and with the password `postgres`
+- #### Installation of postgres and redis
+  There are two ways to do this; either install them manually/natively or use the provided `docker-compose.yml` file to spin up a postgresql and redis container. To use `Docker Compose` run the following command in the root directory of the project: `docker compose up`
+- For the postgresql database there needs to be a user with the name of `postgres` and with a password set to `postgres`
 - There needs to be two databases: `syncbase` (used in development) and `syncbase_test` (used in tests)
+- Running `yarn workspace @syncbase/server test` should create the `syncbase_test` database automatically
 - After that you can run `yarn workspace @syncbase/server db:seed:reset` to create the necessary database relations and seed the development database `syncbase`
 - Make sure that the postgres instance and the redis instance are up and running before starting the node.js backend
 - Here is how to run the node.js backend server: `yarn workspace @syncbase/server dev`

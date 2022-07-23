@@ -1,4 +1,4 @@
-const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
+// const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
 const i18nConfig = require("./next-i18next.config");
 
 /**
@@ -10,8 +10,9 @@ const nextConfig = {
   i18n: i18nConfig.i18n,
 };
 
-module.exports = (phase) => {
-  if (phase !== PHASE_DEVELOPMENT_SERVER) i18nConfig.reloadOnPrerender = false;
+// module.exports = (phase) => {
+module.exports = () => {
+  // if (phase !== PHASE_DEVELOPMENT_SERVER) i18nConfig.reloadOnPrerender = false;
 
   return nextConfig;
 };

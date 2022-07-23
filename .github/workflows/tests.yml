@@ -100,7 +100,7 @@ jobs:
       - name: Build server
         run: yarn workspace @syncbase/server build
       - name: Build web
-        run: yarn workspace @syncbase/web build
+        run: NEXT_PUBLIC_IS_TEST=1 yarn workspace @syncbase/web build
       - name: Run tests
         run: yarn workspace @syncbase/web test
       - name: Upload test results

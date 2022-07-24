@@ -49,6 +49,8 @@ jobs:
         run: yarn install
       - name: Run tests
         run: yarn workspace @syncbase/server test:ci
+        env:
+          FORCE_COLOR: true
 
   e2e-tests:
     name: E2E

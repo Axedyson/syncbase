@@ -18,8 +18,7 @@ let orm: MikroORM<IDatabaseDriver<Connection>>;
 
 export let graphql: graphqlTestFunc;
 
-console.log(process.env.CI);
-jest.setTimeout(7 * 1000);
+if (process.env.CI) jest.setTimeout(16 * 1000);
 
 beforeAll(async () => {
   ({ server, orm } = await startServer());

@@ -29,7 +29,10 @@ RUN rm yarn.lock
 FROM node:16.15.1-alpine3.16
 
 WORKDIR app
+
 ENV NODE_ENV=production
+
+USER node
 
 COPY --from=app app ./
 

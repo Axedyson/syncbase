@@ -19,6 +19,7 @@ let orm: MikroORM<IDatabaseDriver<Connection>>;
 export let graphql: graphqlTestFunc;
 
 beforeAll(async () => {
+  console.log(process.env.NODE_ENV);
   ({ server, orm } = await startServer());
   await orm.getSchemaGenerator().refreshDatabase();
   await orm.getSeeder().seed(DatabaseSeeder);

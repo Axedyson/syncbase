@@ -9,7 +9,11 @@ const variables = {
 };
 
 describe("User resolvers", () => {
-  test("creating a user", () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  test("creating a user", async () => {
     const query = /* GraphQL */ `
       mutation RegisterUser($userInput: RegisterUserInput!) {
         registerUser(input: $userInput) {
@@ -28,7 +32,7 @@ describe("User resolvers", () => {
       });
   });
 
-  test("me resolver", () => {
+  test("me resolver", async () => {
     const query = /* GraphQL */ `
       query Me {
         me {
@@ -42,7 +46,7 @@ describe("User resolvers", () => {
     });
   });
 
-  test("logging in a user", () => {
+  test("logging in a user", async () => {
     const query = /* GraphQL */ `
       mutation LoginUser($userInput: LoginUserInput!) {
         loginUser(input: $userInput) {
@@ -63,7 +67,7 @@ describe("User resolvers", () => {
     });
   });
 
-  test("logging user out", () => {
+  test("logging user out", async () => {
     const query = /* GraphQL */ `
       mutation LogoutUser {
         logoutUser
@@ -75,7 +79,7 @@ describe("User resolvers", () => {
     });
   });
 
-  test("email already taken on sign up", () => {
+  test("email already taken on sign up", async () => {
     const query = /* GraphQL */ `
       mutation RegisterUser($userInput: RegisterUserInput!) {
         registerUser(input: $userInput) {

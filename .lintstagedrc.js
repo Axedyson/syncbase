@@ -1,6 +1,6 @@
 module.exports = {
   "*.css": "stylelint --fix",
-  "*.{json,md,yml}": "prettier --write",
+  "*.{json,md,yml,yaml}": "prettier --write",
   "./{**/*.{js,ts,tsx,graphql},package.json}": () => "eslint . --fix",
   "packages/server/{**/*.ts?(x),package.json}": () =>
     "yarn workspace @syncbase/server typecheck",

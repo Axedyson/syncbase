@@ -48,6 +48,8 @@
 
 - Implement SEO optimizations later
 - Implement OG meta tags later
+- Implement [docker linting](https://github.com/jbergstroem/hadolint-gh-action)?
+- Implement [DNSSEC](https://www.namecheap.com/support/knowledgebase/article.aspx/9718/2232/nameservers-and-tlds-supportedunsupported-by-dnssec/) on namecheap?
 - Implement a page that showcases all of the open source libraries used in the project just like how [discord does it](https://discord.com/acknowledgements)
 - In the future we want to [organize by feature](https://softwareengineering.stackexchange.com/questions/338597/folder-by-type-or-folder-by-feature) rather than by type
 - More extensive Docker and Docker Compose configuration to provide easier setup and development e.g. [vscode development containers](https://code.visualstudio.com/docs/remote/containers)

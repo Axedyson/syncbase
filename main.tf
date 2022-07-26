@@ -12,16 +12,15 @@ terraform {
 data "digitalocean_ssh_keys" "keys" {}
 
 resource "digitalocean_droplet" "server" {
-  image             = "dokku-20-04"
-  name              = "server-1"
-  region            = "nyc3"
-  size              = "s-1vcpu-1gb"
-  monitoring        = true
-  ipv6              = true
-  graceful_shutdown = true
-  ssh_keys          = data.digitalocean_ssh_keys.keys.ssh_keys[*].id
+  image      = "dokku-20-04"
+  name       = "api.syncbase.tv"
+  region     = "nyc3"
+  size       = "s-1vcpu-1gb"
+  monitoring = true
+  ipv6       = true
+  ssh_keys   = data.digitalocean_ssh_keys.keys.ssh_keys[*].id
   connection {
-    host    = self.ipv4_address
+    host = self.ipv4_address
   }
   provisioner "remote-exec" {
     inline = [
@@ -35,8 +34,17 @@ resource "digitalocean_droplet" "server" {
 
       "dokku postgres:link syncbase_postgres server",
       "dokku redis:link syncbase_redis server",
-
-      "dokku apps:list"
     ]
   }
+}
+
+resource "digitalocean_domain" "default" {
+  name = "syncbase.tv"
+}
+
+resource "digitalocean_record" "api" {
+  domain = digitalocean_domain.default.id
+  type   = "A"
+  name   = "api"
+  value  = digitalocean_droplet.server.ipv4_address
 }

@@ -49,5 +49,5 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=registry,ref=${{ fromJSON(steps.meta.outputs.bake-file).target.docker-metadata-action.args.DOCKER_META_IMAGES }}:buildcache
-          cache-to: type=registry,ref=${{ fromJSON(steps.meta.outputs.bake-file).target.docker-metadata-action.args.DOCKER_META_IMAGES }}:buildcache,mode=max
+          cache-from: type=registry,ref=${{ steps.meta.outputs.tags }}:buildcache
+          cache-to: type=registry,ref=${{ steps.meta.outputs.tags }}:buildcache,mode=max

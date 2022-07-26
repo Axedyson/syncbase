@@ -13,6 +13,7 @@ env:
 
 jobs:
   publish_server_image:
+    name: Server
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -27,24 +28,26 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: ${{ env.REGISTRY }}
-          username: ${{ GITHUB_REPOSITORY_OWNER }}
+          username: AndysonDK
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ env.REGISTRY }}/${{ github.repository }}
+          images: ${{ env.REGISTRY }}/${{ github.repository  }}
 
       - name: Set up Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@v2
 
       - name: Lowercase github.repository environment variable for docker
-        id: gh.repo_lc
+        id: string
         uses: ASzc/change-string-case-action@v2
         with:
           string: ${{ github.repository }}
+      - name: test the lowercase action
+        run: echo ${{ steps.string.outputs.lowercase }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
@@ -55,5 +58,5 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ steps.gh.repo_lc.outputs.lowercase }}:buildcache
-          cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ steps.gh.repo_lc.outputs.lowercase }}:buildcache,mode=max
+          cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ github.repository }}:buildcache
+          cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ github.repository }}:buildcache,mode=max

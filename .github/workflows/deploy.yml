@@ -28,14 +28,14 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: ${{ env.REGISTRY }}
-          username: ${{ GITHUB_REPOSITORY_OWNER }}
+          username: $GITHUB_REPOSITORY_OWNER
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ env.REGISTRY }}/${{ GITHUB_REPOSITORY }}
+          images: ${{ env.REGISTRY }}/$GITHUB_REPOSITORY
 
       - name: Set up Docker Buildx
         id: buildx
@@ -45,13 +45,12 @@ jobs:
         id: gh_repo_lc
         uses: ASzc/change-string-case-action@v2
         with:
-          string: ${{ GITHUB_REPOSITORY }}
+          string: $GITHUB_REPOSITORY
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
           push: ${{ github.event_name != 'pull_request' }}
-          context: .
           file: packages/server/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           tags: ${{ steps.meta.outputs.tags }}

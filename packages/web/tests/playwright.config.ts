@@ -1,6 +1,5 @@
 import { devices } from "@playwright/test";
-// https://github.com/microsoft/playwright/issues/15898
-// import type { PlaywrightTestConfig } from "@playwright/test";
+import type { PlaywrightTestConfig } from "@playwright/test";
 
 const launchScript = process.env.CI ? "start" : "dev";
 const testWebPort = 3000;
@@ -42,5 +41,4 @@ export default {
       use: { ...devices["Desktop Safari"] },
     },
   ],
-};
-// } as PlaywrightTestConfig;
+} as PlaywrightTestConfig;

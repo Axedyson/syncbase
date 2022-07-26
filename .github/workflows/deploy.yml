@@ -34,11 +34,17 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ env.REGISTRY }}/${{ github.repository  }}
+          images: ${{ env.REGISTRY }}/${{ github.repository }}
 
       - name: Set up Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@v2
+
+      - name: Lowercase github.repository environment variable for docker
+        id: gh.repo_lc
+        uses: ASzc/change-string-case-action@v2
+        with:
+          string: ${{ github.repository }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
@@ -49,5 +55,5 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=registry,ref=${{ steps.meta.outputs.tags }}:buildcache
-          cache-to: type=registry,ref=${{ steps.meta.outputs.tags }}:buildcache,mode=max
+          cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ step.gh.repo_lc.outputs.lowercase }}:buildcache
+          cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ step.gh.repo_lc.outputs.lowercase }}:buildcache,mode=max

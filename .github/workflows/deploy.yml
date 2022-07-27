@@ -43,13 +43,13 @@ jobs:
 
       - name: Echo out the $GITHUB_REPOSITORY environment variable
         id: GITHUB_REPOSITORY
-        run: echo ::set-output name={string}::{$GITHUB_REPOSITORY}
+        run: echo ::set-output name=value::$GITHUB_REPOSITORY
 
       - name: Lowercase GITHUB_REPOSITORY environment variable for docker
         id: gh_repo_lc
         uses: ASzc/change-string-case-action@v2
         with:
-          string: ${{ steps.GITHUB_REPOSITORY.outputs.string }}
+          string: ${{ steps.GITHUB_REPOSITORY.outputs.value }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v3

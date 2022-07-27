@@ -20,8 +20,8 @@
 - Running `yarn workspace @syncbase/server test` should create the `syncbase_test` database automatically
 - After that you can run `yarn workspace @syncbase/server db:seed:reset` to create the necessary database relations and seed the development database `syncbase`
 - Make sure that the postgres instance and the redis instance are up and running before starting the node.js backend
-- Here is how to run the [node.js backend server](https://github.com/AndysonDK/syncbase/tree/main/packages/server): `yarn workspace @syncbase/server dev`
-- And here is how to run the [next.js frontend server](https://github.com/AndysonDK/syncbase/tree/main/packages/web): `yarn workspace @syncbase/web dev`
+- Here is how to run the [node.js backend server](https://github.com/Axedyson/syncbase/tree/main/packages/server): `yarn workspace @syncbase/server dev`
+- And here is how to run the [next.js frontend server](https://github.com/Axedyson/syncbase/tree/main/packages/web): `yarn workspace @syncbase/web dev`
 
 ### Contribution flow
 
@@ -64,19 +64,19 @@ If you have any questions at all, trouble setting things up etc. you can contact
 - `Axedyson#6431` (We will first need to be friends on discord before we can chat, will probably make a dedicated discord server in the future)
 
 <p align="center">
-  <a href="https://github.com/AndysonDK/syncbase/pulls">
+  <a href="https://github.com/Axedyson/syncbase/pulls">
     <img alt="Pull requests are welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
   </a>
-  <a href="https://github.com/AndysonDK/syncbase/actions/workflows/lint.yml">
-    <img alt="Lint workflow" src="https://img.shields.io/github/workflow/status/AndysonDK/syncbase/Lint?label=Lint">
+  <a href="https://github.com/Axedyson/syncbase/actions/workflows/lint.yml">
+    <img alt="Lint workflow" src="https://img.shields.io/github/workflow/status/Axedyson/syncbase/Lint?label=Lint">
   </a>
-  <a href="https://github.com/AndysonDK/syncbase/actions/workflows/codeql.yml">
-    <img alt="CodeQL workflow" src="https://img.shields.io/github/workflow/status/AndysonDK/syncbase/CodeQL?label=CodeQL">
+  <a href="https://github.com/Axedyson/syncbase/actions/workflows/codeql.yml">
+    <img alt="CodeQL workflow" src="https://img.shields.io/github/workflow/status/Axedyson/syncbase/CodeQL?label=CodeQL">
   </a>
-  <a href="https://github.com/AndysonDK/syncbase/actions/workflows/tests.yml">
-    <img alt="Tests workflow" src="https://img.shields.io/github/workflow/status/AndysonDK/syncbase/Tests?label=Tests">
+  <a href="https://github.com/Axedyson/syncbase/actions/workflows/tests.yml">
+    <img alt="Tests workflow" src="https://img.shields.io/github/workflow/status/Axedyson/syncbase/Tests?label=Tests">
   </a>
-  <a href="https://github.com/AndysonDK/syncbase/actions/workflows/ui_tests.yml">
-    <img alt="UI Tests workflow" src="https://img.shields.io/github/workflow/status/AndysonDK/syncbase/UI%20Tests?label=UI%20Tests">
+  <a href="https://github.com/Axedyson/syncbase/actions/workflows/ui_tests.yml">
+    <img alt="UI Tests workflow" src="https://img.shields.io/github/workflow/status/Axedyson/syncbase/UI%20Tests?label=UI%20Tests">
   </a>
 <p>

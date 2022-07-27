@@ -61,7 +61,7 @@
 If you have any questions at all, trouble setting things up etc. you can contact me the main maintainer of this project at:
 
 - andersalting@gmail.com
-- `Andyson#6431` (We will first need to be friends on discord before we can chat, will probably make a dedicated discord server in the future)
+- `Axedyson#6431` (We will first need to be friends on discord before we can chat, will probably make a dedicated discord server in the future)
 
 <p align="center">
   <a href="https://github.com/AndysonDK/syncbase/pulls">

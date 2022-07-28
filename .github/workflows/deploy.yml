@@ -47,6 +47,12 @@ jobs:
         with:
           string: ${{ env.GITHUB_REPOSITORY }}
 
+      - name: echo out environment variable
+        run: echo $GITHUB_REPOSITORY
+
+      - name: echo out environment variable again
+        run: echo ${{ env.GITHUB_REPOSITORY }}
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:

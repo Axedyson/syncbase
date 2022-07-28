@@ -45,13 +45,13 @@ jobs:
         id: gh_repo_lc
         uses: ASzc/change-string-case-action@v2
         with:
-          string: ${{ env.GITHUB_REPOSITORY }}
+          string: ${GITHUB_REPOSITORY}
 
       - name: echo out environment variable
         run: echo $GITHUB_REPOSITORY
 
       - name: echo out environment variable again
-        run: echo ${{ env.GITHUB_REPOSITORY }}
+        run: echo ${GITHUB_REPOSITORY}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v3

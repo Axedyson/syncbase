@@ -45,7 +45,7 @@ jobs:
         id: gh_repo_lc
         uses: ASzc/change-string-case-action@v2
         with:
-          string: $GITHUB_REPOSITORY
+          string: ${GITHUB.REPOSITORY}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v3

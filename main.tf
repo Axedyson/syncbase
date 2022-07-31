@@ -12,30 +12,47 @@ terraform {
 data "digitalocean_ssh_keys" "keys" {}
 
 resource "digitalocean_droplet" "server" {
-  image      = "dokku-20-04"
+  image      = "ubuntu-22-04-x64"
   name       = "api.syncbase.tv"
   region     = "nyc3"
   size       = "s-1vcpu-1gb"
   monitoring = true
   ipv6       = true
   ssh_keys   = data.digitalocean_ssh_keys.keys.ssh_keys[*].id
-  connection {
-    host = self.ipv4_address
-  }
-  provisioner "remote-exec" {
-    inline = [
-      "dokku apps:create server",
+  user_data  = <<-EOT
+    #!/bin/bash
 
-      "sudo dokku plugin:install https://github.com/dokku/dokku-postgres.git postgres",
-      "sudo dokku plugin:install https://github.com/dokku/dokku-redis.git redis",
+    wget https://raw.githubusercontent.com/dokku/dokku/v0.27.9/bootstrap.sh
+    sudo DOKKU_NO_INSTALL_RECOMMENDS=" --no-install-recommends " DOKKU_TAG=v0.27.9 bash bootstrap.sh
 
-      "dokku postgres:create syncbase_postgres",
-      "dokku redis:create syncbase_redis",
+    dokku apps:create server
 
-      "dokku postgres:link syncbase_postgres server",
-      "dokku redis:link syncbase_redis server",
-    ]
-  }
+    sudo dokku plugin:install https://github.com/dokku/dokku-postgres.git postgres
+    sudo dokku plugin:install https://github.com/dokku/dokku-redis.git redis
+
+    dokku postgres:create syncbase_postgres
+    dokku redis:create syncbase_redis
+
+    dokku postgres:link syncbase_postgres server
+    dokku redis:link syncbase_redis server
+
+    dokku git:from-image server ghcr.io/axedyson/syncbase:main
+
+    cat << EOF > /etc/nginx/sites-available/default
+    server {
+      listen      80 default_server;
+      listen [::]:80 default_server;
+      server_name _;
+      return      444;
+    }
+    EOF
+
+    dokku domains:set server api.syncbase.tv
+    dokku proxy:ports-set server http:80:8080
+
+    sudo dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git
+    dokku config:set --no-restart server DOKKU_LETSENCRYPT_EMAIL=andersalting@gmail.com
+  EOT
 }
 
 resource "digitalocean_domain" "default" {

@@ -11,7 +11,7 @@ import {
   fetchExchange /* ssrExchange*/,
 } from "urql";
 import { MeDocument } from "./generated";
-import type { GraphCacheConfig, RegularUserFragment } from "./generated";
+import type { GraphCacheConfig, User, WithTypename } from "./generated";
 // import type { DocumentNode } from "graphql";
 import type { NextPage, NextPageContext } from "next";
 import type { SSRExchange } from "next-urql";
@@ -34,14 +34,20 @@ const buildUrqlConfig = (
       updates: {
         Mutation: {
           loginUser: (result, _args, cache) => {
-            cache.updateQuery({ query: MeDocument }, () => ({
-              me: result.loginUser as RegularUserFragment,
-            }));
+            cache.updateQuery<{ me: WithTypename<User> }>(
+              { query: MeDocument },
+              () => ({
+                me: result.loginUser,
+              })
+            );
           },
           registerUser: (result, _args, cache) => {
-            cache.updateQuery({ query: MeDocument }, () => ({
-              me: result.registerUser as RegularUserFragment,
-            }));
+            cache.updateQuery<{ me: WithTypename<User> }>(
+              { query: MeDocument },
+              () => ({
+                me: result.registerUser,
+              })
+            );
           },
           logoutUser: (_result, _args, cache) => {
             cache.updateQuery({ query: MeDocument }, () => ({ me: null }));

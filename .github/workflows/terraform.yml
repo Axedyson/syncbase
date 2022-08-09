@@ -21,7 +21,9 @@ jobs:
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
       - name: Setup private ssh key
-        run: echo $SSH_KEY > ~/.ssh/id_ed25519
+        run: |
+          touch ~/.ssh/id_ed25519
+          echo $SSH_KEY > ~/.ssh/id_ed25519
         env:
           SSH_KEY: ${{ secrets.DO_PVT_SSH_KEY }}
       - name: Terraform Format

@@ -7,6 +7,14 @@ terraform {
       version = "~> 2.21.0"
     }
   }
+
+  cloud {
+    organization = "syncbase"
+
+    workspaces {
+      name = "syncbase"
+    }
+  }
 }
 
 data "digitalocean_ssh_keys" "keys" {}
@@ -55,9 +63,9 @@ resource "digitalocean_droplet" "server" {
     dokku config:set --global DOKKU_LETSENCRYPT_EMAIL=andersalting@gmail.com
 
   EOT
-# dokku letsencrypt:enable server
-# dokku proxy:ports-add server https:443:8080
-# dokku letsencrypt:cron-job --add
+  # dokku letsencrypt:enable server
+  # dokku proxy:ports-add server https:443:8080
+  # dokku letsencrypt:cron-job --add
   connection {
     host = self.ipv4_address
   }

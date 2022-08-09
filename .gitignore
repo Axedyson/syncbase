@@ -14,5 +14,3 @@ test-results/
 tsconfig.tsbuildinfo
 .DS_Store
 .terraform/
-terraform.tfstate
-terraform.tfstate.backup

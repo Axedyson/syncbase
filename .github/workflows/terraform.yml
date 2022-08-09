@@ -39,6 +39,8 @@ jobs:
       - name: Terraform Apply
         if: github.event_name == 'push'
         run: terraform apply -auto-approve -input=false
+        env:
+          DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
       - name: Output ipv4_address of droplet
         run: |
           output=$(terraform output ipv4_address)

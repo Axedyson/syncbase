@@ -22,6 +22,7 @@ jobs:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
       - name: Setup private ssh key
         run: |
+          mkdir ~/.ssh/
           touch ~/.ssh/id_ed25519
           echo $SSH_KEY > ~/.ssh/id_ed25519
         env:

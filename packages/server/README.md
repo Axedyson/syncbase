@@ -25,6 +25,7 @@ Also we use multi-stage builds in the dockerfile so the image size is optimized
 - Maybe use yarn v2 (yarn berry) instead of the default yarn v1 in the dockerfile: https://github.com/nodejs/docker-node/blob/main/docs/BestPractices.md#upgradingdowngrading-yarn
 - Maybe use `CMD [ "node", "dist/index.js" ]` instead of `yarn`: https://github.com/nodejs/docker-node/blob/main/docs/BestPractices.md#cmd
   trigger-electron-deploy.sh
-- When `api.syncbase.tv` host is responding correctly, run these commands inside the digitalocean droplet:
+- If SSL is still not enabled, make sure that `api.syncbase.tv` host is responding correctly, and then run these commands inside the digitalocean droplet:
   `dokku letsencrypt:active server || dokku letsencrypt:enable server`
   `dokku letsencrypt:cron-job --add`
+- Be aware that we can only add SSL to the same domain 5 times a week

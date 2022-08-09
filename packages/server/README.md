@@ -29,3 +29,4 @@ Also we use multi-stage builds in the dockerfile so the image size is optimized
   `dokku letsencrypt:active server || dokku letsencrypt:enable server`
   `dokku letsencrypt:cron-job --add`
 - Be aware that we can only add SSL to the same domain 5 times a week
+- Maybe use this for terraform remote connection: https://www.terraform.io/language/resources/provisioners/connection#connecting-through-a-bastion-host-with-ssh

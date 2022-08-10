@@ -25,8 +25,6 @@ jobs:
         uses: webfactory/ssh-agent@v0.5.4
         with:
           ssh-private-key: ${{ secrets.DO_PVT_SSH_KEY }}
-      - name: Output files in ssh folder
-        run: ls -al ~/.ssh/
       - name: Terraform Format
         run: terraform fmt -check
       - name: Terraform Init

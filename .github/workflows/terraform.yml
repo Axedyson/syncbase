@@ -21,6 +21,7 @@ jobs:
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
       - name: Setup SSH agent
+        if: github.event_name == 'push'
         uses: webfactory/ssh-agent@v0.5.4
         with:
           ssh-private-key: ${{ secrets.DO_PVT_SSH_KEY }}

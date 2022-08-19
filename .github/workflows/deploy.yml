@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  setup-infrastructure:
+  terraform:
     name: Terraform
     runs-on: ubuntu-latest
     outputs:

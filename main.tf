@@ -1,10 +1,10 @@
 terraform {
-  required_version = "~> 1.2.3"
+  required_version = ">= 1.2.7"
 
   required_providers {
     digitalocean = {
       source  = "digitalocean/digitalocean"
-      version = "~> 2.21.0"
+      version = ">= 2.22.1"
     }
   }
 
@@ -62,10 +62,9 @@ resource "digitalocean_droplet" "server" {
     sudo dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git
     dokku config:set --global DOKKU_LETSENCRYPT_EMAIL=andersalting@gmail.com
 
+    dokku letsencrypt:enable server
+    dokku letsencrypt:cron-job --add
   EOT
-  # dokku letsencrypt:enable server
-  # dokku proxy:ports-add server https:443:8080
-  # dokku letsencrypt:cron-job --add
   connection {
     host = self.ipv4_address
   }

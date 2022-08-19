@@ -4,14 +4,57 @@ on:
   push:
     branches:
       - main
-
-env:
-  REGISTRY: ghcr.io
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  publish_server_image:
-    name: Server
+  terraform:
+    name: Terraform
     runs-on: ubuntu-latest
+    outputs:
+      ipv4_address: ${{ steps.ipv4_address_output.outputs.ipv4_address }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+      - name: Setup SSH agent
+        if: github.event_name == 'push'
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.DO_PVT_SSH_KEY }}
+      - name: Terraform Format
+        run: terraform fmt -check
+      - name: Terraform Init
+        run: terraform init
+      - name: Terraform Validate
+        run: terraform validate
+      - name: Terraform Plan
+        if: github.event_name == 'pull_request'
+        run: terraform plan -input=false -lock-timeout=5h
+        env:
+          DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
+      - name: Terraform Apply
+        if: github.event_name == 'push'
+        run: terraform apply -auto-approve -input=false -lock-timeout=5h
+        env:
+          DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
+      - name: Output ipv4_address of droplet
+        id: ipv4_address_output
+        run: |
+          output=$(terraform output ipv4_address)
+          echo "::set-output name=ipv4_address::$output"
+
+  deploy-server-image:
+    if: github.event_name == 'push'
+    name: Deploy Server
+    runs-on: ubuntu-latest
+    env:
+      REGISTRY: ghcr.io
     permissions:
       contents: read
       packages: write
@@ -54,3 +97,5 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ steps.gh_repo_lc.outputs.lowercase }}:buildcache
           cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ steps.gh_repo_lc.outputs.lowercase }}:buildcache,mode=max
+      - name: Deploy Docker Image
+        run: ssh root@${{needs.terraform.outputs.ipv4_address}} "dokku git:from-image server ghcr.io/axedyson/syncbase:main"

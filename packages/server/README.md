@@ -21,12 +21,12 @@ Also we use multi-stage builds in the dockerfile so the image size is optimized
 
 ### Notes
 
+- If the DigitalOcean droplet has been recreated make sure to wait for DNS propagation to finish for the host `api.syncbase.tv` before running the following commands:
+  - `dokku letsencrypt:enable server`
+  - `dokku letsencrypt:cron-job --add`
+  - Be aware that we can only add SSL to the same domain 5 times a week
 - Maybe use this to build the docker image: https://github.com/Dcard/yarn-plugins/tree/master/packages/docker-build
 - Maybe use yarn v2 (yarn berry) instead of the default yarn v1 in the dockerfile: https://github.com/nodejs/docker-node/blob/main/docs/BestPractices.md#upgradingdowngrading-yarn
 - Maybe use `CMD [ "node", "dist/index.js" ]` instead of `yarn`: https://github.com/nodejs/docker-node/blob/main/docs/BestPractices.md#cmd
-- If SSL is still not enabled, make sure that `api.syncbase.tv` host is responding correctly, and then run these commands inside the digitalocean droplet:
-  `dokku letsencrypt:active server || dokku letsencrypt:enable server`
-  `dokku letsencrypt:cron-job --add`
-  - Be aware that we can only add SSL to the same domain 5 times a week
 - Maybe use this for terraform remote connection: https://www.terraform.io/language/resources/provisioners/connection#connecting-through-a-bastion-host-with-ssh
 - Maybe configure the digitalocean dokku droplet like the way it's configured [here](https://github.com/digitalocean/droplet-1-clicks/blob/master/dokku-20-04/template.json)

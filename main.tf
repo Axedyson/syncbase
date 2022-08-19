@@ -61,9 +61,6 @@ resource "digitalocean_droplet" "server" {
 
     sudo dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git
     dokku config:set --global DOKKU_LETSENCRYPT_EMAIL=andersalting@gmail.com
-
-    dokku letsencrypt:enable server
-    dokku letsencrypt:cron-job --add
   EOT
   connection {
     host = self.ipv4_address

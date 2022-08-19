@@ -33,12 +33,12 @@ jobs:
         run: terraform validate
       - name: Terraform Plan
         if: github.event_name == 'pull_request'
-        run: terraform plan -input=false -lock-timeout=$((60 * 60 * 5))s
+        run: terraform plan -input=false -lock-timeout=5h
         env:
           DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
       - name: Terraform Apply
         if: github.event_name == 'push'
-        run: terraform apply -auto-approve -input=false -lock-timeout=$((60 * 60 * 5))s
+        run: terraform apply -auto-approve -input=false -lock-timeout=5h
         env:
           DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
       - name: Output ipv4_address of droplet

@@ -30,8 +30,8 @@ resource "digitalocean_droplet" "server" {
   user_data  = <<-EOT
     #!/bin/bash
 
-    wget https://raw.githubusercontent.com/dokku/dokku/v0.27.10/bootstrap.sh
-    sudo DOKKU_NO_INSTALL_RECOMMENDS=" --no-install-recommends " DOKKU_TAG=v0.27.10 bash bootstrap.sh
+    wget https://raw.githubusercontent.com/dokku/dokku/v0.28.0/bootstrap.sh
+    sudo DOKKU_NO_INSTALL_RECOMMENDS=" --no-install-recommends " DOKKU_TAG=v0.28.0 bash bootstrap.sh
     cat ~/.ssh/authorized_keys | dokku ssh-keys:add admin
 
     dokku apps:create server

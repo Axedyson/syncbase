@@ -50,8 +50,9 @@ jobs:
           echo "::set-output name=ipv4_address::$output"
 
   deploy-server-image:
+    needs: [terraform]
     if: github.event_name == 'push'
-    name: Deploy Server
+    name: Server
     runs-on: ubuntu-latest
     env:
       REGISTRY: ghcr.io

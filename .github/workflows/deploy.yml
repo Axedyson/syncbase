@@ -96,5 +96,6 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: ${{ needs.terraform.outputs.ipv4_address }}
+          username: root
           key: ${{ secrets.DO_PVT_SSH_KEY }}
           script: dokku git:from-image server ghcr.io/axedyson/syncbase:main

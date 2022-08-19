@@ -46,7 +46,7 @@ jobs:
           DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
       - name: Output ipv4_address of droplet
         id: ipv4_address_output
-        run: echo '::set-output name=ipv4_address::$(terraform output ipv4_address)'
+        run: echo "::set-output name=ipv4_address::$(terraform output -raw ipv4_address)"
 
   deploy-server-image:
     needs: [terraform]

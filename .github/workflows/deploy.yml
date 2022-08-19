@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  terraform:
+  setup-infrastructure:
     name: Terraform
     runs-on: ubuntu-latest
     outputs:
@@ -21,6 +21,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:
+          terraform_wrapper: false
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
       - name: Setup SSH agent
         if: github.event_name == 'push'
@@ -45,9 +46,7 @@ jobs:
           DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
       - name: Output ipv4_address of droplet
         id: ipv4_address_output
-        run: |
-          output=$(terraform output ipv4_address)
-          echo "::set-output name=ipv4_address::$output"
+        run: echo "::set-output name=ipv4_address::$(terraform output ipv4_address)"
 
   deploy-server-image:
     needs: [terraform]

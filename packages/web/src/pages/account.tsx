@@ -8,6 +8,7 @@ import { LogoutUserDocument } from "../graphql/generated";
 import { useCurrentUser } from "../hooks/useCurrentUser";
 import type { GetStaticProps, NextPage } from "next";
 
+// Testing next.js caching in CI
 const AccountPage: NextPage = () => {
   const [, logoutUser] = useMutation(LogoutUserDocument);
   const [, user] = useCurrentUser(true);

@@ -15,6 +15,7 @@ export type Scalars = {
   Float: number;
   /** A field whose value conforms to the standard internet email address format as specified in RFC822: https://www.w3.org/Protocols/rfc822/. */
   EmailAddress: string;
+
 };
 
 export type LoginUserInput = {

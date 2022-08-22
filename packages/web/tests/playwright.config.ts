@@ -2,7 +2,7 @@ import { devices } from "@playwright/test";
 import type { PlaywrightTestConfig } from "@playwright/test";
 
 const launchScript = process.env.CI ? "start" : "dev";
-const testWebPort = 3000;
+const webPort = 3000;
 
 export default {
   testMatch: /\/tests\/.+\.test\.ts$/,
@@ -13,8 +13,8 @@ export default {
   webServer: [
     {
       command: `yarn workspace @syncbase/web next ${launchScript}`,
-      env: { NEXT_PUBLIC_IS_TEST: "1", PORT: testWebPort },
-      port: testWebPort,
+      env: { NEXT_PUBLIC_IS_TEST: "1", PORT: webPort },
+      port: webPort,
     },
     {
       command: `yarn workspace @syncbase/server ${launchScript}`,
@@ -23,7 +23,7 @@ export default {
     },
   ],
   use: {
-    baseURL: `http://localhost:${testWebPort}`,
+    baseURL: `http://localhost:${webPort}`,
     trace: process.env.CI ? "on-first-retry" : "retain-on-failure",
   },
   workers: 1,

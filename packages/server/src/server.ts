@@ -4,7 +4,7 @@ import { MikroORM } from "@mikro-orm/core";
 import {
   ApolloServerPluginDrainHttpServer,
   ApolloServerPluginLandingPageDisabled,
-  ApolloServerPluginLandingPageGraphQLPlayground,
+  ApolloServerPluginLandingPageLocalDefault,
 } from "apollo-server-core";
 import { ApolloServer } from "apollo-server-express";
 import express from "express";
@@ -32,22 +32,12 @@ export const startServer = async () => {
       em: orm.em.fork(),
     }),
     formatError: errorMiddleware,
-    // We are using the retired graphql playground to test our graphql resolvers for now.
-    // The reason is that apollo studio 3 (default tool) requires cookies to
-    // have the following settings: secure: true & sameSite: "none".
-    // But express-session currently doesn't allow setting secure cookies from a http site
-    // To fix this issue we could do what is stated here:
-    // https://github.com/apollographql/apollo-server/issues/5775
-    // and there are probably also some other workarounds (reverse proxy using https etc.)
-    // but we don't like nasty workarounds here!
-    // I think the best solution is probably to wait for the following issue to be solved:
-    // https://github.com/expressjs/session/issues/837
+    csrfPrevention: true,
+    cache: "bounded",
     plugins: [
       IS_PROD
         ? ApolloServerPluginLandingPageDisabled()
-        : ApolloServerPluginLandingPageGraphQLPlayground({
-            settings: { "request.credentials": "same-origin" },
-          }),
+        : ApolloServerPluginLandingPageLocalDefault({ embed: true }),
       ApolloServerPluginDrainHttpServer({ httpServer }),
     ],
   });

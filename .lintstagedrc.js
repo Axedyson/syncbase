@@ -1,6 +1,6 @@
 module.exports = {
-  "*.{json,md,yml,yaml}": "prettier --write",
-  "*.css": "stylelint --fix",
+  "*.{json,md,yml,yaml}": "prettier --write --no-error-on-unmatched-pattern",
+  "*.css": "stylelint --fix --allow-empty-input",
   "./{**/*.{js,ts,tsx,graphql},package.json}": () => "eslint . --fix",
   "packages/server/{**/*.ts?(x),package.json}": () =>
     "yarn workspace @syncbase/server typecheck",
@@ -9,5 +9,5 @@ module.exports = {
     "yarn workspace @syncbase/web codegencheck",
   ],
   "packages/server/**/*.ts":
-    "yarn workspace @syncbase/server test:ci --b --findRelatedTests",
+    "yarn workspace @syncbase/server test:ci --b --findRelatedTests --passWithNoTests",
 };

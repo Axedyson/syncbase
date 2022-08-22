@@ -53,6 +53,7 @@
 - Implement a page that showcases all of the open source libraries used in the project just like how [discord does it](https://discord.com/acknowledgements)
 - In the future we want to [organize by feature](https://softwareengineering.stackexchange.com/questions/338597/folder-by-type-or-folder-by-feature) rather than by type
 - More extensive Docker and Docker Compose configuration to provide easier setup and development e.g. [vscode development containers](https://code.visualstudio.com/docs/remote/containers)
+- [terraform security](https://www.checkov.io/4.Integrations/GitHub%20Actions.html)
 - Sentry?
 - Datadog?
 

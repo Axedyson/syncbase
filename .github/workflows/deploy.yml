@@ -25,8 +25,8 @@ jobs:
         uses: webfactory/ssh-agent@v0.5.4
         with:
           ssh-private-key: ${{ secrets.DO_PVT_SSH_KEY }}
-      # - name: Terraform Init
-      #   run: terraform init
+      - name: Terraform Init
+        run: terraform init
       - name: Terraform Apply
         run: terraform apply -auto-approve -lock-timeout=5h
         env:

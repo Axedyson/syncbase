@@ -23,6 +23,8 @@ jobs:
           cache: "yarn"
       - name: Install dependencies
         run: yarn install
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
       - name: Run editorconfig
         uses: greut/eclint-action@v0
       - name: Run prettier
@@ -37,8 +39,6 @@ jobs:
         run: yarn workspace @syncbase/web typecheck
       - name: Run graphql codegen checks
         run: yarn workspace @syncbase/web codegencheck
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
       - name: Terraform Format
         run: terraform fmt -check
       - name: Terraform Init with no backend config

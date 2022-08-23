@@ -9,13 +9,18 @@ jobs:
   terraform:
     name: Terraform
     runs-on: ubuntu-latest
-    if: github.repository_owner == ${{ env.GITHUB_REPOSITORY_OWNER }}
+    if: github.repository_owner == Axedyson
     outputs:
       ipv4_address: ${{ steps.ipv4_address_output.outputs.ipv4_address }}
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: echo out the repo owner
+        run: |
+          echo ${{ env.GITHUB_REPOSITORY_OWNER }}
+          echo ${{ github.repository_owner }}
+          echo $GITHUB_REPOSITORY_OWNER
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:

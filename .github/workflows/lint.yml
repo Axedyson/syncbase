@@ -42,3 +42,11 @@ jobs:
           echo ${{ env.GITHUB_REPOSITORY_OWNER }}
           echo ${{ github.repository_owner }}
           echo $GITHUB_REPOSITORY_OWNER
+      - name: if statement
+        if: ${{ env.GITHUB_REPOSITORY_OWNER == github.repository_owner }}
+        run: echo "true"
+      - name: if statement 2
+        if: ${{ env.GITHUB_REPOSITORY_OWNER == github.repository_owner }}
+        run: echo "true"
+        env:
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}

@@ -9,8 +9,7 @@ jobs:
   terraform:
     name: Terraform
     runs-on: ubuntu-latest
-    # github.repository_owner == 'Axedyson' &&
-    if: github.event.workflow_run.conclusion == 'success'
+    if: github.repository_owner == 'Axedyson'
     outputs:
       ipv4_address: ${{ steps.ipv4_address_output.outputs.ipv4_address }}
 

@@ -9,7 +9,7 @@ jobs:
   terraform:
     name: Terraform
     runs-on: ubuntu-latest
-    if: github.repository_owner == $GITHUB_REPOSITORY_OWNER
+    if: github.repository_owner == ${{ env.GITHUB_REPOSITORY_OWNER }}
     outputs:
       ipv4_address: ${{ steps.ipv4_address_output.outputs.ipv4_address }}
 

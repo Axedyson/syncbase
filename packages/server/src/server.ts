@@ -33,7 +33,7 @@ export const startServer = async () => {
     }),
     formatError: errorMiddleware,
     csrfPrevention: true,
-    cache: "bounded",
+    // cache: "bounded",
     plugins: [
       IS_PROD
         ? ApolloServerPluginLandingPageDisabled()

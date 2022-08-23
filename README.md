@@ -25,7 +25,7 @@
 
 ### Contribution flow
 
-- Fork this repo and submit a pull request pointing to the `main` branch of this repo. There is no specific commit naming convention to follow, just make sure that the pull request name is nice and descriptive! We will be using the [Github Flow](https://docs.github.com/en/get-started/quickstart/github-flow) branching workflow
+- Fork this repo, remember to enable actions to run and then submit a pull request pointing to the `main` branch of this repo with your new changes. There is no specific commit naming convention to follow, just make sure that the pull request name is nice and descriptive! We will be using the [Github Flow](https://docs.github.com/en/get-started/quickstart/github-flow) branching workflow
 
 | Storybook                                                                                         |
 | ------------------------------------------------------------------------------------------------- |

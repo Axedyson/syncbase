@@ -32,7 +32,6 @@ resource "digitalocean_droplet" "server" {
 
     wget https://raw.githubusercontent.com/dokku/dokku/v0.28.0/bootstrap.sh
     sudo DOKKU_NO_INSTALL_RECOMMENDS=" --no-install-recommends " DOKKU_TAG=v0.28.0 bash bootstrap.sh
-    cat ~/.ssh/authorized_keys | dokku ssh-keys:add admin
 
     dokku apps:create server
 
@@ -44,8 +43,6 @@ resource "digitalocean_droplet" "server" {
 
     dokku postgres:link syncbase_postgres server
     dokku redis:link syncbase_redis server
-
-    dokku git:from-image server ghcr.io/axedyson/syncbase:main
 
     cat << EOF > /etc/nginx/sites-available/default
     server {

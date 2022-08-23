@@ -12,7 +12,6 @@ const buttonClasses = ctl(`
   items-center
   justify-center
   rounded-md
-  bg-blue-500
   py-2
   px-4
   font-semibold

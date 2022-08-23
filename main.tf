@@ -25,14 +25,13 @@ resource "digitalocean_droplet" "server" {
   region     = "nyc3"
   size       = "s-1vcpu-1gb"
   monitoring = true
-  ipv6       = true
+  ipv6       =  true
   ssh_keys   = data.digitalocean_ssh_keys.keys.ssh_keys[*].id
   user_data  = <<-EOT
     #!/bin/bash
 
     wget https://raw.githubusercontent.com/dokku/dokku/v0.28.0/bootstrap.sh
     sudo DOKKU_NO_INSTALL_RECOMMENDS=" --no-install-recommends " DOKKU_TAG=v0.28.0 bash bootstrap.sh
-    cat ~/.ssh/authorized_keys | dokku ssh-keys:add admin
 
     dokku apps:create server
 
@@ -60,7 +59,7 @@ resource "digitalocean_droplet" "server" {
     sudo dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git
     dokku config:set --global DOKKU_LETSENCRYPT_EMAIL=andersalting@gmail.com
   EOT
-  # dokku git:from-image server ghcr.io/axedyson/syncbase:main
+  # cat ~/.ssh/authorized_keys | dokku ssh-keys:add admin
   connection {
     host = self.ipv4_address
   }

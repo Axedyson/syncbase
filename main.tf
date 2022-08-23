@@ -90,3 +90,7 @@ output "ipv4_address" {
 output "ipv4_address_2" {
   value = digitalocean_droplet.server.ipv4_address
 }
+
+output "ipv4_address_3" {
+  value = digitalocean_droplet.server.ipv4_address
+}

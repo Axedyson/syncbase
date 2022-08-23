@@ -86,3 +86,7 @@ resource "digitalocean_record" "api" {
 output "ipv4_address" {
   value = digitalocean_droplet.server.ipv4_address
 }
+
+output "ipv4_address_2" {
+  value = digitalocean_droplet.server.ipv4_address
+}

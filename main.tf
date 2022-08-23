@@ -45,8 +45,6 @@ resource "digitalocean_droplet" "server" {
     dokku postgres:link syncbase_postgres server
     dokku redis:link syncbase_redis server
 
-    dokku git:from-image server ghcr.io/axedyson/syncbase:main
-
     cat << EOF > /etc/nginx/sites-available/default
     server {
       listen      80 default_server;
@@ -62,6 +60,7 @@ resource "digitalocean_droplet" "server" {
     sudo dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git
     dokku config:set --global DOKKU_LETSENCRYPT_EMAIL=andersalting@gmail.com
   EOT
+  # dokku git:from-image server ghcr.io/axedyson/syncbase:main
   connection {
     host = self.ipv4_address
   }

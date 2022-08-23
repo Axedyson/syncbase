@@ -1,15 +1,17 @@
 name: Deploy
 
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: [Lint, Tests, UI Tests, CodeQL]
+    types: [completed]
+    branches: [main]
 
 jobs:
   terraform:
     name: Terraform
     runs-on: ubuntu-latest
-    if: github.repository_owner == 'Axedyson'
+    # github.repository_owner == 'Axedyson' &&
+    if: github.event.workflow_run.conclusion == 'success'
     outputs:
       ipv4_address: ${{ steps.ipv4_address_output.outputs.ipv4_address }}
 
@@ -25,12 +27,8 @@ jobs:
         uses: webfactory/ssh-agent@v0.5.4
         with:
           ssh-private-key: ${{ secrets.DO_PVT_SSH_KEY }}
-      - name: Terraform Format
-        run: terraform fmt -check
       - name: Terraform Init
         run: terraform init
-      - name: Terraform Validate
-        run: terraform validate
       - name: Terraform Apply
         run: terraform apply -auto-approve -lock-timeout=5h
         env:
@@ -55,14 +53,14 @@ jobs:
       - name: Log in to the Container registry
         uses: docker/login-action@v2
         with:
-          registry: ${{ env.REGISTRY }}
+          registry: $REGISTRY
           username: $GITHUB_REPOSITORY_OWNER
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ env.REGISTRY }}/${{ github.repository }}
+          images: ${{ env.REGISTRY/github.repository }}
       - name: Set up Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@v2
@@ -79,8 +77,8 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ steps.gh_repo_lc.outputs.lowercase }}:buildcache
-          cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ steps.gh_repo_lc.outputs.lowercase }}:buildcache,mode=max
+          cache-from: type=registry,ref=${{ env.REGISTRY/steps.gh_repo_lc.outputs.lowercase }}:buildcache
+          cache-to: type=registry,ref=${{ env.REGISTRY/steps.gh_repo_lc.outputs.lowercase }}:buildcache,mode=max
       - name: Deploy Docker Server Image
         uses: appleboy/ssh-action@master
         with:

@@ -42,8 +42,8 @@ jobs:
       server: ${{ steps.changes.outputs.server }}
 
     steps:
-      # - name: Checkout repository
-      #   uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
       - name: Check for changed server files
         uses: dorny/paths-filter@v2
         id: changes

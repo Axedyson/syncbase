@@ -41,6 +41,7 @@
 - Maybe add standard-version/semantic-release/changeset/keepachangelog?
 - Actually develop the project
 - Add more .md files to properly document the contribution process and attract contributors
+- https://github.com/microsoft/playwright/issues/7249#issuecomment-1154603556
 - Should we be more granular when it comes to [exclusion](https://bobbyhadz.com/blog/typescript-exclude-test-files-from-compilation) of certain files from typescript build compilation
   output e.g. the `seeder` file in the `server` package?
 

@@ -4,6 +4,7 @@ import type { MikroORM } from "@mikro-orm/core";
 import type { PostgreSqlDriver } from "@mikro-orm/postgresql";
 
 export default {
+  clientUrl: process.env.DATABASE_URL,
   dbName: IS_TEST ? "syncbase_test" : "syncbase",
   password: "postgres",
   type: "postgresql",

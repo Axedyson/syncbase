@@ -15,6 +15,7 @@ import { errorMiddleware } from "./middleware/errorMiddleware";
 import { sessionMiddleware } from "./middleware/sessionMiddleware";
 import type { Context } from "./types";
 
+// Testing docker deployment!
 export const startServer = async () => {
   const orm = await MikroORM.init();
 

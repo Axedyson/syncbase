@@ -44,6 +44,8 @@ resource "digitalocean_droplet" "server" {
     dokku postgres:link syncbase_postgres server
     dokku redis:link syncbase_redis server
 
+    dokku git:from-image server ghcr.io/axedyson/syncbase:main
+
     cat << EOF > /etc/nginx/sites-available/default
     server {
       listen      80 default_server;

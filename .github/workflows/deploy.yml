@@ -30,6 +30,7 @@ jobs:
         run: terraform apply -auto-approve -lock-timeout=5h
         env:
           DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
+          VERCEL_API_TOKEN: ${{ secrets.VERCEL_API_TOKEN }}
       - name: Output ipv4_address of droplet
         id: ipv4_address_output
         run: echo "::set-output name=ipv4_address::$(terraform output -raw ipv4_address)"

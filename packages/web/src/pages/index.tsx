@@ -10,7 +10,6 @@ import { useCurrentUser } from "../hooks/useCurrentUser";
 import { useLoginDialog } from "../hooks/useLoginDialog";
 import type { GetStaticProps, NextPage } from "next";
 
-// Please deploy this comment
 const IndexPage: NextPage = () => {
   const [, user] = useCurrentUser();
   const [, logoutUser] = useMutation(LogoutUserDocument);

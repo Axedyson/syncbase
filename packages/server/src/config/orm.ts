@@ -4,7 +4,7 @@ import type { MikroORM } from "@mikro-orm/core";
 
 export default {
   clientUrl: process.env.DATABASE_URL,
-  dbName: IS_TEST ? "syncbase_test" : "syncbase",
+  dbName: IS_TEST ? "syncbase_test" : IS_PROD ? undefined : "syncbase",
   password: IS_PROD ? undefined : "postgres",
   type: "postgresql",
   entities: ["./dist/entities/**/*.js"],

@@ -1,7 +1,6 @@
 import { TsMorphMetadataProvider } from "@mikro-orm/reflection";
 import { IS_PROD, IS_TEST } from "./constants";
 import type { MikroORM } from "@mikro-orm/core";
-import type { PostgreSqlDriver } from "@mikro-orm/postgresql";
 
 export default {
   clientUrl: process.env.DATABASE_URL,
@@ -15,4 +14,4 @@ export default {
   },
   metadataProvider: TsMorphMetadataProvider,
   debug: !IS_PROD,
-} as Parameters<typeof MikroORM.init<PostgreSqlDriver>>[0];
+} as Parameters<typeof MikroORM.init>[0];

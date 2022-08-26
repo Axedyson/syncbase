@@ -6,6 +6,10 @@ terraform {
       source  = "digitalocean/digitalocean"
       version = ">= 2.22.1"
     }
+    vercel = {
+      source  = "vercel/vercel"
+      version = ">= 0.7.1"
+    }
   }
 
   cloud {
@@ -84,4 +88,35 @@ resource "digitalocean_record" "api" {
 
 output "ipv4_address" {
   value = digitalocean_droplet.server.ipv4_address
+}
+
+resource "vercel_project" "frontend" {
+  name      = "frontend-syncbase"
+  framework = "nextjs"
+}
+
+resource "vercel_project_domain" "default" {
+  project_id = vercel_project.frontend.id
+  domain     = "syncbase.tv"
+}
+
+data "vercel_project_directory" "web_folder" {
+  path = "packages/web"
+}
+
+data "vercel_file" "yarn_lock" {
+  path = "yarn.lock"
+}
+
+resource "vercel_deployment" "frontend_server" {
+  project_id  = vercel_project.frontend.id
+  files       = merge(data.vercel_project_directory.web_folder.files, data.vercel_file.yarn_lock.file)
+  path_prefix = data.vercel_project_directory.web_folder.path
+  production  = true
+  environment = {
+    "NEXT_PUBLIC_SERVER_URL" = "https://api.syncbase.tv/graphql"
+  }
+  depends_on = [
+    digitalocean_record.api
+  ]
 }

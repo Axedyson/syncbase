@@ -28,7 +28,7 @@ const IndexPage: NextPage = () => {
           <h2>{t("auth:loggedIn")}</h2>
           <Button
             onClick={async () => {
-              await logoutUser();
+              await logoutUser({});
             }}
             label={t("auth:logOut")}
           />

@@ -1,8 +1,9 @@
 import ctl from "@netlify/classnames-template-literals";
 import type { ComponentPropsWithoutRef, FC } from "react";
-import type { Path, UseFormRegister } from "react-hook-form";
+import type { FieldValues, Path, UseFormRegister } from "react-hook-form";
 
-interface InputFieldProps<T> extends ComponentPropsWithoutRef<"input"> {
+interface InputFieldProps<T extends FieldValues>
+  extends ComponentPropsWithoutRef<"input"> {
   name: Path<T>;
   label: string;
   errorMsg?: string;
@@ -24,7 +25,7 @@ const inputFieldClasses = (error: boolean) =>
   ${error ? "border-red-300" : "border-gray-300"}
 `);
 
-export const InputField = <T,>({
+export const InputField = <T extends FieldValues>({
   name,
   label,
   errorMsg,

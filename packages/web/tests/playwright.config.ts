@@ -2,6 +2,7 @@ import { devices } from "@playwright/test";
 import type { PlaywrightTestConfig } from "@playwright/test";
 
 const launchScript = process.env.CI ? "start" : "dev";
+const serverPort = 8082;
 const webPort = 3000;
 
 export default {
@@ -13,13 +14,15 @@ export default {
   webServer: [
     {
       command: `yarn workspace @syncbase/web next ${launchScript}`,
-      env: { NEXT_PUBLIC_IS_TEST: "1", PORT: webPort },
+      env: {
+        NEXT_PUBLIC_SERVER_URL: `http://localhost:${serverPort}/graphql`,
+      },
       port: webPort,
     },
     {
       command: `yarn workspace @syncbase/server ${launchScript}`,
       env: { NODE_ENV: "test" },
-      port: 8082,
+      port: serverPort,
     },
   ],
   use: {

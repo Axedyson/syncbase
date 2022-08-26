@@ -27,7 +27,7 @@ const AccountPage: NextPage = () => {
           <p>{`${t("auth:email")}: ${user.email}`}</p>
           <Button
             onClick={async () => {
-              await logoutUser();
+              await logoutUser({});
             }}
             label={t("auth:logOut")}
           />

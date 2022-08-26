@@ -22,5 +22,6 @@
     { "rule": "@graphql-eslint/known-argument-names", "severity": "off" },
     { "rule": "import/no-unused-modules", "severity": "off" }
   ],
-  "tailwindCSS.experimental.classRegex": [["ctl\\(`([^`]+)`\\)", "([^\"]+)"]]
+  "tailwindCSS.experimental.classRegex": [["ctl\\(`([^`]+)`\\)", "([^\"]+)"]],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

@@ -95,7 +95,9 @@ jobs:
       - name: Build server
         run: yarn workspace @syncbase/server build
       - name: Build web
-        run: NEXT_PUBLIC_IS_TEST=1 yarn workspace @syncbase/web build
+        run: yarn workspace @syncbase/web build
+        env:
+          NEXT_PUBLIC_SERVER_URL: http://localhost:8082/graphql
       - name: Run tests
         run: yarn workspace @syncbase/web test
       - name: Upload test results

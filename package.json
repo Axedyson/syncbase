@@ -10,15 +10,15 @@
   },
   "devDependencies": {
     "@graphql-eslint/eslint-plugin": "^3.10.7",
-    "@next/eslint-plugin-next": "^12.2.4",
-    "@types/eslint": "^8.4.5",
-    "@typescript-eslint/eslint-plugin": "^5.33.0",
-    "@typescript-eslint/parser": "^5.33.0",
-    "eslint": "^8.21.0",
+    "@next/eslint-plugin-next": "^12.2.5",
+    "@types/eslint": "^8.4.6",
+    "@typescript-eslint/eslint-plugin": "^5.35.1",
+    "@typescript-eslint/parser": "^5.35.1",
+    "eslint": "^8.22.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react": "^7.31.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.4",
     "eslint-plugin-tailwindcss": "^3.6.0",
@@ -29,7 +29,7 @@
     "prettier": "^2.7.1",
     "stylelint": "^14.9.1",
     "stylelint-config-standard": "^26.0.0",
-    "typescript": "^4.7.4"
+    "typescript": "~4.7.4"
   },
   "stylelint": {
     "extends": "stylelint-config-standard",

@@ -46,7 +46,7 @@ export const startServer = async () => {
     app,
     cors: {
       credentials: true,
-      origin: "http://localhost:3000",
+      origin: IS_PROD ? "https://syncbase.tv" : "http://localhost:3000",
     },
   });
 

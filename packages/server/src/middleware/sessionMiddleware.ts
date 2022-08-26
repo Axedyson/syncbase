@@ -14,7 +14,6 @@ export const sessionMiddleware: RequestHandler = session({
     maxAge: 1000 * 60 * 60 * 24 * 365 * 10, // 10 years
     secure: IS_PROD,
     sameSite: "lax",
-    domain: IS_PROD ? ".syncbase.tv" : undefined,
   },
   saveUninitialized: false,
   resave: false,

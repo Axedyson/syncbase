@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@mikro-orm/core": "^5.3.1",
+    "@mikro-orm/migrations": "^5.3.1",
     "@mikro-orm/postgresql": "^5.3.1",
     "@mikro-orm/reflection": "^5.3.1",
     "apollo-server-core": "^3.10.2",
@@ -66,7 +67,7 @@
     "coverageThreshold": {
       "global": {
         "statements": 90,
-        "branches": 54,
+        "branches": 50,
         "functions": 90,
         "lines": 90
       }

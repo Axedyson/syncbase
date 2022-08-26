@@ -9,6 +9,11 @@ export default {
   type: "postgresql",
   entities: ["./dist/entities/**/*.js"],
   entitiesTs: ["./src/entities/**/*.ts"],
+  migrations: {
+    path: "dist/migrations",
+    pathTs: "src/migrations",
+    snapshot: false,
+  },
   seeder: {
     pathTs: "./src/seeders",
   },

@@ -25,7 +25,7 @@ data "digitalocean_ssh_keys" "keys" {}
 
 resource "digitalocean_droplet" "server" {
   image      = "ubuntu-22-04-x64"
-  name       = "api.syncbase.tv"
+  name       = "syncbase-api"
   region     = "nyc3"
   size       = "s-1vcpu-1gb"
   monitoring = true
@@ -75,29 +75,26 @@ resource "digitalocean_droplet" "server" {
   }
 }
 
-resource "digitalocean_domain" "default" {
-  name = "syncbase.tv"
-}
-
-resource "digitalocean_record" "api" {
-  domain = digitalocean_domain.default.id
-  type   = "A"
-  name   = "api"
-  value  = digitalocean_droplet.server.ipv4_address
-}
-
 output "ipv4_address" {
   value = digitalocean_droplet.server.ipv4_address
 }
 
 resource "vercel_project" "frontend" {
-  name      = "frontend-syncbase"
+  name      = "syncbase-frontend"
   framework = "nextjs"
 }
 
 resource "vercel_project_domain" "default" {
   project_id = vercel_project.frontend.id
   domain     = "syncbase.tv"
+}
+
+resource "vercel_dns_record" "a" {
+  domain = vercel_project_domain.default.domain
+  name   = "api"
+  type   = "A"
+  ttl = "60"
+  value  = digitalocean_droplet.server.ipv4_address
 }
 
 data "vercel_project_directory" "web_folder" {
@@ -114,9 +111,9 @@ resource "vercel_deployment" "frontend_server" {
   path_prefix = data.vercel_project_directory.web_folder.path
   production  = true
   environment = {
-    "NEXT_PUBLIC_SERVER_URL" = "https://api.syncbase.tv/graphql"
+    NEXT_PUBLIC_SERVER_URL = "https://api.syncbase.tv/graphql"
   }
   depends_on = [
-    digitalocean_record.api
+    digitalocean_droplet.server
   ]
 }

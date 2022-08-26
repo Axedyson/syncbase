@@ -20,7 +20,7 @@ export const startServer = async () => {
   await orm.getMigrator().up();
 
   const app = express();
-  app.set("proxy", 1);
+  app.set("trust proxy", 1);
   app.disable("x-powered-by");
 
   app.use(sessionMiddleware);

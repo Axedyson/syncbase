@@ -15,6 +15,7 @@ import { errorMiddleware } from "./middleware/errorMiddleware";
 import { sessionMiddleware } from "./middleware/sessionMiddleware";
 import type { Context } from "./types";
 
+// please why is cors not working?
 export const startServer = async () => {
   const orm = await MikroORM.init();
 

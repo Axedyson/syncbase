@@ -8,7 +8,7 @@ terraform {
     }
     vercel = {
       source  = "vercel/vercel"
-      version = ">= 0.7.1"
+      version = ">= 0.8.0"
     }
   }
 
@@ -98,7 +98,6 @@ resource "vercel_dns_record" "a" {
   domain = vercel_project_domain.default.domain
   name   = "api"
   type   = "A"
-  ttl    = "60"
   value  = digitalocean_droplet.server.ipv4_address
 }
 

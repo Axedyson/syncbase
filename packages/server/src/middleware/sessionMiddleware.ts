@@ -18,3 +18,10 @@ export const sessionMiddleware: RequestHandler = session({
   saveUninitialized: false,
   resave: false,
 });
+
+console.log(
+  `Is SESSION_SECRET available?: ${
+    typeof process.env.SESSION_SECRET === "string" &&
+    process.env.SESSION_SECRET.length > 2
+  }`
+);

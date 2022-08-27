@@ -23,6 +23,10 @@ terraform {
 
 data "digitalocean_ssh_keys" "keys" {}
 
+variable "SESSION_SECRET" {
+  sensitive = true
+}
+
 resource "digitalocean_droplet" "server" {
   image      = "ubuntu-22-04-x64"
   name       = "syncbase-api"
@@ -38,6 +42,7 @@ resource "digitalocean_droplet" "server" {
     sudo DOKKU_NO_INSTALL_RECOMMENDS=" --no-install-recommends " DOKKU_TAG=v0.28.0 bash bootstrap.sh
 
     dokku apps:create server
+    dokku config:set server SESSION_SECRET=${var.SESSION_SECRET}
 
     sudo dokku plugin:install https://github.com/dokku/dokku-postgres.git postgres
     sudo dokku plugin:install https://github.com/dokku/dokku-redis.git redis
@@ -106,8 +111,9 @@ data "vercel_file" "yarn_lock" {
 }
 
 resource "vercel_deployment" "frontend_server" {
+  # files       = merge(data.vercel_project_directory.web_folder.files, data.vercel_file.yarn_lock.file)
   project_id  = vercel_project.frontend.id
-  files       = merge(data.vercel_project_directory.web_folder.files, data.vercel_file.yarn_lock.file)
+  files       = merge(data.vercel_project_directory.web_folder.files)
   path_prefix = data.vercel_project_directory.web_folder.path
   production  = true
   environment = {

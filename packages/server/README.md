@@ -20,9 +20,8 @@ Also we use multi-stage builds in the dockerfile so the image size is optimized
 
 ### Notes
 
-- If the DigitalOcean droplet has been recreated make sure to wait for DNS propagation to finish for the host `api.syncbase.tv` before running the following commands:
-  - `dokku letsencrypt:enable server`
-  - `dokku letsencrypt:cron-job --add`
+- If the DigitalOcean droplet has been recreated make sure to wait for DNS propagation to finish for the host `api.syncbase.tv` before running the following command:
+  - `dokku letsencrypt:enable server && dokku letsencrypt:cron-job --add`
   - Be aware that we can only add SSL to the same domain 5 times a week
 - Maybe use this to build the docker image: https://github.com/Dcard/yarn-plugins/tree/master/packages/docker-build
 - Maybe use this to optimize it even further: https://github.com/docker-slim/docker-slim

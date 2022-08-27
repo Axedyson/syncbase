@@ -111,9 +111,8 @@ data "vercel_file" "yarn_lock" {
 }
 
 resource "vercel_deployment" "frontend_server" {
-  # files       = merge(data.vercel_project_directory.web_folder.files, data.vercel_file.yarn_lock.file)
   project_id  = vercel_project.frontend.id
-  files       = merge(data.vercel_project_directory.web_folder.files)
+  files       = merge(data.vercel_project_directory.web_folder.files, data.vercel_file.yarn_lock.file)
   path_prefix = data.vercel_project_directory.web_folder.path
   production  = true
   environment = {

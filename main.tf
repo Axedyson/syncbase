@@ -6,6 +6,10 @@ terraform {
       source  = "digitalocean/digitalocean"
       version = ">= 2.22.1"
     }
+    vercel = {
+      source  = "vercel/vercel"
+      version = ">= 0.8.0"
+    }
   }
 
   cloud {
@@ -19,9 +23,13 @@ terraform {
 
 data "digitalocean_ssh_keys" "keys" {}
 
+variable "SESSION_SECRET" {
+  sensitive = true
+}
+
 resource "digitalocean_droplet" "server" {
   image      = "ubuntu-22-04-x64"
-  name       = "api.syncbase.tv"
+  name       = "syncbase-api"
   region     = "nyc3"
   size       = "s-1vcpu-1gb"
   monitoring = true
@@ -34,6 +42,7 @@ resource "digitalocean_droplet" "server" {
     sudo DOKKU_NO_INSTALL_RECOMMENDS=" --no-install-recommends " DOKKU_TAG=v0.28.0 bash bootstrap.sh
 
     dokku apps:create server
+    dokku config:set server SESSION_SECRET=${var.SESSION_SECRET}
 
     sudo dokku plugin:install https://github.com/dokku/dokku-postgres.git postgres
     sudo dokku plugin:install https://github.com/dokku/dokku-redis.git redis
@@ -71,17 +80,44 @@ resource "digitalocean_droplet" "server" {
   }
 }
 
-resource "digitalocean_domain" "default" {
-  name = "syncbase.tv"
+output "ipv4_address" {
+  value = digitalocean_droplet.server.ipv4_address
 }
 
-resource "digitalocean_record" "api" {
-  domain = digitalocean_domain.default.id
-  type   = "A"
+resource "vercel_project" "frontend" {
+  name      = "syncbase-frontend"
+  framework = "nextjs"
+}
+
+resource "vercel_project_domain" "default" {
+  project_id = vercel_project.frontend.id
+  domain     = "syncbase.tv"
+}
+
+resource "vercel_dns_record" "a" {
+  domain = vercel_project_domain.default.domain
   name   = "api"
+  type   = "A"
   value  = digitalocean_droplet.server.ipv4_address
 }
 
-output "ipv4_address" {
-  value = digitalocean_droplet.server.ipv4_address
+data "vercel_project_directory" "web_folder" {
+  path = "packages/web"
+}
+
+data "vercel_file" "yarn_lock" {
+  path = "yarn.lock"
+}
+
+resource "vercel_deployment" "frontend_server" {
+  project_id  = vercel_project.frontend.id
+  files       = merge(data.vercel_project_directory.web_folder.files, data.vercel_file.yarn_lock.file)
+  path_prefix = data.vercel_project_directory.web_folder.path
+  production  = true
+  environment = {
+    NEXT_PUBLIC_SERVER_URL = "https://api.syncbase.tv/graphql"
+  }
+  depends_on = [
+    digitalocean_droplet.server
+  ]
 }

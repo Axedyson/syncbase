@@ -17,8 +17,10 @@ import type { Context } from "./types";
 
 export const startServer = async () => {
   const orm = await MikroORM.init();
+  await orm.getMigrator().up();
 
   const app = express();
+  app.set("trust proxy", 1);
   app.disable("x-powered-by");
 
   app.use(sessionMiddleware);
@@ -46,7 +48,7 @@ export const startServer = async () => {
     app,
     cors: {
       credentials: true,
-      origin: "http://localhost:3000",
+      origin: IS_PROD ? "https://syncbase.tv" : "http://localhost:3000",
     },
   });
 

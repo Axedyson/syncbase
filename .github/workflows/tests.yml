@@ -1,12 +1,6 @@
 name: Tests
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+on: [push, pull_request]
 
 jobs:
   server-tests:
@@ -90,9 +84,9 @@ jobs:
         uses: actions/cache@v3
         with:
           path: packages/web/.next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('**/*.[jt]s', '**/*.tsx') }}
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('yarn.lock') }}-${{ hashFiles('**/*.[jt]s', '**/*.tsx') }}
           restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-
+            ${{ runner.os }}-nextjs-${{ hashFiles('yarn.lock') }}-
             ${{ runner.os }}-nextjs-
       - name: Install dependencies
         run: yarn install
@@ -101,7 +95,9 @@ jobs:
       - name: Build server
         run: yarn workspace @syncbase/server build
       - name: Build web
-        run: NEXT_PUBLIC_IS_TEST=1 yarn workspace @syncbase/web build
+        run: yarn workspace @syncbase/web build
+        env:
+          NEXT_PUBLIC_SERVER_URL: http://localhost:8082/graphql
       - name: Run tests
         run: yarn workspace @syncbase/web test
       - name: Upload test results

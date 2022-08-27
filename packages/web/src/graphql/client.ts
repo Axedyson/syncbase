@@ -13,20 +13,14 @@ import {
 import { MeDocument } from "./generated";
 import type { GraphCacheConfig, User, WithTypename } from "./generated";
 // import type { DocumentNode } from "graphql";
-import type { NextPage, NextPageContext } from "next";
+import type { NextPage } from "next";
 import type { SSRExchange } from "next-urql";
 import type { ClientOptions } from "urql";
 
-const SERVER_PORT = process.env.NEXT_PUBLIC_IS_TEST ? 8082 : 8080;
-
-const buildUrqlConfig = (
-  ssrExchange: SSRExchange,
-  ctx?: NextPageContext
-): ClientOptions => ({
-  url: `http://localhost:${SERVER_PORT}/graphql`,
+const buildUrqlConfig = (ssrExchange: SSRExchange): ClientOptions => ({
+  url: process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:8080/graphql",
   fetchOptions: {
     credentials: "include",
-    headers: { cookie: ctx?.req?.headers?.cookie || "" },
   },
   exchanges: [
     dedupExchange,

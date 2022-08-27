@@ -20,7 +20,7 @@ import type { ClientOptions } from "urql";
 const buildUrqlConfig = (ssrExchange: SSRExchange): ClientOptions => ({
   url: process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:8080/graphql",
   fetchOptions: {
-    credentials: "same-origin",
+    credentials: "include",
   },
   exchanges: [
     dedupExchange,

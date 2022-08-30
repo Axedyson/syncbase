@@ -5,15 +5,15 @@ on:
     branches: [main]
 
 jobs:
-  terraform_and_web:
+  terraform-and-web:
     name: Terraform & Web
-    runs-on: ubuntu-latest
     if: github.repository_owner == 'Axedyson'
+    runs-on: ubuntu-latest
     outputs:
       ipv4_address: ${{ steps.ipv4_address_output.outputs.ipv4_address }}
 
     steps:
-      - name: Checkout repository
+      - name: Check out repository code
         uses: actions/checkout@v3
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
@@ -36,15 +36,21 @@ jobs:
         id: ipv4_address_output
         run: echo "::set-output name=ipv4_address::$(terraform output -raw ipv4_address)"
 
-  paths-filter:
-    name: Updated server files
-    runs-on: ubuntu-latest
+  build-server-image:
+    name: Build Server Image
     if: github.repository_owner == 'Axedyson'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    env:
+      REGISTRY: ghcr.io
     outputs:
-      server: ${{ steps.changes.outputs.server }}
+      image: ${{ steps.docker-image-name-output.outputs.image }}
+      changes: ${{ steps.changes.outputs.server }}
 
     steps:
-      - name: Checkout repository
+      - name: Check out repository code
         uses: actions/checkout@v3
       - name: Check for changed server files
         uses: dorny/paths-filter@v2
@@ -57,35 +63,26 @@ jobs:
               - 'packages/server/tsconfig.json'
               - 'packages/server/src/**'
               - 'packages/server/Dockerfile'
-
-  deploy-server-image:
-    name: Server Image
-    runs-on: ubuntu-latest
-    if: needs.paths-filter.outputs.server == 'true'
-    needs: [terraform_and_web, paths-filter]
-    env:
-      REGISTRY: ghcr.io
-    permissions:
-      contents: read
-      packages: write
-
-    steps:
       - name: Log in to the Container registry
+        if: steps.changes.outputs.server == 'true'
         uses: docker/login-action@v2
         with:
           registry: ${{ env.REGISTRY }}
           username: $GITHUB_REPOSITORY_OWNER
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Set up Docker Buildx
+        if: steps.changes.outputs.server == 'true'
         id: buildx
         uses: docker/setup-buildx-action@v2
       - name: Lowercase github.repository environment variable for docker
+        if: steps.changes.outputs.server == 'true'
         id: gh_repo_lc
         uses: ASzc/change-string-case-action@v2
         with:
           string: ${{ github.repository }}
       - name: Build and push Docker image
-        id: docker_build
+        if: steps.changes.outputs.server == 'true'
+        id: docker-build
         uses: docker/build-push-action@v3
         with:
           push: true
@@ -94,10 +91,22 @@ jobs:
           tags: ${{ env.REGISTRY }}/${{ steps.gh_repo_lc.outputs.lowercase }}-server:latest
           cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ steps.gh_repo_lc.outputs.lowercase }}-server:buildcache
           cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ steps.gh_repo_lc.outputs.lowercase }}-server:buildcache,mode=max
+      - name: Output docker image name
+        if: steps.changes.outputs.server == 'true'
+        id: docker-image-name-output
+        run: echo "::set-output name=image::${{ env.REGISTRY }}/${{ steps.gh_repo_lc.outputs.lowercase }}-server@${{ steps.docker-build.outputs.digest }}"
+
+  deploy-server-image:
+    name: Server Image
+    if: needs.build-server-image.outputs.changes == 'true'
+    runs-on: ubuntu-latest
+    needs: [terraform-and-web, build-server-image]
+
+    steps:
       - name: Deploy Docker Server Image
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ needs.terraform_and_web.outputs.ipv4_address }}
+          host: ${{ needs.terraform-and-web.outputs.ipv4_address }}
           username: root
           key: ${{ secrets.DO_PVT_SSH_KEY }}
-          script: dokku git:from-image server ${{ env.REGISTRY }}/${{ steps.gh_repo_lc.outputs.lowercase }}-server@${{ steps.docker_build.outputs.digest }}
+          script: dokku git:from-image server ${{ needs.build-server-image.outputs.image }}

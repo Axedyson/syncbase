@@ -15,17 +15,15 @@
 - Run `yarn` inside of the root folder of the repo to install all the necessary packages
 - #### Installation of postgres and redis
   There are two ways to do this; either install them manually/natively or use the provided `docker-compose.yml` file to spin up a postgresql and redis container. To use `Docker Compose` run the following command in the root directory of the project: `docker compose up`
-- For the postgresql database there needs to be a user with the name of `postgres` and with a password set to `postgres`
-- There needs to be two databases: `syncbase` (used in development) and `syncbase_test` (used in tests)
-- Running `yarn workspace @syncbase/server test` should create the `syncbase_test` database automatically
-- After that you can run `yarn workspace @syncbase/server db:seed:reset` to create the necessary database relations and seed the development database `syncbase`
+- To create the necessary development database called `syncbase` and it's relations, simply start the server, `yarn dev` inside the `packages/server` folder
+- After that you can run `yarn workspace @syncbase/server mikro-orm seeder:run` to seed the database
 - Make sure that the postgres instance and the redis instance are up and running before starting the node.js backend
 - Here is how to run the [node.js backend server](https://github.com/Axedyson/syncbase/tree/main/packages/server): `yarn workspace @syncbase/server dev`
 - And here is how to run the [next.js frontend server](https://github.com/Axedyson/syncbase/tree/main/packages/web): `yarn workspace @syncbase/web dev`
 
 ### Contribution flow
 
-- Fork this repo, remember to enable actions to run and then submit a pull request pointing to the `main` branch of this repo with your new changes. There is no specific commit naming convention to follow, just make sure that the pull request name is nice and descriptive! We will be using the [Github Flow](https://docs.github.com/en/get-started/quickstart/github-flow) branching workflow
+- Fork this repo, remember to enable actions to run on the fork and then submit a pull request pointing to the `main` branch of this repo with your new changes. There is no specific commit naming convention to follow, just make sure that the pull request name is nice and descriptive! We will be using the [Github Flow](https://docs.github.com/en/get-started/quickstart/github-flow) branching strategy
 
 | Storybook                                                                                         |
 | ------------------------------------------------------------------------------------------------- |
@@ -34,29 +32,15 @@
 
 ---
 
-## TODO
-
-- Deploy web on vercel and server and it's services on DO droplet, automatic deployment should be done with a github workflow
-- Implement dataloader
-- Maybe add standard-version/semantic-release/changeset/keepachangelog?
-- Actually develop the project
-- Add more .md files to properly document the contribution process and attract contributors
-- https://github.com/microsoft/playwright/issues/7249#issuecomment-1154603556
-- Should we be more granular when it comes to [exclusion](https://bobbyhadz.com/blog/typescript-exclude-test-files-from-compilation) of certain files from typescript build compilation
-  output e.g. the `seeder` file in the `server` package?
-
 ## Notes
 
-- Implement SEO optimizations later
-- Implement OG meta tags later
-- Implement [docker linting](https://github.com/jbergstroem/hadolint-gh-action)?
-- Implement [DNSSEC](https://www.namecheap.com/support/knowledgebase/article.aspx/9718/2232/nameservers-and-tlds-supportedunsupported-by-dnssec/) on namecheap?
-- Implement a page that showcases all of the open source libraries used in the project just like how [discord does it](https://discord.com/acknowledgements)
 - In the future we want to [organize by feature](https://softwareengineering.stackexchange.com/questions/338597/folder-by-type-or-folder-by-feature) rather than by type
 - More extensive Docker and Docker Compose configuration to provide easier setup and development e.g. [vscode development containers](https://code.visualstudio.com/docs/remote/containers)
-- [terraform security](https://www.checkov.io/4.Integrations/GitHub%20Actions.html)
+- standard-version/semantic-release/changeset/keepachangelog?
 - Sentry?
 - Datadog?
+- [DNSSEC](https://www.namecheap.com/support/knowledgebase/article.aspx/9718/2232/nameservers-and-tlds-supportedunsupported-by-dnssec/) on namecheap?
+- [terraform security](https://www.checkov.io/4.Integrations/GitHub%20Actions.html)?
 
 ## Contact
 
@@ -78,7 +62,10 @@ If you have any questions at all, trouble setting things up etc. you can contact
   <a href="https://github.com/Axedyson/syncbase/actions/workflows/tests.yml">
     <img alt="Tests workflow" src="https://img.shields.io/github/workflow/status/Axedyson/syncbase/Tests?label=Tests">
   </a>
-  <a href="https://github.com/Axedyson/syncbase/actions/workflows/ui_tests.yml">
+  <a href="https://github.com/Axedyson/syncbase/actions/workflows/ui-tests.yml">
     <img alt="UI Tests workflow" src="https://img.shields.io/github/workflow/status/Axedyson/syncbase/UI%20Tests?label=UI%20Tests">
+  </a>
+  <a href="https://github.com/Axedyson/syncbase/actions/workflows/deploy.yml">
+    <img alt="UI Tests workflow" src="https://img.shields.io/github/workflow/status/Axedyson/syncbase/Deploy?label=Deploy">
   </a>
 <p>

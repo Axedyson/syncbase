@@ -55,9 +55,7 @@ export const startServer = async () => {
   const PORT = IS_TEST ? 8082 : 8080;
 
   await new Promise<void>((resolve) => httpServer.listen(PORT, resolve));
-  console.log(
-    `🚀 Server ready at http://localhost:${PORT}${apolloServer.graphqlPath}`
-  );
+  console.log(`Ready: http://localhost:${PORT}${apolloServer.graphqlPath} 🔥`);
 
   return { server: httpServer, orm };
 };

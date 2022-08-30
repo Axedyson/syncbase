@@ -23,7 +23,7 @@ jobs:
               - 'packages/web/src/global.css'
               - 'packages/web/tailwind.config.js'
               - 'packages/web/package.json'
-              - '.github/workflows/ui_tests.yml'
+              - '.github/workflows/ui-tests.yml'
       - name: Set up node 16
         uses: actions/setup-node@v3
         with:

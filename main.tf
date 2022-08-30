@@ -1,14 +1,14 @@
 terraform {
-  required_version = ">= 1.2.7"
+  required_version = "~> 1.2.7"
 
   required_providers {
     digitalocean = {
       source  = "digitalocean/digitalocean"
-      version = ">= 2.22.1"
+      version = "~> 2.22.1"
     }
     vercel = {
       source  = "vercel/vercel"
-      version = ">= 0.8.0"
+      version = "~> 0.8.0"
     }
   }
 
@@ -53,7 +53,7 @@ resource "digitalocean_droplet" "server" {
     dokku postgres:link syncbase_postgres server
     dokku redis:link syncbase_redis server
 
-    dokku git:from-image server ghcr.io/axedyson/syncbase:main
+    # dokku git:from-image server ghcr.io/axedyson/syncbase-server:latest
 
     cat << EOF > /etc/nginx/sites-available/default
     server {
@@ -69,6 +69,9 @@ resource "digitalocean_droplet" "server" {
 
     sudo dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git
     dokku config:set --global DOKKU_LETSENCRYPT_EMAIL=andersalting@gmail.com
+
+    dokku letsencrypt:enable server
+    dokku letsencrypt:cron-job --add
   EOT
   connection {
     host = self.ipv4_address

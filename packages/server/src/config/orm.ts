@@ -2,13 +2,23 @@ import { TsMorphMetadataProvider } from "@mikro-orm/reflection";
 import { IS_PROD, IS_TEST } from "./constants";
 import type { MikroORM } from "@mikro-orm/core";
 
-export default {
+const prodOrmConfig = {
   clientUrl: process.env.DATABASE_URL,
-  dbName: IS_TEST ? "syncbase_test" : IS_PROD ? undefined : "syncbase",
-  password: IS_PROD ? undefined : "postgres",
+  dbName: undefined,
+  password: undefined,
+  debug: false,
+};
+
+const testOrmConfig = {
+  dbName: "syncbase_test",
+};
+
+export default {
+  dbName: "syncbase",
+  password: "postgres",
   type: "postgresql",
-  entities: ["./dist/entities/**/*.js"],
-  entitiesTs: ["./src/entities/**/*.ts"],
+  entities: ["./dist/entities"],
+  entitiesTs: ["./src/entities"],
   migrations: {
     path: "dist/migrations",
     pathTs: "src/migrations",
@@ -18,5 +28,7 @@ export default {
     pathTs: "./src/seeders",
   },
   metadataProvider: TsMorphMetadataProvider,
-  debug: !IS_PROD,
+  debug: true,
+  ...(IS_TEST && testOrmConfig),
+  ...(IS_PROD && prodOrmConfig),
 } as Parameters<typeof MikroORM.init>[0];

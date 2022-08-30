@@ -53,7 +53,7 @@ resource "digitalocean_droplet" "server" {
     dokku postgres:link syncbase_postgres server
     dokku redis:link syncbase_redis server
 
-    # dokku git:from-image server ghcr.io/axedyson/syncbase-server:latest
+    dokku git:from-image server ghcr.io/axedyson/syncbase-server:latest
 
     cat << EOF > /etc/nginx/sites-available/default
     server {

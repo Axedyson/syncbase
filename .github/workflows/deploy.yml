@@ -62,7 +62,7 @@ jobs:
     name: Server Image
     runs-on: ubuntu-latest
     if: needs.paths-filter.outputs.server == 'true'
-    needs: [terraform, paths-filter]
+    needs: [terraform_and_web, paths-filter]
     env:
       REGISTRY: ghcr.io
     permissions:
@@ -97,7 +97,7 @@ jobs:
       - name: Deploy Docker Server Image
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ needs.terraform.outputs.ipv4_address }}
+          host: ${{ needs.terraform_and_web.outputs.ipv4_address }}
           username: root
           key: ${{ secrets.DO_PVT_SSH_KEY }}
           script: dokku git:from-image server ${{ env.REGISTRY }}/${{ steps.gh_repo_lc.outputs.lowercase }}-server@${{ steps.docker_build.outputs.digest }}

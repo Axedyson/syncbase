@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 jobs:
-  terraform_&_web:
+  terraform_and_web:
     name: Terraform & Web
     runs-on: ubuntu-latest
     if: github.repository_owner == 'Axedyson'

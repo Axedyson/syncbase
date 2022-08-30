@@ -15,6 +15,7 @@ Will add more helpful documentation for contributors related to the server here 
 
 ## Notes
 
+- When the digitalocean droplet has been deployed or redeployed make sure to run `dokku letsencrypt:enable server && dokku letsencrypt:cron-job --add` inside the droplet to enable https and the cron job for automatic renewal of the certificate
 - Maybe configure the digitalocean dokku droplet like the way it's configured [here](https://github.com/digitalocean/droplet-1-clicks/blob/master/dokku-20-04/template.json)
 - Maybe use this for terraform remote connection: https://www.terraform.io/language/resources/provisioners/connection#connecting-through-a-bastion-host-with-ssh
 - Right now maybe a deployment collison could occur in CI when two commits are pushed to the main branch at or about the same time. To fix this issue we could do something along these lines: https://dokku.com/docs/deployment/application-management/#unlocking-app-deploys

@@ -15,7 +15,6 @@ import { errorMiddleware } from "./middleware/errorMiddleware";
 import { sessionMiddleware } from "./middleware/sessionMiddleware";
 import type { Context } from "./types";
 
-console.log("testing server deployment");
 export const startServer = async () => {
   const orm = await MikroORM.init();
   await orm.getMigrator().up();

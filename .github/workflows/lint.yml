@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   lintcode:
-    name: Repository code
+    name: Repository Code
     runs-on: ubuntu-latest
 
     steps:

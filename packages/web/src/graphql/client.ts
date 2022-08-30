@@ -19,9 +19,7 @@ import type { ClientOptions } from "urql";
 
 const buildUrqlConfig = (ssrExchange: SSRExchange): ClientOptions => ({
   url: process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:8080/graphql",
-  fetchOptions: {
-    credentials: "include",
-  },
+  fetchOptions: { credentials: "include" },
   exchanges: [
     dedupExchange,
     cacheExchange<GraphCacheConfig>({
@@ -64,6 +62,9 @@ const buildUrqlConfig = (ssrExchange: SSRExchange): ClientOptions => ({
   ],
 });
 
+// It is extremely important that you read this: https://formidable.com/open-source/urql/docs/advanced/server-side-rendering/
+// It contains updated information on how to use urql with next.js!
+//
 // export const urqlSSRClient = async (queries: DocumentNode[]) => {
 //  const ssrCache = ssrExchange({ isClient: false });
 //  const urqlConfig = buildUrqlConfig(ssrCache);

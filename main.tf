@@ -1,14 +1,14 @@
 terraform {
-  required_version = ">= 1.2.7"
+  required_version = "~> 1.2.7"
 
   required_providers {
     digitalocean = {
       source  = "digitalocean/digitalocean"
-      version = ">= 2.22.1"
+      version = "~> 2.22.1"
     }
     vercel = {
       source  = "vercel/vercel"
-      version = ">= 0.8.0"
+      version = "~> 0.8.0"
     }
   }
 
@@ -53,7 +53,7 @@ resource "digitalocean_droplet" "server" {
     dokku postgres:link syncbase_postgres server
     dokku redis:link syncbase_redis server
 
-    dokku git:from-image server ghcr.io/axedyson/syncbase:main
+    dokku git:from-image server ghcr.io/axedyson/syncbase-server:latest
 
     cat << EOF > /etc/nginx/sites-available/default
     server {

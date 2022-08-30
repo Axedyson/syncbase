@@ -5,8 +5,8 @@ on:
     branches: [main]
 
 jobs:
-  terraform:
-    name: Terraform
+  terraform_and_web:
+    name: Terraform & Web
     runs-on: ubuntu-latest
     if: github.repository_owner == 'Axedyson'
     outputs:
@@ -62,7 +62,7 @@ jobs:
     name: Server Image
     runs-on: ubuntu-latest
     if: needs.paths-filter.outputs.server == 'true'
-    needs: [terraform, paths-filter]
+    needs: [terraform_and_web, paths-filter]
     env:
       REGISTRY: ghcr.io
     permissions:
@@ -70,19 +70,12 @@ jobs:
       packages: write
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
       - name: Log in to the Container registry
         uses: docker/login-action@v2
         with:
           registry: ${{ env.REGISTRY }}
           username: $GITHUB_REPOSITORY_OWNER
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@v4
-        with:
-          images: ${{ env.REGISTRY }}/${{ github.repository }}
       - name: Set up Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@v2
@@ -98,14 +91,13 @@ jobs:
           push: true
           file: packages/server/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ steps.gh_repo_lc.outputs.lowercase }}:buildcache
-          cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ steps.gh_repo_lc.outputs.lowercase }}:buildcache,mode=max
+          tags: ${{ env.REGISTRY }}/${{ steps.gh_repo_lc.outputs.lowercase }}-server:latest
+          cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ steps.gh_repo_lc.outputs.lowercase }}-server:buildcache
+          cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ steps.gh_repo_lc.outputs.lowercase }}-server:buildcache,mode=max
       - name: Deploy Docker Server Image
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ needs.terraform.outputs.ipv4_address }}
+          host: ${{ needs.terraform_and_web.outputs.ipv4_address }}
           username: root
           key: ${{ secrets.DO_PVT_SSH_KEY }}
-          script: dokku git:from-image server ghcr.io/axedyson/syncbase@${{ steps.docker_build.outputs.digest }}
+          script: dokku git:from-image server ${{ env.REGISTRY }}/${{ steps.gh_repo_lc.outputs.lowercase }}-server@${{ steps.docker_build.outputs.digest }}

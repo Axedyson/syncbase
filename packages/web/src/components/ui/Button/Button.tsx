@@ -12,10 +12,11 @@ const buttonClasses = ctl(`
   items-center
   justify-center
   rounded-md
+  bg-primary
   py-2
   px-4
   font-semibold
-  text-orange-400
+  text-white
   transition
   hover:opacity-80
   focus:outline-none

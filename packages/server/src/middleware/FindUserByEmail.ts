@@ -3,6 +3,7 @@ import { createParamDecorator } from "type-graphql";
 import { User } from "../entities/User";
 import type { Context } from "../types";
 
+console.log("looooool");
 export const FindUserByEmail = () => {
   return createParamDecorator<Context>(async ({ context, args }) => {
     const user = await context.em.findOne(User, {

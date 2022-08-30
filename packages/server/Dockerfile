@@ -32,6 +32,7 @@ WORKDIR app
 
 ENV NODE_ENV=production
 
+# this should be the last command in the Dockerfile?
 USER node
 
 COPY --from=app app ./

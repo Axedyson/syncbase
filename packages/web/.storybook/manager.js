@@ -6,7 +6,7 @@ addons.setConfig({
     brandTitle: "Syncbase storybook",
     brandUrl: "http://syncbase.tv/",
     brandImage:
-      "https://raw.githubusercontent.com/Axedyson/syncbase/main/logo.svg",
+      "https://raw.githubusercontent.com/Axedyson/syncbase/main/.github/logo.svg",
     ...themes.dark,
   },
 });

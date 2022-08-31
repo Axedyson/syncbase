@@ -63,7 +63,7 @@ jobs:
               - 'packages/server/tsconfig.json'
               - 'packages/server/src/**'
               - 'packages/server/Dockerfile'
-      - name: Log in to the Container registry
+      - name: Log in to the container registry
         if: steps.changes.outputs.server == 'true'
         uses: docker/login-action@v2
         with:
@@ -79,7 +79,7 @@ jobs:
         uses: ASzc/change-string-case-action@v2
         with:
           string: ${{ github.repository }}
-      - name: Build and push Docker image
+      - name: Build and push docker image
         if: steps.changes.outputs.server == 'true'
         id: docker-build
         uses: docker/build-push-action@v3
@@ -101,7 +101,7 @@ jobs:
     needs: [terraform-and-web, build-server-image]
 
     steps:
-      - name: Deploy Docker Server Image
+      - name: Deploy docker server image
         uses: appleboy/ssh-action@master
         with:
           host: ${{ needs.terraform-and-web.outputs.ipv4_address }}

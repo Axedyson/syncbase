@@ -4,7 +4,7 @@ import { themes } from "@storybook/theming";
 addons.setConfig({
   theme: {
     brandTitle: "Syncbase storybook",
-    brandUrl: "http://syncbase.tv/",
+    brandUrl: "https://syncbase.tv/",
     brandImage:
       "https://raw.githubusercontent.com/Axedyson/syncbase/main/.github/logo.svg",
     ...themes.dark,

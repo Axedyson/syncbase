@@ -1,10 +1,9 @@
 ---
 name: Feature request
-about: Suggest an idea, a whole new feature or a small enhancement for this project
-title: ''
+about: Suggest a new feature or a small enhancement for this site/project
+title: ""
 labels: enhancement
-assignees: ''
-
+assignees: ""
 ---
 
 **Is your feature request related to a problem? Please describe.**

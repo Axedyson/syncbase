@@ -3,7 +3,7 @@
 
 provider "registry.terraform.io/digitalocean/digitalocean" {
   version     = "2.22.2"
-  constraints = "~> 2.22.1"
+  constraints = "~> 2.22.2"
   hashes = [
     "h1:1KrAnMBwIQiWyP9P87nqYkwHouNVZOKAAe6bp0EvOAs=",
     "zh:0d260fe993dedc70c78342147a1e73824f4b898118b3fac857e5302b165657f7",
@@ -27,7 +27,7 @@ provider "registry.terraform.io/digitalocean/digitalocean" {
 
 provider "registry.terraform.io/vercel/vercel" {
   version     = "0.8.1"
-  constraints = "~> 0.8.0"
+  constraints = "~> 0.8.1"
   hashes = [
     "h1:RppTGfVCBeB/qmsb5tNBlbYBJsO1Ze96KUNSGbNdzrE=",
     "zh:11bc58bb63736a806c8788d2e244a1faec9db655433a7d9df325e88f8c4efcaf",

@@ -22,7 +22,7 @@ jobs:
       - name: Run prettier
         run: yarn prettier --check '**/*.{json,md,yml,yaml}'
       - name: Run stylelint
-        run: yarn stylelint '**/*.css'
+        run: yarn stylelint '**/*.css' -f 'github'
       - name: Run eslint
         run: yarn eslint . --max-warnings 0
       - name: Run typescript server checks

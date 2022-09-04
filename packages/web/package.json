@@ -1,6 +1,6 @@
 {
   "name": "@syncbase/web",
-  "packageManager": "yarn@3.2.2",
+  "packageManager": "yarn@3.2.3",
   "private": true,
   "scripts": {
     "dev": "concurrently -n \"next,graphql\" -c \"bgBlack,bgMagenta\" \"next dev\" \"graphql-codegen --watch\"",
@@ -16,25 +16,25 @@
     "@hookform/resolvers": "^2.9.7",
     "@hookstate/core": "^3.0.13",
     "@netlify/classnames-template-literals": "^1.0.3",
-    "@urql/exchange-graphcache": "^5.0.0",
+    "@urql/exchange-graphcache": "^5.0.1",
     "graphql": "^15.8.0",
     "next": "^12.2.5",
     "next-i18next": "^12.0.0",
     "next-urql": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.34.0",
+    "react-hook-form": "^7.34.2",
     "react-hot-toast": "^2.3.0",
     "react-is": "^18.2.0",
-    "urql": "^3.0.1",
-    "zod": "^3.17.10"
+    "urql": "^3.0.2",
+    "zod": "^3.18.0"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^2.11.8",
+    "@graphql-codegen/cli": "^2.12.0",
     "@graphql-codegen/typed-document-node": "^2.3.3",
     "@graphql-codegen/typescript": "2.7.3",
     "@graphql-codegen/typescript-operations": "2.5.3",
-    "@graphql-codegen/typescript-urql-graphcache": "^2.3.3",
+    "@graphql-codegen/typescript-urql-graphcache": "^2.4.0",
     "@playwright/test": "^1.25.1",
     "@storybook/addon-a11y": "^6.5.10",
     "@storybook/addon-essentials": "^6.5.10",
@@ -45,14 +45,14 @@
     "@storybook/manager-webpack5": "^6.5.10",
     "@storybook/react": "^6.5.10",
     "@storybook/testing-library": "^0.0.13",
-    "@types/node": "^18.7.13",
-    "@types/react": "^18.0.17",
+    "@types/node": "^18.7.14",
+    "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
     "autoprefixer": "^10.4.8",
     "concurrently": "^7.3.0",
     "postcss": "^8.4.16",
     "tailwindcss": "^3.1.8",
-    "typescript": "~4.7.4"
+    "typescript": "^4.8.2"
   },
   "codegen": {
     "schema": "../server/schema.graphql",

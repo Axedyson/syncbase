@@ -1,52 +1,57 @@
 <p align="center">
   <a href="https://syncbase.tv">
-    <img alt="Brand logo" src="logo.svg">
+    <img alt="Brand logo" height="100px" src="logo.svg">
   </a>
 </p>
-
-## [CONTRIBUTING.md](https://github.com/Axedyson/syncbase/blob/main/.github/CONTRIBUTING.md)
-
-| Storybook                                                                                         |
-| ------------------------------------------------------------------------------------------------- |
-| [Storybook library](https://main--619aa417876c17003a24f46a.chromatic.com)                         |
-| [Chromatic library](https://www.chromatic.com/library?appId=619aa417876c17003a24f46a&branch=main) |
+<p align="center">
+  <strong>Synchronization of actions performed by the video creator with the viewer 🐬</strong>
+</p>
+<p align="center">
+  <a href="https://github.com/Axedyson/syncbase/pulse">
+    <img alt="Maintained?" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg">
+  </a>
+  <a href="https://syncbase.tv">
+    <img alt="Website up?" src="https://img.shields.io/website-up-down-green-red/https/syncbase.tv?label=website%20up?">
+  </a>
+  <a href="https://github.com/axedyson/syncbase/pulls?q=is%3Amerged">
+    <img alt="Merged pull requests" src="https://badgen.net/github/merged-prs/axedyson/syncbase">
+  </a>
+  <a href="https://github.com/axedyson/syncbase/issues?q=is%3Aissue+is%3Aclosed+reason%3Acompleted">
+    <img alt="Completed issues" src="https://img.shields.io/github/issues-search/axedyson/syncbase?label=completed%20issues&query=is%3Aissue%20is%3Aclosed%20reason%3Acompleted">
+  </a>
+  <a href="https://github.com/Axedyson/syncbase/graphs/commit-activity">
+    <img alt="Commit activity" src="https://img.shields.io/github/commit-activity/w/axedyson/syncbase">
+  </a>
+<p>
+<p align="center">
+  <a href="https://github.com/Axedyson/syncbase/discussions">
+    <img alt="Number of discussions" src="https://img.shields.io/github/discussions/axedyson/syncbase">
+  </a>
+  <a href="https://github.com/Axedyson/syncbase">
+    <img alt="Code size" src="https://img.shields.io/github/languages/code-size/axedyson/syncbase">
+  </a>
+  <a href="https://github.com/Axedyson/syncbase">
+    <img alt="Repo size" src="https://img.shields.io/github/repo-size/axedyson/syncbase">
+  </a>
+<p>
 
 ---
 
-## Notes
+## What is Syncbase?
 
-- In the future we want to [organize by feature](https://softwareengineering.stackexchange.com/questions/338597/folder-by-type-or-folder-by-feature) rather than by type
-- More extensive Docker and Docker Compose configuration to provide easier setup and development e.g. [vscode development containers](https://code.visualstudio.com/docs/remote/containers)
-- standard-version/semantic-release/changeset/keepachangelog?
-- Sentry?
-- Datadog?
-- [DNSSEC](https://www.namecheap.com/support/knowledgebase/article.aspx/9718/2232/nameservers-and-tlds-supportedunsupported-by-dnssec/) on namecheap?
-- [terraform security](https://www.checkov.io/4.Integrations/GitHub%20Actions.html)?
+### The Problem
 
-## Contact
+When you watch a video on YouTube or any other video platform, the interaction between the creator and the viewer is through commenting, liking, disliking, watching the actual uploaded video etc. But there is something lacking here. There are creators who upload videos of themselves reacting to other videos or content that they cannot show in the video or at least not fully in high quality. For example when someone uploads a video of themselves reacting to an anime episode they simply can't display the whole episode or at all in the video because of copyright reasons. One way some creators tries to solve this is by linking to a different website where the viewer can watch the same video in higher quality or ideally without any editing of the content that they're reacting to. But this is not good user experience to just redirect them off to somewhere else that may not solve the problem completely. It would be great if there was a way for the creator to fully express everything that they want to tell the viewer. Like listening to music, watching videos, copyrighted or not.
 
-If you have any questions at all, trouble setting things up etc. you can contact me the main maintainer of this project at:
+### A Solution
 
-- andersalting@gmail.com
-- `Axedyson#6431` (We will first need to be friends on discord before we can chat, will probably make a dedicated discord server in the future)
+Imagine YouTube but with the added ability to synchronize the actions of the creator with the viewer. The way to perform this synchronization would be to have a dedicated desktop application that records the actions (keystrokes) performed against some third party application that the creator wishes too synchronize with the viewer, all while the creator is recording the video. Call this dedicated desktop appliation, the synchronizer. This recording of keystrokes have to be perfectly aligned with the moments in the video where the actions are performed. When the viewer watches the video the viewer has to register the synchronizer with the third party application that the creator had in mind. In this instance the synchronizer will then execute the exact same actions which were recorded by the creator on the third party application as the video is playing on the viewers computer. In this way the viewer doesn't just watch the video but also experiences the same actions as the creator makes in that video. This is what Syncbase is going to be.
 
-<p align="center">
-  <a href="https://github.com/Axedyson/syncbase/pulls">
-    <img alt="Pull requests are welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
-  </a>
-  <a href="https://github.com/Axedyson/syncbase/actions/workflows/lint.yml">
-    <img alt="Lint workflow" src="https://img.shields.io/github/workflow/status/Axedyson/syncbase/Lint?label=Lint">
-  </a>
-  <a href="https://github.com/Axedyson/syncbase/actions/workflows/codeql.yml">
-    <img alt="CodeQL workflow" src="https://img.shields.io/github/workflow/status/Axedyson/syncbase/CodeQL?label=CodeQL">
-  </a>
-  <a href="https://github.com/Axedyson/syncbase/actions/workflows/tests.yml">
-    <img alt="Tests workflow" src="https://img.shields.io/github/workflow/status/Axedyson/syncbase/Tests?label=Tests">
-  </a>
-  <a href="https://github.com/Axedyson/syncbase/actions/workflows/ui-tests.yml">
-    <img alt="UI Tests workflow" src="https://img.shields.io/github/workflow/status/Axedyson/syncbase/UI%20Tests?label=UI%20Tests">
-  </a>
-  <a href="https://github.com/Axedyson/syncbase/actions/workflows/deploy.yml">
-    <img alt="UI Tests workflow" src="https://img.shields.io/github/workflow/status/Axedyson/syncbase/Deploy?label=Deploy">
-  </a>
-<p>
+## Contributing
+
+Feeling you would like to join us in the quest to make this vision a reality? Go [here](CONTRIBUTING.md) for more information on how to contribute!
+
+---
+
+[![Twitch](https://img.shields.io/badge/Twitch-9146FF?style=for-the-badge&logo=twitch&logoColor=white)](https://www.twitch.tv/axedyson)
+[![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/channel/UCm2XzTJrpztdXD44VF_CQwg)

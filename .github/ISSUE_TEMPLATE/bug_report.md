@@ -13,7 +13,7 @@ A clear and concise description of what the bug is.
 A clear and concise description of what you expected to happen.
 
 **Device/OS/browser:**
-Describe the device/OS/browser you're using to run the site or development environment on e.g.:
+Describe the device/OS/browser you're using to run the product or development environment on e.g.:
 
 - OS: [e.g. iOS]
 - Browser [e.g. chrome, safari]

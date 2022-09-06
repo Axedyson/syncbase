@@ -6,11 +6,11 @@ labels: enhancement
 assignees: ""
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
-
 **Describe the solution you'd like**
 A clear and concise description of what you want to happen.
+
+**Why would you like this feature implemented?**
+A clear and concise description of why you want this feature to be implemented.
 
 **Describe alternatives you've considered**
 If applicable, provide a clear and concise description of any alternative solutions or features you've considered.

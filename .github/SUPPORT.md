@@ -12,6 +12,6 @@
 
 Remember that public questions get public answers, which benefits everyone in the community! Though there could be reasons why you would like to send a message privately, in that case, you can use the below communication channels:
 
-[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:andersalting@gmail.com)
-[![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/axedyson)
-[![Discord](https://dcbadge.vercel.app/api/shield/277200178325487616)](https://discord.com/users/277200178325487616)
+[![andersalting@gmail.com](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:andersalting@gmail.com)
+[![@axedyson](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/axedyson)
+[![Axedyson#6431](https://dcbadge.vercel.app/api/shield/277200178325487616)](https://discord.com/users/277200178325487616)

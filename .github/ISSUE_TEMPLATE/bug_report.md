@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Report a bug with Syncbase site, dev tools etc.
+about: Report a bug with Syncbase site, dev tools, etc.
 title: ""
 labels: bug
 assignees: ""

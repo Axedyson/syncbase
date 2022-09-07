@@ -76,6 +76,6 @@ We accept pull requests as a means of submitting changes to the project which wi
 
 Thank you for your interest in contributing to Syncbase! We love your input! We want to make contributing to this project as easy and transparent as possible. We've really tried to make the development environment as nice as possible, if you have any ideas of how to make it even better, it would be great if you could tells us about it through a pull request, feature request or an idea in the dicussion forum!
 
-All efforts to contribute are highly appreciated, we recommend you talk to a maintainer prior to spending a lot of time making a pull request that may not align with the project roadmap.
+All efforts to contribute are highly appreciated, we recommend you talk to a maintainer or another contributor prior to spending a lot of time making a pull request that may not align with the project roadmap just in case.
 
 Also if you're running on a non-linux based OS like Windows you probably can’t develop on this project since some scripts listed in one of the `package.json` files utilizes linux commands, but we will happily update those scripts to be OS agnostic. We can also add a `.gitattributes` file to normalize line endings of files if you want!

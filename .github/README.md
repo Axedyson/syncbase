@@ -4,7 +4,7 @@
   </a>
 </p>
 <p align="center">
-  <strong>Synchronization of actions performed by the video creator with the viewer 🐬</strong>
+  <strong>Actions performed by the video creator synchronizes with the viewer 🐬</strong>
 </p>
 <p align="center">
   <a href="https://github.com/Axedyson/syncbase/pulse">
@@ -45,7 +45,7 @@ When you watch a video on YouTube or any other video platform, the interaction b
 
 ### A Solution
 
-Imagine YouTube but with the added ability to synchronize the actions of the creator with the viewer. The way to perform this synchronization would be to have a dedicated desktop application that records the actions (keystrokes) performed against some third party application that the creator wishes too synchronize with the viewer, all while the creator is recording the video. Call this dedicated desktop appliation, the synchronizer. This recording of keystrokes have to be perfectly aligned with the moments in the video where the actions are performed. When the viewer watches the video the viewer has to register the synchronizer with the third party application that the creator had in mind. In this instance the synchronizer will then execute the exact same actions which were recorded by the creator on the third party application as the video is playing on the viewers computer. In this way the viewer doesn't just watch the video but also experiences the same actions as the creator makes in that video. This is what Syncbase is going to be.
+Imagine YouTube but with the added ability to synchronize the actions of the creator with the viewer. The way to perform this synchronization would be to have a dedicated desktop application that records the actions (keystrokes) performed against some third party application that the creator wishes too synchronize with the viewer, all while the creator is recording the video. Call this dedicated desktop appliation, the synchronizer. This recording of keystrokes have to be perfectly aligned with the moments in the video where the actions are performed. Before the viewer chooses to watch the video, the viewer has to register the synchronizer with the third party application that the creator had in mind. In this instance, the synchronizer will execute the exact same actions which were recorded by the creator on the third party application as the video is playing on the viewers computer. In this way the viewer doesn't just watch the video but also experiences the same actions as the creator makes in that video on the viewer's own computer. This is what Syncbase is going to become.
 
 ## Contributing
 

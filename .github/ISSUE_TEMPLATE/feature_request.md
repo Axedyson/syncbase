@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Suggest a new feature or a small enhancement for this site/project
+about: Request a new feature or a small enhancement for Syncbase site, dev tools etc.
 title: ""
 labels: enhancement
 assignees: ""

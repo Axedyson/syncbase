@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://syncbase.tv">
-    <img alt="Brand logo" height="100px" src="logo.svg">
+    <img alt="Brand logo" height="100px" src="../logo.svg">
   </a>
 </p>
 <p align="center">

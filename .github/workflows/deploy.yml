@@ -34,7 +34,7 @@ jobs:
           TF_VAR_SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
       - name: Output ipv4_address of droplet
         id: ipv4_address_output
-        run: echo "::{ipv4_address}=$(terraform output -raw ipv4_address)" >> $GITHUB_OUTPUT
+        run: echo "::{ipv4_address}={$(terraform output -raw ipv4_address)}" >> $GITHUB_OUTPUT
 
   build-server-image:
     name: Build Server Image

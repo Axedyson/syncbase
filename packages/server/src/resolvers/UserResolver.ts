@@ -13,7 +13,6 @@ import {
 import { me } from "../services/user/queries/me";
 import { Context } from "../types";
 
-// Remember to remove this!
 @Resolver()
 export class UserResolver {
   @Authorized()

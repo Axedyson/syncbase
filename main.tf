@@ -1,10 +1,10 @@
 terraform {
-  required_version = "~> 1.2.8"
+  required_version = "~> 1.3.3"
 
   required_providers {
     digitalocean = {
       source  = "digitalocean/digitalocean"
-      version = "~> 2.22.2"
+      version = "~> 2.22.3"
     }
     vercel = {
       source  = "vercel/vercel"

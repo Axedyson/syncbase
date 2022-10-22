@@ -2,10 +2,14 @@ import { appWithTranslation, useTranslation } from "next-i18next";
 import Head from "next/head";
 import { Layout } from "../components/ui/Layout";
 import type { NextPage } from "next";
+import type { SSRConfig } from "next-i18next";
 import type { AppProps } from "next/app";
 import "../global.css";
 
-const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
+const MyApp: NextPage<AppProps & { pageProps: SSRConfig }> = ({
+  Component,
+  pageProps,
+}) => {
   const { t } = useTranslation();
 
   return (

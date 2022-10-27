@@ -17,7 +17,7 @@ import type { Context } from "./types";
 
 export const startServer = async () => {
   const orm = await MikroORM.init();
-  await orm.getMigrator().up();
+  await orm.migrator.up();
 
   const app = express();
   app.set("trust proxy", 1);

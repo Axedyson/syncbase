@@ -53,7 +53,7 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
                       <>
                         <span
                           className={`block ${
-                            selected ? "font-medium" : "font-normal"
+                            selected ? "font-semibold" : "font-medium"
                           }`}
                         >
                           {locale}

@@ -20,8 +20,8 @@ export let graphql: graphqlTestFunc;
 
 beforeAll(async () => {
   ({ server, orm } = await startServer());
-  await orm.getSchemaGenerator().refreshDatabase();
-  await orm.getSeeder().seed(DatabaseSeeder);
+  await orm.schema.refreshDatabase();
+  await orm.seeder.seed(DatabaseSeeder);
 
   const agent = request.agent(server);
 

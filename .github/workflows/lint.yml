@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   lintcode:
-    name: Repository code
+    name: Repository Code
     runs-on: ubuntu-latest
 
     steps:
@@ -19,10 +19,12 @@ jobs:
         run: yarn install
       - name: Run editorconfig
         uses: greut/eclint-action@v0
+        with:
+          eclint_args: "-exclude .yarn/**/*"
       - name: Run prettier
         run: yarn prettier --check '**/*.{json,md,yml,yaml}'
       - name: Run stylelint
-        run: yarn stylelint '**/*.css'
+        run: yarn stylelint '**/*.css' -f 'github'
       - name: Run eslint
         run: yarn eslint . --max-warnings 0
       - name: Run typescript server checks

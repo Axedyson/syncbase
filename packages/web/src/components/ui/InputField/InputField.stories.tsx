@@ -1,15 +1,6 @@
 import { useForm } from "react-hook-form";
 import { InputField } from "./InputField";
-import type { Meta, Story } from "@storybook/react";
-
-// Not sure how to make the generic type props of the InputField component work with storybook.
-// Because of that I'm defining a custom interface with no generics to the Story and Meta types:
-interface InputFieldProps {
-  label: string;
-  name: string;
-  errorMsg: string;
-  type: string;
-}
+import type { ComponentMeta, ComponentStory } from "@storybook/react";
 
 export default {
   title: "InputField",
@@ -24,9 +15,9 @@ export default {
   args: {
     name: "some name",
   },
-} as Meta<InputFieldProps>;
+} as ComponentMeta<typeof InputField>;
 
-const Template: Story<InputFieldProps> = (args) => {
+const Template: ComponentStory<typeof InputField> = (args) => {
   const { register } = useForm();
 
   return <InputField {...args} register={register} />;

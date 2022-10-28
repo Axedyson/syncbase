@@ -8,11 +8,19 @@ indent_size = 2
 charset = utf-8
 trim_trailing_whitespace = true
 
-[generated.ts]
-insert_final_newline = false
+[*.md]
+trim_trailing_whitespace = false
 
 [*.js]
 indent_style = unset
 
-[*.md]
-trim_trailing_whitespace = false
+[packages/web/src/graphql/generated.ts]
+insert_final_newline = false
+
+[.yarn/**]
+end_of_line = unset
+insert_final_newline = unset
+indent_style = unset
+indent_size = unset
+charset = unset
+trim_trailing_whitespace = unset

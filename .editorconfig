@@ -11,16 +11,12 @@ trim_trailing_whitespace = true
 [*.md]
 trim_trailing_whitespace = false
 
-# [*.js]
-# indent_style = unset
+[*.js]
+indent_style = unset
 
 [packages/web/src/graphql/generated.ts]
 insert_final_newline = false
 
 [.yarn/**]
-# end_of_line = unset
-# insert_final_newline = unset
-# indent_style = unset
 indent_size = unset
-# charset = unset
-# trim_trailing_whitespace = unset
+trim_trailing_whitespace = unset

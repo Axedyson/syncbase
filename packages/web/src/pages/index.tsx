@@ -26,6 +26,9 @@ const IndexPage: NextPage = () => {
             <a className="text-blue-600 underline">{t("user:viewAccount")}</a>
           </Link>
           <h2>{t("auth:loggedIn")}</h2>
+          <Link href="/">
+            <a className="text-blue-600 underline">{t("user:yourChannel")}</a>
+          </Link>
           <Button
             onClick={async () => {
               await logoutUser({});

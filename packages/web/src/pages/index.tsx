@@ -18,17 +18,14 @@ const IndexPage: NextPage = () => {
   const { t } = useTranslation(["auth", "user"]);
 
   return (
-    <div className="m-auto flex flex-col gap-y-2 rounded-md border-2 border-slate-400 p-2">
+    <>
       <LoginDialog />
       {user ? (
         <>
-          <Link href="/account">
-            <a className="text-blue-600 underline">{t("user:viewAccount")}</a>
+          <Link href="/account" className="text-blue-600 underline">
+            {t("user:viewAccount")}
           </Link>
           <h2>{t("auth:loggedIn")}</h2>
-          <Link href="/">
-            <a className="text-blue-600 underline">{t("user:yourChannel")}</a>
-          </Link>
           <Button
             onClick={async () => {
               await logoutUser({});
@@ -43,12 +40,12 @@ const IndexPage: NextPage = () => {
           <Button onClick={dialog.open} label={t("auth:createAccount")} />
         </>
       )}
-    </div>
+    </>
   );
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
-  props: await serverSideTranslations(locale!, ["common", "auth", "user"]),
+  props: await serverSideTranslations(locale!, ["auth", "user"]),
 });
 
 export default withUrqlClient(IndexPage);

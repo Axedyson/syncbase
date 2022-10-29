@@ -1,0 +1,5 @@
+query User($channelId: ID!) {
+  user(channelId: $channelId) {
+    ...RegularUser
+  }
+}

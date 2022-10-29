@@ -11,7 +11,7 @@ const Custom500InternalServerErrorPage: NextPage = () => {
       <Head>
         <title>500 | Syncbase</title>
       </Head>
-      <h1 className="m-auto">{t("500InternalServerError")}</h1>
+      <h1>{t("500InternalServerError")}</h1>
     </>
   );
 };

@@ -73,7 +73,9 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
         </Listbox>
       </div>
       <Toast />
-      {children}
+      <div className="m-auto flex flex-col gap-y-2 rounded-md border-2 border-slate-400 p-2">
+        {children}
+      </div>
     </div>
   );
 };

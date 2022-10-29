@@ -11,7 +11,7 @@ const Custom404NotFoundPage: NextPage = () => {
       <Head>
         <title>404 | Syncbase</title>
       </Head>
-      <h1 className="m-auto">{t("404NotFound")}</h1>
+      <h1>{t("404NotFound")}</h1>
     </>
   );
 };

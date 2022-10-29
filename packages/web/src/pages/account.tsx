@@ -12,12 +12,12 @@ const AccountPage: NextPage = () => {
   const [, logoutUser] = useMutation(LogoutUserDocument);
   const [, user] = useCurrentUser(true);
 
-  const { t } = useTranslation(["common", "auth"]);
+  const { t } = useTranslation(["common", "auth", "user"]);
 
   return (
-    <div className="m-auto flex flex-col gap-y-2 rounded-md border-2 border-slate-400 p-2">
-      <Link href="/">
-        <a className="text-blue-600 underline">{t("common:feed")}</a>
+    <>
+      <Link href="/" className="text-blue-600 underline">
+        {t("common:feed")}
       </Link>
       {user && (
         <>
@@ -25,6 +25,12 @@ const AccountPage: NextPage = () => {
           <p>{`id: ${user.id}`}</p>
           <p>{`${t("auth:username")}: ${user.name}`}</p>
           <p>{`${t("auth:email")}: ${user.email}`}</p>
+          <Link
+            className="text-blue-600 underline"
+            href={`/channel/${user.channelId}`}
+          >
+            {t("user:yourChannel")}
+          </Link>
           <Button
             onClick={async () => {
               await logoutUser({});
@@ -33,12 +39,12 @@ const AccountPage: NextPage = () => {
           />
         </>
       )}
-    </div>
+    </>
   );
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
-  props: await serverSideTranslations(locale!, ["common", "auth"]),
+  props: await serverSideTranslations(locale!, ["common", "auth", "user"]),
 });
 
 export default withUrqlClient(AccountPage);

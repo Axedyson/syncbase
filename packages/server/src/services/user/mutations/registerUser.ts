@@ -10,15 +10,15 @@ import type { Context } from "src/types";
 export class RegisterUserInput {
   @Field()
   @Length(3, 15)
-  name!: string;
+  readonly name!: string;
 
   @Field(() => GraphQLEmailAddress)
   @IsEmail()
-  email!: string;
+  readonly email!: string;
 
   @Field()
   @Length(7, 30)
-  password!: string;
+  readonly password!: string;
 }
 
 export const registerUser = async (

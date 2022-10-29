@@ -10,11 +10,11 @@ import type { Context } from "src/types";
 export class LoginUserInput {
   @Field(() => GraphQLEmailAddress)
   @IsEmail()
-  email!: string;
+  readonly email!: string;
 
   @Field()
   @Length(7, 30)
-  password!: string;
+  readonly password!: string;
 }
 
 export const loginUser = async (

@@ -21,6 +21,7 @@ type Mutation {
 
 type Query {
   me: User
+  user(channelId: ID!): User
 }
 
 input RegisterUserInput {
@@ -30,6 +31,7 @@ input RegisterUserInput {
 }
 
 type User {
+  channelId: ID!
   email: EmailAddress!
   id: ID!
   name: String!

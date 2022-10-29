@@ -1,4 +1,12 @@
-import { Arg, Authorized, Ctx, Mutation, Query, Resolver } from "type-graphql";
+import {
+  Arg,
+  Authorized,
+  Ctx,
+  ID,
+  Mutation,
+  Query,
+  Resolver,
+} from "type-graphql";
 import { User } from "../entities/User";
 import { FindUserByEmail } from "../middleware/FindUserByEmail";
 import {
@@ -11,6 +19,7 @@ import {
   registerUser,
 } from "../services/user/mutations/registerUser";
 import { me } from "../services/user/queries/me";
+import { user } from "../services/user/queries/user";
 import { Context } from "../types";
 
 @Resolver()
@@ -19,6 +28,14 @@ export class UserResolver {
   @Query(() => User, { nullable: true })
   me(@Ctx() ctx: Context): Promise<User | null> {
     return me(ctx);
+  }
+
+  @Query(() => User, { nullable: true })
+  user(
+    @Ctx() ctx: Context,
+    @Arg("channelId", () => ID) channelId: string
+  ): Promise<User | null> {
+    return user(ctx, channelId);
   }
 
   @Mutation(() => User)

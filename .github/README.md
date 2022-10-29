@@ -4,7 +4,7 @@
   </a>
 </p>
 <p align="center">
-  <strong>Actions performed by the video creator synchronize with the viewer 🐬</strong>
+  <strong>Think YouTube clone, but with the addition of creator to viewer synchronization 🐬</strong>
 </p>
 <p align="center">
   <a href="https://github.com/Axedyson/syncbase/pulse">

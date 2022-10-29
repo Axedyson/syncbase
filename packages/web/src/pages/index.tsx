@@ -45,7 +45,7 @@ const IndexPage: NextPage = () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
-  props: await serverSideTranslations(locale!, ["auth", "user"]),
+  props: await serverSideTranslations(locale!, ["auth", "user", "common"]),
 });
 
 export default withUrqlClient(IndexPage);

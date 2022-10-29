@@ -34,7 +34,7 @@ jobs:
           TF_VAR_SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
       - name: Output ipv4_address of droplet
         id: ipv4_address_output
-        run: echo "::{ipv4_address}={$(terraform output -raw ipv4_address)}" >> $GITHUB_OUTPUT
+        run: echo "ipv4_address=$(terraform output -raw ipv4_address)" >> $GITHUB_OUTPUT
 
   build-server-image:
     name: Build Server Image
@@ -92,7 +92,7 @@ jobs:
       - name: Output docker image name
         if: steps.changes.outputs.server == 'true'
         id: docker-image-name-output
-        run: echo "{image}=${{ env.REGISTRY }}/${{ steps.gh_repo_lc.outputs.lowercase }}-server@${{ steps.docker-build.outputs.digest }}" >> $GITHUB_OUTPUT
+        run: echo "image=${{ env.REGISTRY }}/${{ steps.gh_repo_lc.outputs.lowercase }}-server@${{ steps.docker-build.outputs.digest }}" >> $GITHUB_OUTPUT
 
   deploy-server-image:
     name: Server Image

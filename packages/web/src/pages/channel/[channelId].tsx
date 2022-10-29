@@ -21,8 +21,8 @@ const ChannelPage: NextPage = () => {
       {data?.user ? (
         <>
           <h2>Channel info:</h2>
-          <h3>Name: {data?.user?.name}</h3>
-          <h3>ID: {data?.user?.channelId}</h3>
+          <h3>Name: {data.user.name}</h3>
+          <h3>ID: {data.user.channelId}</h3>
         </>
       ) : (
         <p>Could not find the channel 🥲</p>
